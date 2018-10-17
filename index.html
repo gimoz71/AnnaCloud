@@ -14,7 +14,7 @@
     <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/pinchzoomer.css">
     <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/custom.css">
     <!--[if lt IE 9]><script src="javascripts/html5shiv.js"></script><![endif]-->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Source+Sans+Pro:300,400,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 </head>
 
@@ -24,8 +24,7 @@
             <div class="main-header-content">
                 <nav class="navbar main-navbar navbar-default nomargin" role="navigation">
                     <div class="container">
-		                <a class="navbar-brand logo-big  hidden-xs text-hide" href="#">Unaduna</a>
-		                <a class="navbar-brand logo-small hidden-lg hidden-md hidden-sm text-hide" href="#">Unaduna</a>
+						<a class="logo-small hidden-lg hidden-md hidden-sm text-hide" href="#">AnnaCloud</a>
 		                <div class="navbar-header navbar-right">
 		                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 		                        <span class="sr-only">Toggle navigation</span>
@@ -49,7 +48,7 @@
 		                        </li>
 		                    </ul>
 		                </div>
-		                <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+		                <!--<div class="collapse navbar-collapse" id="navbar-ex1-collapse">
 		                    <ul class="nav navbar-nav navbar-left">
 		                        <li>
                                     <a href="#"><i class="unaicon-search"></i></a>
@@ -61,62 +60,57 @@
             		                    <li><a href="#">Francois</a></li>
             		                </ul>
 		                        </li>
-                                <!-- <li>
-                                    <a href="#"><i class="unaicon-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="unaicon-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="unaicon-instagram"></i></a>
-                                </li> -->
 		                    </ul>
-		                </div>
+		                </div>-->
 		            </div>
 		        </nav>
-		        <!-- <div class="container" style="position: relative">
-		            <div class="search hidden-xs">
-		                <input type="text" placeholder="Ricerca">
-                        <a href="#"><i class="unaicon-search"></i></a>
-		            </div>
-		            <div class="language hidden-xs">
-                        <a href="#" id="language" data-toggle="dropdown">English <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="language">
-                            <li><a href="#">Deutsche</a></li>
-                            <li><a href="#">Francois</a></li>
-                        </ul>
-		            </div>
-		        </div> -->
 		    </div>
 		    <nav class="navbar navbar-default nomargin main-site-navbar">
 		        <div class="container">
 		            <div class="collapse navbar-collapse navbar-ex1-collapse">
-		                <ul class="nav navbar-nav">
-		                    <li>
-		                        <a href="#" class="active link" ng-click="setHome()">Home</a>
-		                    </li>
-		                    <li>
-		                        <a href="#" class="" ng-click="setConfigurator()">Configura</a>
-		                    </li>
-		                    <li>
-		                        <a href="#" class="" ng-click="setVisione()">Visione</a>
-		                    </li>
-		                    <li>
-		                        <a href="#" class="" ng-click="setEsperienza()">Esperienza</a>
-		                    </li>
-		                    <li>
-		                        <a href="#" class="" ng-click="setContatti()">Contatti</a>
-		                    </li>
-		                    <li>
-		                        <a href="#" class="" ng-click="setStores()">Stores</a>
-		                    </li>
-		                    <li class="visible-xs-block">
-		                        <a href="#" class="">Cerca</a>
-		                    </li>
-		                    <li class="visible-xs-block">
-		                        <a href="#" class="">Lingua</a>
-		                    </li>
-		                </ul>
+						<div class="hidden-xs" style="padding-left: 100px; padding-right: 100px;">
+							<div class="col-sm-4">
+								<ul class="nav navbar-nav navbar-nav-flex">
+									<li>
+										<a href="#" class="" ng-click="setConfigurator()">Crea</a>
+									</li>
+									<li>
+										<a href="#" class="" ng-click="setContatti()">Atelier</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="nav navbar-nav navbar-nav-flex">
+									<li>
+										<a href="#" class="logo-big hidden-xs text-hide active link" ng-click="setHome()">AnnaCloud</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="nav navbar-nav navbar-nav-flex">
+									<li>
+										<a href="#" class="" ng-click="setContatti()">Scopri</a>
+									</li>
+									<li>
+										<a href="#" class="" ng-click="setStores()">Stores</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="nav navbar-nav visible-xs-block">
+							<li>
+								<a href="#" class="" ng-click="setHome()">Crea</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setConfigurator()">Atelier</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setContatti()">Scopri</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setStores()">Stores</a>
+							</li>
+						</ul>
 		            </div>
 		        </div>
 		    </nav>
@@ -134,69 +128,82 @@
 			<ordini-content ng-if="isOrdini"></ordini-content>
 	    </div>
 
-	    <footer class="text-center" ng-if="!isConfigurator">
+	    <footer class="" ng-if="!isConfigurator">
 	        <div class="footer-navbar-container">
 	            <div class="container">
-	                <ul class="nav navbar-nav">
-<!-- 	                		<li> -->
-<!-- 	                        <a href="#" class="active link" ng-click="setHome()">Home</a> -->
-<!-- 	                    </li> -->
-<!-- 	                    <li> -->
-<!-- 	                        <a href="#" class="" ng-click="setConfigurator()">Configura</a> -->
-<!-- 	                    </li> -->
-<!-- 	                    <li> -->
-<!-- 	                        <a href="#" class="" ng-click="setVisione()">Visione</a> -->
-<!-- 	                    </li> -->
-<!-- 	                    <li> -->
-<!-- 	                        <a href="#" class="" ng-click="setEsperienza()">Esperienza</a> -->
-<!-- 	                    </li> -->
-<!-- 	                    <li> -->
-<!-- 	                        <a href="#" class="" ng-click="setContatti()">Contatti</a> -->
-<!-- 	                    </li> -->
-<!-- 	                    <li> -->
-<!-- 	                        <a href="#" class="" ng-click="setStores()">Stores</a> -->
-<!-- 	                    </li> -->
-	                    <li>
-	                        <a href="index.html" class="">Home</a>
-	                    </li>
-	                    <li>
-	                        <a href="http://unadunaconfiguratore.eu-central-1.elasticbeanstalk.com" class="">Configura</a>
-	                    </li>
-	                    <li>
-	                        <a href="visione.html" class="">Visione</a>
-	                    </li>
-	                    <li>
-	                        <a href="esperienza.html" class="">Esperienza</a>
-	                    </li>
-	                    <li>
-	                        <a href="#" class="">Contatti</a>
-	                    </li>
-	                    <li>
-	                        <a href="#" class="">Stores</a>
-	                    </li>
-	                </ul>
+					<div class="col-xs-3">
+						 <a class="logo-footer text-hide" href="#">Unaduna</a>
+						<p>
+							Via S. Carlo 2707/2709 47522,<br>
+							San Carlo dI Cesena (FC) Italia<br>
+							Tel. +39 0547 373077<br>
+							Fax +39 0547 373363<br>
+							P.IVA 03487580403
+						</p>
+					</div>
+					<div class="col-xs-3">
+						<h3>Crea</h3>
+						<ul>
+							<li>
+								<a href="#" class="" ng-click="setHome()">Come funziona</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setConfigurator()">Configura</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-3">
+						<h3>Atelier</h3>
+						<ul>
+							<li>
+								<a href="#" class="" ng-click="setHome()">Shop</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setConfigurator()">Collezione</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-3">
+						<h3>Scopri</h3>
+						<ul>
+							<li>
+								<a href="#" class="" ng-click="setHome()">Visione</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setConfigurator()">Esperienza</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-3">
+						<h3>Chi siamo</h3>
+						<ul>
+							<li>
+								<a href="#" class="" ng-click="setHome()">Team</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setConfigurator()">Contatti</a>
+							</li>
+							<li>
+								<a href="#" class="" ng-click="setContatti()">Carriera</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-3">
+						<h3>Seguici su:</h3>
+						<p class="social">
+							<a href="#"><i class="unaicon-facebook"></i></a>&nbsp;
+							<a href="#"><i class="unaicon-twitter"></i></a>&nbsp;
+							<a href="#"><i class="unaicon-instagram"></i></a>
+						</p>
+					</div>
+	                
 	            </div>
 	        </div>
-	        <div class="credits">
-	            <div class="container">
-	                <a class="logo-footer text-hide" href="#">Unaduna</a>
-	                <p>
-	                    Via S. Carlo 2707/2709 47522, San Carlo dI Cesena (FC) Italia<br />
-	                    Tel. +39 0547 373077 - Fax +39 0547 373363<br />
-	                    P.IVA 03487580403
-	                </p>
-                    <h3>
-                        <a href="#"><i class="unaicon-facebook"></i></a>&nbsp;
-                        <a href="#"><i class="unaicon-twitter"></i></a>&nbsp;
-                        <a href="#"><i class="unaicon-instagram"></i></a>
-                    </h3>
-	            </div>
-	        </div>
-	        <div class="copyright">
-	            <div class="container">
-	                Copyright 2017 Unaduna
-	            </div>
-	        </div>
+			<div class="copyright">
+				<div class="container">
+					Copyright &reg; 2018 ANNACLOUD
+				</div>
+			</div>
 	    </footer>
     </div>
 

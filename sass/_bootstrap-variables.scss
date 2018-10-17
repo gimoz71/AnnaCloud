@@ -48,8 +48,9 @@ $body-bg:               #fff;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Source Sans Pro", Helvetica, Arial, sans-serif;
-$font-family-serif:       "Playfair Display", Georgia, Times, serif;
+$font-family-sans-serif:  'Source Sans Pro', sans-serif/**"Source Sans Pro", Helvetica, Arial, sans-serif"*/;
+//$font-family-serif:       'Montserrat', sans-serif /*"Playfair Display", Georgia, Times, serif*/;
+$font-family-sans-serif-title:       'Montserrat', sans-serif /*"Playfair Display", Georgia, Times, serif*/;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 // $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace
 // $font-family-base:        $font-family-sans-serif
@@ -156,12 +157,12 @@ $border-radius-small:       0px;
 
 $btn-default-color:                 $brand-primary; /*#333*/
 $btn-default-bg:                    #fff;
-$btn-default-border:                rgba(#7E2C09, .35); /* #ccc*/
+$btn-default-border:                rgba(#999, .5); /* #ccc*/
 
 $btn-action-color:                  #fff;
-$btn-action-bg:                     #7E2C09;
+$btn-action-bg:                     #999;
 $btn-action-bg:                     lighten(#9cb453, 15);
-$btn-action-border:                 rgba(#7E2C09, .35);
+$btn-action-border:                 rgba(#999, .55);
 $btn-action-border:                 darken(#9cb453, .5);
 
 // $btn-primary-color:              #fff
