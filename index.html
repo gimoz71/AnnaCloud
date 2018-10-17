@@ -72,10 +72,18 @@
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
 									<li>
-										<a href="#" class="" ng-click="setConfigurator()">Crea</a>
+										<a href="#" class="" data-toggle="dropdown">Crea</a>
+										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
+											<li><a ng-click="setAccesso()">Come funziona</a></li>
+											<li><a href="#" ng-click="setConfigurator()">Configura</a></li>
+										</ul>
 									</li>
 									<li>
-										<a href="#" class="" ng-click="setContatti()">Atelier</a>
+										<a href="#" class="" data-toggle="dropdown">Atelier</a>
+										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
+											<li><a href="#">Shop</a></li>
+											<li><a href="#">Collezione</a></li>
+										</ul>
 									</li>
 								</ul>
 							</div>
@@ -89,10 +97,19 @@
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
 									<li>
-										<a href="#" class="" ng-click="setContatti()">Scopri</a>
+										<a href="#" class="" data-toggle="dropdown">Scopri</a>
+										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
+											<li><a href="#">Visione</a></li>
+											<li><a href="#">Esperienza</a></li>
+										</ul>
 									</li>
 									<li>
-										<a href="#" class="" ng-click="setStores()">Stores</a>
+										<a href="#" class="" data-toggle="dropdown">Stores</a>
+										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
+											<li><a href="#">Team</a></li>
+											<li><a href="#">Contatti</a></li>
+											<li><a href="#">Carriera</a></li>
+										</ul>
 									</li>
 								</ul>
 							</div>
@@ -131,7 +148,7 @@
 	    <footer class="" ng-if="!isConfigurator">
 	        <div class="footer-navbar-container">
 	            <div class="container">
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						 <a class="logo-footer text-hide" href="#">Unaduna</a>
 						<p>
 							Via S. Carlo 2707/2709 47522,<br>
@@ -141,7 +158,7 @@
 							P.IVA 03487580403
 						</p>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<h3>Crea</h3>
 						<ul>
 							<li>
@@ -152,7 +169,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<h3>Atelier</h3>
 						<ul>
 							<li>
@@ -163,7 +180,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<h3>Scopri</h3>
 						<ul>
 							<li>
@@ -174,7 +191,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<h3>Chi siamo</h3>
 						<ul>
 							<li>
@@ -188,7 +205,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-sm-3">
 						<h3>Seguici su:</h3>
 						<p class="social">
 							<a href="#"><i class="unaicon-facebook"></i></a>&nbsp;

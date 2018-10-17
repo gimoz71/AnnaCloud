@@ -449,6 +449,20 @@ a.link {
     box-shadow: 0px 0px 0px transparent;
     border: solid 1px $standard-border-color;
     padding: 0;
+    &.dropdown-menu-centered {
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, 0);
+        text-align: center !important;
+        background-color: #fff;
+    }
+    &.dropdown-menu-centered::before {
+        left: 50%;
+        right: auto;
+        position: absolute;
+        display: inline-block;
+        border: none;
+    }
 }
 
 /* stilizzazione tabs */
@@ -667,8 +681,27 @@ a.link {
                 }
             }
             li {
+                &.open {
+                     > a {
+                        background-color: #fff !important;
 
+                        &:after, &:before {
+                            @include transition(all 150ms ease-in-out);
+                            content: "";
+                            border-style: solid;
+                            border-width: 8px;
+                            width: 0;
+                            height: 0;
+                            position: absolute;
+                            top: 100%;
+                            left: 50%;
+                            margin-left: -8px;
+                            z-index: 1001;
+                        }
+                    }
+                }
                 a {
+                    position: relative;
                     @include transition(all 150ms ease-in-out);
                     padding: 25px;
                     &:after, &:before {
@@ -700,6 +733,7 @@ a.link {
                         margin-left: -8px;
                     }
                     &.active {
+                        
                         &:after, &:before {
                             @include transition(all 150ms ease-in-out);
                             content: "";
@@ -712,6 +746,7 @@ a.link {
                             left: 50%;
                             margin-left: -8px;
                         }
+
                     }
                     &.ontop {
                         &:after, &:before {
@@ -791,7 +826,7 @@ a.link {
     padding: 60px 0;
     background: url(../images/jumbotron.jpg) no-repeat center center;
     background-size: contain;
-    //height: 350px;
+    height: 350px;
     &.quote-section {
         height: auto;
         background-image: none; 
@@ -851,9 +886,10 @@ a.link {
     margin: 15px;
     border: solid 1px transparent;
     font-family: $font-family-sans-serif-title;
-    
+    div, img, span {
+        @include transition(all 500ms ease-in-out);
+    }
     div {
-        
         margin-bottom: 20px;
     }
     &:hover {
@@ -871,6 +907,7 @@ a.link {
             bottom: 200px;
             color: #fff;
             border: solid 1px #fff;
+            font-weight: normal;
         }
         
     }
@@ -1720,6 +1757,7 @@ footer {
     }
     h3 {
         font-size: 1.2em;
+        font-weight: 500;
     }
     .social {
         font-size: 1.75em;
@@ -1728,6 +1766,25 @@ footer {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        a:link {
+            @include transition(all 500ms ease-in-out);
+            &::before {
+                @include transition(all 500ms ease-in-out);
+                content: ">";
+                position: absolute;
+                left: 15px;
+                opacity: 0;
+            }
+        }
+        a:hover {
+            @include transition(all 200ms ease-out);
+            text-decoration: none;
+            margin-left: 10px;
+            &:before {
+                @include transition(all 500ms ease-in-out);
+                opacity: 1;
+            }
+        }
     }
     .copyright {
         padding: 20px;
