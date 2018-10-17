@@ -1,0 +1,70 @@
+    <div ng-controller="preferitiController" class="container text-center gradient">
+        <div class="row">
+            <div class="col-sm-12 clearfix bottom-buffer">
+                <h3 class="title section">Ciao Gianluca,</h3>
+               
+					
+                <p>in questa area puoi verificare i tuoi ordini, visualizzare e modificare i tuoi preferiti.</p>
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active" ><a href="#preferiti" data-toggle="tab"><i class="unaicon-favourite" style="margin-right: 2px;"></i> Preferiti (2)</a></li>
+            <li role="presentation" ><a href="#ordini" data-toggle="tab"><i class="unaicon-cart" style="margin-right: 2px;"></i> Ordini (2)</a></li>
+        </ul>
+        
+        <div class="tab-content clearfix gradient">
+            <div class="row bag-list tab-pane fade in active" id="preferiti">
+            	
+                <div ng-repeat="conf in listaPreferiti" class="col-sm-12 bag-item clearfix">
+                
+                    <div class="col-sm-3">
+                        <img src="images/borsa-dummy-conf.jpg" class="bag-sample">
+                        
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="bag">10/10/17 - Configurazione #1  - 340&euro;</h4>
+                            </div>
+                            <div class="col-sm-2 base">
+                                <h5 class="section-small left">Base </h5>
+                                <table>
+	                                    <tr  ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
+	                                    
+	                                        <td style="width: 40%;" class="hidden-sm"><span>{{base['nome']}}:</span></td>
+	                                        <td>{{base['descrizione']}}<div class="materiale hidden" style="background-color:#C9FF26;"></div></td>
+	                                    </tr>
+	                                  	<tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-4 accessori">
+                                <h5 class="section-small left">Accessori</h5>
+                                <table>
+                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'accessori'" >
+                                        <td style="width: 40%;">{{base['nome']}}:</td>
+                                        <td>{{base['descrizione']}}</td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                            <div class="col-sm-6 action">
+                                <div class="order-buttons">
+                                    <a href="#" class="btn btn-default btn-lg btn-block follow">modifica il modello</a>
+                                    <p class="text-center">
+                                        oppure
+                                    </p>
+                                    <a href="#" class="btn btn-action btn-lg btn-block follow">acquista</a>
+                                    <paypal-content info=conf></paypal-content>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+
+
