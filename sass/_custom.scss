@@ -703,9 +703,9 @@ a.link {
                     content: none;
                 }
             }
-            li {
+             li {
                 &.open {
-                     > a {
+                    a.primary {
                         background-color: #fff !important;
 
                         &:after, &:before {
@@ -723,7 +723,11 @@ a.link {
                         }
                     }
                 }
-                a {
+                a.secondary {
+                    padding: 10px;
+                    white-space: nowrap;
+                }
+                a.primary {
                     position: relative;
                     @include transition(all 150ms ease-in-out);
                     padding: 25px;
@@ -816,20 +820,29 @@ a.link {
 }
 .esperienza-content, .visione-content, .contatti-content {
     .narrazione {
-        min-height: 500px;
+        //min-height: 500px;
         background-color: #F6F6F6;
         position: relative;
          @media screen and (max-width: $screen-xs) {
             height: auto;
         }
         .content {
-            margin: 0 5em;
+            margin: 5em;
             font-weight: lighter;
-            position: absolute;
+            /*position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%);*/
             .text {
                 font-size: 1.5em;
+            }
+        }
+        @media only screen and (min-width : 768px) {
+            display: table;     
+            min-height: 500px;
+            [class*="col-"] {
+                float: none;
+                display: table-cell;
+                vertical-align: middle;
             }
         }
     }
@@ -1608,21 +1621,28 @@ a.link {
             font-size: 1.3em;
             text-transform: uppercase;
             font-weight: lighter;
+            &:after {
+                @include transition(all .2s ease-out);
+                content: "";
+                background: url(../images/small-arrow-down.png) center center no-repeat;
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                left: 50%;
+                margin-left: -6px;
+                bottom: 0px;
+                opacity: 0;
+            }
         }
         &:hover {
             .nome {
-                display: inline-block;
+                //display: inline-block;
                 @include transition(all .2s ease-out);
-                margin-top: -3px;
+                margin-top: 5px;
+                margin-bottom: 15px;
                 &:after {
-                    content: "";
-                    background: url(../images/small-arrow-down.png) center center no-repeat;
-                    position: absolute;
-                    width: 16px;
-                    height: 16px;
-                    left: 50%;
-                    margin-left: -6px;
-                    bottom: -8px;
+                    @include transition(all .2s ease-out);
+                    opacity: 1;
                 }
             }
             text-decoration: none;
