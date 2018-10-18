@@ -159,16 +159,30 @@
         margin-left : -10px !important;
         margin-right: -10px !important;
     }
+    &.row-eq-height {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+    }
 
 }
 
 .top-buffer {
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
 .bottom-buffer {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
 .gap {
     & > [class*=" col-"],
     & > [class^="col-"] {
@@ -518,13 +532,14 @@ a.link {
     z-index: 1000;
     left: 50%;
     display: block;
-    width: 130px;
+    width: 140px;
+    height: 50px;
     text-align: center;
-    @include img-retina('/images/logo-small.jpg', '/images/logo-small@2.jpg', 140, 30);
-    background: url('/images/logo-small.jpg') no-repeat center center;
+    @include img-retina('/images/logo-big.png', '/images/logo-big@2.png', 140, 50);
+    background: url('/images/logo-big.png') no-repeat center center;
     background-size: contain;
-    @media screen and (max-width: $screen-xs-max) {
-        width:100px;
+     @media screen and (max-width: $screen-xs) {
+        width: 120px;
     }
 }
 .logo-big {
@@ -546,14 +561,14 @@ a.link {
 .navbar>.container .logo-big,
 .navbar>.container-fluid .logo-big {
     /*margin-left: -105px;*/
-    @media screen and (max-width: $screen-xs-max) {
+    @media screen and (max-width: $screen-xs) {
         margin-left: -100px;
     }
 }
 .navbar>.container .logo-small,
 .navbar>.container-fluid .logo-small {
     margin-left: -65px;
-    @media screen and (max-width: $screen-xs-max) {
+    @media screen and (max-width: $screen-xs) {
         margin-left: -100px;
     }
 }
@@ -663,6 +678,14 @@ a.link {
     border-top: solid 1px $standard-border-color;
     border-bottom: solid 1px $standard-border-color;
     .navbar-collapse {
+        .main-navbar {
+            padding-left: 100px;
+            padding-right: 100px;
+            @media screen and (max-width: $screen-sm-max) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
         text-align: center;
         line-height: 0px;
         .navbar-nav {
@@ -704,6 +727,7 @@ a.link {
                     position: relative;
                     @include transition(all 150ms ease-in-out);
                     padding: 25px;
+                    white-space: nowrap;
                     &:after, &:before {
                         @include transition(all 150ms ease-in-out);
                         content: "";
@@ -790,12 +814,50 @@ a.link {
         text-transform: uppercase;
     }
 }
+.esperienza-content, .visione-content, .contatti-content {
+    .narrazione {
+        min-height: 500px;
+        background-color: #F6F6F6;
+        position: relative;
+         @media screen and (max-width: $screen-xs) {
+            height: auto;
+        }
+        .content {
+            margin: 0 5em;
+            font-weight: lighter;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            .text {
+                font-size: 1.5em;
+            }
+        }
+    }
+    .quote {
+         background-color: #F6F6F6;
+         .content {
+            margin: 5em;
+            font-weight: lighter;
+            .text {
+                margin: 0 10% 0 10% ;
+                font-size: 1.8em;
+            }
+         }
+    }
+}
 
 .title {
     //font-family: $font-family-sans-serif;
     color: $brand-primary;
     font-weight: lighter;
     font-size:2.4em !important;
+    .jumbotron & {
+        text-align: right;
+        @media screen and (max-width: $screen-xs-max) {
+            text-align: center;
+        }
+    }
+    
 }
 .section {
     padding-bottom: .5em;
@@ -822,11 +884,198 @@ a.link {
     
 }
 .jumbotron {
-    
     padding: 60px 0;
-    background: url(../images/jumbotron.jpg) no-repeat center center;
-    background-size: contain;
-    height: 350px;
+    position: relative;
+    
+    min-height: 350px;
+    &.homepage {
+        background: url(../images/jumbotron.jpg) no-repeat right center;
+        background-size: contain;
+        //height: calc(100vh - 123px);
+        //height: -o-calc(100vh - 123px); /* opera */
+        //height: -webkit-calc(100vh - 123px); /* google, safari */
+        //height: -moz-calc(100vh - 123px); /* firefox */
+        min-height: 350px;
+        h2 {
+            font-size: 3em;
+            color: #000;
+            font-weight: lighter;
+            width: 50%;
+            position: relative;
+            top: -40px;    
+            text-shadow: 0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff;
+            @media screen and (max-width: $screen-sm) {
+                text-align: center;
+                font-size: 2em;
+                width: auto;
+                top: 0;
+            }
+        }
+    }
+    &.esperienza {
+        background: url(../images/jumbotron-esperienza.jpg) no-repeat center center;
+        background-size: cover;
+        //height: calc(100vh - 123px);
+        //height: -o-calc(100vh - 123px); /* opera */
+        //height: -webkit-calc(100vh - 123px); /* google, safari */
+        //height: -moz-calc(100vh - 123px); /* firefox */
+        min-height: 350px;
+        h2 {
+            font-size: 3em;
+            color: #fff;
+            font-weight: lighter;
+            text-shadow: 1px 1px 1px #000;
+            @media screen and (max-width: $screen-xs) {
+                text-align: center;
+                font-size: 2em;
+            }
+        }
+        .discover {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-family: $font-family-sans-serif-title;
+            font-size: 1em;
+            span {
+                @include transition(all 200ms ease-out);
+                color: #000;
+                text-shadow: 0 0 2px #fff;
+                background: rgba(255,255,255,.0);
+                padding: 10px 20px 15px 20px;
+                border-radius: 15px 15px 0 0;
+                display: inline-block;
+                position: relative;
+                bottom: 10px;
+                cursor: pointer;
+                &:after {
+                    content: "";
+                    background: url(../images/small-arrow-down.png) center center no-repeat;
+                    position: absolute;
+                    width: 12px;
+                    height: 14px;
+                    left: 50%;
+                    margin-left: -6px;
+                    bottom: 4px;
+                }
+                &:hover, &:active {
+                    @include transition(all 200ms ease-out);
+                    text-decoration: none;
+                    bottom: 5px;
+                }
+            }
+        }
+    }
+    &.visione {
+        background: url(../images/jumbotron-visione.jpg) no-repeat center center;
+        background-size: cover;
+        //height: calc(100vh - 123px);
+        //height: -o-calc(100vh - 123px); /* opera */
+        //height: -webkit-calc(100vh - 123px); /* google, safari */
+        //height: -moz-calc(100vh - 123px); /* firefox */
+        min-height: 350px;
+        h2 {
+            font-size: 4em;
+            color: #000;
+            font-weight: lighter;
+            text-shadow: -1px -1px 1px rgba(0,0,0,75), 1px 1px 1px rgba(255,255,255,.75);
+             @media screen and (max-width: $screen-xs) {
+                text-align: center;
+                font-size: 2em;
+            }
+        }
+        .discover {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-family: $font-family-sans-serif-title;
+            font-size: 1em;
+            span {
+                @include transition(all 200ms ease-out);
+                color: #fff;
+                text-shadow: 0 0 2px #fff;
+                background: rgba(255,255,255,.0);
+                padding: 10px 20px 15px 20px;
+                border-radius: 15px 15px 0 0;
+                display: inline-block;
+                position: relative;
+                bottom: 10px;
+                cursor: pointer;
+                &:after {
+                    content: "";
+                    background: url(../images/small-arrow-down.png) center center no-repeat;
+                    position: absolute;
+                    width: 12px;
+                    height: 14px;
+                    left: 50%;
+                    margin-left: -6px;
+                    bottom: 4px;
+                }
+                &:hover, &:active {
+                    color: #fff;
+                    @include transition(all 200ms ease-out);
+                    text-decoration: none;
+                    bottom: 5px;
+                }
+            }
+        }
+    }
+    &.contatti {
+        background: url(../images/jumbotron-visione.jpg) no-repeat center center;
+        background-size: cover;
+        //height: calc(100vh - 123px);
+        //height: -o-calc(100vh - 123px); /* opera */
+        //height: -webkit-calc(100vh - 123px); /* google, safari */
+        //height: -moz-calc(100vh - 123px); /* firefox */
+        min-height: 350px;
+        h2 {
+            font-size: 4em;
+            color: #000;
+            font-weight: lighter;
+            text-shadow: -1px -1px 1px rgba(0,0,0,75), 1px 1px 1px rgba(255,255,255,.75);
+             @media screen and (max-width: $screen-xs) {
+                text-align: center;
+                font-size: 2em;
+            }
+        }
+        .discover {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-family: $font-family-sans-serif-title;
+            font-size: 1em;
+            span {
+                @include transition(all 200ms ease-out);
+                color: #fff;
+                text-shadow: 0 0 2px #fff;
+                background: rgba(255,255,255,.0);
+                padding: 10px 20px 15px 20px;
+                border-radius: 15px 15px 0 0;
+                display: inline-block;
+                position: relative;
+                bottom: 10px;
+                cursor: pointer;
+                &:after {
+                    content: "";
+                    background: url(../images/small-arrow-down.png) center center no-repeat;
+                    position: absolute;
+                    width: 12px;
+                    height: 14px;
+                    left: 50%;
+                    margin-left: -6px;
+                    bottom: 4px;
+                }
+                &:hover, &:active {
+                    color: #fff;
+                    @include transition(all 200ms ease-out);
+                    text-decoration: none;
+                    bottom: 5px;
+                }
+            }
+        }
+    }
     &.quote-section {
         height: auto;
         background-image: none; 
@@ -1306,6 +1555,15 @@ a.link {
     height: 100%;
     position: absolute;
     top: 0;left: 0;
+    .dropdown-menu {
+        border-left: none;
+        border-right: none;
+    }
+    .yamm-content {
+        border: solid 1px $standard-border-color;
+        border-top: none;
+        border-bottom: none;
+    }
     .main-configurator-navbar {
         // top: $navbar-height+3px;
         margin-top: 1px;
@@ -1332,15 +1590,42 @@ a.link {
             }
         }
     }
-
-    .borsaModel {
+    .scelta-modelli {
+        background-color: #fafafa !important;
+    }
+    .bags-line,  {
+        background: url(../images/scelta-borse-bg.jpg) repeat-x center top;
+        background-color: #fafafa !important;
+        background-size: contain;
+    }
+    .modello-borsa {
         display: block;
-        opacity: .75;
         img {
-            border: solid 1px #ccc;
+            //border: solid 1px #ccc;
+        }
+        .nome {
+            @include transition(all .5s ease-out);
+            font-size: 1.3em;
+            text-transform: uppercase;
+            font-weight: lighter;
         }
         &:hover {
-            opacity: 1;
+            .nome {
+                display: inline-block;
+                @include transition(all .2s ease-out);
+                margin-top: -3px;
+                &:after {
+                    content: "";
+                    background: url(../images/small-arrow-down.png) center center no-repeat;
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    left: 50%;
+                    margin-left: -6px;
+                    bottom: -8px;
+                }
+            }
+            text-decoration: none;
         }
     }
     /* menu accessori */
@@ -1354,10 +1639,9 @@ a.link {
         overflow: visible;
         border-top: solid 1px $standard-border-color;
         background-color: $body-bg;
-        -webkit-transition: opacity 1s ease-in-out;
-        -moz-transition: opacity 1s ease-in-out;
-        transition: opacity 1s ease-in-out;
+        @include transition(opacity 1s linear);
         & .first-divider {
+            background-color: $body-bg;
             content: "";
             position: absolute;
             left: 0;
@@ -1416,8 +1700,8 @@ a.link {
         background-color: #fff;
         z-index: 50;
         bottom: 0;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         border-top: solid 1px $standard-border-color;
         .price {
             font-size: 30px;

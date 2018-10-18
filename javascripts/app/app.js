@@ -22,12 +22,12 @@ var app = angular.module('applicationModule', ['loginModule', 'configuratorModul
 }).directive('contattiContent', function(){
 	 return {
 		 restrict: 'E',
-		 templateUrl: ''
+		 templateUrl: 'contattiContent.html'
 	 };
 }).directive('storesContent', function(){
 	 return {
 		 restrict: 'E',
-		 templateUrl: ''
+		 templateUrl: 'storesContent.html'
 	 };
 }).directive('accessoContent', function(){
 	 return {

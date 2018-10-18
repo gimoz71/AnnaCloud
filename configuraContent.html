@@ -9,13 +9,13 @@
 						</li>
 						<li class="dropdown yamm-fw">
 							<a href="#" class="active dropdown-toggle link modello" data-toggle="dropdown">scegli il modello</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu scelta-modelli">
 								<li ng-class="{'disabled':modelliAbilitati}" >
-									<div class="yamm-content clearfix">
-										<div class="col-xs-12">
+									<div class="yamm-content  scelta-modelli clearfix">
+										<div class="col-xs-12 bags-line">
 											<!-- CON IL REPEATER VADO A ELENCARE TUTTI I MODELLI DI BORSA DISPONIBILI  -->
-											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center" ng-repeat="modello in modelli">
-												<a href="#" class="borsaModel" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)"><img ng-src="{{modello.urlThumbnailHD}}" /><h5>{{modello.nome}}</h5></a>
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-center no-margin no-padding bags-line" ng-repeat="modello in modelli">
+												<a href="#" class="modello-borsa" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)"><img ng-src="{{modello.urlThumbnailHD}}" /><h5 class="nome">{{modello.nome}}</h5></a>
 											</div>
 										</div>
 									</div>

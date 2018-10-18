@@ -48,33 +48,27 @@
 		                        </li>
 		                    </ul>
 		                </div>
-		                <!--<div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+		                <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
 		                    <ul class="nav navbar-nav navbar-left">
+		                       
 		                        <li>
-                                    <a href="#"><i class="unaicon-search"></i></a>
-		                        </li>
-		                        <li>
-                                    <a href="#" id="language" data-toggle="dropdown">English <span class="caret"></span></a>
-            		                <ul class="dropdown-menu" aria-labelledby="language">
-            		                    <li><a href="#">Deutsche</a></li>
-            		                    <li><a href="#">Francois</a></li>
-            		                </ul>
+									<p class="navbar-text">Benvenuto, <strong>accedi al tuo profilo</strong> o <strong>crea il tuo account</strong></p>
 		                        </li>
 		                    </ul>
-		                </div>-->
+		                </div>
 		            </div>
 		        </nav>
 		    </div>
 		    <nav class="navbar navbar-default nomargin main-site-navbar">
 		        <div class="container">
 		            <div class="collapse navbar-collapse navbar-ex1-collapse">
-						<div class="hidden-xs" style="padding-left: 100px; padding-right: 100px;">
+						<div class="hidden-xs main-navbar">
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
 									<li>
 										<a href="#" class="" data-toggle="dropdown">Crea</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a ng-click="setAccesso()">Come funziona</a></li>
+											<li><a href="#">Come funziona</a></li>
 											<li><a href="#" ng-click="setConfigurator()">Configura</a></li>
 										</ul>
 									</li>
@@ -99,16 +93,16 @@
 									<li>
 										<a href="#" class="" data-toggle="dropdown">Scopri</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#">Visione</a></li>
-											<li><a href="#">Esperienza</a></li>
+											<li><a ng-click="setVisione()">Visione</a></li>
+											<li><a ng-click="setEsperienza()">Esperienza</a></li>
 										</ul>
 									</li>
 									<li>
-										<a href="#" class="" data-toggle="dropdown">Stores</a>
+										<a href="#" class="" data-toggle="dropdown">Chi siamo</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#">Team</a></li>
-											<li><a href="#">Contatti</a></li>
-											<li><a href="#">Carriera</a></li>
+											<li><a href="#" ng-click="setContatti()">Team</a></li>
+											<li><a href="#"  ng-click="setContatti()">Contatti</a></li>
+											<!--<li><a href="#">Carriera</a></li>-->
 										</ul>
 									</li>
 								</ul>
@@ -116,16 +110,34 @@
 						</div>
 						<ul class="nav navbar-nav visible-xs-block">
 							<li>
-								<a href="#" class="" ng-click="setHome()">Crea</a>
+								<a href="#" data-toggle="dropdown" class="">Crea</a>
+								<ul class="dropdown-menu" aria-labelledby="user-menu">
+									<li><a href="#" ng-click="setAccesso()">Come funziona</a></li>
+									<li><a href="#" ng-click="setConfigurator()">Configura</a></li>
+								</ul>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Atelier</a>
+								<a href="#" data-toggle="dropdown" class="">Atelier</a>
+								<ul class="dropdown-menu " aria-labelledby="user-menu">
+									<li><a href="#">Shop</a></li>
+									<li><a href="#">Collezione</a></li>
+								</ul>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setContatti()">Scopri</a>
+								<a href="#" data-toggle="dropdown" class="">Scopri</a>
+								<ul class="dropdown-menu " aria-labelledby="user-menu">
+									<li><a ng-click="setVisione()">Visione</a></li>
+									<li><a ng-click="setEsperienza()">Esperienza</a></li>
+								</ul>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setStores()">Stores</a>
+								<a href="#" data-toggle="dropdown" class="">Stores</a>
+
+								<ul class="dropdown-menu " aria-labelledby="user-menu">
+									<li><a href="#">Team</a></li>
+									<li><a href="#">Contatti</a></li>
+									<li><a href="#">Carriera</a></li>
+								</ul>
 							</li>
 						</ul>
 		            </div>
@@ -184,10 +196,10 @@
 						<h3>Scopri</h3>
 						<ul>
 							<li>
-								<a href="#" class="" ng-click="setHome()">Visione</a>
+								<a href="#" class="" ng-click="setVisione()">Visione</a>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Esperienza</a>
+								<a href="#" class="" ng-click="setEsperienza()">Esperienza</a>
 							</li>
 						</ul>
 					</div>
