@@ -201,6 +201,10 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	}
 
 	configController.gestisciTracolle = function() {
+
+		$scope.modelliTracolleOro = new Map();
+		$scope.modelliTracolleArgento = new Map();
+		
 		for(var i = 0; i< $scope.entita.length; i++){
 			var entita = $scope.entita[i];
 			if(entita.categoria == "tracolle"){
