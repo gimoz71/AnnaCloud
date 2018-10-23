@@ -1,4 +1,4 @@
-angular.module("loginModule").controller("preferitiController", ["$scope", "getConfigurazioniService", "loginService",
+angular.module("loginModule").controller("profiloController", ["$scope", "getConfigurazioniService", "loginService",
 	function($scope, getConfigurazioniService, loginService) {
 
 	$scope.listaPreferiti = [];

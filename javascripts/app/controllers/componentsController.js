@@ -9,8 +9,10 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isAccesso = false;
 	$scope.isPreferiti = false;
 	$scope.isOrdini = false;
+	$scope.isCarrello = false;
+	$scope.isProfilo = false;
 	
-	$scope.user;
+	$scope.user = null;
 	
 	$scope.setUser = function(t){
 		$scope.user = t;
@@ -96,6 +98,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
 	};
 
 	$scope.setConfigurator = function(){
@@ -108,6 +111,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 
 	$scope.setVisione = function(){
@@ -120,6 +125,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 
 	$scope.setEsperienza = function(){
@@ -132,6 +139,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 
 	$scope.setContatti = function(){
@@ -144,6 +153,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 
 	$scope.setStores = function(){
@@ -156,6 +167,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 	
 	$scope.setAccesso = function(){
@@ -168,6 +181,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = true;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 	
 	$scope.setPreferiti = function(){
@@ -180,6 +195,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = true;
 		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
 	};
 	
 	$scope.setOrdini = function(){
@@ -192,6 +209,36 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = true;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
+	};
+
+	$scope.setCarrello = function () {
+		$scope.isHome = false;
+		$scope.isConfigurator = false;
+		$scope.isVisione = false;
+		$scope.isEsperienza = false;
+		$scope.isContatti = false;
+		$scope.isStores = false;
+		$scope.isAccesso = false;
+		$scope.isPreferiti = false;
+		$scope.isOrdini = false;
+		$scope.isCarrello = true;
+		$scope.isProfilo = false;
+	};
+
+	$scope.setProfilo = function () {
+		$scope.isHome = false;
+		$scope.isConfigurator = false;
+		$scope.isVisione = false;
+		$scope.isEsperienza = false;
+		$scope.isContatti = false;
+		$scope.isStores = false;
+		$scope.isAccesso = false;
+		$scope.isPreferiti = false;
+		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = true;
 	};
 
 }]);

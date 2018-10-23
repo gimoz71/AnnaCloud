@@ -44,6 +44,16 @@ var app = angular.module('applicationModule', ['loginModule', 'configuratorModul
 		 restrict: 'E',
 		 templateUrl: 'ordini-borse.html'
 	 };
+}).directive('carrelloContent', function(){
+	 return {
+		 restrict: 'E',
+		 templateUrl: 'carrelloContent.html'
+	 };
+}).directive('profiloContent', function () {
+	return {
+		restrict: 'E',
+		templateUrl: 'profiloContent.html'
+	};
 }).directive('paypalContent', function(){
 	 return {
 		 restrict: 'E',

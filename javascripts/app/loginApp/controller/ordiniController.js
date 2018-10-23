@@ -2,7 +2,7 @@ angular.module("loginModule").controller("ordiniController", ["$scope", "loginSe
 	
 $scope.listaOrdini = [];
 	
-loginService.getUserAttributes().then(
+/*loginService.getUserAttributes().then(
 		function (attList){
 			console.log(attList);
 			attList.forEach(function (a){
@@ -21,6 +21,13 @@ loginService.getUserAttributes().then(
 		function (reason){
 			console.log(reason)
 		}
-)	
+)*/	
+
+	getOrdiniService.response("john@bea.com").then(function (data) {
+		$scope.listaOrdini = data.data.ordini;
+		console.log(data);
+		console.log($scope.listaOrdini);
+
+	});
 	
 }]);

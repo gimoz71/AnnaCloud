@@ -154,6 +154,7 @@
             padding-left : 0;
         }
     }
+    
 
     &.nomargin {
         margin-left : -10px !important;
@@ -209,6 +210,62 @@
         }
     }
 }
+
+.access, .profile {
+    > [class*=" col-"],
+    > [class^="col-"] {
+        padding: 20px 70px;
+        &:last-of-type {
+            border-left: solid 1px $standard-border-color;
+        }
+        @media (max-width: $screen-sm ) {
+            padding-left: 15px;
+            padding-right: 15px;
+            border: none;
+            &:last-of-type {
+                border-left: none;
+                border-top: solid 1px $standard-border-color;
+            }
+        }
+    }
+    .btn {
+        font-size: 1.2em;
+    }
+}
+/*
+.profile {
+    > [class*=" col-"],
+    > [class^="col-"] {
+        border-left: solid 1px $standard-border-color;
+        &:last-of-type {
+            border-left: none;
+        }
+        @media (max-width: $screen-sm ) {
+            padding-left: 15px;
+            padding-right: 15px;
+            border: none;
+            border-top: solid 1px $standard-border-color;
+            &:first-of-type {
+                border-left: none;
+                border-top: none;
+            }
+        }
+    }
+    .btn {
+        font-size: 1.2em;
+    }
+}*/
+
+
+
+
+
+.options {
+    text-decoration: underline;
+    padding-left: 20px;
+}
+
+
 // 20px gutter
 .gutter-20.row {
   margin-right: -10px;
@@ -293,7 +350,7 @@ table {
 input {
     padding: 5px;
     font-size: 1.5em;
-    text-align:center;
+    //text-align:center;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -453,8 +510,8 @@ a.link {
 .open a.link, .open a.link:hover, .open a.link:active, .open a.link:focus {
     position: relative;
     z-index: 1002;
-    border-left: solid 1px $standard-border-color;
-    border-right: solid 1px $standard-border-color;
+    /*border-left: solid 1px $standard-border-color;
+    border-right: solid 1px $standard-border-color;*/
     background-color: $body-bg !important;
 }
 
@@ -476,6 +533,19 @@ a.link {
         position: absolute;
         display: inline-block;
         border: none;
+    }
+}
+
+.mobile-menu {
+    a {
+        padding: 10px !important;
+    }
+    .dropdown-menu {
+        text-align: center;
+        font-size: .75em;
+        a {
+            padding: 5px !important;
+        }
     }
 }
 
@@ -853,12 +923,37 @@ a.link {
     font-size:2.4em !important;
     .jumbotron & {
         text-align: right;
-        @media screen and (max-width: $screen-xs-max) {
-            text-align: center;
-        }
     }
-    
+    @media screen and (max-width: $screen-xs-max) {
+        text-align: center !important;
+    }
 }
+.title-secondary {
+    //font-family: $font-family-sans-serif;
+    color: $brand-primary;
+    font-weight: lighter;
+    font-size:1.7em !important;
+    .jumbotron & {
+        text-align: right;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        text-align: center !important;
+    }  
+}
+
+.title-tertiary {
+    //font-family: $font-family-sans-serif;
+    color: $brand-primary;
+    font-weight: lighter;
+    font-size:1.3em !important;
+    .jumbotron & {
+        text-align: right;
+    }
+    @media screen and (max-width: $screen-xs-max) {
+        text-align: center !important;
+    }  
+}
+
 .section {
     padding-bottom: .5em;
     /*background: url('../images/divider.png') no-repeat center bottom;
@@ -1196,15 +1291,30 @@ a.link {
         font-size: 20px;
     }
     .base, .accessori {
-        border-right: solid 1px $standard-border-color;
+        //border-right: solid 1px $standard-border-color;
     }
     .base, .accessori, .action {
-        @media screen and (max-width: $screen-sm-max) {
+        @media screen and (max-width: $screen-sm) {
             padding-top: 20px;
             padding-bottom: 20px;
             border: none;
             border-top: solid 1px $standard-border-color;
+            .section-small {
+                text-align: left !important;
+                padding: 0;
+            }
         }
+        .dati-configurazione-borsa {
+            width: 100%;
+            @media screen and (max-width: $screen-sm) {
+                text-align: left !important;
+                tr td:first-of-type {
+                    width: 30%;
+                }
+
+            }
+        }
+
     }
     .materiale {
         display: block;
@@ -1221,25 +1331,27 @@ a.link {
     margin-right: auto;
 }
 
+
 .order-state {
     display: block;
-    width: 300px;
+    width: 100%;
+    font-family: $font-family-sans-serif-title;
     @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
-        width:210px;
+        //width:210px;
         font-size: 15px;
     }
     @media screen and (max-width: $screen-xs-max) {
-        width: 97%;
+        //width: 97%;
     }
     text-align: center;
-    padding: 10px;
+    padding: 13px  10px;
     border: solid 1px $standard-border-color;
     margin-top: -1px;
     background-color: #fff;
-    color: #E5E1DD;
+    color: $standard-border-color;
     margin-left: auto;
     margin-right: auto;
-    font-size: 16px;
+    font-size: 12px;
     &.one{
         z-index: 3;
     }
@@ -1260,20 +1372,20 @@ a.link {
     &.just-done {
         color: inherit;
         z-index: 5;
-        border-bottom-color: #C09683;
+        border-bottom-color: $standard-border-color;
         &.active:before {
-            border-color: #C09683 transparent transparent;
+            border-color: $standard-border-color transparent transparent;
         }
     }
     &.current {
-        border: solid 1px #C09683;
+        border: solid 1px $standard-border-color;
         z-index: 4;
-        background-color: lighten(#C09683, 30);
-        color: #7E2C09;
-        font-size: 20px;
-        width: 310px;
+        background-color: lighten($standard-border-color, 13);
+        color: darken($standard-border-color, 100);
+        font-size: 18px;
+        width: 100%;
         @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
-            width:220px;
+            //width:220px;
             font-size: 18px;
         }
         @media screen and (max-width: $screen-xs-max) {
@@ -1281,10 +1393,10 @@ a.link {
         }
         &.active {
             &:after {
-                border-color: lighten(#C09683, 30) transparent transparent;
+                border-color: lighten($standard-border-color, 30) transparent transparent;
             }
             &:before {
-                border-color: #C09683 transparent transparent;
+                border-color: $standard-border-color transparent transparent;
             }
         }
     }
@@ -1564,6 +1676,11 @@ a.link {
         border-top: none;
         border-bottom: none;
     }
+    .yamm .dropdown.yamm-fw .dropdown-menu {
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+    }
     .main-configurator-navbar {
         // top: $navbar-height+3px;
         margin-top: 1px;
@@ -1592,16 +1709,25 @@ a.link {
     }
     .scelta-modelli {
         background-color: #fafafa !important;
+
+        @media screen and (max-width: $screen-sm) {
+            border-left: none;
+            border-right: none;
+        }
     }
     .bags-line,  {
         background: url(../images/scelta-borse-bg.jpg) repeat-x center top;
         background-color: #fafafa !important;
         background-size: contain;
+        @media screen and (max-width: $screen-sm) {
+            padding: 0;
+        }
     }
     .modello-borsa {
         display: block;
         img {
             //border: solid 1px #ccc;
+            margin: auto;
         }
         .nome {
             @include transition(all .5s ease-out);

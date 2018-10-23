@@ -18,13 +18,13 @@
 
 </head>
 
-<body ng-app="applicationModule" class="ng-scope">
+<body ng-app="applicationModule" class="ng-scope" ng-cloak>
 	<div ng-controller="componentsController">
 		<div ng-if="!isConfigurator">
             <div class="main-header-content">
                 <nav class="navbar main-navbar navbar-default nomargin" role="navigation">
                     <div class="container">
-						<a class="logo-small hidden-lg hidden-md hidden-sm text-hide" href="#">AnnaCloud</a>
+						<a class="logo-small hidden-lg hidden-md hidden-sm text-hide" href="#" ng-click="setHome()">AnnaCloud</a>
 		                <div class="navbar-header navbar-right">
 		                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 		                        <span class="sr-only">Toggle navigation</span>
@@ -33,25 +33,32 @@
 		                        <span class="icon-bar"></span>
 		                    </button>
 		                    <ul class="nav navbar-nav fixed-navbar-right">
-		                        <li>
-		                            <a href="#" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs">accedi {{user.username}}</span></a>
+		                        <li ng-show="user!==null">
+		                            <a href="#" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
 		                            <ul class="dropdown-menu" aria-labelledby="user-menu">
-		                                <li><a  ng-click="setAccesso()" >Profilo</a></li>
-		                                <li><a href="#" ng-click="logOut()">Esci</a></li>
+		                                <li><a hre="#" ng-click="setOrdini()" >I tuoi Ordini</a></li>
+		                                <li><a hre="#" ng-click="setProfilo()" >Profilo</a></li>
+		                                <li><a hre="#" href="#" ng-click="logOut()">Esci</a></li>
 		                            </ul>
 		                        </li>
-		                        <li>
+								<li ng-show="user==null">
+									<a href="#" id="user-menu" ng-click="setAccesso()"><i class="unaicon-login"></i> <span class="hidden-xs">accedi</span></a>
+									
+								</li>
+								<li>
 		                            <a ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
 	                           </li>
 		                        <li>
-		                            <a ng-click="setOrdini()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
+		                            <a ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
 		                        </li>
 		                    </ul>
 		                </div>
 		                <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
 		                    <ul class="nav navbar-nav navbar-left">
-		                       
-		                        <li>
+		                        <li ng-show="user!==null">
+									<p class="navbar-text">Benvenuto, <strong>{{user.username}}</strong></p>
+		                        </li>
+		                        <li ng-show="user==null">
 									<p class="navbar-text">Benvenuto, <strong>accedi al tuo profilo</strong> o <strong>crea il tuo account</strong></p>
 		                        </li>
 		                    </ul>
@@ -108,7 +115,7 @@
 								</ul>
 							</div>
 						</div>
-						<ul class="nav navbar-nav visible-xs-block">
+						<ul class="nav navbar-nav mobile-menu visible-xs-block">
 							<li>
 								<a href="#" data-toggle="dropdown" class="">Crea</a>
 								<ul class="dropdown-menu" aria-labelledby="user-menu">
@@ -155,6 +162,8 @@
 			<accesso-content ng-if="isAccesso"></accesso-content>
 			<preferiti-content ng-if="isPreferiti" ></preferiti-content>
 			<ordini-content ng-if="isOrdini"></ordini-content>
+			<carrello-content ng-if="isCarrello"></carrello-content>
+			<profilo-content ng-if="isProfilo"></profilo-content>
 	    </div>
 
 	    <footer class="" ng-if="!isConfigurator">
@@ -274,6 +283,8 @@
 	<script src="javascripts/app/loginApp/controller/accessoController.js"></script> 
 	<script src="javascripts/app/loginApp/controller/preferitiController.js"></script>
 	<script src="javascripts/app/loginApp/controller/ordiniController.js"></script>
+	<script src="javascripts/app/loginApp/controller/carrelloController.js"></script>
+	<script src="javascripts/app/loginApp/controller/profiloController.js"></script>
 	
 	<script src="javascripts/app/loginApp/controller/paypalController.js"></script>
 

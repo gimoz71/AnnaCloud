@@ -11818,6 +11818,63 @@ button.close {
   }
 }
 
+.access > [class*=" col-"],
+.access > [class^="col-"], .profile > [class*=" col-"],
+.profile > [class^="col-"] {
+  padding: 20px 70px;
+}
+.access > [class*=" col-"]:last-of-type,
+.access > [class^="col-"]:last-of-type, .profile > [class*=" col-"]:last-of-type,
+.profile > [class^="col-"]:last-of-type {
+  border-left: solid 1px #dbd4d1;
+}
+@media (max-width: 768px) {
+  .access > [class*=" col-"],
+  .access > [class^="col-"], .profile > [class*=" col-"],
+  .profile > [class^="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+  }
+  .access > [class*=" col-"]:last-of-type,
+  .access > [class^="col-"]:last-of-type, .profile > [class*=" col-"]:last-of-type,
+  .profile > [class^="col-"]:last-of-type {
+    border-left: none;
+    border-top: solid 1px #dbd4d1;
+  }
+}
+.access .btn, .profile .btn {
+  font-size: 1.2em;
+}
+
+/*
+.profile {
+    > [class*=" col-"],
+    > [class^="col-"] {
+        border-left: solid 1px $standard-border-color;
+        &:last-of-type {
+            border-left: none;
+        }
+        @media (max-width: $screen-sm ) {
+            padding-left: 15px;
+            padding-right: 15px;
+            border: none;
+            border-top: solid 1px $standard-border-color;
+            &:first-of-type {
+                border-left: none;
+                border-top: none;
+            }
+        }
+    }
+    .btn {
+        font-size: 1.2em;
+    }
+}*/
+.options {
+  text-decoration: underline;
+  padding-left: 20px;
+}
+
 .gutter-20.row {
   margin-right: -10px;
   margin-left: -10px;
@@ -11904,7 +11961,6 @@ table {
 input {
   padding: 5px;
   font-size: 1.5em;
-  text-align: center;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -12093,8 +12149,8 @@ a.link {
 .open a.link, .open a.link:hover, .open a.link:active, .open a.link:focus {
   position: relative;
   z-index: 1002;
-  border-left: solid 1px #dbd4d1;
-  border-right: solid 1px #dbd4d1;
+  /*border-left: solid 1px $standard-border-color;
+  border-right: solid 1px $standard-border-color;*/
   background-color: #fff !important;
 }
 
@@ -12116,6 +12172,17 @@ a.link {
   position: absolute;
   display: inline-block;
   border: none;
+}
+
+.mobile-menu a {
+  padding: 10px !important;
+}
+.mobile-menu .dropdown-menu {
+  text-align: center;
+  font-size: .75em;
+}
+.mobile-menu .dropdown-menu a {
+  padding: 5px !important;
 }
 
 /* stilizzazione tabs */
@@ -12503,8 +12570,36 @@ a.link {
   text-align: right;
 }
 @media screen and (max-width: 767px) {
-  .jumbotron .title {
-    text-align: center;
+  .title {
+    text-align: center !important;
+  }
+}
+
+.title-secondary {
+  color: #60534D;
+  font-weight: lighter;
+  font-size: 1.7em !important;
+}
+.jumbotron .title-secondary {
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  .title-secondary {
+    text-align: center !important;
+  }
+}
+
+.title-tertiary {
+  color: #60534D;
+  font-weight: lighter;
+  font-size: 1.3em !important;
+}
+.jumbotron .title-tertiary {
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  .title-tertiary {
+    text-align: center !important;
   }
 }
 
@@ -12867,15 +12962,27 @@ a.link {
 .bag-list .bag {
   font-size: 20px;
 }
-.bag-list .base, .bag-list .accessori {
-  border-right: solid 1px #dbd4d1;
-}
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .bag-list .base, .bag-list .accessori, .bag-list .action {
     padding-top: 20px;
     padding-bottom: 20px;
     border: none;
     border-top: solid 1px #dbd4d1;
+  }
+  .bag-list .base .section-small, .bag-list .accessori .section-small, .bag-list .action .section-small {
+    text-align: left !important;
+    padding: 0;
+  }
+}
+.bag-list .base .dati-configurazione-borsa, .bag-list .accessori .dati-configurazione-borsa, .bag-list .action .dati-configurazione-borsa {
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .bag-list .base .dati-configurazione-borsa, .bag-list .accessori .dati-configurazione-borsa, .bag-list .action .dati-configurazione-borsa {
+    text-align: left !important;
+  }
+  .bag-list .base .dati-configurazione-borsa tr td:first-of-type, .bag-list .accessori .dati-configurazione-borsa tr td:first-of-type, .bag-list .action .dati-configurazione-borsa tr td:first-of-type {
+    width: 30%;
   }
 }
 .bag-list .materiale {
@@ -12894,26 +13001,21 @@ a.link {
 
 .order-state {
   display: block;
-  width: 300px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
-  padding: 10px;
+  padding: 13px  10px;
   border: solid 1px #dbd4d1;
   margin-top: -1px;
   background-color: #fff;
-  color: #E5E1DD;
+  color: #dbd4d1;
   margin-left: auto;
   margin-right: auto;
-  font-size: 16px;
+  font-size: 12px;
 }
 @media screen and (min-width: 767px) and (max-width: 991px) {
   .order-state {
-    width: 210px;
     font-size: 15px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .order-state {
-    width: 97%;
   }
 }
 .order-state.one {
@@ -12936,22 +13038,21 @@ a.link {
 .order-state.just-done {
   color: inherit;
   z-index: 5;
-  border-bottom-color: #C09683;
+  border-bottom-color: #dbd4d1;
 }
 .order-state.just-done.active:before {
-  border-color: #C09683 transparent transparent;
+  border-color: #dbd4d1 transparent transparent;
 }
 .order-state.current {
-  border: solid 1px #C09683;
+  border: solid 1px #dbd4d1;
   z-index: 4;
-  background-color: #f4ece8;
-  color: #7E2C09;
-  font-size: 20px;
-  width: 310px;
+  background-color: #f8f7f6;
+  color: black;
+  font-size: 18px;
+  width: 100%;
 }
 @media screen and (min-width: 767px) and (max-width: 991px) {
   .order-state.current {
-    width: 220px;
     font-size: 18px;
   }
 }
@@ -12961,10 +13062,10 @@ a.link {
   }
 }
 .order-state.current.active:after {
-  border-color: #f4ece8 transparent transparent;
+  border-color: white transparent transparent;
 }
 .order-state.current.active:before {
-  border-color: #C09683 transparent transparent;
+  border-color: #dbd4d1 transparent transparent;
 }
 .order-state.summary p span {
   display: inline-block;
@@ -13245,6 +13346,11 @@ a.link {
   border-top: none;
   border-bottom: none;
 }
+.configuratore .yamm .dropdown.yamm-fw .dropdown-menu {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
 .configuratore .main-configurator-navbar {
   margin-top: 1px;
 }
@@ -13275,13 +13381,27 @@ a.link {
 .configuratore .scelta-modelli {
   background-color: #fafafa !important;
 }
+@media screen and (max-width: 768px) {
+  .configuratore .scelta-modelli {
+    border-left: none;
+    border-right: none;
+  }
+}
 .configuratore .bags-line {
   background: url(../images/scelta-borse-bg.jpg) repeat-x center top;
   background-color: #fafafa !important;
   background-size: contain;
 }
+@media screen and (max-width: 768px) {
+  .configuratore .bags-line {
+    padding: 0;
+  }
+}
 .configuratore .modello-borsa {
   display: block;
+}
+.configuratore .modello-borsa img {
+  margin: auto;
 }
 .configuratore .modello-borsa .nome {
   -webkit-transition: all 0.5s ease-out;
