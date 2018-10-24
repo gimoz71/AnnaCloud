@@ -99,6 +99,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setConfigurator = function(){
@@ -113,6 +114,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setVisione = function(){
@@ -127,6 +129,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setEsperienza = function(){
@@ -141,6 +144,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setContatti = function(){
@@ -155,6 +159,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setStores = function(){
@@ -169,6 +174,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 	
 	$scope.setAccesso = function(){
@@ -183,6 +189,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 	
 	$scope.setPreferiti = function(){
@@ -197,6 +204,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 	
 	$scope.setOrdini = function(){
@@ -211,6 +219,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = true;
 		$scope.isCarrello = false;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setCarrello = function () {
@@ -225,6 +234,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = true;
 		$scope.isProfilo = false;
+		$scope.isCheckout = false;
 	};
 
 	$scope.setProfilo = function () {
@@ -239,6 +249,22 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isOrdini = false;
 		$scope.isCarrello = false;
 		$scope.isProfilo = true;
+		$scope.isCheckout = false;
+	};
+
+	$scope.setCheckout = function () {
+		$scope.isHome = false;
+		$scope.isConfigurator = false;
+		$scope.isVisione = false;
+		$scope.isEsperienza = false;
+		$scope.isContatti = false;
+		$scope.isStores = false;
+		$scope.isAccesso = false;
+		$scope.isPreferiti = false;
+		$scope.isOrdini = false;
+		$scope.isCarrello = false;
+		$scope.isProfilo = false;
+		$scope.isCheckout = true;
 	};
 
 }]);

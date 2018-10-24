@@ -62,4 +62,12 @@ var app = angular.module('applicationModule', ['loginModule', 'configuratorModul
 		    },
 		 templateUrl: 'paypalComponent.html'
 	 };
+}).directive('checkoutContent', function () {
+	return {
+		restrict: 'E',
+		scope: {
+			customerInfo: '=info'
+		},
+		templateUrl: 'checkoutContent.html'
+	};
 });

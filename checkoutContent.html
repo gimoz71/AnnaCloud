@@ -1,0 +1,175 @@
+
+
+<div ng-controller="checkoutController">
+    
+    <div class="container top-buffer bottom-buffer ">
+        <div class="row">
+            <div class="col-sm-12 clearfix top-buffer bottom-buffer text-center">
+                <p class="subtitle">Checkout</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-6">
+                <h3 class="title-secondary">Completa il form</h3>
+                <hr>
+                <h4 class="title-tertiary accordion-toggle ">Informazioni di contatto <i class="caret"></i></h4>
+                <div class="accordion-content default">
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nome" class="sr-only hidden"></label>
+                                    <input ng-model="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cognome" class="sr-only hidden"></label>
+                                    <input ng-model="cognome" type="text" class="form-control" id="cognome" placeholder="Cognome">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email" class="sr-only hidden"></label>
+                                    <input ng-model="email" type="email" class="form-control" id="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="telefono" class="sr-only hidden"></label>
+                                    <input ng-model="telefono" type="number" class="form-control" id="telefono" placeholder="Telefono">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="display: none">
+                            <p>Nome: Gianluca Monti</p>
+                            <p>Email: gm</p>
+                        </div>
+                        <button  class="btn btn-default btn-save ">Continua</button>
+                    </form>
+                </div>
+                <hr>
+                <h4 class="title-tertiary accordion-toggle ">Spedizione <i class="caret"></i></h4>
+                <div class="accordion-content default">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputNome" class="sr-only hidden"></label>
+                            <input ng-model="nomeSpe" type="text" class="form-control" id="nomeSpe" placeholder="Nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCognome" class="sr-only hidden"></label>
+                            <input ng-model="indSpe1" type="text" class="form-control" id="indSpe1" placeholder="indirizzo (riga 1)">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCognome" class="sr-only hidden"></label>
+                            <input ng-model="indSpe2" type="text" class="form-control" id="indSpe2" placeholder="indirizzo (riga 2)">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmailReg" class="sr-only hidden"></label>
+                            <input ng-model="cittaSpe" type="text" class="form-control" id="cittaSpe" placeholder="Citt&agrave;">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPasswordReg" class="sr-only hidden"></label>
+                            <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
+                        </div>
+                        <button class="btn btn-default btn-save ">Continua</button>
+                    </form>
+                </div>
+                <hr>
+                <h4 class="title-tertiary accordion-toggle">Fatturazione <i class="caret"></i></h4>
+                <div class="accordion-content">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputNome" class="sr-only hidden"></label>
+                            <input ng-model="nomefat" type="text" class="form-control" id="nomefat" placeholder="Nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCognome" class="sr-only hidden"></label>
+                            <input ng-model="indFat1" type="text" class="form-control" id="indFat1" placeholder="indirizzo (riga 1)">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCognome" class="sr-only hidden"></label>
+                            <input ng-model="indFat2" type="text" class="form-control" id="indFat2" placeholder="indirizzo (riga 2)">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmailReg" class="sr-only hidden"></label>
+                            <input ng-model="cittaFat" type="text" class="form-control" id="cittaFat" placeholder="Citt&agrave;">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPasswordReg" class="sr-only hidden"></label>
+                            <input ng-model="capFat" type="number" class="form-control" id="capFat" placeholder="CAP">
+                        </div>
+                        <button class="btn btn-default btn-save ">Continua</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-6 bag-item clearfix">
+                <div class="col-sm-12 no-padding action">
+                    <div class="order-state active one just-done summary">
+                        <div class="row">
+                            <div class="col-sm-12 clearfix text-left">
+                                <div class="col-sm-3 no-padding hidden-xs">
+                                    <img src="images/borsa-dummy-conf.png" class="bag-sample">
+                            
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5>Configurazione #1 - 340&euro;</h5>
+                                            <p>Crossbody champagne<br>iniziali: SRB</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row top-buffer">
+                            <div class="col-sm-12 clearfix text-left">
+                                <div class="col-sm-3 no-padding hidden-xs">
+                                    <img src="images/borsa-dummy-conf.png" class="bag-sample">
+                            
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5>Configurazione #1 - 340&euro;</h5>
+                                            <p>Crossbody champagne<br>iniziali: SRB</p>
+                                        </div>
+                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <p>
+                            <span>Subtotale</span>
+                            <span>640&euro;</span>
+                        </p>
+            
+                        <p>
+                            <span>spedizione</span>
+                            <span>0&euro;</span>
+                        </p>
+            
+                    </div>
+                    <div class="order-state active three current summary">
+                        <p style="margin:0">
+                            <span>
+                                TOTALE
+                            </span>
+                            <span>
+                                0&euro;
+                            </span>
+                        </p>
+                    </div>
+                    <div class="order-buttons top-buffer text-center">
+                        <!--<a href="#" class="btn btn-action btn-lg btn-block" ng-click="setCheckout()" style="width:auto;">Completa l'ordine</a>-->
+                        <paypal-content info=conf></paypal-content>
+                        <img src="images/paypal-choice.png" style="max-width: 250px; margin-top: 20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

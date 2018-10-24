@@ -26,8 +26,7 @@
                                         <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
                     
                                             <td style="width: 40%;" class="hidden-sm"><span>{{base['nome']}}:</span></td>
-                                            <td>{{base['descrizione']}}</div>
-                                            </td>
+                                            <td>{{base['descrizione']}}</td>
                                         </tr>
                                         <tr>
                                     </table>
@@ -82,7 +81,7 @@
                             </p>
                         </div>
                         <div class="order-buttons" style="margin-top: 20px;">
-                            <a href="#" class="btn btn-action btn-lg btn-block " style="width:auto;"> Procedi al
+                            <a href="#" class="btn btn-action btn-lg btn-block" ng-click="setCheckout()" style="width:auto;"> Procedi al
                                 checkout</a>
                         </div>
                     </div>

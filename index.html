@@ -151,7 +151,7 @@
 		        </div>
 		    </nav>
 	    </div>
-	    <div><!-- contenitore principale -->
+	    <div class="template-content"><!-- contenitore principale -->
 
 		    <home-content ng-if="isHome"></home-content>
 		    <configura-content ng-if="isConfigurator"></configura-content>
@@ -164,6 +164,7 @@
 			<ordini-content ng-if="isOrdini"></ordini-content>
 			<carrello-content ng-if="isCarrello"></carrello-content>
 			<profilo-content ng-if="isProfilo"></profilo-content>
+			<checkout-content ng-if="isCheckout"></checkout-content>
 	    </div>
 
 	    <footer class="" ng-if="!isConfigurator">
@@ -285,6 +286,7 @@
 	<script src="javascripts/app/loginApp/controller/ordiniController.js"></script>
 	<script src="javascripts/app/loginApp/controller/carrelloController.js"></script>
 	<script src="javascripts/app/loginApp/controller/profiloController.js"></script>
+	<script src="javascripts/app/loginApp/controller/checkoutController.js"></script>
 	
 	<script src="javascripts/app/loginApp/controller/paypalController.js"></script>
 
@@ -325,9 +327,19 @@
             height: 0;
             clear: both;
             visibility: hidden;
-        }
-
+		}
 	</style>
+	<script type="text/javascript">
+	$('.template-content').on('click', '.accordion-toggle', function() {
+		console.log("TEST2!!!!");
+		//Expand or collapse this panel
+		$(this).next().slideToggle('fast');
+		$(this).find('.caret').toggleClass('caret-reversed')
+		//Hide the other panels
+		//$(".accordion-content").not($(this).next()).slideUp('fast');
+
+	})
+	</script>
 </body>
 
 </html>
