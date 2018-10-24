@@ -1,8 +1,6 @@
  angular.module("loginModule").controller("cartController", ["$scope",
 		function($scope) {
-	 setTimeout(function(){
-		    //do what you need here
-		 console.log("ok");
+
 		 paypal.Button.render({
 			    // Configure environment
 			    env: 'sandbox',
@@ -22,7 +20,7 @@
 			      return actions.payment.create({
 			        transactions: [{
 			          amount: {
-			            total: $scope.customerInfo.codice,
+			            total: 1,
 			            currency: 'EUR'
 			          }
 			        }]
@@ -35,8 +33,8 @@
 			        window.alert("grazie per l'acquisto !");
 			      });
 			    }
-			  }, '#paypal-button' + $scope.customerInfo.codice );
-		}, 2000);
+			  }, '#paypal-button' );
+
 	 
 	 
 	}]);
