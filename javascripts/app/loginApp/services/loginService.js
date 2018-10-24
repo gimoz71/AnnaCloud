@@ -355,11 +355,26 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
 	  return deferred.promise;
 	}
 	
-	this.put  = function (string, value){
-		 
-	}	
-	
-	this.get = function (string){
-	
+	this.updateAttributes = function(attributeList){
+//		var attributeList = [];
+//	    var attribute = {
+//	        Name : 'nickname',
+//	        Value : 'joe'
+//	    };
+//	    var attribute = new AmazonCognitoIdentity.CognitoUserAttribute(attribute);
+//	    attributeList.push(attribute);
+		var cognitoUser = this.getCognitoUser();
+		var deferred = $q.defer();
+	    cognitoUser.updateAttributes(attributeList, function(err, result) {
+	        if (err) {
+	            alert(err);
+	            deferred.reject (err);
+	            return;
+	        }
+	        deferred.resolve (result);
+	        console.log('call result: ' + result);
+	    });
+	    return deferred.promise;
 	}
+	
 }]);
