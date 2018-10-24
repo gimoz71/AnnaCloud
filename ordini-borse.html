@@ -7,16 +7,17 @@
         <div class="tab-content clearfix gradient">
             <div class="row bag-list tab-pane fade in active" id="ordini">
                 <div ng-repeat="ord in listaOrdini" class="col-sm-12 bag-item clearfix">
-                    <div class="col-sm-8 no-padding">
+                    <div class="col-sm-12 no-padding">
                         <div class="col-sm-3">
                             <img src="/images/borsa-dummy-conf.png" class="bag-sample">
                         </div>
                         <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h4 class="bag">10/10/17 - Configurazione #{{ord.configurazione.codice}}</h4>
-                                </div>
-                                <div class="col-sm-6 base">
+                                    <h4 class="bag">Configurazione #{{ord.configurazione.codice}}</h4>
+                                    <span class="step ">Ordinato</span>
+                                    <span class="step ">in lavorazione</span>
+                                    <span class="step ">In spedizione</span>
+                                <!--<div class="col-sm-6 base">
+                                    
                                     <h5 class="section-small left">Base</h5>
                                     <table class="dati-configurazione-borsa">
                                         <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'base'" >
@@ -26,6 +27,7 @@
                                     </table>
                                 </div>
                                 <div class="col-sm-6 accessori">
+                                    
                                     <h5 class="section-small left">Accessori</h5>
                                     <table class="dati-configurazione-borsa">
                                         <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'accessori'">
@@ -33,12 +35,11 @@
                                             <td>{{base['descrizione']}}</td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div>-->
                                
-                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 action">
+                    <div class="col-sm-4 action hidden">
                             <div class="order-state active one " ng-class="{'current': ord.stato == 1 }"> Ordinato </div>
                             <div class="order-state active two " ng-class="{'current': ord.stato == 2 }">In lavorazione</div>
                             <div class="order-state active three " ng-class="{'current': ord.stato == 3 }">In spedizione</div>
