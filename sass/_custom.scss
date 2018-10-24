@@ -543,6 +543,9 @@ a.link {
     .dropdown-menu {
         text-align: center;
         font-size: .75em;
+        li:last-of-type {
+            border-bottom: solid 1px $standard-border-color;
+        }
         a {
             padding: 5px !important;
         }
