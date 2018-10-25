@@ -10,13 +10,19 @@
             <h4 class="title-tertiary accordion-toggle ">Modifica Nome <i class="caret"></i></h4>
             <div class="accordion-content default">
                 <form>
-                    <div class="form-group">
-                        <label for="nome" class="sr-only hidden"></label>
-                        <input ng-model="nome" type="text" class="form-control" id="nome" placeholder="Nome">
-                    </div>
-                    <div class="form-group">
-                        <label for="cognome" class="sr-only hidden"></label>
-                        <input ng-model="cognome" type="text" class="form-control" id="cognome" placeholder="Cognome">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nome" class="sr-only hidden"></label>
+                                <input ng-model="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="cognome" class="sr-only hidden"></label>
+                                <input ng-model="cognome" type="text" class="form-control" id="cognome" placeholder="Cognome">
+                            </div>
+                        </div>
                     </div>
                     <button ng-click="cambiaNome(nome,cognome)" class="btn btn-default btn-save">Salva modifiche</button>
                 </form>
@@ -25,13 +31,21 @@
             <h4 class="title-tertiary accordion-toggle">Email <i class="caret"></i></h4>
             <div class="accordion-content">
                 <form>
-                    <div class="form-group">
-                        <label for="email" class="sr-only hidden"></label>
-                        <input ng-model="email" type="email" class="form-control" id="email" placeholder="Indirizzo Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="ripEmail" class="sr-only hidden"></label>
-                        <input ng-model="ripEmail" type="email" class="form-control" id="ripEmail" placeholder="Ripeti Email">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email" class="sr-only hidden"></label>
+                                <input ng-model="email" type="email" class="form-control" id="email" placeholder="Indirizzo Email">
+                            </div>
+                    
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="ripEmail" class="sr-only hidden"></label>
+                                <input ng-model="ripEmail" type="email" class="form-control" id="ripEmail" placeholder="Ripeti Email">
+                            </div>
+                    
+                        </div>
                     </div>
 
                     <button ng-click="cambiaEmail(email,ripEmail)" class="btn btn-default btn-save ">Salva modifiche</button>
@@ -90,13 +104,20 @@
                         <label for="inputCognome" class="sr-only hidden"></label>
                         <input ng-model="indSpe2" type="text" class="form-control" id="indSpe2" placeholder="indirizzo (riga 2)">
                     </div>
-                    <div class="form-group">
-                        <label for="inputEmailReg" class="sr-only hidden"></label>
-                        <input ng-model="cittaSpe" type="text" class="form-control" id="cittaSpe" placeholder="Citt&agrave;">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPasswordReg" class="sr-only hidden"></label>
-                        <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputEmailReg" class="sr-only hidden"></label>
+                                <input ng-model="cittaSpe" type="text" class="form-control" id="cittaSpe" placeholder="Citt&agrave;">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputPasswordReg" class="sr-only hidden"></label>
+                                <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
+                            </div>
+                        </div>
                     </div>
                     <button ng-click="cambiaIndirizzoSpedizione(nomeSpe, indSpe1, indSpe2, cittaSpe, capSpe)" class="btn btn-default btn-save ">Salva
                         modifiche</button>
@@ -118,13 +139,19 @@
                         <label for="inputCognome" class="sr-only hidden"></label>
                         <input ng-model="indFat2" type="text" class="form-control" id="indFat2" placeholder="indirizzo (riga 2)">
                     </div>
-                    <div class="form-group">
-                        <label for="inputEmailReg" class="sr-only hidden"></label>
-                        <input ng-model="cittaFat" type="text" class="form-control" id="cittaFat" placeholder="Citt&agrave;">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPasswordReg" class="sr-only hidden"></label>
-                        <input ng-model="capFat" type="number" class="form-control" id="capFat" placeholder="CAP">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputEmailReg" class="sr-only hidden"></label>
+                                <input ng-model="cittaSpe" type="text" class="form-control" id="cittaSpe" placeholder="Citt&agrave;">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputPasswordReg" class="sr-only hidden"></label>
+                                <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
+                            </div>
+                        </div>
                     </div>
                     <button ng-click="cambiaIndirizzoFatturazione(nomeFat, indFat1, indFat2, cittaFat, capFat)" class="btn btn-default btn-save ">Salva
                         modifiche</button>
