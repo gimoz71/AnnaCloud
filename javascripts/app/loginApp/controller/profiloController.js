@@ -29,5 +29,4 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 //
 //		})
 	
-	this.
 }]);
