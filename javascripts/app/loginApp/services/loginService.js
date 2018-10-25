@@ -6,8 +6,8 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
     this.getUserPool = function(){
     	if (this.userPool == null){
 		    var data = { 
-					  UserPoolId : 'eu-central-1_a9ioJ2EQ6',
-				      ClientId : 'hopaonak9q0cteab10ga0uhoj'
+					  UserPoolId : 'eu-central-1_NMPGOZAz3',
+				      ClientId : '1qet3gt3jpfaa5dcalbr9iq3ca'
 				    };
 		    this.userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
     	}
@@ -367,7 +367,6 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
 		var deferred = $q.defer();
 	    cognitoUser.updateAttributes(attributeList, function(err, result) {
 	        if (err) {
-	            alert(err);
 	            deferred.reject (err);
 	            return;
 	        }

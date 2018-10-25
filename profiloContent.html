@@ -1,6 +1,6 @@
 
 
-<div ng-controller="profiloController">
+<div ng-controller="profiloController as profilo" class="container text-center gradient">
     
     <div class="container top-buffer bottom-buffer ">
         <div class="row">
@@ -22,7 +22,7 @@
                             <label for="cognome" class="sr-only hidden"></label>
                             <input ng-model="cognome" type="text" class="form-control" id="cognome" placeholder="Cognome">
                         </div>
-                        <button  class="btn btn-default btn-save">Salva modifiche</button>
+                        <button ng-click="cambiaNome(nome,cognome)" class="btn btn-default btn-save">Salva modifiche</button>
                     </form>
                 </div>
                 <hr>
@@ -38,7 +38,7 @@
                             <input ng-model="ripEmail" type="email" class="form-control" id="ripEmail" placeholder="Ripeti Email">
                         </div>
                         
-                        <button  class="btn btn-default btn-save ">Salva modifiche</button>
+                        <button ng-click="cambiaEmail(email,ripEmail)" class="btn btn-default btn-save ">Salva modifiche</button>
                     
                     </form>
                 </div>
@@ -51,7 +51,7 @@
                             <input ng-model="tel" type="phone" class="form-control" id="tel" placeholder="Telefono">
                         </div>
                     
-                        <button  class="btn btn-default btn-save ">Salva modifiche</button>
+                        <button ng-click="cambiaTelefono(tel)" class="btn btn-default btn-save ">Salva modifiche</button>
                     
                     </form>
                 </div>
@@ -71,7 +71,7 @@
                             <label for="verPas" class="sr-only hidden"></label>
                             <input ng-model="verPas" type="password" class="form-control" id="verPas" placeholder="Verifica Password">
                         </div>
-                        <button  class="btn btn-default btn-save ">Salva modifiche</button>
+                        <button ng-click="cambiaPassword(passAtt, pasNuo, verPas)" class="btn btn-default btn-save ">Salva modifiche</button>
                     
                     </form>
                 </div>
@@ -101,7 +101,7 @@
                             <label for="inputPasswordReg" class="sr-only hidden"></label>
                             <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
                         </div>
-                        <button class="btn btn-default btn-save ">Salva modifiche</button>
+                        <button ng-click="cambiaIndirizzoSpedizione(nomeSpe, indSpe1, indSpe2, cittaSpe, capSpe)" class="btn btn-default btn-save ">Salva modifiche</button>
                     </form>
                 </div>
                 <hr>
@@ -128,7 +128,7 @@
                             <label for="inputPasswordReg" class="sr-only hidden"></label>
                             <input ng-model="capFat" type="number" class="form-control" id="capFat" placeholder="CAP">
                         </div>
-                        <button class="btn btn-default btn-save ">Salva modifiche</button>
+                        <button ng-click="cambiaIndirizzoFatturazione(nomeFat, indFat1, indFat2, cittaFat, capFat)" class="btn btn-default btn-save ">Salva modifiche</button>
                     </form>
                 </div>
             </div>
