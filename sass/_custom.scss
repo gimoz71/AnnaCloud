@@ -1015,6 +1015,7 @@ a.link {
     @media screen and (max-width: $screen-sm) {
         font-size:2em !important;
         text-align: center !important;
+        margin-top: 0;
     }
 }
 .title-secondary {
@@ -1049,7 +1050,7 @@ a.link {
     color: #535353;
     font-family: $font-family-sans-serif-title;
     @media screen and (max-width: $screen-sm) {
-        font-size: 1.6em !important;
+        font-size: 1.4em !important;
     }
 }
 
@@ -1275,6 +1276,10 @@ a.link {
             font-size: 2.8em !important;
             margin: 0;
             margin-bottom: 30px;
+            @media screen and (max-width: $screen-sm) {
+                font-size:2.3em !important;
+                text-align: center !important;
+            }
         }
         .subtitle {
             margin: 0;
@@ -2589,6 +2594,9 @@ footer {
         background-size: 2vw, cover;
         right: auto;
         left: 0;
+        @media screen and (max-width: $screen-xs-max) {
+            background-size: 10vw, cover;
+        }  
     }
     .swiper-button-next,
     .swiper-container-rtl .swiper-button-prev {
@@ -2598,6 +2606,9 @@ footer {
         background-size: 2vw, cover;
         left: auto;
         right: 0;
+         @media screen and (max-width: $screen-xs-max) {
+            background-size: 10vw, cover;
+        }  
     }
 
     .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {

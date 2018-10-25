@@ -12665,6 +12665,7 @@ a.link {
   .title {
     font-size: 2em !important;
     text-align: center !important;
+    margin-top: 0;
   }
 }
 
@@ -12704,7 +12705,7 @@ a.link {
 }
 @media screen and (max-width: 768px) {
   .subtitle {
-    font-size: 1.6em !important;
+    font-size: 1.4em !important;
   }
 }
 
@@ -12935,6 +12936,12 @@ a.link {
   font-size: 2.8em !important;
   margin: 0;
   margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .jumbotron.quote-section .title {
+    font-size: 2.3em !important;
+    text-align: center !important;
+  }
 }
 .jumbotron.quote-section .subtitle {
   margin: 0;
@@ -14168,6 +14175,12 @@ footer .copyright {
   right: auto;
   left: 0;
 }
+@media screen and (max-width: 767px) {
+  .swipe-featured .swiper-button-prev,
+  .swipe-featured .swiper-container-rtl .swiper-button-next {
+    background-size: 10vw, cover;
+  }
+}
 .swipe-featured .swiper-button-next,
 .swipe-featured .swiper-container-rtl .swiper-button-prev {
   background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxpdmVsbG9fMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyMDUuNDgxcHgiIGhlaWdodD0iNDA3Ljc4NXB4IiB2aWV3Qm94PSIwIDAgMjA1LjQ4MSA0MDcuNzg1IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMDUuNDgxIDQwNy43ODUiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBvbHlnb24gcG9pbnRzPSIwLDAgMjA1LjQ4MSwyMDQuMzA0IDAsNDA3Ljc4NSAxODQuMjY4LDIwNC4zMDQgCSIvPg0KPC9nPg0KPC9zdmc+DQo=");
@@ -14176,6 +14189,12 @@ footer .copyright {
   background-size: 2vw, cover;
   left: auto;
   right: 0;
+}
+@media screen and (max-width: 767px) {
+  .swipe-featured .swiper-button-next,
+  .swipe-featured .swiper-container-rtl .swiper-button-prev {
+    background-size: 10vw, cover;
+  }
 }
 .swipe-featured .swiper-button-next.swiper-button-disabled, .swipe-featured .swiper-button-prev.swiper-button-disabled {
   opacity: 0;

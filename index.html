@@ -2,18 +2,18 @@
 <html>
 
 <head>
-    <title>Configuratore Borse</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta property="og:description" content="Configuratore Borse.">
-    <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-<!--     <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/swiper.css"> -->
-    <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/jquery.mCustomScrollbar.css">
-    <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/pinchzoomer.css">
-    <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/custom.css">
-    <!--[if lt IE 9]><script src="javascripts/html5shiv.js"></script><![endif]-->
+	<title>Configuratore Borse</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta property="og:description" content="Configuratore Borse.">
+	<link media="screen" rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+	<!--     <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/swiper.css"> -->
+	<link media="screen" rel="stylesheet" type="text/css" href="stylesheets/jquery.mCustomScrollbar.css">
+	<link media="screen" rel="stylesheet" type="text/css" href="stylesheets/pinchzoomer.css">
+	<link media="screen" rel="stylesheet" type="text/css" href="stylesheets/custom.css">
+	<!--[if lt IE 9]><script src="javascripts/html5shiv.js"></script><![endif]-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 </head>
@@ -21,54 +21,54 @@
 <body ng-app="applicationModule" class="ng-scope" ng-cloak>
 	<div ng-controller="componentsController">
 		<div ng-if="!isConfigurator">
-            <div class="main-header-content">
-                <nav class="navbar main-navbar navbar-default nomargin" role="navigation">
-                    <div class="container">
+			<div class="main-header-content">
+				<nav class="navbar main-navbar navbar-default nomargin" role="navigation">
+					<div class="container">
 						<a class="logo-small hidden-lg hidden-md hidden-sm text-hide" href="#" ng-click="setHome()">AnnaCloud</a>
-		                <div class="navbar-header navbar-right">
-		                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-		                        <span class="sr-only">Toggle navigation</span>
-		                        <span class="icon-bar"></span>
-		                        <span class="icon-bar"></span>
-		                        <span class="icon-bar"></span>
-		                    </button>
-		                    <ul class="nav navbar-nav fixed-navbar-right">
-		                        <li ng-show="user!==null">
-		                            <a href="#" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
-		                            <ul class="dropdown-menu" aria-labelledby="user-menu">
-		                                <li><a hre="#" ng-click="setOrdini()" >I tuoi Ordini</a></li>
-		                                <li><a hre="#" ng-click="setProfilo()" >Profilo</a></li>
-		                                <li><a hre="#" href="#" ng-click="logOut()">Esci</a></li>
-		                            </ul>
-		                        </li>
+						<div class="navbar-header navbar-right">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<ul class="nav navbar-nav fixed-navbar-right">
+								<li ng-show="user!==null">
+									<a href="#" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
+									<ul class="dropdown-menu" aria-labelledby="user-menu">
+										<li><a hre="#" ng-click="setOrdini()">I tuoi Ordini</a></li>
+										<li><a hre="#" ng-click="setProfilo()">Profilo</a></li>
+										<li><a hre="#" href="#" ng-click="logOut()">Esci</a></li>
+									</ul>
+								</li>
 								<li ng-show="user==null">
 									<a href="#" id="user-menu" ng-click="setAccesso()"><i class="unaicon-login"></i> <span class="hidden-xs">accedi</span></a>
-									
+
 								</li>
 								<li>
-		                            <a ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
-	                           </li>
-		                        <li>
-		                            <a ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
-		                        </li>
-		                    </ul>
-		                </div>
-		                <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
-		                    <ul class="nav navbar-nav navbar-left">
-		                        <li ng-show="user!==null">
+									<a ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
+								</li>
+								<li>
+									<a ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
+								</li>
+							</ul>
+						</div>
+						<div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li ng-show="user!==null">
 									<p class="navbar-text">Benvenuto, <strong>{{user.username}}</strong></p>
-		                        </li>
-		                        <li ng-show="user==null">
+								</li>
+								<li ng-show="user==null">
 									<p class="navbar-text">Benvenuto, <strong>accedi al tuo profilo</strong> o <strong>crea il tuo account</strong></p>
-		                        </li>
-		                    </ul>
-		                </div>
-		            </div>
-		        </nav>
-		    </div>
-		    <nav class="navbar navbar-default nomargin main-site-navbar">
-		        <div class="container">
-		            <div class="collapse navbar-collapse navbar-ex1-collapse">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<nav class="navbar navbar-default nomargin main-site-navbar">
+				<div class="container">
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
 						<div class="hidden-xs main-navbar">
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
@@ -108,7 +108,7 @@
 										<a href="#" class="primary" data-toggle="dropdown">Chi siamo</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
 											<li><a href="#" ng-click="setContatti()" class="secondary">Team</a></li>
-											<li><a href="#"  ng-click="setContatti()" class="secondary">Contatti</a></li>
+											<li><a href="#" ng-click="setContatti()" class="secondary">Contatti</a></li>
 											<!--<li><a href="#">Carriera</a></li>-->
 										</ul>
 									</li>
@@ -147,125 +147,128 @@
 								</ul>
 							</li>
 						</ul>
-		            </div>
-		        </div>
-		    </nav>
-	    </div>
-	    <div class="template-content"><!-- contenitore principale -->
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="template-content">
+			<!-- contenitore principale -->
 
-		    <home-content ng-if="isHome"></home-content>
-		    <configura-content ng-if="isConfigurator"></configura-content>
-		    <visione-content ng-if="isVisione"></visione-content>
-		    <esperienza-content ng-if="isEsperienza"></esperienza-content>
-		    <contatti-content ng-if="isContatti"></contatti-content>
-		    <stores-content ng-if="isStores"></stores-content>
+			<home-content ng-if="isHome"></home-content>
+			<configura-content ng-if="isConfigurator"></configura-content>
+			<visione-content ng-if="isVisione"></visione-content>
+			<esperienza-content ng-if="isEsperienza"></esperienza-content>
+			<contatti-content ng-if="isContatti"></contatti-content>
+			<stores-content ng-if="isStores"></stores-content>
 			<accesso-content ng-if="isAccesso"></accesso-content>
 			<preferiti-content ng-if="isPreferiti"></preferiti-content>
 			<ordini-content ng-if="isOrdini"></ordini-content>
 			<carrello-content ng-if="isCarrello"></carrello-content>
 			<profilo-content ng-if="isProfilo"></profilo-content>
 			<checkout-content ng-if="isCheckout"></checkout-content>
-	    </div>
+		</div>
 
-	    <footer class="" ng-if="!isConfigurator">
-	        <div class="footer-navbar-container">
-	            <div class="container">
-					<div class="col-sm-3">
-						 <a class="logo-footer text-hide" href="#">Unaduna</a>
-						<p>
-							Via S. Carlo 2707/2709 47522,<br>
-							San Carlo dI Cesena (FC) Italia<br>
-							Tel. +39 0547 373077<br>
-							Fax +39 0547 373363<br>
-							P.IVA 03487580403
-						</p>
+		<footer class="" ng-if="!isConfigurator">
+			<div class="footer-navbar-container">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-3">
+							<a class="logo-footer text-hide" href="#">Unaduna</a>
+							<p>
+								Via S. Carlo 2707/2709 47522,<br>
+								San Carlo dI Cesena (FC) Italia<br>
+								Tel. +39 0547 373077<br>
+								Fax +39 0547 373363<br>
+								P.IVA 03487580403
+							</p>
+						</div>
+						<div class="col-sm-3 hidden-xs">
+							<h3>Crea</h3>
+							<ul>
+								<li>
+									<a href="#" class="" ng-click="setHome()">Come funziona</a>
+								</li>
+								<li>
+									<a href="#" class="" ng-click="setConfigurator()">Configura</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-3 hidden-xs">
+							<h3>Atelier</h3>
+							<ul>
+								<li>
+									<a href="#" class="" ng-click="setHome()">Shop</a>
+								</li>
+								<li>
+									<a href="#" class="" ng-click="setConfigurator()">Collezione</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-3 hidden-xs">
+							<h3>Scopri</h3>
+							<ul>
+								<li>
+									<a href="#" class="" ng-click="setVisione()">Visione</a>
+								</li>
+								<li>
+									<a href="#" class="" ng-click="setEsperienza()">Esperienza</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-3 hidden-xs">
+							<h3>Chi siamo</h3>
+							<ul>
+								<li>
+									<a href="#" class="" ng-click="setHome()">Team</a>
+								</li>
+								<li>
+									<a href="#" class="" ng-click="setConfigurator()">Contatti</a>
+								</li>
+								<li>
+									<a href="#" class="" ng-click="setContatti()">Carriera</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-3">
+							<h3>Seguici su:</h3>
+							<p class="social">
+								<a href="#"><i class="unaicon-facebook"></i></a>&nbsp;
+								<a href="#"><i class="unaicon-twitter"></i></a>&nbsp;
+								<a href="#"><i class="unaicon-instagram"></i></a>
+							</p>
+						</div>
+
 					</div>
-					<div class="col-sm-3 hidden-xs">
-						<h3>Crea</h3>
-						<ul>
-							<li>
-								<a href="#" class="" ng-click="setHome()">Come funziona</a>
-							</li>
-							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Configura</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-sm-3 hidden-xs">
-						<h3>Atelier</h3>
-						<ul>
-							<li>
-								<a href="#" class="" ng-click="setHome()">Shop</a>
-							</li>
-							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Collezione</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-sm-3 hidden-xs">
-						<h3>Scopri</h3>
-						<ul>
-							<li>
-								<a href="#" class="" ng-click="setVisione()">Visione</a>
-							</li>
-							<li>
-								<a href="#" class="" ng-click="setEsperienza()">Esperienza</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-sm-3 hidden-xs">
-						<h3>Chi siamo</h3>
-						<ul>
-							<li>
-								<a href="#" class="" ng-click="setHome()">Team</a>
-							</li>
-							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Contatti</a>
-							</li>
-							<li>
-								<a href="#" class="" ng-click="setContatti()">Carriera</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-sm-3">
-						<h3>Seguici su:</h3>
-						<p class="social">
-							<a href="#"><i class="unaicon-facebook"></i></a>&nbsp;
-							<a href="#"><i class="unaicon-twitter"></i></a>&nbsp;
-							<a href="#"><i class="unaicon-instagram"></i></a>
-						</p>
-					</div>
-	                
-	            </div>
-	        </div>
+				</div>
+			</div>
 			<div class="copyright">
 				<div class="container">
 					Copyright &reg; 2018 ANNACLOUD
 				</div>
 			</div>
-	    </footer>
-    </div>
+		</footer>
+	</div>
 
-    <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
-    <script src="javascripts/bootstrap.min.js"></script>
-    <!-- paypal  -->
-    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+	<script src="http://code.jquery.com/jquery-2.2.4.js"></script>
+	<script src="javascripts/bootstrap.min.js"></script>
+	<!-- paypal  -->
+	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 	<!--BLOCCO IMPORT FILE APPLICAZIONE ANGULAR  -->
-    <script src="javascripts/angular/angular.min.js"></script>
-    <script src="javascripts/angular/angular-route.min.js"></script>
+	<script src="javascripts/angular/angular.min.js"></script>
+	<script src="javascripts/angular/angular-route.min.js"></script>
 	<script src="javascripts/angular/angular-animate.min.js"></script>
 	<script src="javascripts/angular/angular-aria.min.js"></script>
 	<script src="javascripts/angular/angular-messages.min.js"></script>
 
-    <script src="javascripts/app/app.js"></script>
-    <script src="javascripts/app/controllers/componentsController.js"></script>
-    <script src="javascripts/app/services/ListeService.js"></script>
-    <script src="javascripts/app/services/utilFunctionMessageCreator.js"></script>
-    <script src="javascripts/app/services/StackService.js"></script>
+	<script src="javascripts/app/app.js"></script>
+	<script src="javascripts/app/controllers/componentsController.js"></script>
+	<script src="javascripts/app/services/ListeService.js"></script>
+	<script src="javascripts/app/services/utilFunctionMessageCreator.js"></script>
+	<script src="javascripts/app/services/StackService.js"></script>
 
-    <script src="javascripts/app/loginApp/app.js"></script>
-    <script src="javascripts/app/loginApp/constants/constants.js"></script>
+	<script src="javascripts/app/loginApp/app.js"></script>
+	<script src="javascripts/app/loginApp/constants/constants.js"></script>
 	<!-- <script src="javascripts/app/loginApp/constants/rolesConstants.js"></script>
 	<script src="javascripts/app/loginApp/constants/statesConstants.js"></script>
 	<script src="javascripts/app/loginApp/constants/responseCodesConstants.js"></script>
@@ -281,13 +284,13 @@
 	<script src="javascripts/app/loginApp/services/putConfigurazioneService.js"></script>
 	<script src="javascripts/app/loginApp/services/deleteOrdineService.js"></script>
 	<script src="javascripts/app/loginApp/services/deleteConfigurazioneService.js"></script>
-	<script src="javascripts/app/loginApp/controller/accessoController.js"></script> 
+	<script src="javascripts/app/loginApp/controller/accessoController.js"></script>
 	<script src="javascripts/app/loginApp/controller/preferitiController.js"></script>
 	<script src="javascripts/app/loginApp/controller/ordiniController.js"></script>
 	<script src="javascripts/app/loginApp/controller/carrelloController.js"></script>
 	<script src="javascripts/app/loginApp/controller/profiloController.js"></script>
 	<script src="javascripts/app/loginApp/controller/checkoutController.js"></script>
-	
+
 	<script src="javascripts/app/loginApp/controller/paypalController.js"></script>
 
 	<script src="javascripts/app/configuratorApp/app.js"></script>
@@ -295,50 +298,50 @@
 	<script src="javascripts/app/configuratorApp/controllers/bagsConfiguratorController.js"></script>
 	<script src="javascripts/app/configuratorApp/controllers/rootController.js"></script>
 	<!--FINE BLOCCO IMPORT FILE APPLICAZIONE ANGULAR  -->
-	
+
 	<script src="javascripts/app/common/aws-sdk.min.js"></script>
 	<script src="javascripts/app/common/amazon-cognito.min.js"></script>
 	<script src="javascripts/app/common/amazon-cognito-identity.min.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-    <!-- <script src='https://unpkg.com/spritespin@4.0.1/release/spritespin.js' type='text/javascript'></script> -->
-    <script src="javascripts/spritespin.js"></script>
-<!--     <script src="javascripts/swiper.min.js"></script> -->
-<!--     <script src="javascripts/swiper.jquery.min.js"></script> -->
-    <script src="javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="javascripts/custom.js"></script>
-    <script src="javascripts/mdb.js"></script>
-    <script src="javascripts/mergeimages/index.umd.js"></script>
-    <script src="javascripts/mergeimages/index.es2015.js"></script>
-    <script src="javascripts/html2canvas/html2canvas.js"></script>
-    <script src="javascripts/jquery.mousewheel.js"></script>
-    <script src="javascripts/hammer.js" ></script>
-    <script src="javascripts/TweenMax.js"></script>
-    <script src="javascripts/jquery.pinchzoomer.js"></script>
+	<!-- <script src='https://unpkg.com/spritespin@4.0.1/release/spritespin.js' type='text/javascript'></script> -->
+	<script src="javascripts/spritespin.js"></script>
+	<!--     <script src="javascripts/swiper.min.js"></script> -->
+	<!--     <script src="javascripts/swiper.jquery.min.js"></script> -->
+	<script src="javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="javascripts/custom.js"></script>
+	<script src="javascripts/mdb.js"></script>
+	<script src="javascripts/mergeimages/index.umd.js"></script>
+	<script src="javascripts/mergeimages/index.es2015.js"></script>
+	<script src="javascripts/html2canvas/html2canvas.js"></script>
+	<script src="javascripts/jquery.mousewheel.js"></script>
+	<script src="javascripts/hammer.js"></script>
+	<script src="javascripts/TweenMax.js"></script>
+	<script src="javascripts/jquery.pinchzoomer.js"></script>
 
-    <link rel="stylesheet" href="node_modules/angular-ui-swiper/dist/angular-ui-swiper.css">
+	<link rel="stylesheet" href="node_modules/angular-ui-swiper/dist/angular-ui-swiper.css">
 	<script src="node_modules/angular-ui-swiper/dist/angular-ui-swiper.js"></script>
 
-    <style type="text/css">
-        /* N.B. .clearfix per funzionare deve rimanere dichiarato nell'html */
-        .clearfix:after {
-            content: ".";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
+	<style type="text/css">
+		/* N.B. .clearfix per funzionare deve rimanere dichiarato nell'html */
+		.clearfix:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
 		}
 	</style>
 	<script type="text/javascript">
-	$('.template-content').on('click', '.accordion-toggle', function() {
-		console.log("TEST2!!!!");
-		//Expand or collapse this panel
-		$(this).next().slideToggle('fast');
-		$(this).find('.caret').toggleClass('caret-reversed')
-		//Hide the other panels
-		//$(".accordion-content").not($(this).next()).slideUp('fast');
+		$('.template-content').on('click', '.accordion-toggle', function () {
+			console.log("TEST2!!!!");
+			//Expand or collapse this panel
+			$(this).next().slideToggle('fast');
+			$(this).find('.caret').toggleClass('caret-reversed')
+			//Hide the other panels
+			//$(".accordion-content").not($(this).next()).slideUp('fast');
 
-	})
+		})
 	</script>
 </body>
 

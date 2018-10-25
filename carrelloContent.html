@@ -1,30 +1,62 @@
-<div ng-controller="carrelloController" class="container text-center gradient">
+<div ng-controller="carrelloController" class="container text-center ">
     <div class="row">
         <div class="col-sm-12 clearfix top-buffer">
             <h3 class="title section">Carrello</h3>
             <!--<p>in questa area puoi verificare i tuoi ordini, visualizzare e modificare i tuoi preferiti.</p>-->
         </div>
     </div>
+    <div class="row bag-list">
+        <div class="col-sm-12 no-padding">
+            <div class="col-sm-8 no-padding">
+                <div ng-repeat="conf in listaPreferiti" class="col-sm-12 bag-item clearfix">
 
-    <div class="tab-content clearfix gradient">
-        <div class="row bag-list">
-            <div class="col-sm-12 no-padding">
-                <div class="col-sm-8 no-padding">
-                    <div ng-repeat="conf in listaPreferiti" class="col-sm-12 bag-item clearfix">
-
-                        <div class="col-sm-8 no-padding visible-xs">
-                            <div class="col-sm-3">
-                                <img src="/images/borsa-dummy-conf.png" class="bag-sample">
+                    <div class="col-sm-8 no-padding visible-xs">
+                        <div class="col-sm-3">
+                            <img src="/images/borsa-dummy-conf.png" class="bag-sample">
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="col-sm-12">
+                                <h4 class="bag">Configurazione #{{ord.configurazione.codice}}</h4>
                             </div>
-                            <div class="col-sm-9">
+                            <div class="col-sm-6 base">
+                                <h5 class="section-small left">Base </h5>
+                                <table>
+                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
+
+                                        <td><span>{{base['nome']}}:</span></td>
+                                        <td>{{base['descrizione']}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-6 accessori">
+                                <h5 class="section-small left">Accessori</h5>
+                                <table>
+                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'accessori'">
+                                        <td><span>{{base['nome']}}:</span></td>
+                                        <td>{{base['descrizione']}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 hidden-xs">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img src="/images/borsa-dummy-conf.png" class="media-object bag-sample">
+                                </a>
+                            </div>
+                            <div class="media-body">
                                 <div class="col-sm-12">
-                                    <h4 class="bag">Configurazione #{{ord.configurazione.codice}}</h4>
+                                    <h4 class="media-heading bag">Configurazione #{{ord.configurazione.codice}}</h4>
                                 </div>
                                 <div class="col-sm-6 base">
                                     <h5 class="section-small left">Base </h5>
                                     <table>
                                         <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
-                                        
+
                                             <td><span>{{base['nome']}}:</span></td>
                                             <td>{{base['descrizione']}}</td>
                                         </tr>
@@ -41,72 +73,40 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-sm-12 hidden-xs">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img src="/images/borsa-dummy-conf.png" class="media-object bag-sample">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading bag">Configurazione #{{ord.configurazione.codice}}</h4>
-                                    <div class="col-sm-6 base">
-                                        <h5 class="section-small left">Base </h5>
-                                        <table>
-                                            <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
-                        
-                                                <td><span>{{base['nome']}}:</span></td>
-                                                <td>{{base['descrizione']}}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="col-sm-6 accessori">
-                                        <h5 class="section-small left">Accessori</h5>
-                                        <table>
-                                            <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'accessori'">
-                                                <td><span>{{base['nome']}}:</span></td>
-                                                <td>{{base['descrizione']}}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
+
                 </div>
-                <div class="col-sm-4 bag-item clearfix">
-                    <div class="col-sm-12 action">
-                        <div class="order-state active one just-done summary">
-                            <p>
-                                <span><strong>Subtotale</strong></span>
-                                <span><strong>640&euro;</strong></span>
-                            </p>
+            </div>
+            <div class="col-sm-4 bag-item clearfix">
+                <div class="col-sm-12 action">
+                    <div class="order-state active one just-done summary">
+                        <p>
+                            <span><strong>Subtotale</strong></span>
+                            <span><strong>640&euro;</strong></span>
+                        </p>
 
-                            <p>
-                                <span>spedizione</span>
-                                <span>0&euro;</span>
-                            </p>
+                        <p>
+                            <span>spedizione</span>
+                            <span>0&euro;</span>
+                        </p>
 
-                        </div>
+                    </div>
 
-                        <!--<div class="order-state active two just-done">In lavorazione</div>-->
-                        <div class="order-state active three current summary">
-                            <p style="margin:0">
-                                <span>
-                                    TOTALE
-                                </span>
-                                <span>
-                                    0&euro;
-                                </span>
-                            </p>
-                        </div>
-                        <div class="order-buttons" style="margin-top: 20px;">
-                            <a href="#" class="btn btn-action btn-lg btn-block" ng-click="setCheckout()" style="width:auto;"> Procedi al
-                                checkout</a>
-                        </div>
+                    <!--<div class="order-state active two just-done">In lavorazione</div>-->
+                    <div class="order-state active three current summary">
+                        <p style="margin:0">
+                            <span>
+                                TOTALE
+                            </span>
+                            <span>
+                                0&euro;
+                            </span>
+                        </p>
+                    </div>
+                    <div class="order-buttons" style="margin-top: 20px;">
+                        <a href="#" class="btn btn-action btn-lg btn-block" ng-click="setCheckout()" style="width:auto;">
+                            Procedi al
+                            checkout</a>
                     </div>
                 </div>
             </div>
