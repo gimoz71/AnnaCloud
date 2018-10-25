@@ -2,7 +2,7 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "getC
 	function($scope, getConfigurazioniService, loginService) {
 
 	$scope.listaPreferiti = [];
-	/*loginService.getUserAttributes().then(
+	loginService.getUserAttributes().then(
 		function (attList){
 			console.log(attList);
 			attList.forEach(function (a){
@@ -21,11 +21,11 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "getC
 		function (reason){
 			console.log(reason)
 		}
-	)	*/
-		getConfigurazioniService.response("john@bea.com").then(function (data) {
-			$scope.listaPreferiti = data.data.configurazioni;
-			console.log(data);
-			console.log($scope.listaPreferiti);
-
-		})
+	)	
+//		getConfigurazioniService.response("john@bea.com").then(function (data) {
+//			$scope.listaPreferiti = data.data.configurazioni;
+//			console.log(data);
+//			console.log($scope.listaPreferiti);
+//
+//		})
 }]);
