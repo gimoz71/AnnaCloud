@@ -4,11 +4,11 @@
             <h3 class="title section">Ordini</h3>
         </div>
     </div>
-    <div class="row bag-list " id="ordini">
+    <div class="row bag-list ">
         <div ng-if="listaOrdini.lenght == 0">
             test alternativo
         </div>
-        <div ng-if="listaOrdini.lenght > 0">
+        <div ng-if="listaOrdini.lenght != 0">
             <div ng-repeat="ord in listaOrdini" class="col-sm-12 bag-item clearfix">
 
                 <div class="col-sm-8 no-padding visible-xs">
