@@ -11,7 +11,7 @@
 			    // Customize button (optional)
 			    locale: 'it_IT',
 			    style: {
-			      size: 'medium',
+			      size: 'responsive',
 			      color: 'blue',
 			      shape: 'rect'
 			    },
