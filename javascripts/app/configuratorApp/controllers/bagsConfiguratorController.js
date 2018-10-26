@@ -162,8 +162,11 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			}
 
 			//ordinamento delle entità
-			$scope.entitaTipoAccessorioSelezionato = configController.ordinaEntita($scope.entitaTipoAccessorioSelezionato);
-
+			if ($scope.tipoEntitaSelezionata != 'iniziali') {
+				$scope.entitaTipoAccessorioSelezionato = configController.ordinaEntita($scope.entitaTipoAccessorioSelezionato);
+			} else {
+				$scope.entitaTipoAccessorioSelezionato = [];
+			}
 		}
 		
 	}
