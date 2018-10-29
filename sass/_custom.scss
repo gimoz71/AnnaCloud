@@ -218,7 +218,7 @@
         &:last-of-type {
             border-left: solid 1px $standard-border-color;
         }
-        @media (max-width: $screen-sm ) {
+        @media (max-width: $screen-xs-max ) {
             padding-left: 15px;
             padding-right: 15px;
             border: none;
@@ -421,6 +421,7 @@ button:focus {outline:0;}
 }
 
 .btn-default {
+    color: $brand-primary;
     &:hover, &:active {
         background-color: $body-bg !important;
     }
@@ -435,7 +436,7 @@ button:focus {outline:0;}
 
 .btn-save {
     color: #fff;
-    background: #000;
+    background: $brand-primary;
     font-size: 1em !important;
     &:hover {
         background: #333 !important;
@@ -581,6 +582,9 @@ a.link {
 .mobile-menu {
     a {
         padding: 10px !important;
+        &:hover, &:active, &:focus {
+            background: transparent;
+        }
     }
     .dropdown-menu {
         text-align: center;
@@ -639,22 +643,25 @@ a.link {
 /* customizzazione navbar */
 
 .main-navbar {
-    background-color: rgba(250,250,250,1);
-    border: none
+    //background-color: #F6F6F6;
+    background-color: $brand-secondary;
+    color: $brand-secondary !important;
+    border: none;
+   
 }
 .logo-small {
     position: absolute;
     z-index: 1000;
     left: 50%;
     display: block;
-    width: 140px;
+    width: 100px;
     height: 50px;
     text-align: center;
-    @include img-retina('/images/logo-big.png', '/images/logo-big@2.png', 140, 50);
-    background: url('/images/logo-big.png') no-repeat center center;
+    @include img-retina('/images/logonew-big.png', '/images/logonew-big@2.png', 140, 50);
+    background: url('/images/logonew-big.png') no-repeat center center;
     background-size: contain;
-     @media screen and (max-width: $screen-xs) {
-        width: 120px;
+     @media screen and (max-width: $screen-xs-max) {
+        width: 100px;
     }
 }
 .logo-big {
@@ -663,11 +670,11 @@ a.link {
     left: 50%;
     top: 70px;*/
     display: inline-block;
-    width: 180px;
+    width: 130px;
     height: 24px;
     text-align: center;
-    @include img-retina('/images/logo-big.png', '/images/logo-big@2.png', 180, 24);
-    //background: url('/images/logo-big.png') no-repeat center center;
+    @include img-retina('/images/logonew-big.png', '/images/logonew-big@2.png', 180, 127);
+    //background: url('/images/logonew-big.png') no-repeat center center;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -684,7 +691,7 @@ a.link {
 .navbar>.container-fluid .logo-small {
     margin-left: -65px;
     @media screen and (max-width: $screen-xs) {
-        margin-left: -100px;
+        margin-left: -90px;
     }
 }
 .navbar-toggle, .navbar-toggle:hover {
@@ -724,7 +731,7 @@ a.link {
                 padding: 11px;
             }
             .dropdown-menu {
-                background-color: rgba(250,250,250,1) !important;
+                background-color: darken($brand-secondary , 5) !important;
                 border-bottom: solid 1px $standard-border-color !important;
                 border-left: solid 1px $standard-border-color !important;
                 position: absolute !important;
@@ -760,48 +767,13 @@ a.link {
 }
 .main-header-content {
     height: auto; /* old 150px */
-    background: rgba(255,255,255,1);
-    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(250,250,250,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(45%, rgba(255,255,255,1)), color-stop(100%, rgba(250,250,250,1)));
-    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(250,250,250,1) 100%);
-    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(250,250,250,1) 100%);
-    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(250,250,250,1) 100%);
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(250,250,250,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fafafa', GradientType=0 );
+    color: $brand-secondary !important;
     position: relative;
     @media screen and (max-width: $screen-xs-max) {
         height: auto;
     }
-    .search {
-        position: absolute;
-        top: 10px;
-        left: 0;
-        padding: 15px;
-        input{
-            text-align: inherit;
-            font-size: 14px;
-            background: transparent;
-            &::placeholder {
-                color: inherit;
-            }
-        }
-        a {
-            color: $brand-primary;
-            font-size: 1.5em;
-            position: relative;
-            top: 5px;
-            padding: 0 5px;
-            opacity: .5;
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-    .language {
-        position: absolute;
-        top: 20px;
-        right: 0;
-        padding: 15px;
+    a:hover, a:active {
+        background-color: rgba($brand-secondary, .05) !important;
     }
 }
 .main-site-navbar {
@@ -810,7 +782,7 @@ a.link {
     font-family: $font-family-sans-serif-title;
     text-transform: uppercase;
     border: none;
-    border-top: solid 1px $standard-border-color;
+    //border-top: solid 1px $standard-border-color;
     border-bottom: solid 1px $standard-border-color;
     .navbar-collapse {
         .main-navbar {
@@ -840,29 +812,40 @@ a.link {
             }
              li {
                 &.open {
-                    a.primary {
-                        background-color: #fff !important;
+                    a {
+                        &.primary {
+                            background-color: #fff !important;
+                            
+                            &:after, &:before {
+                                @include transition(all 150ms ease-in-out);
+                                content: "";
+                                border-style: solid;
+                                border-width: 8px;
+                                width: 0;
+                                height: 0;
+                                position: absolute;
+                                top: 100%;
+                                left: 50%;
+                                margin-left: -8px;
+                                z-index: 1001;
+                            }
+                        }
+                        &.secondary {
 
-                        &:after, &:before {
-                            @include transition(all 150ms ease-in-out);
-                            content: "";
-                            border-style: solid;
-                            border-width: 8px;
-                            width: 0;
-                            height: 0;
-                            position: absolute;
-                            top: 100%;
-                            left: 50%;
-                            margin-left: -8px;
-                            z-index: 1001;
                         }
                     }
                 }
                 a.secondary {
+                    color: $brand-primary;
                     padding: 10px;
                     white-space: nowrap;
+                    font-size: .8em;
+                    &:hover, &:active {
+                        background-color: rgba(#C9A3A0, .05) !important;
+                    }
                 }
                 a.primary {
+                    color: $brand-primary;
                     position: relative;
                     @include transition(all 150ms ease-in-out);
                     padding: 25px;
@@ -965,7 +948,7 @@ a.link {
             .text {
                 font-size: 1.5em;
             }
-            @media screen and (max-width: $screen-sm) {
+            @media screen and (max-width: $screen-xs-max) {
                 margin: 3em;
             }
         }
@@ -1015,6 +998,7 @@ a.link {
     @media screen and (max-width: $screen-sm) {
         font-size:2em !important;
         text-align: center !important;
+        margin-top: 0;
     }
 }
 .title-secondary {
@@ -1048,8 +1032,8 @@ a.link {
     font-weight: lighter;
     color: #535353;
     font-family: $font-family-sans-serif-title;
-    @media screen and (max-width: $screen-sm) {
-        font-size: 1.6em !important;
+    @media screen and (max-width: $screen-xs-max) {
+        font-size: 1.4em !important;
     }
 }
 
@@ -1078,26 +1062,31 @@ a.link {
     
     min-height: 350px;
     &.homepage {
-        background: url(../images/jumbotron.jpg) no-repeat right center;
+        background: url(../images/jumbotron.jpg) no-repeat right bottom;
         background-size: contain;
         //height: calc(100vh - 123px);
         //height: -o-calc(100vh - 123px); /* opera */
         //height: -webkit-calc(100vh - 123px); /* google, safari */
         //height: -moz-calc(100vh - 123px); /* firefox */
         min-height: 350px;
-        h2 {
+        .slogan {
             font-size: 3em;
-            color: #000;
+            color: $brand-primary;
             font-weight: lighter;
             width: 50%;
             position: relative;
             top: -40px;    
             text-shadow: 0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff;
+            @media screen and (max-width: $screen-md) {
+                width: 100%;
+                font-size: 2.3em;
+                //top: 0;
+            }
             @media screen and (max-width: $screen-sm) {
                 text-align: center;
                 font-size: 2em;
                 width: auto;
-                top: 0;
+                top: -20px;
             }
         }
     }
@@ -1275,6 +1264,10 @@ a.link {
             font-size: 2.8em !important;
             margin: 0;
             margin-bottom: 30px;
+            @media screen and (max-width: $screen-xs-max) {
+                font-size:2.3em !important;
+                text-align: center !important;
+            }
         }
         .subtitle {
             margin: 0;
@@ -1762,6 +1755,15 @@ a.link {
     height: 100%;
     position: absolute;
     top: 0;left: 0;
+    a, a:link {
+        color: #60534D !important;
+    }
+    a:hover, a:focus {
+        color: #000 !important;
+    }
+    a.disabled {
+        color: #ccc !important;
+    }
     .dropdown-menu {
         border-left: none;
         border-right: none;
@@ -1781,6 +1783,7 @@ a.link {
         margin-top: 1px;
         a.link {
             padding: 15px ;
+
         }
         a.materiale {
             padding-right: ($navbar-height)+10px;
@@ -1805,7 +1808,7 @@ a.link {
     .scelta-modelli {
         background-color: #fafafa !important;
 
-        @media screen and (max-width: $screen-sm) {
+        @media screen and (max-width: $screen-xs-max) {
             border-left: none;
             border-right: none;
         }
@@ -1814,7 +1817,7 @@ a.link {
         background: url(../images/scelta-borse-bg.jpg) repeat-x center top;
         background-color: #fafafa !important;
         background-size: contain;
-        @media screen and (max-width: $screen-sm) {
+        @media screen and (max-width: $screen-xs-max) {
             padding: 0;
         }
     }
@@ -1964,7 +1967,7 @@ a.link {
         background:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxpdmVsbG9fMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyMDUuNDgxcHgiIGhlaWdodD0iNDA3Ljc4NXB4IiB2aWV3Qm94PSIwIDAgMjA1LjQ4MSA0MDcuNzg1IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMDUuNDgxIDQwNy43ODUiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBvbHlnb24gcG9pbnRzPSIyMDUuNDgxLDQwNy43ODUgMCwyMDMuNDggMjA1LjQ4MSwwIDIxLjIxMywyMDMuNDggCSIvPg0KPC9nPg0KPC9zdmc+DQo='),  linear-gradient(to right, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover;
+        background-size: 12px, cover;
         right: auto;
     }
     .swiper-button-next,
@@ -2249,22 +2252,27 @@ footer {
     border: none;
     font-family: $font-family-sans-serif-title;
     line-height: 1.6em;
+    .address {
+       font-size: .8em;
+        line-height: 1.7;
+    }
     @media screen and (max-width: $screen-xs-max) {
         text-align: center;
     }
     .footer-navbar-container {
-        background-color: #F6F6F6;
+        //background-color: #F6F6F6;
+        background-color: $brand-secondary !important;
         padding: 20px 0 30px 0;
     }
     .logo-footer {
         display: inline-block;
         width: 140px;
-        height: 26px;
+        height: 50px;
         margin-bottom: 10px;
         text-align: center;
-        @include img-retina('/images/logo-big.png', '/images/logo-big@2.png', 166, 36);
-        background: url('/images/logo-big.png') no-repeat center center;
-        background-repeat: center center;
+        @include img-retina('/images/logonew-footer-big.png', '/images/logonew-footer-big@2.png', 166, 36);
+        background: url('/images/logonew-footer-big.png') no-repeat center left;
+        background-repeat: center left;
         background-repeat: no-repeat;
         background-size: contain;
     }
@@ -2589,6 +2597,9 @@ footer {
         background-size: 2vw, cover;
         right: auto;
         left: 0;
+        @media screen and (max-width: $screen-xs-max) {
+            background-size: 2vw, cover;
+        }  
     }
     .swiper-button-next,
     .swiper-container-rtl .swiper-button-prev {
@@ -2598,6 +2609,9 @@ footer {
         background-size: 2vw, cover;
         left: auto;
         right: 0;
+         @media screen and (max-width: $screen-xs-max) {
+            background-size: 10vw, cover;
+        }  
     }
 
     .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
@@ -2605,4 +2619,9 @@ footer {
         cursor: auto;
         pointer-events: none;
     }
+}
+
+
+#paypal-button {
+    border-radius: 0 !important;
 }

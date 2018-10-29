@@ -1,32 +1,67 @@
-    <div ng-controller="ordiniController" class="container gradient">
-        <div class="row">
-            <div class="col-sm-12 clearfix top-buffer">
-                <h3 class="title section">I tuoi ordini</h3>
-            </div>
+<div ng-controller="ordiniController" class="container text-center">
+    <div class="row">
+        <div class="col-sm-12 clearfix top-buffer">
+            <h3 class="title section">Ordini</h3>
         </div>
-        <div class="tab-content clearfix gradient">
-            <div class="row bag-list tab-pane fade in active" id="ordini">
-                <div ng-repeat="ord in listaOrdini" class="col-sm-12 bag-item clearfix">
+    </div>
+    <div class="row bag-list ">
+        <div ng-if="listaOrdini.lenght == 0">
+            test alternativo
+        </div>
+        <div ng-if="listaOrdini.lenght != 0">
+            <div ng-repeat="ord in listaOrdini" class="col-sm-12 bag-item clearfix">
 
-                    <div class="col-sm-8 no-padding visible-xs">
-                        <div class="col-sm-3">
-                            <img src="/images/borsa-dummy-conf.png" class="bag-sample">
+                <div class="col-sm-8 no-padding visible-xs">
+                    <div class="col-sm-3">
+                        <img src="/images/borsa-dummy-conf.png" class="bag-sample">
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="col-sm-12">
+                            <h4 class="bag">Configurazione #{{ord.configurazione.codice}}</h4>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-6 base">
+                            <h5 class="section-small left">Base </h5>
+                            <table>
+                                <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'base'">
+                                    <td><span>{{base['nome']}}:</span></td>
+                                    <td>{{base['descrizione']}}</td>
+                                </tr>
+                                <tr>
+                            </table>
+                        </div>
+                        <div class="col-sm-6 accessori">
+                            <h5 class="section-small left">Accessori</h5>
+                            <table>
+                                <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'accessori'">
+                                    <td><span>{{base['nome']}}:</span></td>
+                                    <td>{{base['descrizione']}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-8 hidden-xs">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img src="/images/borsa-dummy-conf.png" class="media-object bag-sample">
+                            </a>
+                        </div>
+                        <div class="media-body">
                             <div class="col-sm-12">
-                                <h4 class="bag">Configurazione #{{ord.configurazione.codice}}</h4>
+                                <h4 class="media-heading bag">Configurazione #{{ord.configurazione.codice}}</h4>
                             </div>
-                            <div class="col-sm-6 base">
+                            <div class="col-xs-6 base">
                                 <h5 class="section-small left">Base </h5>
                                 <table>
                                     <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'base'">
                                         <td><span>{{base['nome']}}:</span></td>
                                         <td>{{base['descrizione']}}</td>
                                     </tr>
-                                    <tr>
                                 </table>
                             </div>
-                            <div class="col-sm-6 accessori">
+                            <div class="col-xs-6 accessori">
                                 <h5 class="section-small left">Accessori</h5>
                                 <table>
                                     <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'accessori'">
@@ -37,47 +72,13 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-sm-8 hidden-xs">
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img src="/images/borsa-dummy-conf.png" class="media-object bag-sample">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <div class="col-sm-12">
-                                    <h4 class="media-heading bag">Configurazione #{{ord.configurazione.codice}}</h4>
-                                </div>
-                                <div class="col-xs-6 base">
-                                    <h5 class="section-small left">Base </h5>
-                                    <table>
-                                        <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'base'">
-                                            <td><span>{{base['nome']}}:</span></td>
-                                            <td>{{base['descrizione']}}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-xs-6 accessori">
-                                    <h5 class="section-small left">Accessori</h5>
-                                    <table>
-                                        <tr ng-repeat="base in ord.configurazione.elencoEntita" ng-if="base.categoria == 'accessori'">
-                                            <td><span>{{base['nome']}}:</span></td>
-                                            <td>{{base['descrizione']}}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 action">
-                        <div class="order-state active one " ng-class="{'current': ord.stato == 1 }">Ordinato</div>
-                        <div class="order-state active two " ng-class="{'current': ord.stato == 2 }">In lavorazione</div>
-                        <div class="order-state active three " ng-class="{'current': ord.stato == 3 }">In spedizione</div>
-                    </div>
+                </div>
+                <div class="col-sm-4 action">
+                    <div class="order-state active one " ng-class="{'current': ord.stato == 1 }">Ordinato</div>
+                    <div class="order-state active two " ng-class="{'current': ord.stato == 2 }">In lavorazione</div>
+                    <div class="order-state active three " ng-class="{'current': ord.stato == 3 }">In spedizione</div>
                 </div>
             </div>
         </div>
     </div>
-
-
+</div>
