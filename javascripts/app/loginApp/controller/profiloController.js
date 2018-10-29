@@ -18,19 +18,49 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 				if (a["Name"] == "family_name" ){
 					$scope.cognome = a["Value"];
 				}
+				if (a["Name"] == "custom:nomeSpe" ){
+					$scope.nomeSpe = a["Value"];
+				}
+				if (a["Name"] == "custom:indSpe" ){
+					$scope.indSpe = a["Value"];
+				}
+				if (a["Name"] == "custom:indSpe2" ){
+					$scope.indSpe2 = a["Value"];
+				}
+				if (a["Name"] == "custom:capSpeNum" ){
+					$scope.capSpe = a["Value"];
+				}
+				if (a["Name"] == "custom:cittaSpe" ){
+					$scope.cittaSpe = a["Value"];
+				}
+				if (a["Name"] == "custom:nomeFat" ){
+					$scope.nomeFat = a["Value"];
+				}
+				if (a["Name"] == "custom:indFat" ){
+					$scope.indFat = a["Value"];
+				}
+				if (a["Name"] == "custom:indFat2" ){
+					$scope.indFat2 = a["Value"];
+				}
+				if (a["Name"] == "custom:capFatNum" ){
+					$scope.capFat = a["Value"];
+				}
+				if (a["Name"] == "custom:cittaFat" ){
+					$scope.cittaFat = a["Value"];
+				}
 			})
 		},
 		function (reason){
 			console.log(reason)
 		}
 	)	
-////		getConfigurazioniService.response("john@bea.com").then(function (data) {
-////			$scope.listaPreferiti = data.data.configurazioni;
-////			console.log(data);
-////			console.log($scope.listaPreferiti);
-////
-////		})
-//	
+//		getConfigurazioniService.response("john@bea.com").then(function (data) {
+//			$scope.listaPreferiti = data.data.configurazioni;
+//			console.log(data);
+//			console.log($scope.listaPreferiti);
+//
+//		})
+
 	$scope.cambiaTelefono = function(tel){
 		var attributeList = [];
 	    var attribute = {
@@ -113,35 +143,35 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 		
 	}
 	
-	$scope.cambiaIndirizzoSpedizione = function (ns, i1s , i26, cs, caps){
+	$scope.cambiaIndirizzoSpedizione = function (ns, i1s , i2s, cs, caps){
 		var attributeList = [];
 	    var attribute = {
-	        Name : 'nomeSpe',
+	        Name : 'custom:nomeSpe',
 	        Value : ns
 	    };
 	    var attribute = new AmazonCognitoIdentity.CognitoUserAttribute(attribute);
 	    attributeList.push(attribute);
 		var attribute1 = {
-		        Name : 'indirizzoSpe',
+		        Name : 'custom:indSpe',
 		        Value : i1s
 		    };
 		var attribute1 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute1);
 		attributeList.push(attribute1);
 		var attribute2 = {
-		        Name : 'indirizzo2Spe',
+		        Name : 'custom:indSpe2',
 		        Value : i2s
 		    };
 	    var attribute2 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute2);
 	    attributeList.push(attribute2);
 	    var attribute3 = {
-		        Name : 'cittaSpe',
+		        Name : 'custom:cittaSpe',
 		        Value : cs
 		    };
 		var attribute3 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute3);
 		attributeList.push(attribute3);
 		var attribute4 = {
-		        Name : 'capSpe',
-		        Value : caps
+		        Name : 'custom:capSpeNum',
+		        Value : $scope.capSpe
 		    };
 		var attribute4 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute4);
 	    attributeList.push(attribute4);
@@ -158,31 +188,31 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 	$scope.cambiaIndirizzoFatturazione = function (nomeFatturazione, indirizzo1Fatturazione , indirizzo2Fatturazione, cittaFatturazione, capFatturazione){
 		var attributeList = [];
 	    var attribute = {
-	        Name : 'nomeFatt',
+	        Name : 'custom:nomeFat',
 	        Value : nomeFatturazione
 	    };
 	    var attribute = new AmazonCognitoIdentity.CognitoUserAttribute(attribute);
 	    attributeList.push(attribute);
 		var attribute1 = {
-		        Name : 'ind1Fatt',
+		        Name : 'custom:indFat',
 		        Value : indirizzo1Fatturazione
 		    };
 		var attribute1 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute1);
 		attributeList.push(attribute1);
 		var attribute2 = {
-		        Name : 'ind2Fatt',
+		        Name : 'custom:indFat2',
 		        Value : indirizzo2Fatturazione
 		    };
 	    var attribute2 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute2);
 	    attributeList.push(attribute2);
 	    var attribute3 = {
-		        Name : 'cittaFatt',
+		        Name : 'custom:cittaFat',
 		        Value : cittaFatturazione
 		    };
 		var attribute3 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute3);
 		attributeList.push(attribute3);
 		var attribute4 = {
-		        Name : 'capFatt',
+		        Name : 'custom:capFatNum',
 		        Value : capFatturazione
 		    };
 		var attribute4 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute4);
