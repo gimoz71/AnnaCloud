@@ -10,10 +10,10 @@
         </div>
         <div class="row ">
             <div class="col-sm-6">
-                <h3 class="title-secondary">Completa il form</h3>
+                
+                <h4 class="title-tertiary ">Informazioni di contatto e consegna</h4>
                 <hr>
-                <h4 class="title-tertiary accordion-toggle ">Informazioni di contatto <i class="caret"></i></h4>
-                <div class="accordion-content default">
+                <div class="hidden">
                     <form>
                         <div class="row">
                             <div class="col-sm-6">
@@ -41,17 +41,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="display: none">
-                            <p>Nome: Gianluca Monti</p>
-                            <p>Email: gm</p>
-                        </div>
-                        <button  class="btn btn-default btn-save ">Continua</button>
-                    </form>
-                </div>
-                <hr>
-                <h4 class="title-tertiary accordion-toggle ">Spedizione <i class="caret"></i></h4>
-                <div class="accordion-content default">
-                    <form>
+                        
+                    
                         <div class="form-group">
                             <label for="inputNome" class="sr-only hidden"></label>
                             <input ng-model="nomeSpe" type="text" class="form-control" id="nomeSpe" placeholder="Nome completo">
@@ -78,85 +69,40 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-default btn-save ">Continua</button>
+                        
+                        <button class="btn btn-default btn-save ">Conferma</button>
                     </form>
                 </div>
-                <hr>
-                <h4 class="title-tertiary accordion-toggle">Fatturazione <i class="caret"></i></h4>
-                <div class="accordion-content">
-                    <form>
-                        <div class="form-group">
-                            <label for="inputNome" class="sr-only hidden"></label>
-                            <input ng-model="nomefat" type="text" class="form-control" id="nomefat" placeholder="Nome completo">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCognome" class="sr-only hidden"></label>
-                            <input ng-model="indFat1" type="text" class="form-control" id="indFat1" placeholder="indirizzo (riga 1)">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCognome" class="sr-only hidden"></label>
-                            <input ng-model="indFat2" type="text" class="form-control" id="indFat2" placeholder="indirizzo (riga 2)">
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="inputEmailReg" class="sr-only hidden"></label>
-                                    <input ng-model="cittaSpe" type="text" class="form-control" id="cittaSpe" placeholder="Citt&agrave;">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="inputPasswordReg" class="sr-only hidden"></label>
-                                    <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-default btn-save ">Continua</button>
-                    </form>
+                <div class="shipment-info " >
+                    <h5>John Lennon</h5>
+                    <h5>Via Marco Mastacchi 166<br>Livorno, 57122 Italia</h5>
+                    <button class="btn btn-default btn-save ">Modifica</button>
                 </div>
             </div>
             <div class="col-sm-6 bag-item clearfix">
                 <div class="col-sm-12 no-padding action">
-                    <div class="order-state active one just-done summary">
+                    <div class="order-state  one just-done summary">
                         <div class="row">
-                            <div class="col-sm-12 clearfix text-left">
-                                <div class="col-sm-3 no-padding hidden-xs">
-                                    <img src="images/borsa-dummy-conf.png" class="bag-sample">
-                            
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h5>Configurazione #1 - 340&euro;</h5>
-                                            <p>Crossbody champagne<br>iniziali: SRB</p>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="col-sm-12 text-left">
+                                <h5>Crossbody #1</h5>
+                                <span>Crossbody champagne<br>iniziali: SRB</span>
+                                <span class="single-price">340&euro;</span>
+                                <h5 class="remove"><i class="unaicon-remove"></i></h5>
+                            </div>          
                         </div>
                         <hr>
                         <div class="row top-buffer">
-                            <div class="col-sm-12 clearfix text-left">
-                                <div class="col-sm-3 no-padding hidden-xs">
-                                    <img src="images/borsa-dummy-conf.png" class="bag-sample">
-                            
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h5>Configurazione #1 - 340&euro;</h5>
-                                            <p>Crossbody champagne<br>iniziali: SRB</p>
-                                        </div>
-                            
-                                    </div>
-                                </div>
+                            <div class="col-sm-12 text-left">
+                                <h5>Shoulderbag #1</h5>
+                                <span>Crossbody champagne<br>iniziali: SRB</span>
+                                <span class="single-price">340&euro;</span>
+                                <h5 class="remove"><i class="unaicon-remove"></i></h5>
                             </div>
                         </div>
                         <hr>
                         <p>
                             <span>Subtotale</span>
-                            <span>640&euro;</span>
+                            <span>680&euro;</span>
                         </p>
             
                         <p>
@@ -171,7 +117,7 @@
                                 TOTALE
                             </span>
                             <span>
-                                0&euro;
+                                680&euro;
                             </span>
                         </p>
                     </div>
