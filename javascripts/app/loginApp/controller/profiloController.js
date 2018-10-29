@@ -7,17 +7,16 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 			console.log(attList);
 			attList.forEach(function (a){
 				if (a["Name"] == "email" ){
-//					codice = a["Value"];
-//					console.log(codice);
-//					getConfigurazioniService.response(codice).then(function(data){
-//						$scope.listaPreferiti = data.data.configurazioni;
-//						console.log(data);
-//						console.log ($scope.listaPreferiti );
-//						
-//					})
+					$scope.email = a["Value"];
 				}
 				if (a["Name"] == "custom:telefono" ){
 					$scope.tel = a["Value"];
+				}
+				if (a["Name"] == "name" ){
+					$scope.nome = a["Value"];
+				}
+				if (a["Name"] == "family_name" ){
+					$scope.cognome = a["Value"];
 				}
 			})
 		},
@@ -49,8 +48,7 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 				}
 		)
 	}
-	
-<<<<<<< HEAD
+
 	$scope.cambiaNome = function(nome, cognome){
 			var attributeList = [];
 		    var attribute = {
@@ -58,8 +56,9 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 		        Value : nome
 		    };
 		    var attribute = new AmazonCognitoIdentity.CognitoUserAttribute(attribute);
+		    attributeList.push(attribute);
 		    var attribute1 = {
-			        Name : 'family name',
+			        Name : 'family_name',
 			        Value : cognome
 			    };
 		    var attribute1 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute1);
@@ -198,7 +197,4 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 		)
 	}
 	
-	
-=======
->>>>>>> branch 'master' of https://github.com/gimoz71/AnnaCloud.git
 }]);
