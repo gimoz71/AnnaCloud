@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputCognome" class="sr-only hidden"></label>
-                        <input ng-model="indSpe1" type="text" class="form-control" id="indSpe1" placeholder="indirizzo (riga 1)">
+                        <input ng-model="indSpe" type="text" class="form-control" id="indSpe1" placeholder="indirizzo (riga 1)">
                     </div>
                     <div class="form-group">
                         <label for="inputCognome" class="sr-only hidden"></label>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <button ng-click="cambiaIndirizzoSpedizione(nomeSpe, indSpe1, indSpe2, cittaSpe, capSpe)" class="btn btn-default btn-save ">Salva
+                    <button ng-click="cambiaIndirizzoSpedizione(nomeSpe, indSpe, indSpe2, cittaSpe, capSpe)" class="btn btn-default btn-save ">Salva
                         modifiche</button>
                 </form>
             </div>
@@ -129,11 +129,11 @@
                 <form>
                     <div class="form-group">
                         <label for="inputNome" class="sr-only hidden"></label>
-                        <input ng-model="nomefat" type="text" class="form-control" id="nomefat" placeholder="Nome completo">
+                        <input ng-model="nomeFat" type="text" class="form-control" id="nomefat" placeholder="Nome completo">
                     </div>
                     <div class="form-group">
                         <label for="inputCognome" class="sr-only hidden"></label>
-                        <input ng-model="indFat1" type="text" class="form-control" id="indFat1" placeholder="indirizzo (riga 1)">
+                        <input ng-model="indFat" type="text" class="form-control" id="indFat1" placeholder="indirizzo (riga 1)">
                     </div>
                     <div class="form-group">
                         <label for="inputCognome" class="sr-only hidden"></label>
@@ -143,17 +143,17 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="inputEmailReg" class="sr-only hidden"></label>
-                                <input ng-model="cittaSpe" type="text" class="form-control" id="cittaSpe" placeholder="Citt&agrave;">
+                                <input ng-model="cittaFat" type="text" class="form-control" id="cittaFat" placeholder="Citt&agrave;">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="inputPasswordReg" class="sr-only hidden"></label>
-                                <input ng-model="capSpe" type="number" class="form-control" id="capSpe" placeholder="CAP">
+                                <input ng-model="capFat" type="number" class="form-control" id="capFat" placeholder="CAP">
                             </div>
                         </div>
                     </div>
-                    <button ng-click="cambiaIndirizzoFatturazione(nomeFat, indFat1, indFat2, cittaFat, capFat)" class="btn btn-default btn-save ">Salva
+                    <button ng-click="cambiaIndirizzoFatturazione(nomeFat, indFat, indFat2, cittaFat, capFat)" class="btn btn-default btn-save ">Salva
                         modifiche</button>
                 </form>
             </div>
