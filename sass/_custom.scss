@@ -439,7 +439,9 @@ button:focus {outline:0;}
     background: $brand-primary;
     font-size: 1em !important;
     &:hover {
-        background: #333 !important;
+        background: #fff !important;
+        color: $brand-primary;
+        border-color: $brand-primary;
     }
 }
 
@@ -526,21 +528,27 @@ button:focus {outline:0;}
 }
 
 .btn-action { // stilizzazione pulsante di azione
-    @include button-variant($btn-action-color, $btn-action-bg, $btn-action-border);
+    color: #fff;
+    background: $brand-primary;
     font-size: 1.5em;
+    &:hover {
+        background: #fff !important;
+        color: $brand-primary;
+        border-color: $brand-primary;
+    }
     &.active:after {
-        background-color: $btn-action-bg;
+        background-color: $brand-primary;
 
     }
     &.active:before {
-        border-color: $btn-action-bg transparent transparent;
+        border-color: $brand-primary transparent transparent;
 
     }
     &.follow:after {
-        border-color: transparent transparent transparent $btn-action-bg;
+        border-color: transparent transparent transparent $brand-primary;
     }
     &.follow:before {
-        border-color: transparent transparent transparent $btn-action-bg;
+        border-color: transparent transparent transparent $brand-primary;
     }
 }
 
@@ -1517,7 +1525,7 @@ a.link {
         p {
             span{
                 display: inline-block;
-                width: 45%;
+                width: 49%;
                 &:first-child{
                     text-align:left;
                 }
@@ -1529,6 +1537,39 @@ a.link {
     }
 }
 
+.shipment-info {
+    padding: 20px;
+    //border: solid 1px $standard-border-color;
+    position: relative;
+    text-align: center;
+    :first-child {
+        margin-top: 0;
+    }
+    @media screen and (min-width: $screen-sm) {
+        text-align: left;
+        .btn {
+            position:absolute;
+            top: 20px; 
+            right: 20px;
+        }
+    }
+}
+
+.remove {
+    margin: 0;
+    position :absolute;
+    top: 5px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.single-price {
+    margin: 0;
+    position :absolute;
+    bottom: 0;
+    right: 20px;
+    cursor: pointer;
+}
 
 /* corporate stuff */
 
@@ -2598,7 +2639,7 @@ footer {
         right: auto;
         left: 0;
         @media screen and (max-width: $screen-xs-max) {
-            background-size: 2vw, cover;
+            background-size: 4vw, cover;
         }  
     }
     .swiper-button-next,
@@ -2610,7 +2651,7 @@ footer {
         left: auto;
         right: 0;
          @media screen and (max-width: $screen-xs-max) {
-            background-size: 10vw, cover;
+            background-size: 4vw, cover;
         }  
     }
 

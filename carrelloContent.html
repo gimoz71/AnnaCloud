@@ -9,13 +9,14 @@
         <div class="col-sm-12 no-padding">
             <div class="col-sm-8 no-padding">
                 <div ng-repeat="conf in listaPreferiti" class="col-sm-12 bag-item clearfix">
-
+                    
                     <div class="col-sm-8 no-padding visible-xs">
                         <div class="col-sm-3">
                             <img src="/images/borsa-dummy-conf.png" class="bag-sample">
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-12">
+                                <h5 class="remove"><i class="unaicon-remove"></i></h5>
                                 <h4 class="bag">Configurazione #{{ord.configurazione.codice}}</h4>
                             </div>
                             <div class="col-sm-6 base">
@@ -50,6 +51,7 @@
                             </div>
                             <div class="media-body">
                                 <div class="col-sm-12">
+                                    <h5 class="remove"><i class="unaicon-remove"></i></h5>
                                     <h4 class="media-heading bag">Configurazione #{{ord.configurazione.codice}}</h4>
                                 </div>
                                 <div class="col-sm-6 base">
@@ -104,7 +106,7 @@
                         </p>
                     </div>
                     <div class="order-buttons" style="margin-top: 20px;">
-                        <a href="#" class="btn btn-action btn-lg btn-block" ng-click="setCheckout()" style="width:auto;">
+                        <a href="#" class="btn  btn-lg btn-block btn-save" ng-click="setCheckout()" style="width:auto;">
                             Procedi al
                             checkout</a>
                     </div>

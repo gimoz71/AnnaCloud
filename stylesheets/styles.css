@@ -12053,7 +12053,9 @@ button:focus {
   font-size: 1em !important;
 }
 .btn-save:hover {
-  background: #333 !important;
+  background: #fff !important;
+  color: #6A3D48;
+  border-color: #6A3D48;
 }
 
 .active {
@@ -12135,52 +12137,25 @@ button:focus {
 
 .btn-action {
   color: #fff;
-  background-color: #c397a1;
-  border-color: #6A3D48;
+  background: #6A3D48;
   font-size: 1.5em;
 }
-.btn-action:focus, .btn-action.focus {
-  color: #fff;
-  background-color: #b07684;
-  border-color: #190e11;
-}
 .btn-action:hover {
-  color: #fff;
-  background-color: #b07684;
-  border-color: #43272e;
-}
-.btn-action:active, .btn-action.active, .open > .btn-action.dropdown-toggle {
-  color: #fff;
-  background-color: #b07684;
-  border-color: #43272e;
-}
-.btn-action:active:hover, .btn-action:active:focus, .btn-action:active.focus, .btn-action.active:hover, .btn-action.active:focus, .btn-action.active.focus, .open > .btn-action.dropdown-toggle:hover, .open > .btn-action.dropdown-toggle:focus, .open > .btn-action.dropdown-toggle.focus {
-  color: #fff;
-  background-color: #a36070;
-  border-color: #190e11;
-}
-.btn-action:active, .btn-action.active, .open > .btn-action.dropdown-toggle {
-  background-image: none;
-}
-.btn-action.disabled:hover, .btn-action.disabled:focus, .btn-action.disabled.focus, .btn-action[disabled]:hover, .btn-action[disabled]:focus, .btn-action[disabled].focus, fieldset[disabled] .btn-action:hover, fieldset[disabled] .btn-action:focus, fieldset[disabled] .btn-action.focus {
-  background-color: #c397a1;
+  background: #fff !important;
+  color: #6A3D48;
   border-color: #6A3D48;
 }
-.btn-action .badge {
-  color: #c397a1;
-  background-color: #fff;
-}
 .btn-action.active:after {
-  background-color: #c397a1;
+  background-color: #6A3D48;
 }
 .btn-action.active:before {
-  border-color: #c397a1 transparent transparent;
+  border-color: #6A3D48 transparent transparent;
 }
 .btn-action.follow:after {
-  border-color: transparent transparent transparent #c397a1;
+  border-color: transparent transparent transparent #6A3D48;
 }
 .btn-action.follow:before {
-  border-color: transparent transparent transparent #c397a1;
+  border-color: transparent transparent transparent #6A3D48;
 }
 
 /* stilizzazione link menu */
@@ -13189,13 +13164,48 @@ a.link {
 }
 .order-state.summary p span {
   display: inline-block;
-  width: 45%;
+  width: 49%;
 }
 .order-state.summary p span:first-child {
   text-align: left;
 }
 .order-state.summary p span:last-child {
   text-align: right;
+}
+
+.shipment-info {
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+.shipment-info :first-child {
+  margin-top: 0;
+}
+@media screen and (min-width: 768px) {
+  .shipment-info {
+    text-align: left;
+  }
+  .shipment-info .btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.remove {
+  margin: 0;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.single-price {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  cursor: pointer;
 }
 
 /* corporate stuff */
@@ -14174,7 +14184,7 @@ footer .copyright {
 @media screen and (max-width: 767px) {
   .swipe-featured .swiper-button-prev,
   .swipe-featured .swiper-container-rtl .swiper-button-next {
-    background-size: 2vw, cover;
+    background-size: 4vw, cover;
   }
 }
 .swipe-featured .swiper-button-next,
@@ -14189,7 +14199,7 @@ footer .copyright {
 @media screen and (max-width: 767px) {
   .swipe-featured .swiper-button-next,
   .swipe-featured .swiper-container-rtl .swiper-button-prev {
-    background-size: 10vw, cover;
+    background-size: 4vw, cover;
   }
 }
 .swipe-featured .swiper-button-next.swiper-button-disabled, .swipe-featured .swiper-button-prev.swiper-button-disabled {
