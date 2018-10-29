@@ -48,11 +48,7 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 				}
 		)
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> branch 'master' of https://github.com/gimoz71/AnnaCloud.git
 	$scope.cambiaNome = function(nome, cognome){
 			var attributeList = [];
 		    var attribute = {
@@ -201,8 +197,4 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 		)
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/gimoz71/AnnaCloud.git
 }]);
