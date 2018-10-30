@@ -3,7 +3,7 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	this.urlGetService = "https://5mjp7r5urj.execute-api.eu-central-1.amazonaws.com/UnadunaGet"
 	this.urlGetServiceNode = 'https://ig24v3ii6b.execute-api.eu-central-1.amazonaws.com/unaDunaGetAccessori';
 	this.urlPostService = "https://i51umjhba2.execute-api.eu-central-1.amazonaws.com/unadunaPost";
-
+	this.urlDeleteService ="https://gtjby1j5oi.execute-api.eu-central-1.amazonaws.com/UnadunaDelete";
 	this.tipiAccessoriList = [];
 	this.accessoriesList = [];
 	
@@ -140,6 +140,18 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 			}
 		};
 		return $http.post(this.urlPostService, requestMessage, config);
+	}
+	
+	this.deleteConfigurazione = function(cod){
+		var config = {
+			      headers : {
+			          'Content-Type': 'application/json'
+			      }
+			  };
+		
+		var message = UtilFunctionMessagesCreator.deleteConfigurazioneMessage(cod);
+		
+		return $http.post(this.urlDeleteService, message, config);
 	}
 
 }]);

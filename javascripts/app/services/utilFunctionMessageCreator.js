@@ -82,4 +82,11 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		message.ordine = ordine;
 		return message;
 	}
+	
+	this.deleteConfigurazioneMessage = function (configurazione){
+		var message = {};
+		message.functionName = "UnaDunaDeleteConfigurazione";
+		message.codiceConfigurazione = configurazione.codice;
+		return message;
+	}
 });
