@@ -13105,11 +13105,6 @@ a.link {
   margin-right: auto;
   font-size: 12px;
 }
-@media screen and (min-width: 767px) and (max-width: 991px) {
-  .order-state {
-    font-size: 15px;
-  }
-}
 .order-state.one {
   z-index: 3;
 }
@@ -13162,15 +13157,22 @@ a.link {
 .order-state.pre-summary {
   font-size: 18px;
 }
-.order-state.summary p span {
-  display: inline-block;
-  width: 49%;
-}
-.order-state.summary p span:first-child {
-  text-align: left;
-}
-.order-state.summary p span:last-child {
-  text-align: right;
+.order-state.summary {
+  /*p {
+      span{
+          display: inline-block;
+          width: 41%;
+          &:first-child{
+              text-align:left;
+          }
+          &:last-child {
+              text-align: right;
+          }
+          @media screen and (min-width: $screen-sm) {
+              width: 47%;
+          }
+      }
+  }*/
 }
 
 .shipment-info {
@@ -13196,8 +13198,11 @@ a.link {
   margin: 0;
   position: absolute;
   top: 5px;
-  right: 20px;
+  right: 0;
   cursor: pointer;
+}
+.order-state .remove {
+  right: 20px;
 }
 
 .single-price {
