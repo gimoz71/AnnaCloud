@@ -1457,7 +1457,7 @@ a.link {
     font-family: $font-family-sans-serif-title;
     @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
         //width:210px;
-        font-size: 15px;
+        //font-size: 15px;
     }
     @media screen and (max-width: $screen-xs-max) {
         //width: 97%;
@@ -1523,18 +1523,21 @@ a.link {
         font-size: 18px;
     }
     &.summary {
-        p {
+        /*p {
             span{
                 display: inline-block;
-                width: 49%;
+                width: 41%;
                 &:first-child{
                     text-align:left;
                 }
                 &:last-child {
                     text-align: right;
                 }
+                @media screen and (min-width: $screen-sm) {
+                    width: 47%;
+                }
             }
-        }
+        }*/
     }
 }
 
@@ -1560,8 +1563,11 @@ a.link {
     margin: 0;
     position :absolute;
     top: 5px;
-    right: 20px;
+    right: 0;
     cursor: pointer;
+    .order-state & {
+        right: 20px;
+    }
 }
 
 .single-price {
