@@ -7,7 +7,6 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		return message;
 	};
 	
-	
 	this.getModelliMessage = function(){
 		var message = {};
 		message.functionName = "UnaDunaGetModelli";
@@ -31,6 +30,15 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		var message = {};
 		message.functionName = "UnaDunaGetConfigurazioniUtente";
 		message.codiceUtente = codiceUtente;
+		message.ifCarrello = false;
+		return message;
+	}
+	
+	this.getCarrelloUtenteMessage = function(codiceUtente){
+		var message = {};
+		message.functionName = "UnaDunaGetConfigurazioniUtente";
+		message.codiceUtente = codiceUtente;
+		message.ifCarrello = true;
 		return message;
 	}
 	
@@ -61,14 +69,14 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		return message;
 	}
 
-	this.putConfigurazione = function(configurazione){
+	this.putConfigurazioneMessage = function(configurazione){
 		var message = {};
 		message.functionName = "UnaDunaPutConfigurazione";
 		message.configurazione = configurazione;
 		return message;
 	}
 	
-	this.putOrdine = function(ordine){
+	this.putOrdineMessage = function(ordine){
 		var message = {};
 		message.functionName = "UnaDunaPutOrdine";
 		message.ordine = ordine;

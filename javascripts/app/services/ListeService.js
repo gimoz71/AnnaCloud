@@ -2,6 +2,7 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	
 	this.urlGetService = "https://5mjp7r5urj.execute-api.eu-central-1.amazonaws.com/UnadunaGet"
 	this.urlGetServiceNode = 'https://ig24v3ii6b.execute-api.eu-central-1.amazonaws.com/unaDunaGetAccessori';
+	this.urlPostService = "https://i51umjhba2.execute-api.eu-central-1.amazonaws.com/unadunaPost";
 
 	this.tipiAccessoriList = [];
 	this.accessoriesList = [];
@@ -81,6 +82,16 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		return $http.post(this.urlGetService, requestMessage, config);
 	}
 	
+	this.getCarrelloUtente = function(codiceUtente){
+		var requestMessage = UtilFunctionMessagesCreator.getCarrelloUtenteMessage(codiceUtente);
+		var config = {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		};
+		return $http.post(this.urlGetService, requestMessage, config);
+	}
+	
 	this.getOrdini = function(codiceOrdine){
 		var requestMessage = UtilFunctionMessagesCreator.getOrdineMessage(codiceOrdine);
 		var config = {
@@ -112,23 +123,23 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	}
 	
 	this.putConfigurazione = function(configurazione){
-		var requestMessage = UtilFunctionMessagesCreator.getConfigurazioneMessage(configurazione);
+		var requestMessage = UtilFunctionMessagesCreator.putConfigurazioneMessage(configurazione);
 		var config = {
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		};
-		return $http.post(this.urlGetService, requestMessage, config);
+		return $http.post(this.urlPostService, requestMessage, config);
 	}
 	
 	this.putOrdine = function(ordine){
-		var requestMessage = UtilFunctionMessagesCreator.getOrdineMessage(ordine);
+		var requestMessage = UtilFunctionMessagesCreator.putOrdineMessage(ordine);
 		var config = {
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		};
-		return $http.post(this.urlGetService, requestMessage, config);
+		return $http.post(this.urlPostService, requestMessage, config);
 	}
 
 }]);

@@ -1,5 +1,5 @@
-angular.module("loginModule").controller("preferitiController", ["$scope", "getConfigurazioniService", "loginService", "listeService",
-	function($scope, getConfigurazioniService, loginService, listeService) {
+angular.module("loginModule").controller("preferitiController", ["$scope", "loginService", "listeService",
+	function($scope, loginService, listeService) {
 
 	$scope.listaPreferiti = [];
 	loginService.getUserAttributes().then(
@@ -9,7 +9,7 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "getC
 				if (a["Name"] == "email" ){
 					codice = a["Value"];
 					console.log(codice);
-					getConfigurazioniService.response(codice).then(function(data){
+					listeService.getConfigurazioniUtente(codice).then(function(data){
 						$scope.listaPreferiti = data.data.configurazioni;
 						console.log(data);
 						console.log ($scope.listaPreferiti );
@@ -24,41 +24,19 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "getC
 	)	
 	
 	$scope.addCarrello = function (conf){
-		loginService.getUserAttributes().then(
-			function (attList){
-				console.log(attList);
-				attList.forEach(function (a){
-					if (a["Name"] == "email" ){
-						codice = a["Value"];
-						console.log(codice);
-						getConfigurazioniService.response(codice).then(function(data){
-							let ord  = {
-							  "codiceOrdine" : "",
-							  "configurazione": conf,
-							  "pagato": 0,
-							  "stato": 0,
-							  "utente": {
-							    "email": codice
-							  }
-							}
-							listeService.putOrdine(ord).then(
-									function (res){
-										console.log(res)
-									},
-									function (reason){
-										console.log(reason)
-									}
-								);
-						})
-					}
-				})
-			},
-			function (reason){
-				console.log(reason)
-			}
-		)	
-		
-	}
+		conf.carrello = true;
+		conf.codice = "";
+		listeService.putConfigurazione(conf).then(
+				function (res){
+					console.log(res);
+					$scope.setCarrello();
+				},
+				function (reason){
+					console.log(reason);
+					alert ("errore aggiunta carrello");
+				}
+			);	
+		}
 //		getConfigurazioniService.response("john@bea.com").then(function (data) {
 //			$scope.listaPreferiti = data.data.configurazioni;
 //			console.log(data);
