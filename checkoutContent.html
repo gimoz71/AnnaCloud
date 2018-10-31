@@ -82,16 +82,18 @@
             <div class="col-sm-6 bag-item clearfix">
                 <div class="col-sm-12 no-padding action">
                     <div class="order-state  one just-done summary">
-                        <div class="row">
-                            <div class="col-sm-12 text-left">
-                                <h5 class="no-margin">Crossbody #1</h5>
-                                <span>Crossbody champagne<br>iniziali: SRB</span>
-                                <span class="single-price">340&euro;</span>
-                                <h5 class="remove"><i class="unaicon-remove"></i></h5>
-                            </div>          
+                    	<div ng-repeat="conf in listaPreferiti" >
+	                        <div  class="row">
+	                            <div class="col-sm-12 text-left">
+	                                <h5 class="no-margin">{{conf.nome}}</h5>
+	                                <span>Crossbody champagne<br>iniziali: SRB</span>
+	                                <span class="single-price">340&euro;</span>
+	                                <h5  class="remove"><i ng-click="eliminaCar(conf)" class="unaicon-remove"></i></h5>
+	                            </div>          
+	                        </div>
+	                        <hr>
                         </div>
-                        <hr>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-12 text-left">
                                 <h5 class="no-margin">Shoulderbag #1</h5>
                                 <span>Crossbody champagne<br>iniziali: SRB</span>
@@ -99,7 +101,7 @@
                                 <h5 class="remove"><i class="unaicon-remove"></i></h5>
                             </div>
                         </div>
-                        <hr>
+                        <hr> -->
                         <div class="row top-buffer">
                             <div class="col-sm-12 text-left">
                                 <span>Subtotale</span>

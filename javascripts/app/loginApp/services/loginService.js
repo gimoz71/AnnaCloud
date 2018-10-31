@@ -17,7 +17,7 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
     this.getCognitoUser = function (){
     	if(this.cognitoUser == null){
     		var userPool = this.getUserPool();
-    		this.cognitoUser = userPool.getCurrentUser();
+    		this.cognitoUser = userPool.getCurrentUser();   		
     	}
     	return this.cognitoUser;
     }
@@ -105,30 +105,6 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
 	        onSuccess: function (result) {
 	                console.log (result);
 	                deferred.resolve (result);
-	               
-//	                    // Set the region where your identity pool exists (us-east-1, eu-west-1)
-//	                AWS.config.region = 'eu-central-1';
-//	                // Configure the credentials provider to use your identity pool
-//	                AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-//	                    IdentityPoolId: 'eu-central-1:c51a37d3-18e6-4a2b-83d1-49090b88682f',
-//	                    Logins: { // optional tokens, used for authenticated login
-//	                        //'graph.facebook.com': 'FBTOKEN',
-//	                        'cognito-idp.eu-central-1.amazonaws.com/eu-central-1_4pV2AIRml': idToken
-//	                        //'accounts.google.com': 'GOOGLETOKEN'
-//	                    }
-//	                });
-//
-//	                AWS.config.credentials.get(function(){
-//
-//	                    // Credentials will be available when this function is called.
-//	                    var accessKeyId = AWS.config.credentials.accessKeyId;
-//	                    var secretAccessKey = AWS.config.credentials.secretAccessKey;
-//	                    var sessionToken = AWS.config.credentials.sessionToken;
-//	                    console.log(sessionToken);
-//	                    
-////	                    docClient = new AWS.DynamoDB.DocumentClient();
-//	                    
-//	                });
 
 	            },
 	        onFailure: function(err) {

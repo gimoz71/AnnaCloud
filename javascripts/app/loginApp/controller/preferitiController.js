@@ -20,6 +20,7 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "logi
 		},
 		function (reason){
 			console.log(reason)
+			$scope.setUser(null);
 		}
 	)	
 	
