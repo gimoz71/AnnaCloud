@@ -19,7 +19,8 @@ angular.module("loginModule").controller("carrelloController", ["$scope", "liste
 			})
 		},
 		function (reason){
-			console.log(reason)
+			console.log(reason);
+			$scope.setUser(null);
 		}
 	)	
 	

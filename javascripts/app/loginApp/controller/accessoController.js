@@ -15,7 +15,7 @@ angular.module("loginModule").controller("accessoController", ["$scope", "loginS
 		console.log("eccomi controller");
 		loginService.login(email, password).then(
 			function(data){
-				console.log($scope.remember);
+				console.log(data);
 					loginService.getCurrentUser().then (function (data){
 						console.log(data);
 						$scope.setUser(data);
