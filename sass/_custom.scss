@@ -422,7 +422,7 @@ button:focus {outline:0;}
 
 .btn-default {
     color: $brand-primary;
-    &:hover, &:active {
+    &:hover, &:active, &:focus {
         background-color: $body-bg !important;
     }
     &.active:before {
@@ -431,6 +431,27 @@ button:focus {outline:0;}
     }
     &.follow:before {
         border-color: transparent transparent transparent $btn-default-border;
+    }
+}
+
+.btn-special {
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ecb7c8+0,ffeff4+50,ecb7c8+100 */
+    background: rgb(236,183,200); /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(236,183,200,1) 0%, rgba(255,239,244,1) 50%, rgba(236,183,200,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(236,183,200,1) 0%,rgba(255,239,244,1) 50%,rgba(236,183,200,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(236,183,200,1) 0%,rgba(255,239,244,1) 50%,rgba(236,183,200,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecb7c8', endColorstr='#ecb7c8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
+    &.follow:before {
+        border-color: transparent transparent transparent $btn-default-border;
+    }
+    &.follow:after {
+        margin-left: -2px;
+        border-color:  transparent transparent transparent $brand-primary-light;
+    }
+    &:active.follow:after {
+        border-color:  transparent transparent transparent $body-bg;
+
     }
 }
 
@@ -1882,6 +1903,7 @@ a.link {
     .modello-borsa {
         display: block;
         img {
+            @include transition(all .2s ease-out);
             //border: solid 1px #ccc;
             margin: auto;
         }
@@ -1904,6 +1926,9 @@ a.link {
             }
         }
         &:hover {
+            img {
+                @include transition(all .2s ease-out);
+            }
             .nome {
                 //display: inline-block;
                 @include transition(all .2s ease-out);
@@ -1915,6 +1940,12 @@ a.link {
                 }
             }
             text-decoration: none;
+        }
+        &:active, &:focus {
+            img {
+                @include transition(all .2s ease-out);
+                transform: scale(1.1);
+            }
         }
     }
     /* menu accessori */

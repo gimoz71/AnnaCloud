@@ -841,6 +841,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 		$("#pz").pinchzoomer();
 
+		var pz = PinchZoomer.get("pz")
+
 		$('#canvasWrapper').parentResize();
 
 		// pulsanti apertura/chiusura zoom borsa
@@ -859,6 +861,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			});
 		});
 		$('#closeZoom').click(function() {
+			pz.zoom(1.5);
 			$('.zoom').animate({opacity: 0}, {complete: function(){ $(this).css({'z-index': '0'}) }});
 		});
 

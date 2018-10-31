@@ -12036,7 +12036,7 @@ button:focus {
 .btn-default {
   color: #6A3D48;
 }
-.btn-default:hover, .btn-default:active {
+.btn-default:hover, .btn-default:active, .btn-default:focus {
   background-color: #fff !important;
 }
 .btn-default.active:before {
@@ -12044,6 +12044,30 @@ button:focus {
 }
 .btn-default.follow:before {
   border-color: transparent transparent transparent rgba(106, 61, 72, 0.5);
+}
+
+.btn-special {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ecb7c8+0,ffeff4+50,ecb7c8+100 */
+  background: #ecb7c8;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #ecb7c8 0%, #ffeff4 50%, #ecb7c8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #ecb7c8 0%, #ffeff4 50%, #ecb7c8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #ecb7c8 0%, #ffeff4 50%, #ecb7c8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecb7c8', endColorstr='#ecb7c8',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+}
+.btn-special.follow:before {
+  border-color: transparent transparent transparent rgba(106, 61, 72, 0.5);
+}
+.btn-special.follow:after {
+  margin-left: -2px;
+  border-color: transparent transparent transparent #ECB7C8;
+}
+.btn-special:active.follow:after {
+  border-color: transparent transparent transparent #fff;
 }
 
 .btn-save {
@@ -13529,6 +13553,9 @@ a.link {
   display: block;
 }
 .configuratore .modello-borsa img {
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   margin: auto;
 }
 .configuratore .modello-borsa .nome {
@@ -13556,6 +13583,11 @@ a.link {
 .configuratore .modello-borsa:hover {
   text-decoration: none;
 }
+.configuratore .modello-borsa:hover img {
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 .configuratore .modello-borsa:hover .nome {
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
@@ -13568,6 +13600,12 @@ a.link {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   opacity: 1;
+}
+.configuratore .modello-borsa:active img, .configuratore .modello-borsa:focus img {
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  transform: scale(1.1);
 }
 .configuratore .accessori {
   opacity: 0;
