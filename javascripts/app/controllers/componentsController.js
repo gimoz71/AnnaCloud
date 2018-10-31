@@ -9,8 +9,9 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isAccesso = false;
 	$scope.isPreferiti = false;
 	$scope.isOrdini = false;
-	$scope.isCarrello = false;
 	$scope.isProfilo = false;
+	$scope.isCarrello = false;
+	$scope.isCheckout = false;
 	
 	$scope.user = null;
 	
@@ -98,6 +99,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.isAccesso = false;
 		$scope.isPreferiti = false;
 		$scope.isOrdini = false;
+		$scope.isProfilo = false;
 		$scope.isCarrello = false;
 		$scope.isCheckout = false;
 	};

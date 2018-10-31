@@ -36,9 +36,9 @@
 		                        <li ng-show="user!==null">
 		                            <a href="#" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
 		                            <ul class="dropdown-menu" aria-labelledby="user-menu">
-		                                <li><a hre="#" ng-click="setOrdini()" >I tuoi Ordini</a></li>
-		                                <li><a hre="#" ng-click="setProfilo()" >Profilo</a></li>
-		                                <li><a hre="#" href="#" ng-click="logOut()">Esci</a></li>
+		                                <li><a href="#" ng-click="setOrdini()" >I tuoi Ordini</a></li>
+		                                <li><a href="#" ng-click="setProfilo()" >Profilo</a></li>
+		                                <li><a href="#" ng-click="logOut()">Esci</a></li>
 		                            </ul>
 		                        </li>
 								<li ng-show="user==null">
@@ -46,14 +46,14 @@
 									
 								</li>
 								<li>
-		                            <a ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
+		                            <a href="#" ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
 	                           </li>
 		                        <li>
-		                            <a ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
+		                            <a href="#" ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
 		                        </li>
 		                    </ul>
 		                </div>
-		                <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+		                <div class="collapse navbar-collapse">
 		                    <ul class="nav navbar-nav navbar-left">
 		                        <li ng-show="user!==null">
 									<p class="navbar-text">Benvenuto, <strong>{{user.username}}</strong></p>
@@ -68,7 +68,7 @@
 		    </div>
 		    <nav class="navbar navbar-default nomargin main-site-navbar">
 		        <div class="container">
-		            <div class="collapse navbar-collapse navbar-ex1-collapse">
+		            <div class="collapse navbar-collapse navbar-collapse-mobile navbar-ex1-collapse">
 						<div class="hidden-xs main-navbar">
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
@@ -100,8 +100,8 @@
 									<li>
 										<a href="#" class="primary" data-toggle="dropdown">Scopri</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a ng-click="setVisione()" class="secondary">Visione</a></li>
-											<li><a ng-click="setEsperienza()" class="secondary">Esperienza</a></li>
+											<li><a href="#" ng-click="setVisione()" class="secondary">Visione</a></li>
+											<li><a href="#" ng-click="setEsperienza()" class="secondary">Esperienza</a></li>
 										</ul>
 									</li>
 									<li>
@@ -133,17 +133,16 @@
 							<li>
 								<a href="#" data-toggle="dropdown" class="">Scopri</a>
 								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a ng-click="setVisione()">Visione</a></li>
-									<li><a ng-click="setEsperienza()">Esperienza</a></li>
+									<li><a href="#" ng-click="setVisione()">Visione</a></li>
+									<li><a href="#" ng-click="setEsperienza()">Esperienza</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" data-toggle="dropdown" class="">Stores</a>
+								<a href="#" data-toggle="dropdown" class="">Chi siamo</a>
 
 								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a href="#">Team</a></li>
-									<li><a href="#">Contatti</a></li>
-									<li><a href="#">Carriera</a></li>
+									<li><a href="#" ng-click="setContatti()">Team</a></li>
+									<li><a href="#" ng-click="setContatti()">Contatti</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -331,15 +330,25 @@
 		}
 	</style>
 	<script type="text/javascript">
-	$('.template-content').on('click', '.accordion-toggle', function() {
-		console.log("TEST2!!!!");
-		//Expand or collapse this panel
-		$(this).next().slideToggle('fast');
-		$(this).find('.caret').toggleClass('caret-reversed')
-		//Hide the other panels
-		//$(".accordion-content").not($(this).next()).slideUp('fast');
+		$('.template-content').on('click', '.accordion-toggle', function() {
+			console.log("TEST2!!!!");
+			//Expand or collapse this panel
+			$(this).next().slideToggle('fast');
+			$(this).find('.caret').toggleClass('caret-reversed')
+			//Hide the other panels
+			//$(".accordion-content").not($(this).next()).slideUp('fast');
 
-	})
+		})
+		$(document).ready(function () {
+				$(document).click(function (event) {
+					var clickover = $(event.target);
+					var _opened = $(".collapse").hasClass("collapse in");
+
+					if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+						$("button.navbar-toggle").click();
+					}
+				});
+			});
 	</script>
 </body>
 

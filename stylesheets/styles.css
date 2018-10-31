@@ -12013,8 +12013,7 @@ button:focus {
   -o-transition: all 500ms ease-in-out;
   transition: all 500ms ease-in-out;
   box-shadow: 0 0 0 transparent;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin: 2px;
   /*@media screen and (max-width: $screen-xs) {
       &:first-of-type + .btn {
           margin-top: 10px;
@@ -12357,7 +12356,7 @@ a.link {
     padding: 11px;
   }
   .fixed-navbar-right > li .dropdown-menu {
-    background-color: #e9e9e9 !important;
+    background-color: #f6f6f6 !important;
     border-bottom: solid 1px #e8d7db !important;
     border-left: solid 1px #e8d7db !important;
     position: absolute !important;
@@ -12492,11 +12491,11 @@ a.link {
   margin-left: -0px;
 }
 .main-site-navbar .navbar-collapse .navbar-nav li a.primary:before {
-  border-color: #e8d7db transparent transparent;
+  border-color: transparent;
 }
 .main-site-navbar .navbar-collapse .navbar-nav li a.primary:after {
   margin-top: -2px;
-  border-color: #fff transparent transparent;
+  border-color: #f6f6f6 transparent transparent;
 }
 .main-site-navbar .navbar-collapse .navbar-nav li a.primary:hover {
   -webkit-transition: all 150ms ease-in-out;
@@ -12523,6 +12522,13 @@ a.link {
   top: 100%;
   left: 50%;
   margin-left: -8px;
+}
+.main-site-navbar .navbar-collapse .navbar-nav li a.primary.active:before {
+  border-color: #e8d7db transparent transparent;
+}
+.main-site-navbar .navbar-collapse .navbar-nav li a.primary.active:after {
+  margin-top: -2px;
+  border-color: #fff transparent transparent;
 }
 .main-site-navbar .navbar-collapse .navbar-nav li a.primary.ontop:after, .main-site-navbar .navbar-collapse .navbar-nav li a.primary.ontop:before {
   top: 0%;
