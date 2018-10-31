@@ -12955,6 +12955,10 @@ a.link {
   }
 }
 
+.swipe-featured {
+  margin-bottom: 20px;
+}
+
 .bag-box {
   display: block;
   width: 100%;
@@ -13011,7 +13015,7 @@ a.link {
   display: inline-block;
   width: 80%;
   padding: 10px 0;
-  font-size: 0.9em;
+  font-size: 0.85em;
   font-weight: lighter;
   text-transform: uppercase;
   border: solid 1px white;
