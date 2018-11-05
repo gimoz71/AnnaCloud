@@ -11578,6 +11578,10 @@ button.close {
   content: '\004d';
 }
 
+.unaicon-unaduna-logo:before {
+  content: '\0050';
+}
+
 @font-face {
   font-family: 'unaduna char';
   src: url("../fonts/unaduna-char.eot");
@@ -12482,6 +12486,13 @@ a.link {
   margin-left: -8px;
   z-index: 1001;
 }
+.main-site-navbar .navbar-collapse .navbar-nav li.open a.primary:before {
+  border-color: #e8d7db transparent transparent;
+}
+.main-site-navbar .navbar-collapse .navbar-nav li.open a.primary:after {
+  margin-top: -2px;
+  border-color: #fff transparent transparent;
+}
 .main-site-navbar .navbar-collapse .navbar-nav li a.secondary {
   color: #6A3D48;
   padding: 10px;
@@ -13373,6 +13384,7 @@ a.link {
   font-size: 18px;
   padding: 7px 13px;
   color: #999;
+  display: none;
 }
 
 .zoom {
@@ -13480,6 +13492,13 @@ a.link {
   /* menu accessori */
   /* spinner borse */
 }
+.configuratore .unaicon-unaduna-logo {
+  font-size: 1.5em;
+  line-height: 1em;
+}
+.configuratore .unaicon-unaduna-logo:before {
+  top: 0;
+}
 .configuratore a, .configuratore a:link {
   color: #60534D !important;
 }
@@ -13565,41 +13584,36 @@ a.link {
   font-size: 1.3em;
   text-transform: uppercase;
   font-weight: lighter;
-}
-.configuratore .modello-borsa .nome:after {
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  content: "";
-  background: url(../images/small-arrow-down.png) center center no-repeat;
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  left: 50%;
-  margin-left: -6px;
-  bottom: 0px;
-  opacity: 0;
+  /*&:after {
+      @include transition(all .2s ease-out);
+      content: "";
+      background: url(../images/small-arrow-down.png) center center no-repeat;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 50%;
+      margin-left: -6px;
+      bottom: 0px;
+      opacity: 0;
+  }*/
 }
 .configuratore .modello-borsa:hover {
+  /*.nome {
+      //display: inline-block;
+      @include transition(all .2s ease-out);
+      margin-top: 5px;
+      margin-bottom: 15px;
+      &:after {
+          @include transition(all .2s ease-out);
+          opacity: 1;
+      }
+  }*/
   text-decoration: none;
 }
 .configuratore .modello-borsa:hover img {
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-}
-.configuratore .modello-borsa:hover .nome {
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-.configuratore .modello-borsa:hover .nome:after {
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  opacity: 1;
 }
 .configuratore .modello-borsa:active img, .configuratore .modello-borsa:focus img {
   -webkit-transition: all 0.2s ease-out;

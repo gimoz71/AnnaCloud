@@ -41,6 +41,7 @@
 .unaicon-instagram:before{content:'\004b';}
 .unaicon-register:before{content:'\004c';}
 .unaicon-minus:before{content:'\004d';}
+.unaicon-unaduna-logo:before{content:'\0050';}
 
 
 // font per lista lettere emboss
@@ -858,6 +859,13 @@ a.link {
                                 margin-left: -8px;
                                 z-index: 1001;
                             }
+                            &:before {
+                            border-color: $standard-border-color transparent transparent;
+                            }
+                            &:after {
+                                margin-top: -2px;
+                                border-color: $body-bg transparent transparent;
+                            }
                         }
                         &.secondary {
 
@@ -1666,6 +1674,7 @@ a.link {
 /*  @group Configuratore Bag */
 /*-------------------------------*/
 
+
 .spinnerContainer {
     max-width: 960px !important;
     max-height: 960px !important;
@@ -1733,6 +1742,7 @@ a.link {
     font-size: 18px;
     padding: 7px 13px;
     color: #999;
+    display: none;
 }
 
 .zoom{
@@ -1829,6 +1839,14 @@ a.link {
 
 
 .configuratore {
+
+    .unaicon-unaduna-logo {
+        font-size: 1.5em;
+        line-height: 1em;
+        &:before {
+            top:0;
+        }
+    }
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -1912,7 +1930,7 @@ a.link {
             font-size: 1.3em;
             text-transform: uppercase;
             font-weight: lighter;
-            &:after {
+            /*&:after {
                 @include transition(all .2s ease-out);
                 content: "";
                 background: url(../images/small-arrow-down.png) center center no-repeat;
@@ -1923,13 +1941,13 @@ a.link {
                 margin-left: -6px;
                 bottom: 0px;
                 opacity: 0;
-            }
+            }*/
         }
         &:hover {
             img {
                 @include transition(all .2s ease-out);
             }
-            .nome {
+            /*.nome {
                 //display: inline-block;
                 @include transition(all .2s ease-out);
                 margin-top: 5px;
@@ -1938,7 +1956,7 @@ a.link {
                     @include transition(all .2s ease-out);
                     opacity: 1;
                 }
-            }
+            }*/
             text-decoration: none;
         }
         &:active, &:focus {
