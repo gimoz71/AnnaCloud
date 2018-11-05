@@ -599,7 +599,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			$(window).trigger("resize");
 		});
 
-		configController.priceManager.price = 0;
 
 		function isTouchDevice() {
 		    return 'ontouchstart' in document.documentElement;
@@ -922,6 +921,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		    $.fn.yammHeight('navbar-nav', 'yamm-content','riepilogoX')
 		});
 
+
+		configController.priceManager.price = 0;
 		
 	};
 

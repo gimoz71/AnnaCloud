@@ -13656,7 +13656,8 @@ a.link {
   border-top: solid 1px #e8d7db;
 }
 .configuratore .riepilogo .price {
-  font-size: 30px;
+  font-size: 34px;
+  font-weight: 400;
 }
 .configuratore .riepilogo .info {
   color: #ccc;
