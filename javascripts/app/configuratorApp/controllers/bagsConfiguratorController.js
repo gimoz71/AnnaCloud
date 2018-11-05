@@ -100,6 +100,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.selezionaCategoriaTracolla = function(entita) {
 		$scope.variantiTracolle = $scope.modelliTracolleOro.get(entita);
+		$scope.variantiTracolle = configController.ordinaEntita($scope.variantiTracolle);
 		$scope.tipoEntitaSelezionata = "varianti-tracolle";
 	}
 
@@ -307,6 +308,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			
 		});
 
+		configController.priceManager.price = modello.prezzo;
 	}
 
 	configController.selezionaEntita = function(entita){
