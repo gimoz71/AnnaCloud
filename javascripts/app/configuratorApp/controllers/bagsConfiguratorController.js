@@ -205,7 +205,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	}
 
 	configController.gestisciTracolle = function() {
-
 		$scope.modelliTracolleOro = new Map();
 		$scope.modelliTracolleArgento = new Map();
 		
@@ -589,7 +588,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 						}
 						$("#transition-image").delay(100).fadeOut();
 						$("#loader").delay(200).fadeOut("slow");
-
+						$("#openZoom").delay(200).fadeIn("slow");
+						
 						$scope.spinIcon = false;
 						$scope.spinAnim = false;
 					} 
@@ -845,13 +845,14 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		var pz = PinchZoomer.get("pz")
 
 		$('#canvasWrapper').parentResize();
-
 		// pulsanti apertura/chiusura zoom borsa
 		$('#openZoom').click(function() {
+			pz.zoom(1.4);
+			pz.y(-300);
+			pz.x(-70);
 			
 			html2canvas(document.querySelector("#spritespin"), { async:false }).then(canvas => {
 				$("#loader").show();
-
 				var dataUrl = canvas.toDataURL();
 				$("#pz").attr("src", dataUrl);
 				$("#pz").load();
@@ -862,7 +863,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			});
 		});
 		$('#closeZoom').click(function() {
-			pz.zoom(1.5);
 			$('.zoom').animate({opacity: 0}, {complete: function(){ $(this).css({'z-index': '0'}) }});
 		});
 
