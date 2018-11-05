@@ -281,6 +281,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 			$scope.metalleriaObbligatoria = [];
 			$scope.inizialiPreview = "";
+			configController.enableSymbols();
 			$scope.symbolsUrlStack = [];
 
 			configController.gestisciTracolle();
@@ -340,7 +341,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			//ricarico le iniziali quando cambio il colore
 			if($scope.inizialiPreview.length > 0){
 				configController.generateArray();
-				configController.caricaSpinner();
+				//configController.caricaSpinner();
 			}
 			if($scope.embossSelezionato){
 				//devo sostituire l'emboss se è selezionato
@@ -349,10 +350,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				var embossUrl = $scope.mapEmboss.get($scope.nomeStileSelezionato + "_" + entita.colore);
 				var urlE = embossUrl.urlStripe;
 				urlE = urlE.replace("RES", $scope.resolution);
-				//urlE = urlE.replace("560", $scope.resolution);
-				//urlE = urlE.replace("720", $scope.resolution);
-				//urlE = urlE.replace("960", $scope.resolution);
-				//urlE = urlE.replace("1920", $scope.resolution);
 
 				if(embossUrl){
 					configController.aggiungiElementoAStack(urlE, embossUrl.ordine);
@@ -431,6 +428,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			}
 			$scope.removable = true;
 		}
+
+		configController.caricaSpinner();
 	}
 
 	configController.aggiungiStrato = function(strato, ordine, eliminabile){
