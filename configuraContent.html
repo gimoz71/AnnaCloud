@@ -100,7 +100,6 @@
 								<slide ng-repeat="entita in categorieTracolle" ng-click="contr.selezionaCategoriaTracolla(entita)">
 									<a href="#" ng_class="{activeAccessorio: entita.nome === nomeEntitaSelezionata}" title="">
 										<img ng-src="{{contr.getThumbnailName(entita)}}" class="swiper-lazy"/>
-										
 	                                    <div ng-if="removable" class="closeItem"><i class="unaicon-remove"></i></div>
 	                                </a>
 								</slide>
@@ -112,7 +111,8 @@
 							<slides>
 								<slide ng-click="contr.selezioneTipoAccessorio('tracolle')">
 									<a href="#"  title="" class="unaduna-char">
-										<i class="fa fa-arrow-left" style="line-height: 1.5em;"></i>
+										<i class="fa fa-arrow-left hidden" style="line-height: 1.5em;"></i>
+										<img src="images/icon-up.png"class="swiper-lazy">
 									</a>
 								</slide>
 								<slide ng-repeat="entita in variantiTracolle" ng-click="contr.selezionaEntita(entita)">

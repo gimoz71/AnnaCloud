@@ -169,6 +169,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				$scope.entitaTipoAccessorioSelezionato = [];
 			}
 		}
+		// mySwiper.slides[1] non funziona, ma serve quì per resettare la posizione dello swiper ogni volta che si cambia accessorio
 		
 	}
 
