@@ -13501,6 +13501,7 @@ a.link {
 }
 .configuratore a, .configuratore a:link {
   color: #60534D !important;
+  font-family: "Montserrat", sans-serif;
 }
 .configuratore a:hover, .configuratore a:focus {
   color: #000 !important;
