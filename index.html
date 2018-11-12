@@ -15,16 +15,16 @@
     <link media="screen" rel="stylesheet" type="text/css" href="stylesheets/custom.css">
     <!--[if lt IE 9]><script src="javascripts/html5shiv.js"></script><![endif]-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+	<base href="/" />
 </head>
 
 <body ng-app="applicationModule" class="ng-scope" ng-cloak>
 	<div ng-controller="componentsController">
-		<div ng-if="!isConfigurator">
+		<div ng-hide="isActive('/configura')">
             <div class="main-header-content">
                 <nav class="navbar main-navbar navbar-default nomargin" role="navigation">
                     <div class="container">
-						<a class="logo-small hidden-lg hidden-md hidden-sm text-hide" href="#" ng-click="setHome()">AnnaCloud</a>
+						<a class="logo-small hidden-lg hidden-md hidden-sm text-hide" href="#!/home">AnnaCloud</a>
 		                <div class="navbar-header navbar-right">
 		                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 		                        <span class="sr-only">Toggle navigation</span>
@@ -34,22 +34,22 @@
 		                    </button>
 		                    <ul class="nav navbar-nav fixed-navbar-right">
 		                        <li ng-show="user!==null">
-		                            <a href="#" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
+		                            <a href="javascript:void(0)" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
 		                            <ul class="dropdown-menu" aria-labelledby="user-menu">
-		                                <li><a href="#" ng-click="setOrdini()" >I tuoi Ordini</a></li>
-		                                <li><a href="#" ng-click="setProfilo()" >Profilo</a></li>
-		                                <li><a href="#" ng-click="logOut()">Esci</a></li>
+		                                <li><a href="#!/ordini" ng-click="setOrdini()" >I tuoi Ordini</a></li>
+		                                <li><a href="#!/profilo" ng-click="setProfilo()" >Profilo</a></li>
+		                                <li><a href="#!/logout" ng-click="logOut()">Esci</a></li>
 		                            </ul>
 		                        </li>
 								<li ng-show="user==null">
-									<a href="#" id="user-menu" ng-click="setAccesso()"><i class="unaicon-login"></i> <span class="hidden-xs">accedi</span></a>
+									<a href="#!/accedi" id="user-menu" ng-click="setAccesso()"><i class="unaicon-login"></i> <span class="hidden-xs">accedi</span></a>
 									
 								</li>
 								<li>
-		                            <a href="#" ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
+		                            <a href="#!/preferiti" ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xs">(1)</span></a>
 	                           </li>
 		                        <li>
-		                            <a href="#" ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
+		                            <a href="#!/carrello" ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xs">(2)</span></a>
 		                        </li>
 		                    </ul>
 		                </div>
@@ -73,17 +73,17 @@
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
 									<li>
-										<a href="#" class="primary" data-toggle="dropdown">Crea</a>
+										<a href="javascript:void(0);" class="primary" data-toggle="dropdown">Crea</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#" class="secondary">Come funziona</a></li>
-											<li><a href="#" ng-click="setConfigurator()" class="secondary">Configura</a></li>
+											<li><a href="#!/come-funziona" class="secondary">Come funziona</a></li>
+											<li><a href="#!/configura"  class="secondary">Configura</a></li>
 										</ul>
 									</li>
 									<li>
-										<a href="#" class="primary" data-toggle="dropdown">Atelier</a>
+										<a href="javascript:void(0);" class="primary" data-toggle="dropdown">Atelier</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#" class="secondary">Shop</a></li>
-											<li><a href="#" class="secondary">Collezione</a></li>
+											<li><a href="#!/shop" class="secondary">Shop</a></li>
+											<li><a href="#!/collezione" class="secondary">Collezione</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -91,25 +91,24 @@
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
 									<li>
-										<a href="#" class="logo-big hidden-xs text-hide active link primary" ng-click="setHome()">AnnaCloud</a>
+										<a href="#!/home" class="logo-big hidden-xs text-hide active link primary" >AnnaCloud</a>
 									</li>
 								</ul>
 							</div>
 							<div class="col-sm-4">
 								<ul class="nav navbar-nav navbar-nav-flex">
 									<li>
-										<a href="#" class="primary" data-toggle="dropdown">Scopri</a>
+										<a href="javascript:void(0);" class="primary" data-toggle="dropdown">Scopri</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#" ng-click="setVisione()" class="secondary">Visione</a></li>
-											<li><a href="#" ng-click="setEsperienza()" class="secondary">Esperienza</a></li>
+											<li><a href="#!/visione" class="secondary">Visione</a></li>
+											<li><a href="#!/esperienza" class="secondary">Esperienza</a></li>
 										</ul>
 									</li>
 									<li>
-										<a href="#" class="primary" data-toggle="dropdown">Chi siamo</a>
+										<a href="javascript:void(0);" class="primary" data-toggle="dropdown">Chi siamo</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#" ng-click="setContatti()" class="secondary">Team</a></li>
-											<li><a href="#"  ng-click="setContatti()" class="secondary">Contatti</a></li>
-											<!--<li><a href="#">Carriera</a></li>-->
+											<li><a href="#!/team" class="secondary">Team</a></li>
+											<li><a href="#!/contatti" class="secondary">Contatti</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -117,32 +116,31 @@
 						</div>
 						<ul class="nav navbar-nav mobile-menu visible-xs-block">
 							<li>
-								<a href="#" data-toggle="dropdown" class="">Crea</a>
+								<a href="javascript:void(0);" data-toggle="dropdown" class="">Crea</a>
 								<ul class="dropdown-menu" aria-labelledby="user-menu">
-									<li><a href="#" ng-click="setAccesso()">Come funziona</a></li>
-									<li><a href="#" ng-click="setConfigurator()">Configura</a></li>
+									<li><a href="#!/accedi" ng-click="setAccesso()">Come funziona</a></li>
+									<li><a href="#!/configura" ng-click="setConfigurator()">Configura</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" data-toggle="dropdown" class="">Atelier</a>
+								<a href="javascript:void(0);" data-toggle="dropdown" class="">Atelier</a>
 								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a href="#">Shop</a></li>
-									<li><a href="#">Collezione</a></li>
+									<li><a href="#!/shop">Shop</a></li>
+									<li><a href="#!/collezione">Collezione</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" data-toggle="dropdown" class="">Scopri</a>
+								<a href="javascript:void(0);" data-toggle="dropdown" class="">Scopri</a>
 								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a href="#" ng-click="setVisione()">Visione</a></li>
-									<li><a href="#" ng-click="setEsperienza()">Esperienza</a></li>
+									<li><a href="#!/visione" ng-click="setVisione()">Visione</a></li>
+									<li><a href="#!/esperienza" ng-click="setEsperienza()">Esperienza</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" data-toggle="dropdown" class="">Chi siamo</a>
-
+								<a href="javascript:void(0);" data-toggle="dropdown" class="">Chi siamo</a>
 								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a href="#" ng-click="setContatti()">Team</a></li>
-									<li><a href="#" ng-click="setContatti()">Contatti</a></li>
+									<li><a href="#!/team" ng-click="setContatti()">Team</a></li>
+									<li><a href="#!/contatti" ng-click="setContatti()">Contatti</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -150,8 +148,8 @@
 		        </div>
 		    </nav>
 	    </div>
-	    <div class="template-content"><!-- contenitore principale -->
-
+	    <div class="template-content" ng-view><!-- contenitore principale -->
+<!--
 		    <home-content ng-if="isHome"></home-content>
 		    <configura-content ng-if="isConfigurator"></configura-content>
 		    <esperienza-content ng-if="isEsperienza"></esperienza-content>
@@ -163,10 +161,11 @@
 			<ordini-content ng-if="isOrdini"></ordini-content>
 			<carrello-content ng-if="isCarrello"></carrello-content>
 			<profilo-content ng-if="isProfilo"></profilo-content>
-			<checkout-content ng-if="isCheckout"></checkout-content>
+			<checkout-content ng-if="isCheckout"></checkout-content>-->
+
 	    </div>
 
-	    <footer class="" ng-if="!isConfigurator">
+	    <footer class="" ng-hide="isActive('/configura')">
 	        <div class="footer-navbar-container">
 	            <div class="container">
 					<div class="col-sm-3">
@@ -183,10 +182,10 @@
 						<h3>Crea</h3>
 						<ul>
 							<li>
-								<a href="#" class="" ng-click="setHome()">Come funziona</a>
+								<a href="#!/home" class="">Come funziona</a>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Configura</a>
+								<a href="#!/configura" class="">Configura</a>
 							</li>
 						</ul>
 					</div>
@@ -194,10 +193,10 @@
 						<h3>Atelier</h3>
 						<ul>
 							<li>
-								<a href="#" class="" ng-click="setHome()">Shop</a>
+								<a href="#!/shop" class="">Shop</a>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Collezione</a>
+								<a href="#!/collezione" class="">Collezione</a>
 							</li>
 						</ul>
 					</div>
@@ -205,10 +204,10 @@
 						<h3>Scopri</h3>
 						<ul>
 							<li>
-								<a href="#" class="" ng-click="setVisione()">Visione</a>
+								<a href="#!/visione" class="" ng-click="setVisione()">Visione</a>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setEsperienza()">Esperienza</a>
+								<a href="#!/esperienza" class="" ng-click="setEsperienza()">Esperienza</a>
 							</li>
 						</ul>
 					</div>
@@ -216,22 +215,19 @@
 						<h3>Chi siamo</h3>
 						<ul>
 							<li>
-								<a href="#" class="" ng-click="setHome()">Team</a>
+								<a href="#!/team" class="">Team</a>
 							</li>
 							<li>
-								<a href="#" class="" ng-click="setConfigurator()">Contatti</a>
-							</li>
-							<li>
-								<a href="#" class="" ng-click="setContatti()">Carriera</a>
+								<a href="#!/contatti" class="">Contatti</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-sm-3">
 						<h3>Seguici su:</h3>
 						<p class="social">
-							<a href="#"><i class="unaicon-facebook"></i></a>&nbsp;
-							<a href="#"><i class="unaicon-twitter"></i></a>&nbsp;
-							<a href="#"><i class="unaicon-instagram"></i></a>
+							<a href="javscript:void(0);"><i class="unaicon-facebook"></i></a>&nbsp;
+							<a href="javscript:void(0);"><i class="unaicon-twitter"></i></a>&nbsp;
+							<a href="javscript:void(0);"><i class="unaicon-instagram"></i></a>
 						</p>
 					</div>
 	                
@@ -289,11 +285,14 @@
 	<script src="javascripts/app/loginApp/controller/checkoutController.js"></script>
 	
 	<script src="javascripts/app/loginApp/controller/paypalController.js"></script>
-
+	
 	<script src="javascripts/app/configuratorApp/app.js"></script>
 	<!--<script src="javascripts/app/configuratorApp/controllers/configuratorController.js"></script>-->
 	<script src="javascripts/app/configuratorApp/controllers/bagsConfiguratorController.js"></script>
 	<script src="javascripts/app/configuratorApp/controllers/rootController.js"></script>
+
+	<!--<script src="javascripts/app/visioneApp/app.js"></script> // da testare per wow
+	<script src="javascripts/app/visioneApp/controllers/visioneController.js"></script>-->
 	<!--FINE BLOCCO IMPORT FILE APPLICAZIONE ANGULAR  -->
 	
 	<script src="javascripts/app/common/aws-sdk.min.js"></script>

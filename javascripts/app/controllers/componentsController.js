@@ -1,4 +1,4 @@
-angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", function($scope, loginService) {
+angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "$location",  function($scope, loginService, $location) {
 	
 	$scope.isHome = true;
 	$scope.isConfigurator = false;
@@ -15,6 +15,10 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	
 	$scope.user = null;
 	
+	$scope.isActive = function (viewLocation) {
+		return viewLocation === $location.path();
+	};
+
 	$scope.setUser = function(t){
 		$scope.user = t;
 	}
@@ -35,8 +39,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		console.log(data);
 	},
 		function(reason){
-		console.log('reason');
-	}
+			console.log('reason');
+		}
 	)
 	
 	$scope.nappeFisse = [ {

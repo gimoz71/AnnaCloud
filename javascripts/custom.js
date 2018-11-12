@@ -97,7 +97,7 @@ $.fn.animateAccessoriBar = function(accContainer, offsetElement, triggerElement,
     };
 
 }*/
-
+var scale;
 
 $.fn.parentResize = function() {
     var elemSize = $(window).height() - $(".navbar").outerHeight() - $(".accessori").outerHeight() - $(".riepilogo").outerHeight();
@@ -106,7 +106,7 @@ $.fn.parentResize = function() {
     
     var elHeight = $("#a-middle").outerHeight()-60;
     var elWidth = $("#a-middle").outerWidth()-100;
-    var scale;
+    
 
     scale = Math.min(
         this.width() / elWidth,

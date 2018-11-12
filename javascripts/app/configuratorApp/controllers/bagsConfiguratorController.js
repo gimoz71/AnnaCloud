@@ -913,13 +913,17 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			});
 		})(jQuery)
 
-
+		var resizeTimer; // serve per il timeout per lanciare funzioni alla fine del ridimensionamento della finestra
 		$(window).resize(function(){
-			$('.accessori').css('bottom', $('.riepilogo').outerHeight());
-			$('#canvasWrapper').parentResize();
-		    //$('#a-middle').centerElement();
-		    $.fn.sepLine('first-divider', 'swiper-container', 'accessori');
-		    $.fn.yammHeight('navbar-nav', 'yamm-content','riepilogoX')
+			clearTimeout(resizeTimer);
+
+			//resizeTimer = setTimeout(function () {
+				$('.accessori').css('bottom', $('.riepilogo').outerHeight());
+				$('#canvasWrapper').parentResize();
+				//$('#a-middle').centerElement();
+				$.fn.sepLine('first-divider', 'swiper-container', 'accessori');
+				$.fn.yammHeight('navbar-nav', 'yamm-content','riepilogoX')
+			//}, 250);
 		});
 
 
