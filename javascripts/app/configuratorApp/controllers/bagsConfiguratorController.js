@@ -23,6 +23,11 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	$scope.modelliTracolleArgento = new Map();
 	$scope.variantiTracolle = [];
 
+	$scope.categorieCiondoli = [];
+	$scope.modelliCiondoliOro = new Map();
+	$scope.modelliCiondoliArgento = new Map();
+	$scope.variantiCiondoli = [];
+
 	$scope.dataUrl = "";
 
 	$scope.tipoEntitaSelezionata = "colore";//di default apro il pannello colori
@@ -110,7 +115,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		//fadeout del componente
 		if(tipoAccessorio == "tracolle"){
 			$scope.tipoEntitaSelezionata = "tipi-tracolle";
-
+		} else if(tipoAccessorio == "ciondoli"){
+			$scope.tipoEntitaSelezionata = "tipi-ciondoli";
 		} else {
 
 			if (tipoAccessorio == "colore") {
@@ -205,6 +211,48 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		return placeHolder;
 	}
 
+	configController.gestisciCiondoli = function() {
+		$scope.modelliCiondoliOro = new Map();
+		$scope.modelliCiondoliArgento = new Map();
+		
+		for(var i = 0; i< $scope.entita.length; i++){
+			var entita = $scope.entita[i];
+			if(entita.categoria == "ciondoli"){
+				//prendo il nome
+				var nomeCiondolo = entita.nome;
+
+				//trovo la categoria di tracolle
+				var split = nomeCiondolo.split('_');
+				var categoriaCiondolo = split[0] + '_' + split[1];
+
+				//inserisco nelle categorie di tracolle
+				if ($scope.categorieCiondoli.indexOf(categoriaCiondolo) == -1){
+					$scope.categorieCiondoli.push(categoriaCiondolo);
+				}
+
+				var modelName = configController.getNomeModelloCiondolo(split);
+				if(entita.metallo == "oro"){
+					if (!$scope.modelliCiondoliOro.has(categoriaCiondolo)) {
+						$scope.modelliCiondoliOro.set(categoriaCiondolo, []);
+					}
+
+					if ($scope.modelliCiondoliOro.get(categoriaCiondolo).indexOf(modelName) == -1) {
+						$scope.modelliCiondoliOro.get(categoriaCiondolo).push(entita);
+					}
+				} else {
+					if (!$scope.modelliCiondoliArgento.has(categoriaCiondolo)) {
+						$scope.modelliCiondoliArgento.set(categoriaCiondolo, []);
+					}
+
+					if ($scope.modelliCiondoliArgento.get(categoriaCiondolo).indexOf(modelName) == -1) {
+						$scope.modelliCiondoliArgento.get(categoriaCiondolo).push(entita);
+					}
+				}
+			}
+		}
+
+	}
+
 	configController.gestisciTracolle = function() {
 		$scope.modelliTracolleOro = new Map();
 		$scope.modelliTracolleArgento = new Map();
@@ -257,6 +305,16 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		return toReturn;
 	}
 
+	configController.getNomeModelloCiondolo = function(splitted) {
+		var toReturn = "";
+		for (var i = 0; i < splitted.length; i++){
+			if (i > 1 && i < splitted.length - 1){
+				toReturn += splitted[i];
+			}
+		}
+		return toReturn;
+	}
+
 	configController.scegliModello = function(modello){
 
 		//carico solo gli accessori relativi al modello scelto
@@ -275,10 +333,12 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 			$scope.metalloVincolante = "argento";
 			$scope.mapMetalloTracolle = new Map();
+			$scope.mapMetalloCiondoli = new Map();
 			$scope.mapMetalloBorchie = new Map();
 
 			$scope.borchieSelezionate = false;
 			$scope.tracollaSelezionata = false;
+			$scope.ciondoloSelezionata = false;
 
 			$scope.metalleriaObbligatoria = [];
 			$scope.inizialiPreview = "";
@@ -286,6 +346,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			$scope.symbolsUrlStack = [];
 
 			configController.gestisciTracolle();
+			configController.gestisciCiondoli();
 
 			$(".dropdown-toggle").dropdown("toggle");
 
@@ -325,10 +386,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 		var url = entita.urlStripe;
 		url = url.replace("RES", $scope.resolution);
-		//url = url.replace("560", $scope.resolution);
-		//url = url.replace("720", $scope.resolution);
-		//url = url.replace("960", $scope.resolution);
-		//url = url.replace("1920", $scope.resolution);
 
 		if($scope.tipoEntitaSelezionata == "stile"){
 			$scope.nomeStileSelezionato = entita.nomeStile;
@@ -365,15 +422,22 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 				var tracollaUrl = $scope.mapMetalloTracolle.get(entita.metallo);
 				var urlT = tracollaUrl.urlStripe;
-				//urlT = urlT.replace("RES", configController.getResolutionPlaceHolder());
 				urlT = urlT.replace("RES", $scope.resolution);
-				//urlT = urlT.replace("560", $scope.resolution);
-				//urlT = urlT.replace("720", $scope.resolution);
-				//urlT = urlT.replace("960", $scope.resolution);
-				//urlT = urlT.replace("1920", $scope.resolution);
 
 				if(tracollaUrl){
 					configController.aggiungiElementoAStack(urlT, tracollaUrl.ordine, false);
+				}
+			}
+			if($scope.ciondoloSelezionata){
+				//devo sostituire l'emboss se è selezionato
+				//1. estraggo la url dell'emboss
+
+				var ciondoloUrl = $scope.mapMetalloCiondoli.get(entita.metallo);
+				var urlT = ciondoloUrl.urlStripe;
+				urlT = urlT.replace("RES", $scope.resolution);
+
+				if(ciondoloUrl){
+					configController.aggiungiElementoAStack(urlT, ciondoloUrl.ordine, false);
 				}
 			}
 			if($scope.borchieSelezionate){
@@ -382,12 +446,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 				var borchieUrl = $scope.mapMetalloBorchie.get($scope.nomeBorchiaSelezionata + "_" + entita.metallo);
 				var urlB = borchieUrl.urlStripe;
-				//urlB = urlB.replace("RES", configController.getResolutionPlaceHolder());
 				urlB = urlB.replace("RES", $scope.resolution);
-				//urlB = urlB.replace("560", $scope.resolution);
-				//urlB = urlB.replace("720", $scope.resolution);
-				//urlB = urlB.replace("960", $scope.resolution);
-				//urlB = urlB.replace("1920", $scope.resolution);
 
 				if(borchieUrl){
 					configController.aggiungiElementoAStack(urlB, borchieUrl.ordine, false);
@@ -427,6 +486,14 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				$scope.tracollaSelezionata = false;
 			} else {
 				$scope.tracollaSelezionata = ($scope.stack[entita.ordine] != undefined && $scope.stack[entita.ordine] != null)
+			}
+			$scope.removable = true;
+		}
+		if($scope.tipoEntitaSelezionata == "ciondoli"){
+			if ($scope.stack.indexOf(url) == -1) {
+				$scope.ciondoloSelezionata = false;
+			} else {
+				$scope.ciondoloSelezionata = ($scope.stack[entita.ordine] != undefined && $scope.stack[entita.ordine] != null)
 			}
 			$scope.removable = true;
 		}
@@ -926,9 +993,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			//}, 250);
 		});
 
-
-		configController.priceManager.price = 0;
-		
+		configController.priceManager.price = 0;		
 	};
-
 });
