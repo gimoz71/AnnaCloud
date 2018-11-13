@@ -61,6 +61,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	$scope.symbolEnabled = true;
 	$scope.baseUrlSymbols = "https://s3.eu-central-1.amazonaws.com/unaduna-images-bucket/MODELLI/MODELLO/INIZIALI/";
 	$scope.baseUrlThumbCategorieTracolle = "https://s3.eu-central-1.amazonaws.com/unaduna-images-bucket/MODELLI/MODELLO/TRACOLLE/THUMBNAILS/";
+	$scope.baseUrlThumbCategorieCiondoli = "https://s3.eu-central-1.amazonaws.com/unaduna-images-bucket/MODELLI/MODELLO/CIONDOLI/THUMBNAILS/";
 	$scope.symbolConfigurations = [["M"],["MSX","MDX"],["SX","M","DX"]];
 	$scope.inizialiPreview = "";
 	
@@ -97,17 +98,30 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		}
 	}
 
-	configController.getThumbnailName = function(entita){
+	configController.getThumbnailNameTracolle = function(entita){
 		var toReplace = configController.modelNameTranslate($scope.modelloSelezionato);
 		var thumbnailName = $scope.baseUrlThumbCategorieTracolle.replace("MODELLO", toReplace) + "THUMBNAIL_" + entita.replace("-","_") + ".png";
 		return thumbnailName;
 	}
 
+	configController.getThumbnailNameCiondoli = function (entita) {
+		var toReplace = configController.modelNameTranslate($scope.modelloSelezionato);
+		var thumbnailName = $scope.baseUrlThumbCategorieCiondoli.replace("MODELLO", toReplace) + "THUMBNAIL_" + entita.replace("-", "_") + ".png";
+		return thumbnailName;
+	}
+
 	configController.selezionaCategoriaTracolla = function(entita) {
-		$scope.variantiTracolle = $scope.modelliTracolleOro.get(entita);
+		$scope.variantiTracolle = $scope.modelliTracolleArgento.get(entita);
 		$scope.variantiTracolle = configController.ordinaEntita($scope.variantiTracolle);
 		$scope.tipoEntitaSelezionata = "varianti-tracolle";
 	}
+
+	configController.selezionaCategoriaCiondolo = function (entita) {
+		$scope.variantiCiondoli = $scope.modelliCiondoliArgento.get(entita);
+		$scope.variantiCiondoli = configController.ordinaEntita($scope.variantiCiondoli);
+		$scope.tipoEntitaSelezionata = "varianti-ciondoli";
+	}
+	
 
 	configController.selezioneTipoAccessorio = function(tipoAccessorio){
 		$scope.tipoEntitaSelezionata = tipoAccessorio;
