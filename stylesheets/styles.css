@@ -13435,13 +13435,6 @@ a.link {
   padding: 10px 15px !important;
 }
 
-/*.zoomIn
-{
-}
-
-.zoomOut
-{
-}*/
 .fullscreenToggle {
   display: none !important;
 }
@@ -13649,6 +13642,38 @@ a.link {
   width: 100%;
   border-top: solid 1px #e8d7db;
 }
+.configuratore #price-panel {
+  position: absolute;
+  display: block;
+  padding: 10px 15px;
+  top: 80px;
+  right: 0;
+  border: solid 1px #e8d7db;
+  border-right: none;
+  background-color: #fff;
+  z-index: 10;
+  text-align: center;
+}
+.configuratore #price-panel .size {
+  margin: 10px 0 0;
+}
+.configuratore #price-panel .total-price {
+  display: block;
+  margin: 10px 0;
+}
+.configuratore #price-panel .price-detail {
+  margin: 0 0 10px;
+  font-size: 11px;
+  color: #777777;
+}
+.configuratore #price-panel hr {
+  margin: 15px 0;
+}
+@media screen and (max-width: 767px) {
+  .configuratore #price-panel {
+    display: none;
+  }
+}
 .configuratore .riepilogo {
   position: absolute;
   display: none;
@@ -13656,16 +13681,34 @@ a.link {
   background-color: #fff;
   z-index: 50;
   bottom: 0;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-top: solid 1px #e8d7db;
 }
 .configuratore .riepilogo .price {
-  font-size: 34px;
+  font-size: 26px;
   font-weight: 400;
+  display: inline;
+  padding-top: 5px;
 }
 .configuratore .riepilogo .info {
   color: #ccc;
+}
+.configuratore .riepilogo .price-container {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .configuratore .riepilogo .price-container {
+    display: block;
+  }
+}
+.configuratore .riepilogo .credits-container {
+  display: block;
+}
+@media screen and (max-width: 767px) {
+  .configuratore .riepilogo .credits-container {
+    display: none;
+  }
 }
 .configuratore .accessori-categoria, .configuratore .accessori-thumb {
   width: 100%;

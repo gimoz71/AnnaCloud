@@ -1791,13 +1791,7 @@ a.link {
     padding: 10px 15px !important;
 }
 
-/*.zoomIn
-{
-}
 
-.zoomOut
-{
-}*/
 
 .fullscreenToggle
 {
@@ -2036,6 +2030,39 @@ a.link {
     //         background: transparent url('../images/accessori-trigger.png') no-repeat 0 -40px;
     //     }
     // }
+    #price-panel{
+        position: absolute;
+        display: block;
+        padding: 10px 15px;
+        top: 80px;
+        right: 0;
+        border: solid 1px $standard-border-color;
+        border-right: none;
+        //border-radius:  5px 0 0 5px ;
+        background-color: #fff;
+        z-index: 10;
+        text-align: center;
+        .name {
+        }
+        .size {
+            margin: 10px 0 0;
+        }
+        .total-price {
+            display: block;
+            margin: 10px 0;
+        }
+        .price-detail {
+            margin: 0 0 10px;
+            font-size: 11px;
+            color: $gray-light;
+        }
+        hr {
+            margin: 15px 0;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
     .riepilogo {
         position: absolute;
         display: none;
@@ -2044,19 +2071,34 @@ a.link {
         background-color: #fff;
         z-index: 50;
         bottom: 0;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         border-top: solid 1px $standard-border-color;
         .price {
-            font-size: 34px;
+            font-size: 26px;
             font-weight: 400;
-        }
+            display: inline;
+            padding-top: 5px;
+        } 
         .info{
             color: #ccc;
         }
         // @media screen and (min-height: 650px) {
         //
         // }
+        .price-container {
+            display: none;     
+            @media screen and (max-width: $screen-xs-max) {
+                display: block;
+            }
+        }
+        .credits-container {
+            display: block;     
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+    
     }
     .accessori-categoria, .accessori-thumb {
         width: 100%;

@@ -52,6 +52,15 @@
 			</div>
 		</div>
 	</div>
+	<div id="price-panel">
+		<p class="size">Shoulderbag<br>21x19 cm</p>
+		<hr>
+		<h3 class="total-price ">{{contr.priceManager.price}}&euro;</h3>
+		<p class="price-detail">22% IVA inclusa,<br>spese di sped. escluse</p>
+		<a href="javascript:void(0);" class="btn btn-default btn-block">Acquista</a>
+		<a href="javascript:void(0);" style="padding-top: 5px; display: block;"><small>salva</small></a>
+		
+	</div>
 	<div id="canvasWrapper">
 		<div id="a-middle" class="spinnerContainer">
 			<div>
@@ -322,19 +331,24 @@
 		</div>
 	</div>
 	<div class="riepilogo">
-		<div class="container">
+		<div class="container price-container">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3  clearfix">
-					<div class="col-xs-6 text-right">
-						<h3 class="price nomargin">{{contr.priceManager.price}}&euro;</h3>
-					</div>
 					<div class="col-xs-6 text-center">
-						<a href="javascript:void(0);" class="btn btn-default btn-block follow">procedi</a>
+						<h3 class="price nomargin">{{contr.priceManager.price}}&euro;</h3>
+						<a href="javascript:void(0);" class="btn btn-default">Acquista</a> <a href="#">salva</a>
 					</div>
 					
 				</div>
 			</div>
-			<div class="row info hidden">
+			<div class="row info ">
+				<div class="col-sm-12 text-center clearfix">
+					<small>22% IVA inclusa, spese di sped. escluse - 21x19 cm</small>
+				</div>
+			</div>
+		</div>
+		<div class="container credits-container">
+			<div class="row">
 				<div class="col-sm-12 text-center clearfix">
 					<small>Copyright Unaduna 2018</small>
 				</div>
