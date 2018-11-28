@@ -12372,6 +12372,24 @@ a.link {
   padding: 11px !important;
 }
 
+.favoriti, .carrello {
+  position: relative;
+}
+.favoriti span, .carrello span {
+  font-size: 14px;
+  line-height: 14px;
+}
+@media screen and (max-width: 480px) {
+  .favoriti span, .carrello span {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 1px;
+    font-size: .75em;
+    line-height: .75em;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .fixed-navbar-right {
     float: right;
@@ -13686,13 +13704,22 @@ a.link {
   border-top: solid 1px #e8d7db;
 }
 .configuratore .riepilogo .price {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   display: inline;
-  padding-top: 5px;
+}
+.configuratore .riepilogo .model {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  color: #999;
 }
 .configuratore .riepilogo .info {
   color: #ccc;
+  font-size: 10px;
+}
+.configuratore .riepilogo .info p {
+  margin: 3px 0 0 0;
 }
 .configuratore .riepilogo .price-container {
   display: none;

@@ -750,7 +750,27 @@ a.link {
         }
     }
 }
+
+
+.favoriti, .carrello {
+    position: relative;
+    span {
+        font-size: 14px;
+        line-height: 14px;
+        @media screen and (max-width: $screen-xs) {
+            display: block;
+            position: absolute;
+            top: 12px;
+            right: 1px;
+            font-size: .75em;
+            line-height: .75em;
+        }
+    }
+}
+
 @media screen and (max-width: $screen-xs-max) {
+
+    
     .fixed-navbar-right {
         float: right;
         margin: 0;
@@ -2075,13 +2095,23 @@ a.link {
         padding-bottom: 5px;
         border-top: solid 1px $standard-border-color;
         .price {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 400;
             display: inline;
-            padding-top: 5px;
+            
         } 
+        .model {
+            margin: 0;
+            padding: 0;
+            font-size: 10px;
+            color: #999;
+        }
         .info{
             color: #ccc;
+            font-size: 10px;
+            p {
+                margin: 3px 0 0 0;
+            }
         }
         // @media screen and (min-height: 650px) {
         //
