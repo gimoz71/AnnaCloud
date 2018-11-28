@@ -1,4 +1,4 @@
-angular.module('configuratorModule').controller('unadunaConfiguratorController2', function($http, $scope, $filter, listeService, $log, $window, $timeout){
+angular.module('configuratorModule').controller('unadunaConfiguratorController2', function($scope, listeService, $log, jwtHelper){
 
 	$scope.$log = $log;
 
@@ -67,6 +67,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	
 	$scope.currentFrame = 0;
 
+	//parte relativa alla gestione della configurazione da passare poi agli ordini
+	$scope.configurazione = {};
+	$scope.user = null;
 
 	configController.getRepeaterClass = function(accessorio, index){
 		var toReturn = "";
@@ -331,6 +334,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.scegliModello = function(modello){
 
+		configController.initConfigurazione();
+
 		//carico solo gli accessori relativi al modello scelto
 		listeService.getAccessori(modello.nome).then(function (res2) {
 			$scope.entita = res2.data.accessori;
@@ -370,12 +375,15 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 			$scope.coloreSelezionato = "black";
 
-			configController.aggiungiElementoAStack(url, 0, false);
+			var entitaModello = configController.getInternalEntitaObjct("modello", modello.codice, modello.nome, modello.nome, modello.prezzo, "modello", modello.urlStripe);
+			configController.aggiungiElementoAStack(url, 0, false, entitaModello);
 			$scope.modelloSelezionato = modello.nome;
 			$scope.tipiAccessoriModelloSelezionato = $scope.tipiAccessori.get(modello.nome);
 
+			var singolaEntita = configController.getSingolaEntita("metalleria", modello.nome, "metalleria_argento");
+			var entitaMetalleria = configController.getInternalEntitaObjct(singolaEntita.categoria, singolaEntita.codice, singolaEntita.nome, singolaEntita.nome, singolaEntita.prezzo, singolaEntita.categoria, singolaEntita.urlStripe);
 			$scope.metalleriaObbligatoria = configController.getUrlMetalleria(modello.nome, "argento");
-			configController.aggiungiElementoAStack($scope.metalleriaObbligatoria, 3, false);
+			configController.aggiungiElementoAStack($scope.metalleriaObbligatoria, 3, false, entitaMetalleria);
 
 			//apro il pannello dei colori
 			configController.selezioneTipoAccessorio("colore");
@@ -383,7 +391,74 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			
 		});
 
-		configController.priceManager.price = modello.prezzo;
+	}
+
+	configController.getInternalEntitaObjct = function(categoria, codice, descrizione, nome, prezzo, tipoEntita, url){
+		var entita = {};
+
+		entita.categoria = categoria;
+		entita.codice = codice+"";
+		entita.descrizione = descrizione;
+		entita.nome = nome;
+		entita.prezzo = prezzo;
+		entita.tipoEntita = tipoEntita;
+		entita.url = url+"";
+
+		return entita;
+	}
+
+	configController.addEntitaToConfigurazione = function(categoria, codice, descrizione, nome, prezzo, tipoEntita, url){
+		var entita = {};
+
+		entita.categoria = categoria;
+		entita.codice = codice+"";
+		entita.descrizione = descrizione;
+		entita.nome = nome;
+		entita.prezzo = prezzo;
+		entita.tipoEntita = tipoEntita;
+		entita.url = url+"";
+
+		$scope.configurazione.elencoEntita.push(entita);
+		configController.ricaricaPrezzo();
+
+		return entita;
+	}
+
+	configController.removeEntitaToConfigurazione = function(categoria, nome){
+
+		if(categoria != "iniziali"){
+			//trovo l'oggetto di quella categoria e lo tolgo
+			//$scope.configurazione.elencoEntita.push(entita);
+
+			var numeroEntita = $scope.configurazione.elencoEntita.length;
+			var tempElenco = $scope.configurazione.elencoEntita;
+			var indice = -1;
+			for(var i = 0; i < numeroEntita; i++){
+				var entita = tempElenco[i];
+				if(entita.categoria == categoria){
+					indice = tempElenco.indexOf(entita);
+					break;
+				}
+			}
+			if(indice >= 0){
+				tempElenco.splice(indice, 1);
+			}
+			$scope.configurazione.elencoEntita = tempElenco;
+		} else {
+			//devo togliere l'ultima
+		}
+
+		configController.ricaricaPrezzo();
+	}
+
+	configController.ricaricaPrezzo = function(){
+		var prezzoCalcolato = 0;
+		var numeroEntita = $scope.configurazione.elencoEntita.length;
+		for(var i = 0; i < numeroEntita; i++){
+			var entita = $scope.configurazione.elencoEntita[i];
+			prezzoCalcolato += entita.prezzo;
+		}
+		configController.priceManager.price = prezzoCalcolato;
 	}
 
 	configController.selezionaEntita = function(entita){
@@ -408,13 +483,12 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			$scope.nomeBorchiaSelezionata = entita.nomeBorchia;
 		}
 		if ($scope.tipoEntitaSelezionata.startsWith("colore")){
-			
+
 			$scope.coloreSelezionato = entita.colore;
 			
 			//ricarico le iniziali quando cambio il colore
 			if($scope.inizialiPreview.length > 0){
 				configController.generateArray();
-				//configController.caricaSpinner();
 			}
 			if($scope.embossSelezionato){
 				//devo sostituire l'emboss se è selezionato
@@ -425,7 +499,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				urlE = urlE.replace("RES", $scope.resolution);
 
 				if(embossUrl){
-					configController.aggiungiElementoAStack(urlE, embossUrl.ordine);
+					configController.aggiungiElementoAStack(urlE, embossUrl.ordine, false, entita);
 				}
 			}
 		}
@@ -439,7 +513,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				urlT = urlT.replace("RES", $scope.resolution);
 
 				if(tracollaUrl){
-					configController.aggiungiElementoAStack(urlT, tracollaUrl.ordine, false);
+					configController.aggiungiElementoAStack(urlT, tracollaUrl.ordine, false, entita);
 				}
 			}
 			if($scope.ciondoloSelezionata){
@@ -451,7 +525,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				urlT = urlT.replace("RES", $scope.resolution);
 
 				if(ciondoloUrl){
-					configController.aggiungiElementoAStack(urlT, ciondoloUrl.ordine, false);
+					configController.aggiungiElementoAStack(urlT, ciondoloUrl.ordine, false, entita);
 				}
 			}
 			if($scope.borchieSelezionate){
@@ -463,7 +537,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				urlB = urlB.replace("RES", $scope.resolution);
 
 				if(borchieUrl){
-					configController.aggiungiElementoAStack(urlB, borchieUrl.ordine, false);
+					configController.aggiungiElementoAStack(urlB, borchieUrl.ordine, false, entita);
 				}
 			}
 		}
@@ -476,7 +550,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			$scope.metalloVincolante = entita.metallo;
 		}
 
-		configController.aggiungiStrato(url, entita.ordine, (entita.categoria != "colore" && entita.categoria != "metalleria"));
+		configController.aggiungiStrato(url, entita.ordine, (entita.categoria != "colore" && entita.categoria != "metalleria"), entita);
 
 		if($scope.tipoEntitaSelezionata == "stile"){
 			if($scope.stack.indexOf(url) == -1){
@@ -515,13 +589,13 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		configController.caricaSpinner();
 	}
 
-	configController.aggiungiStrato = function(strato, ordine, eliminabile){
+	configController.aggiungiStrato = function(strato, ordine, eliminabile, entita){
 		
-		configController.aggiungiElementoAStack(strato, ordine, eliminabile);
+		configController.aggiungiElementoAStack(strato, ordine, eliminabile, entita);
 		configController.caricaSpinner();
 	}
 
-	configController.aggiungiElementoAStack = function(strato, ordine, eliminabile){
+	configController.aggiungiElementoAStack = function(strato, ordine, eliminabile, entita){
 		var indice = $scope.stack.indexOf(strato);
 
 		if(indice == -1){ //lo strato non è nello stack
@@ -536,10 +610,14 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				$scope.stack.push(strato);
 			} else {//sostituisco lo strato esistente nello stack all'indice dello strato da inserire
 				$scope.stack[ordine] = strato;
+				configController.removeEntitaToConfigurazione(entita.categoria, entita.nome);
 			}
+
+			configController.addEntitaToConfigurazione(entita.categoria, entita.codice, entita.nome, entita.nome, entita.prezzo, entita.categoria, entita.urlStripe);
 
 		} else { //lo strato è già nello stack
 			if(eliminabile){
+				configController.removeEntitaToConfigurazione(entita.categoria, entita.nome);
 				$scope.stack[ordine] = "";
 			}
 		}
@@ -705,6 +783,16 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		return "";
 	}
 	
+	configController.getSingolaEntita = function(categoria, modello, nome){
+		for(var i = 0; i < $scope.entita.length; i++){
+			var singolaEntita = $scope.entita[i];
+			if(singolaEntita.modello == modello && singolaEntita.categoria == categoria && singolaEntita.nome == nome){
+				return singolaEntita;
+			}
+		}
+		return null;
+	}
+
 	configController.getHigherResolution = function(){
 		var currentRes = $scope.resolution;
 		var higherRes = currentRes;
@@ -890,7 +978,68 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		return tempModelli;
 	}
 
+	configController.aggiungiAlCarrello = function(){
+		//nessun controllo, devo poter aggiungere n volte al carrello
+		if($scope.configurazione){
+			$scope.configurazione.carrello = true;
+			listeService.putConfigurazione($scope.configurazione).then(
+				function (res){
+					console.log(res);
+					$scope.configurazione.codice = res.data.codiceConfigurazioneRisposta;
+					$scope.addToCarrello($scope.configurazione);//aggiunge al carrello locale
+					$scope.addToPreferiti($scope.configurazione);//aggiunge ai preferiti locali
+				},
+				function (reason){
+					console.log(reason);
+					alert ("errore aggiunta preferiti");
+				}
+			);	
+
+			
+		}	
+	}
+
+	configController.aggiungiAiPreferiti = function(){
+		//controllare se è già tra i preferiti
+		if($scope.configurazione){
+			$scope.configurazione.carrello = false;
+			listeService.putConfigurazione($scope.configurazione).then(
+				function (res){
+					console.log(res);
+					$scope.configurazione.codice = res.data.codiceConfigurazioneRisposta;
+					$scope.addToPreferiti($scope.configurazione);//aggiunge ai preferiti locali
+				},
+				function (reason){
+					console.log(reason);
+					alert ("errore aggiunta preferiti");
+				}
+			);	
+
+			
+		}	
+	}
+
+	configController.initConfigurazione = function() {
+
+		$scope.configurazione.codice = "";
+		$scope.configurazione.dedica = "";
+		$scope.configurazione.nome = "";
+		$scope.configurazione.carrello = 0;
+		$scope.configurazione.elencoEntita = [];
+
+		var userInSession = $scope.getUser();
+		var user = {};
+		if(userInSession != null){
+		// 	user.email = userInSession.email;
+			var idToken = jwtHelper.decodeToken(userInSession.signInUserSession.idToken.jwtToken);
+			var email = idToken.email;
+			user.email = email;
+		}
+		$scope.configurazione.utente = user;
+	}
+
 	configController.initConfiguratore = function(){
+
 
 		//1. devo fare il caricamento massivo iniziale delle configurazioni (solo la struttura json dal DB, non le immagini)
 		listeService.getModelli().then(function (res) {

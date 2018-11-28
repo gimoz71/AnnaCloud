@@ -14,10 +14,46 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isCheckout = false;
 	
 	$scope.user = null;
-	
+
+	$scope.carrello = [];
+	$scope.preferiti = [];
+
 	$scope.isActive = function (viewLocation) {
 		return viewLocation === $location.path();
 	};
+
+	$scope.getCarrello = function(){
+		return $scope.carrello;
+	}
+
+	$scope.initCarrello = function(carrello){
+		$scope.carrello = carrello;
+	}
+
+	$scope.addToCarrello = function(oggetto){
+		$scope.carrello.push(oggetto);
+	}
+
+	$scope.getCarrelloSize = function(){
+		return $scope.carrello.length;
+	}
+
+	$scope.getPreferiti = function(){
+		return $scope.preferiti;
+	}
+
+	$scope.initPreferiti = function(preferiti){
+		$scope.preferiti = preferiti;
+	}
+
+	$scope.addToPreferiti = function(oggetto){
+		//devo controllare se c'è già tra i preferiti (mentre nel carrello comunque aggiungo)
+		$scope.preferiti.push(oggetto);
+	}
+
+	$scope.getPreferitiSize = function(){
+		return $scope.preferiti.length;
+	}
 
 	$scope.setUser = function(t){
 		$scope.user = t;

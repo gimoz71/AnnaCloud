@@ -20,7 +20,7 @@
 
 <body ng-app="applicationModule" class="ng-scope" ng-cloak>
 	<div ng-controller="componentsController">
-		<div ng-hide="isActive('/configura')">
+		<div>
             <div class="main-header-content">
                 <nav class="navbar main-navbar navbar-default nomargin" role="navigation">
                     <div class="container">
@@ -266,6 +266,8 @@
 	<script src="javascripts/app/loginApp/constants/responseCodesConstants.js"></script>
 	<script src="javascripts/app/loginApp/constants/loginUrlConstants.js"></script> -->
 	<script src="javascripts/app/loginApp/services/loginService.js"></script>
+	<script src="javascripts/app/loginApp/services/carrelloService.js"></script>
+	<script src="javascripts/app/loginApp/services/preferitiService.js"></script>
 	<!-- <script src="javascripts/app/loginApp/services/sessionService.js"></script>
 	<script src="javascripts/app/loginApp/services/loginMessagesCreator.js"></script>
 	<script src="javascripts/app/loginApp/controller/applicationController.js"></script>-->
@@ -318,6 +320,8 @@
     <link rel="stylesheet" href="node_modules/angular-ui-swiper/dist/angular-ui-swiper.css">
 	<script src="node_modules/angular-ui-swiper/dist/angular-ui-swiper.js"></script>
 
+	<script src="node_modules/angular-jwt/dist/angular-jwt.min.js"></script>
+	
     <style type="text/css">
         /* N.B. .clearfix per funzionare deve rimanere dichiarato nell'html */
         .clearfix:after {
