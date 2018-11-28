@@ -4,6 +4,7 @@
   "description": "xxx",
   "main": "index.js",
   "dependencies": {
+    "angular-jwt": "^0.1.10",
     "angular-ui-swiper": "^2.3.8",
     "gulp-rename": "^1.4.0"
   },

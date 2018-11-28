@@ -737,7 +737,7 @@ a.link {
         margin-left: -1px;
         a {
             line-height: 2em !important;
-            padding: 11px !important
+            padding: 11px !important;
         }
     }
 }
@@ -750,7 +750,36 @@ a.link {
         }
     }
 }
+
+
+.favoriti, .carrello, .utente {
+    position: relative;
+    span {
+        font-size: 14px;
+        line-height: 14px;
+        @media screen and (max-width: $screen-xs) {
+            display: block;
+            position: absolute;
+            top: 22px;
+            right: -2px;
+            font-size: .75em;
+            line-height: .75em;
+        }
+    }
+    a {
+        @media screen and (max-width: $screen-xs) {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+    }
+}
+.carrello {
+    margin-right: 18px;
+}
+
 @media screen and (max-width: $screen-xs-max) {
+
+    
     .fixed-navbar-right {
         float: right;
         margin: 0;
@@ -1791,13 +1820,7 @@ a.link {
     padding: 10px 15px !important;
 }
 
-/*.zoomIn
-{
-}
 
-.zoomOut
-{
-}*/
 
 .fullscreenToggle
 {
@@ -2036,6 +2059,39 @@ a.link {
     //         background: transparent url('../images/accessori-trigger.png') no-repeat 0 -40px;
     //     }
     // }
+    #price-panel{
+        display: none;
+        position: absolute;
+        padding: 10px 15px;
+        top: 80px;
+        right: 0;
+        border: solid 1px $standard-border-color;
+        border-right: none;
+        //border-radius:  5px 0 0 5px ;
+        background-color: #fff;
+        z-index: 10;
+        text-align: center;
+        .name {
+        }
+        .size {
+            margin: 10px 0 0;
+        }
+        .total-price {
+            display: block;
+            margin: 10px 0;
+        }
+        .price-detail {
+            margin: 0 0 10px;
+            font-size: 11px;
+            color: $gray-light;
+        }
+        hr {
+            margin: 15px 0;
+        }
+        @media screen and (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
     .riepilogo {
         position: absolute;
         display: none;
@@ -2044,19 +2100,44 @@ a.link {
         background-color: #fff;
         z-index: 50;
         bottom: 0;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         border-top: solid 1px $standard-border-color;
         .price {
-            font-size: 34px;
+            font-size: 22px;
             font-weight: 400;
+            display: inline;
+            
+        } 
+        .model {
+            margin: 0;
+            padding: 0;
+            font-size: 10px;
+            color: #999;
         }
         .info{
             color: #ccc;
+            font-size: 10px;
+            p {
+                margin: 3px 0 0 0;
+            }
         }
         // @media screen and (min-height: 650px) {
         //
         // }
+        .price-container {
+            display: none;     
+            @media screen and (max-width: $screen-xs-max) {
+                display: block;
+            }
+        }
+        .credits-container {
+            display: block;     
+            @media screen and (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+    
     }
     .accessori-categoria, .accessori-thumb {
         width: 100%;
