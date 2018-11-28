@@ -38,7 +38,7 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "logi
 				}
 			);	
 		}
-	
+
 	$scope.eliminaCar  = function (ord)  {
 		console.log(ord);
 		listeService.deleteConfigurazione(ord).then(function(data){

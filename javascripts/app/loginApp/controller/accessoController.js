@@ -18,6 +18,8 @@ angular.module("loginModule").controller("accessoController", ["$scope", "loginS
 				console.log(data);
 					loginService.getCurrentUser().then (function (data){
 						console.log(data);
+						var user = data;
+						user.eMail = email;
 						$scope.setUser(data);
 						if ($scope.remember.value == true){
 							loginService.setDeviceStatusRemembered().then(
