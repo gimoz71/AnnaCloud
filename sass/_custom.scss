@@ -737,7 +737,7 @@ a.link {
         margin-left: -1px;
         a {
             line-height: 2em !important;
-            padding: 11px !important
+            padding: 11px !important;
         }
     }
 }
@@ -752,7 +752,7 @@ a.link {
 }
 
 
-.favoriti, .carrello {
+.favoriti, .carrello, .utente {
     position: relative;
     span {
         font-size: 14px;
@@ -760,12 +760,21 @@ a.link {
         @media screen and (max-width: $screen-xs) {
             display: block;
             position: absolute;
-            top: 12px;
-            right: 1px;
+            top: 22px;
+            right: -2px;
             font-size: .75em;
             line-height: .75em;
         }
     }
+    a {
+        @media screen and (max-width: $screen-xs) {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+    }
+}
+.carrello {
+    margin-right: 18px;
 }
 
 @media screen and (max-width: $screen-xs-max) {
@@ -2051,8 +2060,8 @@ a.link {
     //     }
     // }
     #price-panel{
+        display: none;
         position: absolute;
-        display: block;
         padding: 10px 15px;
         top: 80px;
         right: 0;

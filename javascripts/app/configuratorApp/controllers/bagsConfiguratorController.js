@@ -749,6 +749,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 						$("#transition-image").delay(100).fadeOut();
 						$("#loader").delay(200).fadeOut("slow");
 						$("#openZoom").delay(200).fadeIn("slow");
+						$("#price-panel").delay(200).fadeIn("slow");
 						
 						$scope.spinIcon = false;
 						$scope.spinAnim = false;
