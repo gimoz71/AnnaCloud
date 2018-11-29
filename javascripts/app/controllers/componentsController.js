@@ -120,6 +120,10 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		idaccessorio : 2,
 		attivo : false
 	} ];
+
+	$scope.hideHeader = function(){
+		return $location.path().indexOf("configura") != -1;
+	}
 	
 	$scope.wowInit = function(config){
 		if(config){
