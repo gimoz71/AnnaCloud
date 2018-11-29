@@ -46,10 +46,10 @@
 									
 								</li>
 								<li class="favoriti">
-		                            <a href="#!/preferiti" ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xsx">(1)</span></a>
+		                            <a href="#!/preferiti" ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xsx">({{getPreferitiSize()}})</span></a>
 	                           </li>
 		                        <li class="carrello">
-		                            <a href="#!/carrello" ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xsx">(2)</span></a>
+		                            <a href="#!/carrello" ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xsx">({{getCarrelloSize()}})</span></a>
 		                        </li>
 		                    </ul>
 		                </div>

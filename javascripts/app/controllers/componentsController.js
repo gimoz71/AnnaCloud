@@ -1,4 +1,4 @@
-angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "$location",  function($scope, loginService, $location) {
+angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "listeService", "$location", "jwtHelper",  function($scope, loginService, listeService, $location, jwtHelper) {
 	
 	$scope.isHome = true;
 	$scope.isConfigurator = false;
@@ -15,12 +15,83 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	
 	$scope.user = null;
 
+	$scope.costoSpedizione = 19.50;
+
 	$scope.carrello = [];
 	$scope.preferiti = [];
+	$scope.ordineInCorso = null;
+
+	$scope.tempConfigurazione = null;
+	
+	$scope.email = "";
+	$scope.tel = "";
+	$scope.nome = "";
+	$scope.cognome = "";
+	$scope.indSpe = "";
+	$scope.indSpe2 = "";
+
+	$scope.nextPath = "";
 
 	$scope.isActive = function (viewLocation) {
 		return viewLocation === $location.path();
 	};
+
+	$scope.setOrdineInCorso = function(ordineInCorso){
+		$scope.ordineInCorso = ordineInCorso;
+	}
+
+	$scope.getOrdineInCorso = function(){
+		return $scope.ordineInCorso;
+	}
+
+	$scope.setEmail = function(email){
+		$scope.email = email;
+	}
+	$scope.getEmail = function(){
+		return $scope.email;
+	}
+
+	$scope.setTel = function(tel){
+		$scope.tel = tel;
+	}
+	$scope.getTel = function(){
+		return $scope.tel;
+	}
+
+	$scope.setNome = function(nome){
+		$scope.nome = nome;
+	}
+	$scope.getNome = function(){
+		return $scope.nome;
+	}
+
+	$scope.setCognome = function(cognome){
+		$scope.cognome = tel;
+	}
+	$scope.getCognome = function(){
+		return $scope.cognome;
+	}
+
+	$scope.setIndSpe = function(indSpe){
+		$scope.indSpe = indSpe;
+	}
+	$scope.getIndSpe = function(){
+		return $scope.indSpe;
+	}
+
+	$scope.setIndSpe2 = function(indSpe2){
+		$scope.indSpe2 = indSpe2;
+	}
+	$scope.getIndSpe2 = function(){
+		return $scope.indSpe2;
+	}
+
+	$scope.setTempConfigurazione = function(configurazione){
+		$scope.tempConfigurazione = configurazione;
+	}
+	$scope.getTempConfigurazione = function(){
+		return $scope.tempConfigurazione;
+	}
 
 	$scope.getCarrello = function(){
 		return $scope.carrello;
@@ -69,8 +140,78 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.setHome();
 	}
 	
+	$scope.getCostoSpedizione = function(){
+		return $scope.costoSpedizione;
+	}
+
+	$scope.calcolaPrezzo = function(configurazione){
+		var prezzoCalcolato = 0;
+		var numeroEntita = configurazione.elencoEntita.length;
+		for(var i = 0; i < numeroEntita; i++){
+			var entita = configurazione.elencoEntita[i];
+			prezzoCalcolato += entita.prezzo;
+		}
+		return prezzoCalcolato
+	}
+
+	$scope.calcolaPrezzoOrdine = function(ordine){
+		var configurazioni = ordine.configurazioni;
+		var totale = 0;
+		for(var i = 0; i < configurazioni.length; i++){
+			var configurazione = configurazioni.lenght;
+			totale += $scope.calcolaPrezzo(configurazione);
+		}
+		return totale;
+	}
+
 	loginService.getCurrentUser().then(function(data){
 		$scope.setUser(data);
+		if(data != null){
+			if(data.signInUserSession != null){
+				var idToken = jwtHelper.decodeToken(data.signInUserSession.idToken.jwtToken);
+				var email = idToken.email;
+				listeService.getConfigurazioniUtente(email).then(function(data){
+					$scope.preferiti = data.data.configurazioni;
+					
+					for(var i = 0; i < $scope.preferiti.length; i++){
+						if($scope.preferiti[i].carrello){
+							$scope.carrello.push($scope.preferiti[i]);
+						}
+					}
+				});
+
+				//tiro giu' anche gli attributi dell'utente
+				loginService.getUserAttributes().then(
+					function (attList){
+						console.log(attList);
+						attList.forEach(function (a){
+							if (a["Name"] == "custom:email" ){
+								$scope.email = a["Value"];
+							}
+							if (a["Name"] == "custom:telefono" ){
+								$scope.tel = a["Value"];
+							}
+							if (a["Name"] == "name" ){
+								$scope.nome = a["Value"];
+							}
+							if (a["Name"] == "family_name" ){
+								$scope.cognome = a["Value"];
+							}
+							if (a["Name"] == "custom:indSpe" ){
+								$scope.indSpe = a["Value"];
+							}
+							if (a["Name"] == "custom:indSpe2" ){
+								$scope.indSpe2 = a["Value"];
+							}
+						})
+					},
+					function (reason){
+						console.log(reason)
+					}
+				)	
+			}
+		}
+		
 		console.log ("l'utente è " + data);
 		console.log(data);
 	},

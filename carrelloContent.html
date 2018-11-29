@@ -5,7 +5,7 @@
             <!--<p>in questa area puoi verificare i tuoi ordini, visualizzare e modificare i tuoi preferiti.</p>-->
         </div>
     </div>
-    <div ng-if="listaPreferiti.length == 0">
+    <div ng-if="getCarrello().length == 0">
         <div class="row">
             <div class="col-sm-12 clearfix bottom-buffer wow fadeIn" data-wow-delay=".4s">
                 <p class="subtitle">Non ci hai ancora pensato, ma puoi costruire la tua borsa unica
@@ -47,14 +47,14 @@
             </section>
         </div>
     </div>
-    <div ng-if="listaPreferiti.length != 0" class="row bag-list">
+    <div ng-if="getCarrello().length != 0" class="row bag-list">
         <div class="col-sm-12 no-padding">
             <div class="col-sm-8 no-padding">
-                <div ng-repeat="conf in listaPreferiti" class="col-sm-12 bag-item clearfix">
+                <div ng-repeat="conf in getCarrello()" class="col-sm-12 bag-item clearfix">
                     
                     <div class="col-sm-8 no-padding visible-xs">
                         <div class="col-sm-3">
-                            <img src="/images/borsa-dummy-conf.png" class="bag-sample">
+                            <img  ng-src="{{conf.thumbnail}}" class="bag-sample">
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-12">
@@ -88,7 +88,7 @@
                         <div class="media">
                             <div class="media-left">
                                 <a href="javascript:void(0);">
-                                    <img src="/images/borsa-dummy-conf.png" class="media-object bag-sample">
+                                    <img  ng-src="{{conf.thumbnail}}" class="media-object bag-sample">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -127,13 +127,13 @@
                         <div class="row">
                             <div class="col-sm-12 text-left">
                                 <span>Subtotale</span>
-                                <span class="single-price"><b>680&euro;</b></span>
+                                <span class="single-price"><b>{{getTotalAmount()}}&euro;</b></span>
                             </div>
                         </div>
                         <div class="row top-buffer">
                             <div class="col-sm-12 text-left">
                                 <span>spedizione</span>
-                                <span class="single-price"><b>0&euro;</b></span>
+                                <span class="single-price"><b>{{getCostoSpedizione()}}&euro;</b></span>
                             </div>
                         </div>
                     </div>
@@ -143,12 +143,12 @@
                         <div class="row">
                             <div class="col-sm-12 text-left">
                                 <span>TOTALE</span>
-                                <span class="single-price"><b>680&euro;</b></span>
+                                <span class="single-price"><b>{{getTotalAmount() + getCostoSpedizione()}}&euro;</b></span>
                             </div>
                         </div>
                     </div>
                     <div class="order-buttons" style="margin-top: 20px;">
-                        <a href="javascript:void(0);" class="btn  btn-lg btn-block btn-save" ng-click="etCheckout()" style="width:auto;">
+                        <a href="javascript:void(0);" class="btn  btn-lg btn-block btn-save" ng-click="getCheckout()" style="width:auto;">
                             Procedi al
                             checkout</a>
                     </div>

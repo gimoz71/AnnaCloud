@@ -154,4 +154,16 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		return $http.post(this.urlDeleteService, message, config);
 	}
 
+	this.svuotaCarrello = function(configurazioni){
+		var config = {
+			headers : {
+				'Content-Type': 'application/json'
+			}
+		};
+
+		var message = UtilFunctionMessagesCreator.svuotaCarrelloMessage(configurazioni);
+
+		return $http.post(this.urlPostService, message, config);
+	}
+
 }]);

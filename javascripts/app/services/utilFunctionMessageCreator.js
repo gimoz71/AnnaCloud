@@ -89,4 +89,11 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		message.codiceConfigurazione = configurazione.codice;
 		return message;
 	}
+
+	this.svuotaCarrelloMessage = function (configurazioni){
+		var message = {};
+		message.functionName = "UnaDunaSvuotaCarrello";
+		message.codiciConfigurazioni = configurazioni;
+		return message;
+	}
 });

@@ -1,4 +1,19 @@
 var app = angular.module('applicationModule', ['loginModule', 'configuratorModule', 'ngAnimate', 'ui.swiper', 'ngRoute', 'angular-jwt'])
+.directive('paypalContent', function(){
+	return {
+		restrict: 'E',
+		scope: false,
+		templateUrl: 'paypalComponent.html'
+	};
+}).directive('checkoutContent', function () {
+   return {
+	   restrict: 'E',
+	   scope: {
+		   customerInfo: '=info'
+	   },
+	   templateUrl: 'checkoutContent.html'
+   };
+});
 /*.directive('homeContent', function(){
 	 return {
 		 restrict: 'E',

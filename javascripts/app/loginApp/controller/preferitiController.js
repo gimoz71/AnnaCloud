@@ -1,29 +1,12 @@
-angular.module("loginModule").controller("preferitiController", ["$scope", "loginService", "listeService",
-	function($scope, loginService, listeService) {
+angular.module("loginModule").controller("preferitiController", ["$scope", "loginService", "listeService", "$location",
+	function($scope, loginService, listeService, $location) {
 
-	$scope.listaPreferiti = [];
-	loginService.getUserAttributes().then(
-		function (attList){
-			console.log(attList);
-			attList.forEach(function (a){
-				if (a["Name"] == "email" ){
-					codice = a["Value"];
-					console.log(codice);
-					listeService.getConfigurazioniUtente(codice).then(function(data){
-						$scope.listaPreferiti = data.data.configurazioni;
-						console.log(data);
-						console.log ($scope.listaPreferiti );
-						
-					})
-				}
-			})
-		},
-		function (reason){
-			console.log(reason)
-			$scope.setUser(null);
-		}
-	)	
 	
+	$scope.goToPage = function(conf){
+		$scope.setTempConfigurazione(conf);
+		$location.url('/configura');
+	}
+
 	$scope.addCarrello = function (conf){
 		conf.carrello = true;
 		conf.codice = "";
