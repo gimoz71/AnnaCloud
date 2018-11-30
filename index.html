@@ -82,7 +82,7 @@
 									<li>
 										<a href="javascript:void(0);" class="primary" data-toggle="dropdown">Crea</a>
 										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#!/come-funziona" class="secondary">Come funziona</a></li>
+											<!--<li><a href="#!/come-funziona" class="secondary">Come funziona</a></li>-->
 											<li><a href="#!/configura"  class="secondary">Configura</a></li>
 										</ul>
 									</li>
@@ -112,11 +112,7 @@
 										</ul>
 									</li>
 									<li>
-										<a href="javascript:void(0);" class="primary" data-toggle="dropdown">Chi siamo</a>
-										<ul class="dropdown-menu dropdown-menu-centered" aria-labelledby="user-menu">
-											<li><a href="#!/team" class="secondary">Team</a></li>
-											<li><a href="#!/contatti" class="secondary">Contatti</a></li>
-										</ul>
+										<a  href="#!/contatti" class="primary">Chi siamo</a>
 									</li>
 								</ul>
 							</div>
@@ -125,7 +121,7 @@
 							<li>
 								<a href="javascript:void(0);" data-toggle="dropdown" class="">Crea</a>
 								<ul class="dropdown-menu" aria-labelledby="user-menu">
-									<li><a href="#!/accedi" ng-click="setAccesso()">Come funziona</a></li>
+									<!--<li><a href="#!/accedi" ng-click="setAccesso()">Come funziona</a></li>-->
 									<li><a href="#!/configura" ng-click="setConfigurator()">Configura</a></li>
 								</ul>
 							</li>
@@ -139,15 +135,15 @@
 							<li>
 								<a href="javascript:void(0);" data-toggle="dropdown" class="">Scopri</a>
 								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a href="#!/visione" ng-click="setVisione()">Visione</a></li>
-									<li><a href="#!/esperienza" ng-click="setEsperienza()">Esperienza</a></li>
+									<li><a href="#!/visione" >Visione</a></li>
+									<li><a href="#!/esperienza" >Esperienza</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="javascript:void(0);" data-toggle="dropdown" class="">Chi siamo</a>
-								<ul class="dropdown-menu " aria-labelledby="user-menu">
-									<li><a href="#!/team" ng-click="setContatti()">Team</a></li>
-									<li><a href="#!/contatti" ng-click="setContatti()">Contatti</a></li>
+								<a a href="#!/contatti" class="">Chi siamo</a>
+								<ul class="dropdown-menu hidden" aria-labelledby="user-menu">
+									<li><a href="#!/team" >Team</a></li>
+									<li><a href="#!/contatti" >Contatti</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -188,9 +184,9 @@
 					<div class="col-sm-3 hidden-xs">
 						<h3>Crea</h3>
 						<ul>
-							<li>
+							<!--<li>
 								<a href="#!/home" class="">Come funziona</a>
-							</li>
+							</li>-->
 							<li>
 								<a href="#!/configura" class="">Configura</a>
 							</li>
@@ -216,17 +212,18 @@
 							<li>
 								<a href="#!/esperienza" class="" ng-click="setEsperienza()">Esperienza</a>
 							</li>
+							<li>
+								<a href="#!/contatti" class="">Contatti</a>
+							</li>
 						</ul>
 					</div>
-					<div class="col-sm-3 hidden-xs">
+					<div class="col-sm-3 hidden">
 						<h3>Chi siamo</h3>
 						<ul>
 							<li>
 								<a href="#!/team" class="">Team</a>
 							</li>
-							<li>
-								<a href="#!/contatti" class="">Contatti</a>
-							</li>
+							
 						</ul>
 					</div>
 					<div class="col-sm-3">

@@ -237,11 +237,11 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				//prendo il nome
 				var nomeCiondolo = entita.nome;
 
-				//trovo la categoria di tracolle
+				//trovo la categoria di ciondoli
 				var split = nomeCiondolo.split('_');
 				var categoriaCiondolo = split[0] + '_' + split[1];
 
-				//inserisco nelle categorie di tracolle
+				//inserisco nelle categorie di ciondoli
 				if ($scope.categorieCiondoli.indexOf(categoriaCiondolo) == -1){
 					$scope.categorieCiondoli.push(categoriaCiondolo);
 				}
