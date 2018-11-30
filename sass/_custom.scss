@@ -1170,7 +1170,15 @@ a.link {
         //height: -moz-calc(100vh - 123px); /* firefox */
         min-height: 350px;
     }
-    
+    &.error {
+        background: url(../images/404.jpg) no-repeat right bottom;
+        background-size: cover;
+        //height: calc(100vh - 123px);
+        //height: -o-calc(100vh - 123px); /* opera */
+        //height: -webkit-calc(100vh - 123px); /* google, safari */
+        //height: -moz-calc(100vh - 123px); /* firefox */
+        min-height: 350px;
+    }
     &.esperienza {
         background-image: url(../images/jumbotron-esperienza.jpg);
         background-position: center  center;

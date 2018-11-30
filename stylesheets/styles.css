@@ -12784,6 +12784,11 @@ a.link {
   background-size: contain;
   min-height: 350px;
 }
+.jumbotron.error {
+  background: url(../images/404.jpg) no-repeat right bottom;
+  background-size: cover;
+  min-height: 350px;
+}
 .jumbotron.esperienza {
   background-image: url(../images/jumbotron-esperienza.jpg);
   background-position: center  center;

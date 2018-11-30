@@ -136,6 +136,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'configuraContent.html',
 		controller: 'unadunaConfiguratorController2'
 	}).
+	when('/404',  {
+		templateUrl: '404.html'
+	}).
 	otherwise({
 		redirectTo: '/'
 	});
