@@ -1,5 +1,47 @@
 <div class="home-content" ng-init="wowInit({boxClasses:'home-content wow'})">
-	<div class="container">
+	<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="444000" id="bs-carousel">
+		
+		<!-- Overlay -->
+		<div class="overlay hidden"></div>
+	
+		<!-- Indicators -->
+		<ol class="carousel-indicators ">
+			<li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#bs-carousel" data-slide-to="1"></li>
+			<li data-target="#bs-carousel" data-slide-to="2"></li>
+		</ol>
+	
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item slides active">
+				<div class="slide-1" style="background-image: url(/images/home-header-1.jpg); background-position-y: center;"></div>
+				<div class="container">
+					<!--<div class="hero">
+						<h2 class="slogan wow fadeIn" data-wow-delay="1s">Abbiamo innovato il concetto di borsa<br>
+							per darti un’oggetto unico.</h2>
+						<a href="#!/configura" class="btn btn-default btn-lg follow anim top-buffer wow fadeIn" data-wow-delay="1.5s">Configura adesso</a>
+					</div>-->
+				</div>
+			</div>
+			<div class="item slides">
+				<div class="slide-2" style="background-image: url(/images/home-header-2.jpg); "></div>
+				<!--<div class="hero left">
+					<h2 class="slogan wow fadeIn" data-wow-delay="1s">Personalizza ogni dettaglio<br>
+						e dai forma alla tua idea di borsa.</h2>
+					<a href="#!/configura" class="btn btn-default btn-lg follow anim top-buffer wow fadeIn" data-wow-delay="1.5s">Configura adesso</a>
+				</div>-->
+			</div>
+			<div class="item slides">
+				<div class="slide-3" style="background-image: url(/images/home-header-3.jpg); background-position-y: bottom;"></div>
+				<!--<div class="hero left">
+					<h2 class="slogan wow fadeIn" data-wow-delay="1s">La qualità di una volta,<br>
+						lo stile di oggi.</h2>
+					<a href="#!/configura" class="btn btn-default btn-lg follow anim top-buffer wow fadeIn" data-wow-delay="1.5s">Configura adesso</a>
+				</div>-->
+			</div>
+		</div>
+	</div>
+	<div class="container hidden">
 		<div class="jumbotron homepage no-margin wow fadeIn" data-wow-delay="0.1s">
 			<h2 class="slogan wow fadeIn" data-wow-delay="1s">Abbiamo innovato il concetto di borsa<br>
 			per darti un’oggetto unico.</h2>
@@ -70,7 +112,7 @@
 	<div class="container text-center quote-section-image">
 		<div class="row">
 			<div class="col-sm-12 clearfix">	
-				<img src="images/collezione-banner.jpg">
+				<img src="images/collezione-banner.jpg" style="outline: solid 10px #fff;">
 			</div>
 		</div>
 	</div>

@@ -1131,11 +1131,36 @@ a.link {
     }*/
 }
 
+.slogan {
+    font-size: 3em;
+    //font-weight: lighter;
+    //color: $brand-primary;
+    //text-shadow: 0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0,0,0,1);
+    position: relative;
+    top: -40px;    
+    width: 500px;
+    &.pagenotfound {
+        font-size: 5em;
+    }
+    @media screen and (max-width: $screen-md) {
+        width: 100%;
+        font-size: 2.3em;
+        //top: 0;
+    }
+    @media screen and (max-width: $screen-sm) {
+        //text-align: center;
+        font-size: 2em;
+        width: auto;
+        top: -20px;
+    }
+}
 .jumbotron {
     padding: 60px 0;
     position: relative;
     
-    min-height: 350px;
+    //min-height: 350px;
     &.homepage {
         background: url(../images/jumbotron.jpg) no-repeat right bottom;
         background-size: contain;
@@ -1144,46 +1169,65 @@ a.link {
         //height: -webkit-calc(100vh - 123px); /* google, safari */
         //height: -moz-calc(100vh - 123px); /* firefox */
         min-height: 350px;
-        .slogan {
-            font-size: 3em;
-            color: $brand-primary;
-            font-weight: lighter;
-            width: 50%;
-            position: relative;
-            top: -40px;    
-            text-shadow: 0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff,  0px 0px 4px #fff;
-            &.pagenotfound {
-                font-size: 5em;
-            }
-            @media screen and (max-width: $screen-md) {
-                width: 100%;
-                font-size: 2.3em;
-                //top: 0;
-            }
-            @media screen and (max-width: $screen-sm) {
-                text-align: center;
-                font-size: 2em;
-                width: auto;
-                top: -20px;
-            }
-        }
     }
-    &.esperienza {
-        background: url(../images/jumbotron-esperienza.jpg) no-repeat center center;
+    &.error {
+        background: url(../images/404.jpg) no-repeat right bottom;
         background-size: cover;
         //height: calc(100vh - 123px);
         //height: -o-calc(100vh - 123px); /* opera */
         //height: -webkit-calc(100vh - 123px); /* google, safari */
         //height: -moz-calc(100vh - 123px); /* firefox */
         min-height: 350px;
+    }
+    &.esperienza {
+        background-image: url(../images/jumbotron-esperienza.jpg);
+        background-position: center  center;
         h2 {
-            font-size: 3em;
-            color: #fff;
-            font-weight: lighter;
-            text-shadow: 1px 1px 1px #000;
-            @media screen and (max-width: $screen-xs) {
-                text-align: center;
+            color: #000;
+        }
+        @media screen and (max-width: $screen-sm) {
+            background-position: bottom  center ;
+        }
+    }
+    &.visione {
+        background-image: url(../images/jumbotron-visione.jpg);
+        background-position: bottom -80px center ;
+        min-height: 400px;
+    height: 80vh;
+        h2 {
+            color: #000;
+        }
+        @media screen and (max-width: $screen-sm) {
+            background-position: bottom  center ;
+        }
+    }
+    &.esperienza, &.visione {
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        //height: calc(100vh - 123px);
+        //height: -o-calc(100vh - 123px); /* opera */
+        //height: -webkit-calc(100vh - 123px); /* google, safari */
+        //height: -moz-calc(100vh - 123px); /* firefox */
+        
+        h2 {
+            position: relative;
+            top: 60px;    
+            left: 30px;
+            width: 400px;
+            font-weight: lighter; 
+            
+            @media screen and (max-width: $screen-md) {
+                //width: 100%;
                 font-size: 2em;
+                //top: 0;
+                left: 30px;
+            }
+            @media screen and (max-width: $screen-sm) {
+                text-align: left;
+                font-size: 1.5em;
+                width: auto;
+                //top: -20px;
             }
         }
         .discover {
@@ -1221,61 +1265,7 @@ a.link {
                 }
             }
         }
-    }
-    &.visione {
-        background: url(../images/jumbotron-visione.jpg) no-repeat center center;
-        background-size: cover;
-        //height: calc(100vh - 123px);
-        //height: -o-calc(100vh - 123px); /* opera */
-        //height: -webkit-calc(100vh - 123px); /* google, safari */
-        //height: -moz-calc(100vh - 123px); /* firefox */
-        min-height: 350px;
-        h2 {
-            font-size: 4em;
-            color: #000;
-            font-weight: lighter;
-            text-shadow: -1px -1px 1px rgba(0,0,0,75), 1px 1px 1px rgba(255,255,255,.75);
-             @media screen and (max-width: $screen-xs) {
-                text-align: center;
-                font-size: 2em;
-            }
-        }
-        .discover {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-family: $font-family-sans-serif-title;
-            font-size: 1em;
-            span {
-                @include transition(all 200ms ease-out);
-                color: #fff;
-                text-shadow: 0 0 2px #fff;
-                background: rgba(255,255,255,.0);
-                padding: 10px 20px 15px 20px;
-                border-radius: 15px 15px 0 0;
-                display: inline-block;
-                position: relative;
-                bottom: 10px;
-                cursor: pointer;
-                &:after {
-                    content: "";
-                    background: url(../images/small-arrow-down.png) center center no-repeat;
-                    position: absolute;
-                    width: 12px;
-                    height: 14px;
-                    left: 50%;
-                    margin-left: -6px;
-                    bottom: 4px;
-                }
-                &:hover, &:active {
-                    color: #fff;
-                    @include transition(all 200ms ease-out);
-                    text-decoration: none;
-                    bottom: 5px;
-                }
-            }
-        }
+        
     }
     &.contatti {
         background: url(../images/jumbotron-visione.jpg) no-repeat center center;
@@ -2820,3 +2810,141 @@ footer {
     border-radius: 0 !important;
 }
 
+
+
+
+
+
+
+
+
+/*
+Fade content bs-carousel with hero headers
+Code snippet by maridlcrmn (Follow me on Twitter @maridlcrmn) for Bootsnipp.com
+Image credits: unsplash.com
+*/
+
+/********************************/
+/*       Fade Bs-carousel       */
+/********************************/
+.fade-carousel {
+    position: relative;
+    height: 70vh;
+}
+.fade-carousel .carousel-inner .item {
+    height: 70vh;
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: $brand-primary;
+    border-color: lighen($brand-primary, 10);
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  &:before, &:after {
+      border: none;
+  }
+}
+
+/********************************/
+/*          Hero Headers        */
+/********************************/
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: left;
+    text-transform: uppercase;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    &.left {
+        text-align: right;
+        -webkit-transform: translate3d(0%,-50%,0);
+        -moz-transform: translate3d(0%,-50%,0);
+        -ms-transform: translate3d(0%,-50%,0);
+        -o-transform: translate3d(0%,-50%,0);
+        transform: translate3d(0%,-50%,0);
+    }
+}
+/*.hero h2 {
+    font-size: 3em;    
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}*/
+
+/*.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s; 
+        -ms-transition: 2s all ease-in-out .1s; 
+         -o-transition: 2s all ease-in-out .1s; 
+            transition: 2s all ease-in-out .1s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+    -moz-transition: 2s all ease-in-out .1s; 
+    -ms-transition: 2s all ease-in-out .1s; 
+    -o-transition: 2s all ease-in-out .1s; 
+    transition: 2s all ease-in-out .1s;
+}*/
+
+.fade-carousel .carousel-inner .item.active {
+    &:after, &:before {
+        border: none;
+    }
+}
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .7;
+}
+
+
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 70vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*.fade-carousel .slides .slide-1 {
+  background-image: url(../images/home-header-1.png); 
+}
+.fade-carousel .slides .slide-2 {
+    background-image: url(images/home-header-2.png); 
+}
+.fade-carousel .slides .slide-3 {
+    background-image: url(images/home-header-3.png); 
+}*/
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+/*@media screen and (min-width: 980px){
+    .hero { width: 980px; }    
+}/*
+/*@media screen and (max-width: 640px){
+    .hero h2 { font-size: 4em; }    
+}*/
