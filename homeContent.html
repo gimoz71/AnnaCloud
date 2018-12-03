@@ -1,16 +1,36 @@
-<div class="home-content" ng-init="wowInit({boxClasses:'home-content wow'})">
-	<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="444000" id="bs-carousel">
-		
+<!--div class="home-content" ng-init="wowInit({boxClasses:'home-content wow'})"-->
+<div class class="home-content">
+	<div class="jumbotron quote-section page-header index wow fadeIn" data-wow-delay="0.1s">
+		<div class="container">
+			<h2 class="title wow fadeIn" data-wow-delay="1s">Abbiamo innovato il concetto di borsa<br>
+			per darti un’oggetto unico.</h2>
+		</div>
+	</div>
+	<section class="swipe" style="position: relative">
+			<a href="#!/configura" class="btn btn-lg btn-hero wow fadeIn hidden" data-wow-delay="1.5s">Configura adesso</a>
+		<swiper grab-cursor="true" keyboard-control="true" slides-per-view="1" effect="fade" loop="true" autoplay="3000" speed="2000">
+			<slides>
+				<slide><img src="images/home-header-1.jpg" /></slide>
+				<slide><img src="images/home-header-2.jpg" /></slide>
+				<slide><img src="images/home-header-3.jpg" /></slide>
+			</slides>
+			<pagination></pagination>
+		</swiper>
+	</section>
+	<div class="carousel fade-carousel slide hidden" data-ride="carousel" data-interval="8000" id="bs-carousel">
+		<div class="hero">
+			<a href="#!/configura" class="btn btn-default btn-lg follow  top-buffer wow fadeIn" data-wow-delay="1.5s">Configura adesso</a>
+		</div>
 		<!-- Overlay -->
 		<div class="overlay hidden"></div>
-	
+		
 		<!-- Indicators -->
 		<ol class="carousel-indicators ">
 			<li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
 			<li data-target="#bs-carousel" data-slide-to="1"></li>
 			<li data-target="#bs-carousel" data-slide-to="2"></li>
 		</ol>
-	
+		
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item slides active">
@@ -32,7 +52,7 @@
 				</div>-->
 			</div>
 			<div class="item slides">
-				<div class="slide-3" style="background-image: url(/images/home-header-3.jpg); background-position-y: bottom;"></div>
+				<div class="slide-3" style="background-image: url(/images/home-header-3.jpg);"></div>
 				<!--<div class="hero left">
 					<h2 class="slogan wow fadeIn" data-wow-delay="1s">La qualità di una volta,<br>
 						lo stile di oggi.</h2>
@@ -41,13 +61,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container hidden">
-		<div class="jumbotron homepage no-margin wow fadeIn" data-wow-delay="0.1s">
-			<h2 class="slogan wow fadeIn" data-wow-delay="1s">Abbiamo innovato il concetto di borsa<br>
-			per darti un’oggetto unico.</h2>
-			<a href="#!/configura" class="btn btn-default btn-lg follow anim top-buffer wow fadeIn"  data-wow-delay="1.5s">Configura adesso</a>
-		</div>
-	</div>
+	
 	<div class="jumbotron quote-section wow fadeIn" data-wow-delay="0.1s">
 		<div class="container">
 			<div class="row">
@@ -58,7 +72,7 @@
 				<div class="col-sm-8 clearfix">
 					<p class="subtitle">Partendo da oltre 25 anni di esperienza come pellettieri, facciamo ricerca per creare borse uniche e personali, 100% made in Tuscany.<br>
 						La nostra storia è sinonimo di qualità, ma grazie alla modernità mettiamo il cliente al centro del processo di produzione, senza inutili passaggi intermedi.</p>
-					<a href="#!/esperienza" class="btn btn-default btn-lg follow anim">Scopri</a>
+					<a href="#!/esperienza" class="btn btn-default btn-lg follow anim">Configura ora la tua borsa</a>
 				</div>		
 			</div>
 		</div>
@@ -104,7 +118,7 @@
 				</div>
 				<div class="col-sm-8 clearfix">
 					<p class="subtitle"><b>*The star(t)*</b> - la nostra prima collezione a edizione limitata è l’inizio, ma anche la stella. La stella che ci guida in questo percorso di passione e la stella che ci fa brillare ogni giorno. Vogliamo dedicare questa collezione alla “star” che è in ognuno di noi, perché la personalità è il nuovo lusso.</p>
-					<a href="#!/collezione" class="btn btn-default btn-lg  anim">Esplora</a> <a href="#!/configura" class="btn btn-default btn-lg anim">Crea</a>
+					<a href="#!/collezione" class="btn btn-default anim">Esplora</a> <a href="#!/configura" class="btn btn-default anim">Crea</a>
 				</div>	
 			</div>	
 		</div>
@@ -125,7 +139,7 @@
 					<input type="email" class="newsletter"
 						placeholder="il tuo indirizzo email">
 				</p>
-				<a href="javascript:void(0);" class="btn btn-default btn-lg  bottom-buffer">Iscriviti</a>
+				<a href="javascript:void(0);" class="btn btn-default  bottom-buffer">Iscriviti</a>
 			</div>
 		</div>
 	</div>
