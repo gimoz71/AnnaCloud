@@ -11521,6 +11521,7 @@ button.close {
   position: relative;
   top: -0.125em;
   -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -11975,7 +11976,7 @@ input {
   border-bottom: solid 1px #f7f1f3;
 }
 input::placeholder {
-  color: #f7f1f3;
+  color: #e3d2d6;
 }
 input.newsletter {
   margin: 20px 0;
@@ -12071,6 +12072,26 @@ button:focus {
 }
 .btn-special:active.follow:after {
   border-color: transparent transparent transparent #fff;
+}
+
+.btn-hero {
+  z-index: 10;
+  position: absolute;
+  top: -10px;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  background: #A87481;
+  border: solid 1px #fff;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.btn-hero:hover {
+  background: #80505c !important;
+  border-color: #80505c;
+  color: #fff !important;
+  box-shadow: none;
 }
 
 .btn-save {
@@ -12677,14 +12698,14 @@ a.link {
 .title {
   color: #80505c;
   font-weight: lighter;
-  font-size: 2.4em !important;
+  font-size: 1.8em !important;
 }
 .jumbotron .title {
   text-align: right;
 }
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 2em !important;
+    font-size: 1.5em !important;
     text-align: center !important;
     margin-top: 0;
   }
@@ -12693,7 +12714,7 @@ a.link {
 .title-secondary {
   color: #80505c;
   font-weight: lighter;
-  font-size: 1.7em !important;
+  font-size: 1.4em !important;
 }
 .jumbotron .title-secondary {
   text-align: right;
@@ -12707,7 +12728,7 @@ a.link {
 .title-tertiary {
   color: #80505c;
   font-weight: lighter;
-  font-size: 1.3em !important;
+  font-size: 1.2em !important;
 }
 .jumbotron .title-tertiary {
   text-align: right;
@@ -12719,14 +12740,14 @@ a.link {
 }
 
 .subtitle {
-  font-size: 2em !important;
+  font-size: 1.3em !important;
   font-weight: lighter;
   color: #535353;
   font-family: "Montserrat", sans-serif;
 }
 @media screen and (max-width: 767px) {
   .subtitle {
-    font-size: 1.4em !important;
+    font-size: 1.1em !important;
   }
 }
 
@@ -12943,13 +12964,11 @@ a.link {
   margin-bottom: 50px;
 }
 .jumbotron.quote-section .title {
-  font-size: 2.8em !important;
   margin: 0;
   margin-bottom: 30px;
 }
 @media screen and (max-width: 767px) {
   .jumbotron.quote-section .title {
-    font-size: 2.3em !important;
     text-align: center !important;
   }
 }
@@ -12974,6 +12993,37 @@ a.link {
   .jumbotron.quote-section.collection {
     padding-bottom: 60px;
   }
+}
+.jumbotron.quote-section.page-header {
+  margin: 0;
+  padding: 40px 0;
+  background-color: #A87481;
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section.page-header {
+    padding: 20px 0;
+  }
+}
+.jumbotron.quote-section.page-header .title {
+  text-align: left !important;
+  color: #fff;
+  margin: 0;
+  font-size: 2.0em !important;
+  margin: 0 2em;
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section.page-header .title {
+    font-size: 1.5em !important;
+    text-align: center !important;
+    margin: 0 1.3em;
+  }
+}
+.jumbotron.quote-section.page-header.index {
+  text-align: center !important;
+  padding: 1.5em 0 2em 0;
+}
+.jumbotron.quote-section.page-header.index .title {
+  text-align: center !important;
 }
 @media screen and (max-width: 767px) {
   .jumbotron {
@@ -14354,26 +14404,40 @@ Image credits: unsplash.com
 /********************************/
 .fade-carousel {
   position: relative;
+  min-height: 500px;
   height: 70vh;
+}
+@media screen and (max-width: 767px) {
+  .fade-carousel {
+    min-height: 300px;
+    height: 50vh;
+  }
 }
 
 .fade-carousel .carousel-inner .item {
+  min-height: 500px;
   height: 70vh;
 }
-
-.fade-carousel .carousel-indicators > li {
-  margin: 0 2px;
-  background-color: #80505c;
-  border-color: lighen(#80505c, 10);
-  opacity: .7;
+@media screen and (max-width: 767px) {
+  .fade-carousel .carousel-inner .item {
+    min-height: 300px;
+    height: 50vh;
+  }
 }
 
-.fade-carousel .carousel-indicators > li.active {
+.fade-carousel .carousel-indicators > li, .swiper-pagination-bullet {
+  margin: 0 2px;
+  background-color: #80505c !important;
+  border: solid 1px lighen(#80505c, 20) !important;
+  opacity: .5 !important;
+}
+
+.fade-carousel .carousel-indicators > li.active, .swiper-pagination-bullet-active {
   width: 10px;
   height: 10px;
-  opacity: 1;
+  opacity: 1 !important;
 }
-.fade-carousel .carousel-indicators > li.active:before, .fade-carousel .carousel-indicators > li.active:after {
+.fade-carousel .carousel-indicators > li.active:before, .fade-carousel .carousel-indicators > li.active:after, .swiper-pagination-bullet-active:before, .swiper-pagination-bullet-active:after {
   border: none;
 }
 
@@ -14388,19 +14452,13 @@ Image credits: unsplash.com
   color: #fff;
   text-align: left;
   text-transform: uppercase;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -moz-transform: translate3d(-50%, -50%, 0);
-  -ms-transform: translate3d(-50%, -50%, 0);
-  -o-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
-}
-.hero.left {
-  text-align: right;
-  -webkit-transform: translate3d(0%, -50%, 0);
-  -moz-transform: translate3d(0%, -50%, 0);
-  -ms-transform: translate3d(0%, -50%, 0);
-  -o-transform: translate3d(0%, -50%, 0);
-  transform: translate3d(0%, -50%, 0);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /*.hero h2 {
@@ -14448,10 +14506,19 @@ Image credits: unsplash.com
 .fade-carousel .slides .slide-1,
 .fade-carousel .slides .slide-2,
 .fade-carousel .slides .slide-3 {
+  min-height: 500px;
   height: 70vh;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
+@media screen and (max-width: 767px) {
+  .fade-carousel .slides .slide-1,
+  .fade-carousel .slides .slide-2,
+  .fade-carousel .slides .slide-3 {
+    min-height: 300px;
+    height: 50vh;
+  }
 }
 
 /*.fade-carousel .slides .slide-1 {

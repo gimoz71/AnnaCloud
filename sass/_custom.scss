@@ -26,6 +26,7 @@
     position: relative;
     top: -0.125em;
     -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: grayscale
 }
 .unaicon-login:before{content:'\0041';}
@@ -363,7 +364,7 @@ input {
     border-right: none;
     border-bottom: solid 1px $standard-border-color;
     &::placeholder {
-        color: $standard-border-color;
+        color: darken($standard-border-color, 10);
     }
     &.newsletter {
         margin: 20px 0;
@@ -453,6 +454,26 @@ button:focus {outline:0;}
     &:active.follow:after {
         border-color:  transparent transparent transparent $body-bg;
 
+    }
+}
+
+.btn-hero {
+    z-index: 10;
+    position: absolute;
+    top: -10px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    background: $brand-primary-medium;
+    border: solid 1px #fff;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    &:hover {
+        background: $brand-primary !important;
+        border-color: $brand-primary;
+        color: #fff !important;
+        box-shadow: none;
     }
 }
 
@@ -1066,12 +1087,12 @@ a.link {
     //font-family: $font-family-sans-serif;
     color: $brand-primary;
     font-weight: lighter;
-    font-size:2.4em !important;
+    font-size:1.8em !important;
     .jumbotron & {
         text-align: right;
     }
     @media screen and (max-width: $screen-sm) {
-        font-size:2em !important;
+        font-size:1.5em !important;
         text-align: center !important;
         margin-top: 0;
     }
@@ -1080,7 +1101,7 @@ a.link {
     //font-family: $font-family-sans-serif;
     color: $brand-primary;
     font-weight: lighter;
-    font-size:1.7em !important;
+    font-size:1.4em !important;
     .jumbotron & {
         text-align: right;
     }
@@ -1093,7 +1114,7 @@ a.link {
     //font-family: $font-family-sans-serif;
     color: $brand-primary;
     font-weight: lighter;
-    font-size:1.3em !important;
+    font-size:1.2em !important;
     .jumbotron & {
         text-align: right;
     }
@@ -1103,12 +1124,12 @@ a.link {
 }
 
 .subtitle {
-    font-size: 2em !important;
+    font-size: 1.3em !important;
     font-weight: lighter;
     color: #535353;
     font-family: $font-family-sans-serif-title;
     @media screen and (max-width: $screen-xs-max) {
-        font-size: 1.4em !important;
+        font-size: 1.1em !important;
     }
 }
 
@@ -1193,7 +1214,7 @@ a.link {
         background-image: url(../images/jumbotron-visione.jpg);
         background-position: bottom -80px center ;
         min-height: 400px;
-    height: 80vh;
+        height: 80vh;
         h2 {
             color: #000;
         }
@@ -1329,11 +1350,11 @@ a.link {
         margin-bottom: 50px;
         
         .title {
-            font-size: 2.8em !important;
+            //font-size: 2.8em !important;
             margin: 0;
             margin-bottom: 30px;
             @media screen and (max-width: $screen-xs-max) {
-                font-size:2.3em !important;
+               // font-size:1.4em !important;
                 text-align: center !important;
             }
         }
@@ -1351,6 +1372,35 @@ a.link {
             }
             @media screen and (max-width: $screen-xs-max) {
                 padding-bottom: 60px;
+            }
+        }
+        &.page-header {
+            margin: 0;
+            padding: 40px 0;
+            background-color: $brand-primary-medium;
+            @media screen and (max-width: $screen-xs) {
+                padding: 20px 0;
+            }
+
+            .title {
+                text-align: left !important;
+                color: #fff;
+                margin: 0;
+                font-size: 2.0em !important;
+                margin: 0 2em;
+                @media screen and (max-width: $screen-xs) {
+                    font-size:1.5em !important;
+                    text-align: center !important;
+                    margin: 0 1.3em;
+                }
+            }
+            &.index {
+                text-align: center !important;
+                padding: 1.5em 0 2em 0;
+                .title  {
+                    text-align: center !important;
+                    //font-size: 1.8em !important;
+                } 
             }
         }
     }
@@ -2829,21 +2879,31 @@ Image credits: unsplash.com
 /********************************/
 .fade-carousel {
     position: relative;
+    min-height: 500px;
     height: 70vh;
+    @media screen and (max-width: $screen-xs-max) {
+        min-height: 300px;
+        height: 50vh;
+    }
 }
 .fade-carousel .carousel-inner .item {
+    min-height: 500px;
     height: 70vh;
+    @media screen and (max-width: $screen-xs-max) {
+        min-height: 300px;
+        height: 50vh;
+    }
 }
-.fade-carousel .carousel-indicators > li {
+.fade-carousel .carousel-indicators > li, .swiper-pagination-bullet {
     margin: 0 2px;
-    background-color: $brand-primary;
-    border-color: lighen($brand-primary, 10);
-    opacity: .7;
+    background-color: $brand-primary !important;
+    border: solid 1px lighen($brand-primary, 20) !important;
+    opacity: .5 !important;
 }
-.fade-carousel .carousel-indicators > li.active {
+.fade-carousel .carousel-indicators > li.active, .swiper-pagination-bullet-active {
   width: 10px;
   height: 10px;
-  opacity: 1;
+  opacity: 1 !important;
   &:before, &:after {
       border: none;
   }
@@ -2860,19 +2920,13 @@ Image credits: unsplash.com
     color: #fff;
     text-align: left;
     text-transform: uppercase;
-    -webkit-transform: translate3d(-50%,-50%,0);
-    -moz-transform: translate3d(-50%,-50%,0);
-    -ms-transform: translate3d(-50%,-50%,0);
-    -o-transform: translate3d(-50%,-50%,0);
-    transform: translate3d(-50%,-50%,0);
-    &.left {
-        text-align: right;
-        -webkit-transform: translate3d(0%,-50%,0);
-        -moz-transform: translate3d(0%,-50%,0);
-        -ms-transform: translate3d(0%,-50%,0);
-        -o-transform: translate3d(0%,-50%,0);
-        transform: translate3d(0%,-50%,0);
-    }
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 /*.hero h2 {
     font-size: 3em;    
@@ -2917,17 +2971,21 @@ Image credits: unsplash.com
 }
 
 
-
 /********************************/
 /*       Slides backgrounds     */
 /********************************/
 .fade-carousel .slides .slide-1, 
 .fade-carousel .slides .slide-2,
 .fade-carousel .slides .slide-3 {
+  min-height: 500px;
   height: 70vh;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+    @media screen and (max-width: $screen-xs-max) {
+    min-height: 300px;
+    height: 50vh;
+    }
 }
 /*.fade-carousel .slides .slide-1 {
   background-image: url(../images/home-header-1.png); 
