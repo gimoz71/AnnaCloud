@@ -83,10 +83,10 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		return message;
 	}
 	
-	this.deleteConfigurazioneMessage = function (configurazione){
+	this.deleteConfigurazioneMessage = function (codice){
 		var message = {};
 		message.functionName = "UnaDunaDeleteConfigurazione";
-		message.codiceConfigurazione = configurazione.codice;
+		message.codiceConfigurazione = codice;
 		return message;
 	}
 
@@ -94,6 +94,18 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 		var message = {};
 		message.functionName = "UnaDunaSvuotaCarrello";
 		message.codiciConfigurazioni = configurazioni;
+		return message;
+	}
+
+	this.sendEmailMessage = function (mailMessage){
+		var message = {};
+
+		message.functionName = "UnaDunaSendMail";
+		message.toEmailAdresses = mailMessage.toEmailAddress;
+		message.ccEmailAddreses = mailMessage.ccEmailAddress;
+		message.emailSubject = mailMessage.emailSubject;
+		message.emailMessage = mailMessage.emailMessage;
+
 		return message;
 	}
 });

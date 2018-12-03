@@ -43,20 +43,20 @@
 		                        <li ng-show="user!==null" class="utente">
 		                            <a href="javascript:void(0)" id="user-menu" data-toggle="dropdown"><i class="unaicon-login"></i> <span class="hidden-xs"></span></a>
 		                            <ul class="dropdown-menu" aria-labelledby="user-menu">
-		                                <li><a href="#!/ordini" ng-click="setOrdini()" >I tuoi Ordini</a></li>
-		                                <li><a href="#!/profilo" ng-click="setProfilo()" >Profilo</a></li>
+		                                <li><a href="#!/ordini">I tuoi Ordini</a></li>
+		                                <li><a href="#!/profilo">Profilo</a></li>
 		                                <li><a href="#!/logout" ng-click="logOut()">Esci</a></li>
 		                            </ul>
 		                        </li>
 								<li ng-show="user==null" class="utente">
-									<a href="#!/accedi" id="user-menu" ng-click="setAccesso()"><i class="unaicon-login"></i> <span class="hidden-xs">accedi</span></a>
+									<a href="#!/accedi" id="user-menu" ><i class="unaicon-login"></i> <span class="hidden-xs">accedi</span></a>
 									
 								</li>
 								<li class="favoriti">
-		                            <a href="#!/preferiti" ng-click="setPreferiti()"><i class="unaicon-favourite"></i> <span class="hidden-xsx">({{getPreferitiSize()}})</span></a>
+		                            <a href="#!/preferiti" ><i class="unaicon-favourite"></i> <span class="hidden-xsx">({{preferiti.length}})</span></a>
 	                           </li>
 		                        <li class="carrello">
-		                            <a href="#!/carrello" ng-click="setCarrello()"><i class="unaicon-cart"></i> <span class="hidden-xsx">({{getCarrelloSize()}})</span></a>
+		                            <a href="#!/carrello" ><i class="unaicon-cart"></i> <span class="hidden-xsx">({{carrello.length}})</span></a>
 		                        </li>
 		                    </ul>
 		                </div>

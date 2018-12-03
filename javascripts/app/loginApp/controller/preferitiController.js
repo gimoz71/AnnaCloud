@@ -30,31 +30,19 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "logi
 			);
 		}
 
-	$scope.eliminaCar  = function (ord)  {
-		console.log(ord);
-		listeService.deleteConfigurazione(ord).then(function(data){
-				console.log(data);
-				alert ("elemento eliminato");
-				loginService.getUserAttributes().then(
-						function (attList){
-							console.log(attList);
-							attList.forEach(function (a){
-								if (a["Name"] == "email" ){
-									codice = a["Value"];
-									console.log(codice);
-									listeService.getCarrelloUtente(codice).then(function(data){
-										$scope.listaPreferiti = data.data.configurazioni;
-										console.log(data);
-										console.log ($scope.listaPreferiti );
-										
-									})
-								}
-							})
-						},
-						function (reason){
-							console.log(reason)
-						}
-					)	
+
+	$scope.eliminaConfigurazione  = function (codice)  {
+		console.log("sto per eliminare la configurazione con codice " + codice);
+		listeService.deleteConfigurazione(codice).then(function(data){
+				if(data.errorMessage != null && data.errorMessage != undefined){
+					alert("si è verificato un errore nella cancellazione della configurazione");
+					console.log("errorMessage");
+				} else {
+					alert ("configurazione correttamente eliminata");
+					//ricarico le liste
+					$scope.ricaricaListe($scope.getUserEmail(), "");
+				}
+	
 			},
 			function (reason){
 				console.log(reason);

@@ -4,6 +4,7 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	this.urlGetServiceNode = 'https://ig24v3ii6b.execute-api.eu-central-1.amazonaws.com/unaDunaGetAccessori';
 	this.urlPostService = "https://i51umjhba2.execute-api.eu-central-1.amazonaws.com/unadunaPost";
 	this.urlDeleteService ="https://gtjby1j5oi.execute-api.eu-central-1.amazonaws.com/UnadunaDelete";
+	this.urlOtherService ="https://ln3p02wb0f.execute-api.eu-central-1.amazonaws.com/BeautifulVinoOther";
 	this.tipiAccessoriList = [];
 	this.accessoriesList = [];
 	
@@ -166,4 +167,14 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		return $http.post(this.urlPostService, message, config);
 	}
 
+	this.sendEmail = function(emailMessage){
+		var config = {
+			headers : {
+				'Content-Type': 'application/json'
+			}
+		};
+
+		var message = UtilFunctionMessagesCreator.sendEmailMessage(emailMessage);
+		return $http.post(this.urlOtherService, message, config);
+	}
 }]);
