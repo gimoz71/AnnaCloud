@@ -164,22 +164,36 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		return totale;
 	}
 
+	$scope.ricaricaListe = function(email, page){
+		listeService.getConfigurazioniUtente(email).then(function(data){
+			$scope.preferiti = data.data.configurazioni;
+			
+			for(var i = 0; i < $scope.preferiti.length; i++){
+				if($scope.preferiti[i].carrello){
+					$scope.carrello.push($scope.preferiti[i]);
+				}
+			}
+			if(page != null && page != undefined && page != ""){
+				$location.url(page);
+			}
+		});
+	}
+
+	$scope.getUserEmail = function(){
+		var user = $scope.user;
+		var idToken = jwtHelper.decodeToken(user.signInUserSession.idToken.jwtToken);
+		var email = idToken.email;
+		return email;
+	}
+
 	loginService.getCurrentUser().then(function(data){
 		$scope.setUser(data);
 		if(data != null){
 			if(data.signInUserSession != null){
 				var idToken = jwtHelper.decodeToken(data.signInUserSession.idToken.jwtToken);
 				var email = idToken.email;
-				listeService.getConfigurazioniUtente(email).then(function(data){
-					$scope.preferiti = data.data.configurazioni;
-					
-					for(var i = 0; i < $scope.preferiti.length; i++){
-						if($scope.preferiti[i].carrello){
-							$scope.carrello.push($scope.preferiti[i]);
-						}
-					}
-				});
-
+				
+				$scope.ricaricaListe(email);
 				//tiro giu' anche gli attributi dell'utente
 				loginService.getUserAttributes().then(
 					function (attList){

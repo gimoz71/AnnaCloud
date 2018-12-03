@@ -7,19 +7,27 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "logi
 		$location.url('/configura');
 	}
 
-	$scope.addCarrello = function (conf){
-		conf.carrello = true;
-		conf.codice = "";
-		listeService.putConfigurazione(conf).then(
+	$scope.addToCart = function(configurazione){
+		configurazione.carrello = true;
+
+		listeService.putConfigurazione(configurazione).then(
 				function (res){
-					console.log(res);
-					$scope.setCarrello();
+					if(res.errorMessage != undefined){
+						alert('si è verificato un problema nell inserimento della configurazione nel carrello');
+						console.log(res.errorMessage);
+					} else {
+						console.log(res);
+
+						$scope.ricaricaListe($scope.getUserEmail(), '/carrello');
+						alert("configurazione correttamente aggiunta al carrello")
+						//ricarica in background le liste
+					}
 				},
 				function (reason){
 					console.log(reason);
-					alert ("errore aggiunta carrello");
+					alert ("errore aggiunta preferiti");
 				}
-			);	
+			);
 		}
 
 	$scope.eliminaCar  = function (ord)  {
@@ -54,10 +62,4 @@ angular.module("loginModule").controller("preferitiController", ["$scope", "logi
 			}
 		)
 	}
-//		getConfigurazioniService.response("john@bea.com").then(function (data) {
-//			$scope.listaPreferiti = data.data.configurazioni;
-//			console.log(data);
-//			console.log($scope.listaPreferiti);
-//
-//		})
 }]);
