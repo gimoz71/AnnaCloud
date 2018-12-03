@@ -217,8 +217,9 @@
     > [class*=" col-"],
     > [class^="col-"] {
         padding: 20px 50px;
-        &:last-of-type {
-            border-left: solid 1px $standard-border-color;
+        margin-bottom: 30px;
+        &:first-of-type {
+            border-right: solid 1px $standard-border-color;
         }
         @media (max-width: $screen-xs-max ) {
             padding-left: 15px;
@@ -1388,6 +1389,7 @@ a.link {
                 margin: 0;
                 font-size: 2.0em !important;
                 margin: 0 2em;
+                
                 @media screen and (max-width: $screen-xs) {
                     font-size:1.5em !important;
                     text-align: center !important;
@@ -1396,11 +1398,19 @@ a.link {
             }
             &.index {
                 text-align: center !important;
-                padding: 1.5em 0 1.5em 0;
+                padding: 1.5em 0;
                 .title  {
                     text-align: center !important;
-                    //font-size: 1.8em !important;
+                    @media screen and (max-width: $screen-xs-max) {
+                        font-size:1.4em !important;
+                    }
+                    @media screen and (max-width: $screen-xs) {
+                        font-size:1.1em !important;
+                    }
                 } 
+                @media screen and (max-width: $screen-xs) {
+                    padding: 1.2em 0;
+                }
             }
         }
     }

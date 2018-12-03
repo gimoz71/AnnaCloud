@@ -6,13 +6,22 @@
 			per darti un’oggetto unico.</h2>
 		</div>
 	</div>
-	<section class="swipe" style="position: relative">
-			<a href="#!/configura" class="btn btn-lg btn-hero wow fadeIn hidden" data-wow-delay="1.5s">Configura adesso</a>
-		<swiper grab-cursor="true" keyboard-control="true" slides-per-view="1" effect="fade" loop="true" autoplay="3000" speed="2000">
+	<section class="swipe hidden-xs">
+		<swiper grab-cursor="true" keyboard-control="true" slides-per-view="1" effect="slide" loop="true" autoplay="3000" speed="500">
 			<slides>
 				<slide><img src="images/home-header-1.jpg" /></slide>
 				<slide><img src="images/home-header-2.jpg" /></slide>
 				<slide><img src="images/home-header-3.jpg" /></slide>
+			</slides>
+			<pagination></pagination>
+		</swiper>
+	</section>
+	<section class="swipe hidden visible-xs-block">
+		<swiper grab-cursor="true" keyboard-control="true" slides-per-view="1" effect="slide" loop="true" autoplay="3000" speed="500">
+			<slides>
+				<slide><img src="images/home-header-1-xs.jpg" /></slide>
+				<slide><img src="images/home-header-2-xs.jpg" /></slide>
+				<slide><img src="images/home-header-3-xs.jpg" /></slide>
 			</slides>
 			<pagination></pagination>
 		</swiper>
@@ -80,7 +89,6 @@
 	<div class="container text-center">
 		<div class="row">
 			<div class="col-sm-12 clearfix bottom-buffer home-content wow fadeInUpSmall" data-wow-delay=".2s">
-				
 				<h3 class="title section">Atelier</h3>
 				<p class="subtitle">abbiamo scelto delle speciali configurazioni per te, ma puoi costruire la tua borsa unica nel nostro configuratore</p>
 			</div>
@@ -118,7 +126,7 @@
 				</div>
 				<div class="col-sm-8 clearfix">
 					<p class="subtitle"><b>*The star(t)*</b> - la nostra prima collezione a edizione limitata è l’inizio, ma anche la stella. La stella che ci guida in questo percorso di passione e la stella che ci fa brillare ogni giorno. Vogliamo dedicare questa collezione alla “star” che è in ognuno di noi, perché la personalità è il nuovo lusso.</p>
-					<a href="#!/collezione" class="btn btn-default anim">Esplora</a> <a href="#!/configura" class="btn btn-default anim">Crea</a>
+					<a href="#!/collezione" class="btn btn-default anim">Esplora</a> <a href="#!/configura" class="btn hidden btn-default anim">Crea</a>
 				</div>	
 			</div>	
 		</div>

@@ -11826,11 +11826,12 @@ button.close {
 .access > [class^="col-"], .profile > [class*=" col-"],
 .profile > [class^="col-"] {
   padding: 20px 50px;
+  margin-bottom: 30px;
 }
-.access > [class*=" col-"]:last-of-type,
-.access > [class^="col-"]:last-of-type, .profile > [class*=" col-"]:last-of-type,
-.profile > [class^="col-"]:last-of-type {
-  border-left: solid 1px #f7f1f3;
+.access > [class*=" col-"]:first-of-type,
+.access > [class^="col-"]:first-of-type, .profile > [class*=" col-"]:first-of-type,
+.profile > [class^="col-"]:first-of-type {
+  border-right: solid 1px #f7f1f3;
 }
 @media (max-width: 767px) {
   .access > [class*=" col-"],
@@ -13020,10 +13021,25 @@ a.link {
 }
 .jumbotron.quote-section.page-header.index {
   text-align: center !important;
-  padding: 1.5em 0 1.5em 0;
+  padding: 1.5em 0;
 }
 .jumbotron.quote-section.page-header.index .title {
   text-align: center !important;
+}
+@media screen and (max-width: 767px) {
+  .jumbotron.quote-section.page-header.index .title {
+    font-size: 1.4em !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section.page-header.index .title {
+    font-size: 1.1em !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section.page-header.index {
+    padding: 1.2em 0;
+  }
 }
 @media screen and (max-width: 767px) {
   .jumbotron {
