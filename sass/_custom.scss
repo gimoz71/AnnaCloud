@@ -217,8 +217,9 @@
     > [class*=" col-"],
     > [class^="col-"] {
         padding: 20px 50px;
-        &:last-of-type {
-            border-left: solid 1px $standard-border-color;
+        margin-bottom: 30px;
+        &:first-of-type {
+            border-right: solid 1px $standard-border-color;
         }
         @media (max-width: $screen-xs-max ) {
             padding-left: 15px;

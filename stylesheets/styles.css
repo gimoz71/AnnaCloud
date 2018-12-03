@@ -11826,11 +11826,12 @@ button.close {
 .access > [class^="col-"], .profile > [class*=" col-"],
 .profile > [class^="col-"] {
   padding: 20px 50px;
+  margin-bottom: 30px;
 }
-.access > [class*=" col-"]:last-of-type,
-.access > [class^="col-"]:last-of-type, .profile > [class*=" col-"]:last-of-type,
-.profile > [class^="col-"]:last-of-type {
-  border-left: solid 1px #f7f1f3;
+.access > [class*=" col-"]:first-of-type,
+.access > [class^="col-"]:first-of-type, .profile > [class*=" col-"]:first-of-type,
+.profile > [class^="col-"]:first-of-type {
+  border-right: solid 1px #f7f1f3;
 }
 @media (max-width: 767px) {
   .access > [class*=" col-"],
