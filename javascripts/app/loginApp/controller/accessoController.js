@@ -1,4 +1,4 @@
-angular.module("loginModule").controller("accessoController", ["$scope", "loginService", "salvaUtenteService", function($scope, loginService, salvaUtenteService) {
+angular.module("loginModule").controller("accessoController", ["$scope", "listeService", "loginService", "salvaUtenteService", function($scope, listeService, loginService, salvaUtenteService) {
 	
 //	loginService.setDeviceStatusRemembered().then(
 //			function(greeting) {
@@ -12,7 +12,7 @@ angular.module("loginModule").controller("accessoController", ["$scope", "loginS
 		     };
 	
 	$scope.login = function (email, password){
-		console.log("eccomi controller");
+
 		loginService.login(email, password).then(
 			function(data){
 				console.log(data);
@@ -36,14 +36,47 @@ angular.module("loginModule").controller("accessoController", ["$scope", "loginS
 									  console.log('Failed: ' + reason);
 									});
 						}
+
+						if($scope.getNextPath() != ""){
+							var tempNextPath = $scope.getNextPath();
+							$scope.setNextPath("");
+							if($scope.tempConfigurazione != null && tempNextPath == '/preferiti'){
+								var localTempConfigurazione = $scope.getTempConfigurazione()
+								$scope.tempConfigurazione = null;
+								var confUser = {};
+								confUser.email = user.eMail;
+								localTempConfigurazione.utente = confUser;
+
+								//salvo la configurazione
+								listeService.putConfigurazione(localTempConfigurazione).then(
+									function (res){
+										if(res.errorMessage != null || res.errorMessage != undefined){
+											alert('si è verificato un problema nel salvataggio della configurazione');
+											console.log(res.errorMessage);
+										} else {
+											console.log("Configurazione salvata correttamente");
+											//ricarico le liste
+											$scope.ricaricaListe(email, tempNextPath);
+										}
+									},
+									function (reason){
+										console.log(reason);
+										alert ("errore aggiunta preferiti");
+									}
+								);
+								
+							} else {
+								$scope.changePath(tempNextPath);
+							}
+						} else {
+							$scope.changePath('/home');
+						}
 					})
-				$scope.setHome();
 			}, function(reason) {
 				  console.log( reason);
 				  alert (reason.message);
 			}
 		);
-		
 	}
 	
 	$scope.signUp = function (email, nome, cognome, password){

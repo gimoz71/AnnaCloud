@@ -1,21 +1,9 @@
 angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "listeService", "$location", "jwtHelper",  function($scope, loginService, listeService, $location, jwtHelper) {
-	
-	$scope.isHome = true;
-	$scope.isConfigurator = false;
-	$scope.isVisione = false;
-	$scope.isEsperienza = false;
-	$scope.isContatti = false;
-	$scope.isStores = false;
-	$scope.isAccesso = false;
-	$scope.isPreferiti = false;
-	$scope.isOrdini = false;
-	$scope.isProfilo = false;
-	$scope.isCarrello = false;
-	$scope.isCheckout = false;
-	
-	$scope.user = null;
 
+	$scope.user = null;
 	$scope.costoSpedizione = 19.50;
+
+	$scope.orderBaseMessage = ""
 
 	$scope.carrello = [];
 	$scope.preferiti = [];
@@ -35,6 +23,13 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.isActive = function (viewLocation) {
 		return viewLocation === $location.path();
 	};
+
+	$scope.setNextPath = function(nextPath){
+		$scope.nextPath = nextPath;
+	}
+	$scope.getNextPath = function(){
+		return $scope.nextPath;
+	}
 
 	$scope.setOrdineInCorso = function(ordineInCorso){
 		$scope.ordineInCorso = ordineInCorso;
@@ -106,6 +101,9 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	}
 
 	$scope.getCarrelloSize = function(){
+		if($scope.carrello == undefined){
+			return 0;
+		}
 		return $scope.carrello.length;
 	}
 
@@ -123,6 +121,9 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	}
 
 	$scope.getPreferitiSize = function(){
+		if($scope.preferiti == undefined){
+			return 0;
+		}
 		return $scope.preferiti.length;
 	}
 
@@ -136,12 +137,39 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	
 	$scope.logOut = function (){
 		$scope.setUser(null);
+		$scope.initPreferiti([]);
+		$scope.initCarrello([]);
+		$scope.setTempConfigurazione(null);
 		loginService.logOut();
-		$scope.setHome();
+		$location.url('/home');
 	}
 	
 	$scope.getCostoSpedizione = function(){
 		return $scope.costoSpedizione;
+	}
+
+	$scope.getColoreConf = function(configurazione){
+		var colore = "black";
+		var numeroEntita = configurazione.elencoEntita.length;
+		for(var i = 0; i < numeroEntita; i++){
+			var entita = configurazione.elencoEntita[i];
+			if(entita.categoria == "colore"){
+				colore = entita.colore;
+			}
+		}
+		return colore;
+	}
+
+	$scope.getInizialiConf = function(configurazione){
+		var iniziali = "";
+		var numeroEntita = configurazione.elencoEntita.length;
+		for(var i = 0; i < numeroEntita; i++){
+			var entita = configurazione.elencoEntita[i];
+			if(entita.categoria == "iniziali"){
+				iniziali += entita.nome;
+			}
+		}
+		return iniziali;
 	}
 
 	$scope.calcolaPrezzo = function(configurazione){
@@ -158,7 +186,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		var configurazioni = ordine.configurazioni;
 		var totale = 0;
 		for(var i = 0; i < configurazioni.length; i++){
-			var configurazione = configurazioni.lenght;
+			var configurazione = configurazioni[i];
 			totale += $scope.calcolaPrezzo(configurazione);
 		}
 		return totale;
@@ -168,13 +196,15 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		listeService.getConfigurazioniUtente(email).then(function(data){
 			$scope.preferiti = data.data.configurazioni;
 			
+			var tempCarrello = [];
 			for(var i = 0; i < $scope.preferiti.length; i++){
 				if($scope.preferiti[i].carrello){
-					$scope.carrello.push($scope.preferiti[i]);
+					tempCarrello.push($scope.preferiti[i]);
 				}
 			}
+			$scope.carrello = tempCarrello;
 			if(page != null && page != undefined && page != ""){
-				$location.url(page);
+				$scope.changePath(page);
 			}
 		});
 	}
@@ -186,13 +216,131 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		return email;
 	}
 
+	$scope.loginAndMove = function(username, password, nextPath){
+		loginService.login(email, password).then(
+			function(data){
+				console.log(data);
+				loginService.getCurrentUser().then (function (data){
+					console.log(data);
+					var user = data;
+					var idToken = jwtHelper.decodeToken(data.signInUserSession.idToken.jwtToken);
+					var tokenEmail = idToken.email;
+					$scope.ricaricaListe(tokenEmail);
+					user.eMail = tokenEmail;
+					$scope.setUser(data);
+					if ($scope.remember.value == true){
+						loginService.setDeviceStatusRemembered().then(
+								function(greeting) {
+									console.log('Success: remembered ' + greeting);
+								}, function(reason) {
+									console.log('Failed: ' + reason);
+								});
+					}else{
+						loginService.setDeviceStatusNotRemembered().then(
+								function(greeting) {
+									console.log('Success: not remembered ' + greeting);
+								}, function(reason) {
+									console.log('Failed: ' + reason);
+								});
+					}
+
+					loginService.getUserAttributes().then(
+						function (attList){
+							console.log(attList);
+							attList.forEach(function (a){
+								if (a["Name"] == "custom:email" ){
+									$scope.email = a["Value"];
+								}
+								if (a["Name"] == "custom:telefono" ){
+									$scope.tel = a["Value"];
+								}
+								if (a["Name"] == "name" ){
+									$scope.nome = a["Value"];
+								}
+								if (a["Name"] == "family_name" ){
+									$scope.cognome = a["Value"];
+								}
+								if (a["Name"] == "custom:indSpe" ){
+									$scope.indSpe = a["Value"];
+								}
+								if (a["Name"] == "custom:indSpe2" ){
+									$scope.indSpe2 = a["Value"];
+								}
+							})
+						},
+						function (reason){
+							console.log(reason)
+						}
+					)	
+
+				});
+
+				if(nextPath == null || nextPath == ""){
+					$scope.changePath('/home');
+				} else {
+					$scope.changePath(nextPath);
+				}
+			}, function(reason) {
+				  console.log( reason);
+				  alert (reason.message);
+			}
+		);
+	}
+
+	$scope.completaOperazioniOrdneAcquistato = function(){
+		//aggiorno l'ordine su DB e poi lo elimino da locale
+		$scope.ordineInCorso.pagato = true;
+		$scope.ordineInCorso.stato = 1;
+
+		listeService.putOrdine($scope.ordineInCorso).then(
+			function (res){
+				console.log(res);
+				if(res.errorMessage != null && res.errorMessage != ""){
+					//ho un errore
+					console.log(res.errorMessage);
+					alert("C'è stato un problema nel salvataggio dell'ordine");
+				} else {
+					alert("ordine correttamente aggiornato");
+					//preparo l'invio delle mail
+					$scope.ordineInCorso.codice = res.data.codiceOrdineRisposta;
+					var mailMessage = $scope.generateEmailMessage($scope.ordineInCorso);
+					listeService.sendEmail(mailMessage).then(
+						function(res2){
+							if(res2.errorMessage != null && res2.errorMessage != ""){
+								console.log(res2.errorMessage);
+								alert("C'è stato un problema nell'invio della mail di riepilogo, contattare l'ammistratore");
+							} else {
+								$scope.ordineInCorso = null;
+								$scope.changePath('/preferiti');
+							}
+						}
+					);
+				}
+			},
+			function (reason){
+				console.log(reason);
+				alert ("errore salvataggio ordine");
+			}
+		);
+	}
+
+	$scope.generateEmailMessage = function(){
+		var message = {};
+
+		message.toEmailAddress = [$scope.getUserEmail()];
+		message.ccEmailAddress = [];
+		message.emailSubject = "Annacloud - Riepilogo Ordine " + $scope.ordineInCorso.codice;
+		message.emailMessage = "messaggio di prova inviato dopo la chiusura di un ordine";
+
+		return message;
+	}
+
 	loginService.getCurrentUser().then(function(data){
 		$scope.setUser(data);
 		if(data != null){
 			if(data.signInUserSession != null){
 				var idToken = jwtHelper.decodeToken(data.signInUserSession.idToken.jwtToken);
 				var email = idToken.email;
-				
 				$scope.ricaricaListe(email);
 				//tiro giu' anche gli attributi dell'utente
 				loginService.getUserAttributes().then(
@@ -233,48 +381,6 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			console.log('reason');
 		}
 	)
-	
-	$scope.nappeFisse = [ {
-		datasource : "images/item.jpg",
-		idaccessorio : 1,
-		attivo : false
-	}, {
-		datasource : "images/item2.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item3.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item4.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item2.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item3.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item4.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item.jpg",
-		idaccessorio : 2,
-		attivo : false
-	}, {
-		datasource : "images/item2.jpg",
-		idaccessorio : 2,
-		attivo : false
-	} ];
 
 	$scope.hideHeader = function(){
 		return $location.path().indexOf("configura") != -1;
@@ -288,184 +394,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		}
 	};
 
-	$scope.setHome = function(){
-		$scope.isHome = true;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isProfilo = false;
-		$scope.isCarrello = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setConfigurator = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = true;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setVisione = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = true;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setEsperienza = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = true;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setContatti = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = true;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setStores = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = true;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-	
-	$scope.setAccesso = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = true;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-	
-	$scope.setPreferiti = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = true;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-	
-	$scope.setOrdini = function(){
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = true;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setCarrello = function () {
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = true;
-		$scope.isProfilo = false;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setProfilo = function () {
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = true;
-		$scope.isCheckout = false;
-	};
-
-	$scope.setCheckout = function () {
-		$scope.isHome = false;
-		$scope.isConfigurator = false;
-		$scope.isVisione = false;
-		$scope.isEsperienza = false;
-		$scope.isContatti = false;
-		$scope.isStores = false;
-		$scope.isAccesso = false;
-		$scope.isPreferiti = false;
-		$scope.isOrdini = false;
-		$scope.isCarrello = false;
-		$scope.isProfilo = false;
-		$scope.isCheckout = true;
-	};
-
+	$scope.changePath = function(path){
+		$location.url(path);
+		$scope.$apply();
+	}
 }]);

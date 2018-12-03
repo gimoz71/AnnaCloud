@@ -1,37 +1,21 @@
 angular.module("loginModule").controller("carrelloController", ["$scope", "listeService", "loginService", "$location", "jwtHelper",
 	function($scope, listeService, loginService, $location, jwtHelper) {
 	
-	$scope.eliminaCar  = function (ord)  {
-		console.log(ord);
-		listeService.deleteConfigurazione(ord).then(function(data){
-				console.log(data);
-				alert ("elemento eliminato");
-				loginService.getUserAttributes().then(
-						function (attList){
-							console.log(attList);
-							attList.forEach(function (a){
-								if (a["Name"] == "email" ){
-									codice = a["Value"];
-									console.log(codice);
-									listeService.getCarrelloUtente(codice).then(function(data){
-										$scope.listaPreferiti = data.data.configurazioni;
-										console.log(data);
-										console.log ($scope.listaPreferiti );
-										
-									})
-								}
-							})
-						},
-						function (reason){
-							console.log(reason)
-						}
-					)	
+	$scope.rimuoviDaCarrello = function(conf){
+		conf.carrello = false;
+		listeService.putConfigurazione(conf).then(
+			function (res){
+				if(res.errorMessage != undefined && res.errorMessage != null){
+					alert("Si è verificato un problema nell'eliminazione della configurazione dal carrello");
+				} else {
+					$scope.ricaricaListe($scope.getUserEmail(), "");
+				}
 			},
 			function (reason){
 				console.log(reason);
-				alert ("errore cancellazione");
+				alert ("errore aggiunta preferiti");
 			}
-		)
+		);
 	}
 
 	$scope.getCheckout = function(){
@@ -53,7 +37,7 @@ angular.module("loginModule").controller("carrelloController", ["$scope", "liste
 		//salvo l'ordine. Se va a buon fine svuoto il carrello
 		$scope.salvaOrdine(ordine);
 
-		$location.url('/checkout');
+		
 	}
 
 	$scope.getUserEmail = function(){
@@ -77,11 +61,12 @@ angular.module("loginModule").controller("carrelloController", ["$scope", "liste
 					alert("C'è stato un problema nel salvataggio dell'ordine, riprovare piu' tardi");
 				} else {
 					console.log("Ordine salvato, procedo a svuotare il carrello");
+					ordine.codice = res.data.codiceOrdineRisposta;
 					$scope.setOrdineInCorso(ordine);
-					//qui devo svuotare il carrello
-					$scope.svuotaCarrello(ordine);
 
 					$location.url('/checkout');
+					//qui devo svuotare il carrello
+					$scope.svuotaCarrello(ordine);
 				}
 			},
 			function (reason){

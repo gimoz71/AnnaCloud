@@ -1,6 +1,6 @@
 
 
-<div ng-controller="checkoutController">
+<div ng-controller="checkoutController" ng-init="initCheckOut()">
     
     <div class="container top-buffer bottom-buffer ">
         <div class="row">
@@ -82,35 +82,26 @@
             <div class="col-sm-6 bag-item clearfix">
                 <div class="col-sm-12 no-padding action">
                     <div class="order-state  one just-done summary">
-                    	<div ng-repeat="conf in listaPreferiti" >
+                    	<div ng-repeat="conf in ordine.configurazioni" >
 	                        <div  class="row">
 	                            <div class="col-sm-12 text-left">
 	                                <h5 class="no-margin">{{conf.nome}}</h5>
-	                                <span>Crossbody champagne<br>iniziali: SRB</span>
-	                                <span class="single-price">340&euro;</span>
-	                                <h5  class="remove"><i ng-click="eliminaCar(conf)" class="unaicon-remove"></i></h5>
+	                                <span>Colore : {{getColoreConf(conf)}}<br>Iniziali: {{getInizialiConf(conf)}}</span>
+	                                <span class="single-price">{{calcolaPrezzo(conf)}}&euro;</span>
+	                                <h5  class="remove"><i ng-click="eliminaDaOrdine(conf)" class="unaicon-remove"></i></h5>
 	                            </div>          
 	                        </div>
 	                        <hr>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-sm-12 text-left">
-                                <h5 class="no-margin">Shoulderbag #1</h5>
-                                <span>Crossbody champagne<br>iniziali: SRB</span>
-                                <span class="single-price">340&euro;</span>
-                                <h5 class="remove"><i class="unaicon-remove"></i></h5>
-                            </div>
-                        </div>
-                        <hr> -->
                         <div class="row top-buffer">
                             <div class="col-sm-12 text-left">
                                 <span>Subtotale</span>
-                                <span class="single-price"><b>680&euro;</b></span>
+                                <span class="single-price"><b>{{subtotale}}&euro;</b></span>
                             </div>
                         
                             <div class="col-sm-12 text-left">
                                 <span>spedizione</span>
-                                <span class="single-price"><b>0&euro;</b></span>
+                                <span class="single-price"><b>{{costoSpedizione}}&euro;</b></span>
                             </div>
                         </div>
                     </div>
@@ -120,7 +111,7 @@
                                 <span>TOTALE</span>
                             </div>
                             <div class="row top-buffer">
-                                <span class="single-price"><b>680&euro;</b></span>
+                                <span class="single-price"><b>{{totale}}&euro;</b></span>
                             </div>
                         </div>
                     </div>

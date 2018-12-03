@@ -129,18 +129,6 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
 	            deferred.resolve(cognitoUser);
 	            console.log(session);
 	            console.log('session validity: ' + session.isValid());
-
-//	            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-//	                IdentityPoolId : 'eu-central-1:c51a37d3-18e6-4a2b-83d1-49090b88682f',
-//	                Logins : {
-//	                    // Change the key below according to the specific region your user pool is in.
-//	                    'cognito-idp.eu-central-1.amazonaws.com/eu-central-1_4pV2AIRml' : session.getIdToken().getJwtToken()
-//	                }
-//	            });
-//	            deferred.resolve(cognitoUser);
-//	            // Instantiate aws sdk service objects now that the credentials have been updated.
-//	            // example: var s3 = new AWS.S3();
-
 	        });
 	    }
 		return deferred.promise;
@@ -249,6 +237,10 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
 		return deferred.promise;
 	}
 	
+	this.isLoggedIn = function(){
+		return this.getCognitoUser() != null;
+	}
+
 	this.getUserAttributes = function (){
 		var deferred = $q.defer();
 		var cognitoUser = this.getCognitoUser();
