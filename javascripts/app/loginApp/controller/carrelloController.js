@@ -65,8 +65,6 @@ angular.module("loginModule").controller("carrelloController", ["$scope", "liste
 					$scope.setOrdineInCorso(ordine);
 
 					$location.url('/checkout');
-					//qui devo svuotare il carrello
-					$scope.svuotaCarrello(ordine);
 				}
 			},
 			function (reason){
@@ -76,49 +74,7 @@ angular.module("loginModule").controller("carrelloController", ["$scope", "liste
 		);
 	}
 
-	$scope.svuotaCarrello = function(ordine){
-
-		console.log("sto per svuotare il carrello");
-		//ottenfo la lista dei codici delle configurazioni
-		var listaCodici = $scope.getListaCodiciConfigurazioni(ordine);
-		listeService.svuotaCarrello(listaCodici).then(
-			function (res){
-				console.log(res);
-
-				console.log("carrello svuotato, ricarico le liste");
-				listeService.getConfigurazioniUtente($scope.getUserEmail()).then(function(data){
-					$scope.preferiti = data.data.configurazioni;
-					
-					for(var i = 0; i < $scope.preferiti.length; i++){
-						if($scope.preferiti[i].carrello){
-							$scope.carrello.push($scope.preferiti[i]);
-						}
-					}
-
-					console.log("liste ricaricate");
-				});
-			},
-			function (reason){
-				console.log(reason);
-				alert ("errore salvataggio ordine");
-			}
-		);
-	}
-
-	$scope.getListaCodiciConfigurazioni = function(ordine){
-
-		var codici = [];
-
-		var configurazioni = ordine.configurazioni;
-		for(var i = 0; i < configurazioni.length; i++){
-			var configurazione = configurazioni[i];
-			if(configurazione.codice != null){
-				codici.push(configurazione.codice);
-			}
-		}
-
-		return codici;
-	}
+	
 
 	$scope.getTotalAmount = function(){
 		var carrello = $scope.getCarrello()
