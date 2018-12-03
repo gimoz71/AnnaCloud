@@ -13020,10 +13020,25 @@ a.link {
 }
 .jumbotron.quote-section.page-header.index {
   text-align: center !important;
-  padding: 1.5em 0 1.5em 0;
+  padding: 1.5em 0;
 }
 .jumbotron.quote-section.page-header.index .title {
   text-align: center !important;
+}
+@media screen and (max-width: 767px) {
+  .jumbotron.quote-section.page-header.index .title {
+    font-size: 1.4em !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section.page-header.index .title {
+    font-size: 1.1em !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section.page-header.index {
+    padding: 1.2em 0;
+  }
 }
 @media screen and (max-width: 767px) {
   .jumbotron {
