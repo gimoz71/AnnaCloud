@@ -12291,6 +12291,24 @@ a.link {
   border: none;
 }
 
+/* modali */
+.modal {
+  top: auto;
+  bottom: 40%;
+}
+
+.modal-header, .modal-body {
+  padding-bottom: 0;
+}
+
+.modal-header, .modal-body, .modal-footer {
+  border: none;
+  text-align: center !important;
+}
+.modal-header .btn, .modal-body .btn, .modal-footer .btn {
+  margin: 0;
+}
+
 /*-------------------------------*/
 /*  @group Header               */
 /*-------------------------------*/
@@ -13744,7 +13762,7 @@ a.link {
 }
 @media screen and (max-width: 767px) {
   .configuratore #price-panel {
-    display: none;
+    display: none !important;
   }
 }
 .configuratore .riepilogo {
