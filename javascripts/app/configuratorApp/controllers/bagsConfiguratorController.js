@@ -43,6 +43,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	$scope.metalloVincolante = "argento";
 	$scope.mapMetalloTracolle = new Map();
+	$scope.mapMetalloCiondoli = new Map();
 	$scope.mapMetalloBorchie = new Map();
 
 	$scope.borchieSelezionate = false;
@@ -169,7 +170,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 							} else if (entitaSingola.vincoloMetallo == true) {
 								if (entitaSingola.categoria == "tracolle") {
 									$scope.mapMetalloTracolle.set(entitaSingola.metallo, entitaSingola);
-									$scope.mapMetalloBorchie.set(entitaSingola.metallo, entitaSingola);
+									// $scope.mapMetalloBorchie.set(entitaSingola.metallo, entitaSingola);
+								} else if (entitaSingola.categoria == "ciondoli") {
+									$scope.mapMetalloCiondoli.set(entitaSingola.metallo, entitaSingola);
 								} else if (entitaSingola.categoria == "borchie") {
 									$scope.mapMetalloBorchie.set(entitaSingola.nomeBorchia + "_" + entitaSingola.metallo, entitaSingola);
 								}
@@ -308,7 +311,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				}
 			}
 		}
-
 	}
 
 	configController.getNomeModelloTracolla = function(splitted) {
@@ -677,6 +679,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		if($scope.tipoEntitaSelezionata == "borchie"){
 			$scope.nomeBorchiaSelezionata = entita.nomeBorchia;
 		}
+		
 		if ($scope.tipoEntitaSelezionata.startsWith("colore")){
 
 			$scope.coloreSelezionato = entita.colore;
@@ -705,7 +708,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 				var tracollaUrl = $scope.mapMetalloTracolle.get(entita.metallo);
 				var urlT = tracollaUrl.urlStripe;
-				// urlT = urlT.replace("RES", configController.getResolutionPlaceHolder());
 
 				if(tracollaUrl){
 					configController.aggiungiElementoAStack(urlT, tracollaUrl.ordine, false, entita);
@@ -717,7 +719,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 				var ciondoloUrl = $scope.mapMetalloCiondoli.get(entita.metallo);
 				var urlT = ciondoloUrl.urlStripe;
-				// urlT = urlT.replace("RES", configController.getResolutionPlaceHolder());
 
 				if(ciondoloUrl){
 					configController.aggiungiElementoAStack(urlT, ciondoloUrl.ordine, false, entita);
