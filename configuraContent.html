@@ -65,8 +65,8 @@
 			</div>
 		</div>
 	</div>
-	<div id="price-panel">
-		<p class="size">Shoulderbag<br>21x19 cm</p>
+	<div id="price-panel" ng-if="modelloSelezionato != ''">
+		<p class="size">{{contr.getModelloSelezionato()}}<br>21x19 cm</p>
 		<hr>
 		<h3 class="total-price ">{{contr.priceManager.price}}&euro;</h3>
 		<p class="price-detail">22% IVA inclusa,<br>spese di sped. escluse</p>
@@ -343,12 +343,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="riepilogo">
+	<div class="riepilogo" ng-if="modelloSelezionato != ''">
 		<div class="container price-container">
 			<div class="row">
 				<div class="col-xs-6 text-right" style="padding-right:5px;">
 					<h3 class="price nomargin">{{contr.priceManager.price}}&euro;</h3><br>
-					<p class="model">Shoulderbag - 12x19cm</p>
+					<p class="model">{{contr.getModelloSelezionato()}} - 12x19cm</p>
 				</div>
 				<div class="col-xs-6 text-left" style="padding-left:5px;">
 					<a href="javascript:void(0);" class="btn btn-default" ng-click="contr.aggiungiAlCarrello()">Acquista</a>

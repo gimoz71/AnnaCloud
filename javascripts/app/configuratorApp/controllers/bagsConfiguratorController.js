@@ -16,7 +16,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	$scope.tipiAccessori = new Map();
 	$scope.entitaTipoAccessorioSelezionato = [];
 	$scope.tipiAccessoriModelloSelezionato = [];
-	$scope.modelloSelezionato = '';
+	$scope.modelloSelezionato = "";
 
 	$scope.categorieTracolle = ["TRACOLLA_BASE","TRACOLLA_CLASSICA-DOT","TRACOLLA_CLASSICA-STELLE","TRACOLLA_CATENELLA","TRACOLLA_INCROCIATA","TRACOLLA_CENTRALE"];
 	$scope.modelliTracolleOro = new Map();
@@ -96,6 +96,14 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.priceManager = {
 			price: 0
+	}
+
+	configController.getModelloSelezionato = function(){
+		if($scope.modelloSelezionato != ""){
+			return $scope.modelloSelezionato.charAt(0).toUpperCase() + $scope.modelloSelezionato.slice(1);
+		} else {
+			return "";
+		}
 	}
 
 	configController.cleanAccessori = function(){
@@ -1341,7 +1349,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			cleanStack = cleanStack.concat($scope.symbolsUrlStack);
 		}
 		var lowerResolutionStack = configController.getLowerResolutionStack(cleanStack);
-		
+
 		mergeImages(lowerResolutionStack).then(imgBase64 => {
 			image.src = imgBase64;
 			image.onload = function(){//quando la thumbnail è pronta procedo all'invio al server - controllare le dimensioni della thumbnail
