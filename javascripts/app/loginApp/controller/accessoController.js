@@ -1,11 +1,5 @@
 angular.module("loginModule").controller("accessoController", ["$scope", "listeService", "loginService", "salvaUtenteService", function($scope, listeService, loginService, salvaUtenteService) {
 	
-//	loginService.setDeviceStatusRemembered().then(
-//			function(greeting) {
-//			  console.log('Success: ' + greeting);
-//			}, function(reason) {
-//			  console.log('Failed: ' + reason);
-//			});
 	
 	$scope.remember = {
 		       value : true,
@@ -21,6 +15,7 @@ angular.module("loginModule").controller("accessoController", ["$scope", "listeS
 						var user = data;
 						user.eMail = email;
 						$scope.setUser(data);
+						$scope.ricaricaListe(user.eMail, "");
 						if ($scope.remember.value == true){
 							loginService.setDeviceStatusRemembered().then(
 									function(greeting) {
@@ -56,7 +51,7 @@ angular.module("loginModule").controller("accessoController", ["$scope", "listeS
 										} else {
 											console.log("Configurazione salvata correttamente");
 											//ricarico le liste
-											$scope.ricaricaListe(email, tempNextPath);
+											$scope.ricaricaListe(confUser.email, tempNextPath);
 										}
 									},
 									function (reason){
@@ -83,18 +78,32 @@ angular.module("loginModule").controller("accessoController", ["$scope", "listeS
 		loginService.signUp(email, nome, cognome, password).then(
 				function(data){
 					console.log(data);
+					
 					utente = {};
 					utente.email = email;
 					utente.username = nome + "-" +cognome;
 					utente.nome = nome;
 					utente.cognome = cognome;
-//					salvaUtenteService.response (utente).then(
-//							function(r){
-//								console.log(utente);
-//								console.log(r);
-//							}
-//					)
-					$scope.setHome();
+
+					//alert di avviso
+					alert("Registrazione avvenuta con successo, adesso puoi effettuare il login con le credenziali inserite");
+
+					//mail di avviso avvenuta registrazione
+					var message = {};
+
+					message.toEmailAddress = [email];
+					message.ccEmailAddress = [];
+					message.emailSubject = "Conferma registrazione";
+					message.emailMessage = "Congratulazioni, ti sei registrato su annacloud.it con successo.";
+
+					listeService.sendEmail(message).then(
+						function(res2){
+							if(res2.errorMessage != null && res2.errorMessage != ""){
+								console.log(res2.errorMessage);
+								alert("C'è stato un problema nell'invio della mail di conferma registrazione");
+							} 
+						}
+					);
 				},
 				function (reason){
 					console.log(reason);

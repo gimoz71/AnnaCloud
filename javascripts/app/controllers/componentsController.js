@@ -3,7 +3,79 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.user = null;
 	$scope.costoSpedizione = 19.50;
 
-	$scope.orderBaseMessage = ""
+	$scope.orderBaseMessage = "<html>"+
+	"<head>"+
+		"<title>Anna Cloud</title>"+
+		"<style>"+
+			"@font-face {"+
+				"font-family: 'Montserrat';"+
+				"font-style: normal;"+
+				"font-weight: 400;"+
+				"src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');"+
+				"unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"+
+			"}"+
+			"@font-face {"+
+				"font-family: 'Montserrat';"+
+				"font-style: normal;"+
+				"font-weight: 700;"+
+				"src: local('Montserat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');"+
+				"unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;"+
+			"}"+
+			"body {"+
+				"font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;"+
+			"}"+
+			"table {"+
+				"padding: 0;"+
+				"margin: 0;"+
+				"border-collapse: collapse;"+
+			"}"+
+			"td {"+
+				"vertical-align: top;"+
+				"margin: 0;"+
+				"padding: 0;"+
+			"}"+
+			"h2, h3, h4, h5, p {"+
+				"margin: 0;"+
+				"padding: 0;"+
+			"}"+
+		"</style>"+
+	"</head>"+
+	"<body ng-app='applicationModule' class='ng-scope' ng-cloak>"+
+		"<table style='min-width: 500px;'>"+
+			"<tr>"+
+				"<td colspan='2'>"+
+					"<h2 style='padding-bottom: 10px;'>Ordine n° CODICE_ORDINE</h2>"+
+				"</td>"+
+			"</tr>"+
+			"ELENCO_CONF"+
+		"</table>"+
+	"</body>"+
+	"</html>";
+
+	$scope.configurationPartMessage = "<tr>"+
+			"<td style='width: 10px'></td>"+//<img style='width: 150px; height: auto; border:solid 1px #eee; margin-right: 10px' src='CONF_IMAGE'>
+				"<td>"+
+					"<h3 style='padding-bottom: 10px;'>CONF_NAME</h3>"+
+					"<table style='width: 100%;'>"+
+						"<tr>"+
+							"<td>"+
+								"<h4 style='padding-bottom: 10px;'>Base</h4>"+
+							"</td>"+
+							"<td>"+
+								"<h4 style='padding-bottom: 10px;'>Accessori</h4>"+
+							"</td>"+
+						"</tr>"+
+						"ELENCO_ENTITA"+
+					"</table>"+
+				"</td>"+
+			"</tr>";
+
+	$scope.entitaPartMessage = "<tr><td style='width: 50%'>"+
+									"<p>CONF_ENTITA_NOME:</p>"+
+								"</td>"+
+								"<td style='width: 50%'>"+
+									"<p>CONF_ENTITA_VALORE</p>"+
+								"</td></tr>";
 
 	$scope.carrello = [];
 	$scope.preferiti = [];
@@ -302,7 +374,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 				} else {
 					alert("ordine correttamente aggiornato");
 					//preparo l'invio delle mail
-					$scope.ordineInCorso.codice = res.data.codiceOrdineRisposta;
+					$scope.ordineInCorso.codice = res.data.codiceConfigurazioneRisposta;
 					var mailMessage = $scope.generateEmailMessage($scope.ordineInCorso);
 					listeService.sendEmail(mailMessage).then(
 						function(res2){
@@ -330,8 +402,43 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		message.toEmailAddress = [$scope.getUserEmail()];
 		message.ccEmailAddress = [];
 		message.emailSubject = "Annacloud - Riepilogo Ordine " + $scope.ordineInCorso.codice;
-		message.emailMessage = "messaggio di prova inviato dopo la chiusura di un ordine";
+		message.emailMessage = $scope.generateMessageText();
 
+		return message;
+	}
+
+	$scope.generateMessageText = function(){
+		var message = $scope.orderBaseMessage;
+		message = message.replace('CODICE_ORDINE', $scope.ordineInCorso.codice);
+
+		var confMessageParts = "";
+		for(var i = 0; i < $scope.ordineInCorso.configurazioni.length; i++){
+			var configurazione = $scope.ordineInCorso.configurazioni[i];
+
+
+			var elencoEntitaPartMessage = "";
+			for(var j= 0; j < configurazione.elencoEntita.length; j++){
+				entita = configurazione.elencoEntita[j];
+
+				var entitaMessagePart = $scope.entitaPartMessage;
+
+				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_NOME', entita.categoria);
+				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_VALORE', entita.nome);
+
+				elencoEntitaPartMessage += entitaMessagePart;
+			}
+			var confMessagePart = $scope.configurationPartMessage;
+			confMessagePart = confMessagePart.replace('ELENCO_ENTITA',elencoEntitaPartMessage);
+
+			confMessagePart = confMessagePart.replace('CONF_NAME',configurazione.nome);
+			// confMessagePart = confMessagePart.replace('CONF_IMAGE',configurazione.thumbnail);
+			confMessagePart = confMessagePart.replace('CONF_COLORE',$scope.getColoreConf(configurazione));
+			confMessagePart = confMessagePart.replace('CONF_INIZIALI',$scope.getInizialiConf(configurazione));
+
+			confMessageParts += confMessagePart;
+		}
+
+		message = message.replace('ELENCO_CONF', confMessageParts);
 		return message;
 	}
 
@@ -381,6 +488,50 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			console.log('reason');
 		}
 	)
+
+	$scope.svuotaCarrello = function(ordine){
+
+		console.log("sto per svuotare il carrello");
+		//ottenfo la lista dei codici delle configurazioni
+		var listaCodici = $scope.getListaCodiciConfigurazioni(ordine);
+		listeService.svuotaCarrello(listaCodici).then(
+			function (res){
+				console.log(res);
+
+				console.log("carrello svuotato, ricarico le liste");
+				listeService.getConfigurazioniUtente($scope.getUserEmail()).then(function(data){
+					$scope.preferiti = data.data.configurazioni;
+					
+					for(var i = 0; i < $scope.preferiti.length; i++){
+						if($scope.preferiti[i].carrello){
+							$scope.carrello.push($scope.preferiti[i]);
+						}
+					}
+
+					console.log("liste ricaricate");
+				});
+			},
+			function (reason){
+				console.log(reason);
+				alert ("errore salvataggio ordine");
+			}
+		);
+	}
+
+	$scope.getListaCodiciConfigurazioni = function(ordine){
+
+		var codici = [];
+
+		var configurazioni = ordine.configurazioni;
+		for(var i = 0; i < configurazioni.length; i++){
+			var configurazione = configurazioni[i];
+			if(configurazione.codice != null){
+				codici.push(configurazione.codice);
+			}
+		}
+
+		return codici;
+	}
 
 	$scope.hideHeader = function(){
 		return $location.path().indexOf("configura") != -1;
