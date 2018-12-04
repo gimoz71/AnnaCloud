@@ -143,7 +143,7 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 		
 	}
 	
-	$scope.cambiaIndirizzoSpedizione = function (ns, i1s , i2s, cs, caps){
+	$scope.cambiaIndirizzoSpedizione = function (ns, i1s , cs, caps){
 		var attributeList = [];
 	    var attribute = {
 	        Name : 'custom:nomeSpe',
@@ -157,12 +157,6 @@ angular.module("loginModule").controller("profiloController", ["$scope", "getCon
 		    };
 		var attribute1 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute1);
 		attributeList.push(attribute1);
-		var attribute2 = {
-		        Name : 'custom:indSpe2',
-		        Value : i2s
-		    };
-	    var attribute2 = new AmazonCognitoIdentity.CognitoUserAttribute(attribute2);
-	    attributeList.push(attribute2);
 	    var attribute3 = {
 		        Name : 'custom:cittaSpe',
 		        Value : cs

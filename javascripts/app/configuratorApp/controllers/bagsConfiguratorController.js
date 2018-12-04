@@ -18,12 +18,12 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	$scope.tipiAccessoriModelloSelezionato = [];
 	$scope.modelloSelezionato = '';
 
-	$scope.categorieTracolle = [];
+	$scope.categorieTracolle = ["TRACOLLA_BASE","TRACOLLA_CLASSICA-DOT","TRACOLLA_CLASSICA-STELLE","TRACOLLA_CATENELLA","TRACOLLA_INCROCIATA","TRACOLLA_CENTRALE"];
 	$scope.modelliTracolleOro = new Map();
 	$scope.modelliTracolleArgento = new Map();
 	$scope.variantiTracolle = [];
 
-	$scope.categorieCiondoli = [];
+	$scope.categorieCiondoli = ["CIONDOLO_CUORE", "CIONDOLO_COLORATO", "CIONDOLO_FIOCCO"];
 	$scope.modelliCiondoliOro = new Map();
 	$scope.modelliCiondoliArgento = new Map();
 	$scope.variantiCiondoli = [];
@@ -277,9 +277,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				var categoriaCiondolo = split[0] + '_' + split[1];
 
 				//inserisco nelle categorie di ciondoli
-				if ($scope.categorieCiondoli.indexOf(categoriaCiondolo) == -1){
-					$scope.categorieCiondoli.push(categoriaCiondolo);
-				}
+				// if ($scope.categorieCiondoli.indexOf(categoriaCiondolo) == -1){
+				// 	$scope.categorieCiondoli.push(categoriaCiondolo);
+				// }
 
 				var modelName = configController.getNomeModelloCiondolo(split);
 				if(entita.metallo == "oro"){
@@ -319,9 +319,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				var categoriaTracolla = split[0] + '_' + split[1];
 
 				//inserisco nelle categorie di tracolle
-				if ($scope.categorieTracolle.indexOf(categoriaTracolla) == -1){
-					$scope.categorieTracolle.push(categoriaTracolla);
-				}
+				// if ($scope.categorieTracolle.indexOf(categoriaTracolla) == -1){
+				// 	$scope.categorieTracolle.push(categoriaTracolla);
+				// }
 
 				var modelName = configController.getNomeModelloTracolla(split);
 				if(entita.metallo == "oro"){
@@ -363,6 +363,13 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			}
 		}
 		return toReturn;
+	}
+
+	configController.traduciCategoriaAccessorio = function(nomeAccessorio){
+		if(nomeAccessorio == "ciondoli"){
+			return "charms"
+		}
+		return nomeAccessorio;
 	}
 
 	configController.scegliModello = function(modello){
@@ -1330,11 +1337,10 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		canvas.width = resolution;
 
 		var cleanStack = configController.pulisciStack();
-		var lowerResolutionStack = configController.getLowerResolutionStack(cleanStack);
-		
 		if($scope.symbolsUrlStack.length > 0) {
 			cleanStack = cleanStack.concat($scope.symbolsUrlStack);
 		}
+		var lowerResolutionStack = configController.getLowerResolutionStack(cleanStack);
 		
 		mergeImages(lowerResolutionStack).then(imgBase64 => {
 			image.src = imgBase64;
@@ -1365,6 +1371,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 							$scope.addToPreferiti($scope.configurazione);//aggiunge ai preferiti locali
 							if(isCarrello){
 								$scope.addToCarrello($scope.configurazione);//aggiunge ai preferiti locali
+								$scope.changePath('/carrello');
 							}
 						},
 						function (reason){
