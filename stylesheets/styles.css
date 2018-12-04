@@ -13015,7 +13015,7 @@ a.link {
 }
 .jumbotron.quote-section.page-header {
   margin: 0;
-  padding: 40px 0;
+  padding: 1.5em 0;
   background-color: #A87481;
 }
 @media screen and (max-width: 480px) {
