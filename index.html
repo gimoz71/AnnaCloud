@@ -240,7 +240,8 @@
 			<div class="copyright">
 				<div class="container">
 					Copyright &reg; 2018 ANNACLOUD
-					<a href="#modaleAvviso" role="button" class="btn btn-primary hidden" data-toggle="modal">Launch Demo Modal</a>
+					<a href="#modaleAvviso" role="button" class="btn btn-primary " data-toggle="modal">alert</a>
+					<a href="#modaleConfiguratoreNome" role="button" class="btn btn-primary " data-toggle="modal">nome configurazione</a>
 				</div>
 			</div>
 	    </footer>
@@ -248,12 +249,36 @@
 
 
 	<!---  MODALI E BOX VARI   -->
-
-	<div id="modaleAvviso" class="modal fade">
+	
+	<!---  Modale configuratore   -->
+	
+	<div id="modaleConfiguratoreNome" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
+				<div class="modal-header ">
+					<button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Nome della tua borsa</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="nome" class="sr-only hidden"></label>
+						<input ng-model="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+					<button type="button" class="btn btn-primary">Salva</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!---  Modale alert  -->
+	<div id="modaleAvviso" class="modal fade">
+		<div class="modal-dialog text-center">
+			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title">Confirmation</h4>
 				</div>
 				<div class="modal-body">

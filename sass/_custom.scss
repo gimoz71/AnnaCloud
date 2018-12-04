@@ -689,6 +689,27 @@ a.link {
     }
 }
 
+
+/* modali */
+
+.modal {
+    top: auto;
+    bottom: 40%;
+}
+.modal-content {
+    //text-align: center;
+}
+.modal-header, .modal-body{
+    padding-bottom: 0;
+}
+.modal-header, .modal-body, .modal-footer {
+    border: none;
+    text-align: center !important;
+    .btn {
+        margin: 0;
+    }
+}
+
 /*-------------------------------*/
 /*  @group Header               */
 /*-------------------------------*/
@@ -2139,7 +2160,7 @@ a.link {
             margin: 15px 0;
         }
         @media screen and (max-width: $screen-xs-max) {
-            display: none;
+            display: none !important;
         }
     }
     .riepilogo {
