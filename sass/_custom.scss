@@ -1054,7 +1054,7 @@ a.link {
         text-transform: uppercase;
     }
 }
-.esperienza-content, .visione-content, .contatti-content {
+.esperienza-content, .visione-content, .collezione-content .contatti-content {
     .narrazione {
         //min-height: 500px;
         background-color: #F6F6F6;
@@ -1102,6 +1102,15 @@ a.link {
             }
            
          }
+    }
+}
+
+.collezione-content {
+    .collezione-img {
+        padding: 0;
+        img {
+            width: 100%;
+        }
     }
 }
 
