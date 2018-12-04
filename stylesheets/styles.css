@@ -12996,26 +12996,32 @@ a.link {
   margin-bottom: 30px;
 }
 .jumbotron.quote-section.collection {
-  padding-bottom: 400px;
-}
-@media screen and (max-width: 1199px) {
-  .jumbotron.quote-section.collection {
-    padding-bottom: 330px;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 60px;
+  /*@media screen and (max-width: $screen-md-max) {
+      padding-top: 330px;
+      padding-bottom: 0;
+      margin-bottom: 130px;
   }
+  @media screen and (max-width: $screen-sm-max) {
+      //padding-top: 240px;
+      padding-bottom: 0;
+      margin-bottom: 130px;
+  }*/
 }
-@media screen and (max-width: 991px) {
-  .jumbotron.quote-section.collection {
-    padding-bottom: 240px;
-  }
+.jumbotron.quote-section.collection p, .jumbotron.quote-section.collection h2 {
+  color: #fff !important;
 }
 @media screen and (max-width: 767px) {
   .jumbotron.quote-section.collection {
-    padding-bottom: 60px;
+    margin-bottom: 0;
   }
 }
 .jumbotron.quote-section.page-header {
   margin: 0;
-  padding: 1.5em 0;
+  padding: 40px 0;
   background-color: #A87481;
 }
 @media screen and (max-width: 480px) {
@@ -13032,7 +13038,7 @@ a.link {
 }
 @media screen and (max-width: 480px) {
   .jumbotron.quote-section.page-header .title {
-    font-size: 1.5em !important;
+    font-size: 1.3em !important;
     text-align: center !important;
     margin: 0 1.3em;
   }
@@ -13042,7 +13048,10 @@ a.link {
   padding: 1.5em 0;
 }
 .jumbotron.quote-section.page-header.index .title {
+  font-weight: normal;
   text-align: center !important;
+  font-size: 1.7em !important;
+  margin: 0 1.7em;
 }
 @media screen and (max-width: 767px) {
   .jumbotron.quote-section.page-header.index .title {
@@ -13070,8 +13079,34 @@ a.link {
   }
 }
 
+.container-quota-section-image {
+  position: relative;
+  height: 0;
+}
+@media screen and (max-width: 767px) {
+  .container-quota-section-image {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+}
+
 .quote-section-image {
-  margin-bottom: 30px;
+  position: absolute;
+  padding: 2em;
+  bottom: 0;
+  left: 0;
+  background: url(../images/collezione-bg.jpg) no-repeat top center;
+  background-size: cover;
+  outline: solid 10px #fff;
+}
+@media screen and (max-width: 767px) {
+  .quote-section-image {
+    position: relative;
+    bottom: 0;
+    outline: 0;
+  }
 }
 .quote-section-image img {
   position: absolute;
