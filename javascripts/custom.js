@@ -100,12 +100,15 @@ $.fn.animateAccessoriBar = function(accContainer, offsetElement, triggerElement,
 var scale;
 
 $.fn.parentResize = function() {
+    // elemSize = calcolo l'altezza da applicare al contenitore del canvas borse tenendo conto degli elementi dell'interfaccia da sottrarre
     var elemSize = $(window).height() - $(".navbar").outerHeight() - $(".accessori").outerHeight() - $(".riepilogo").outerHeight();
+    
+    // calcolo
     this.css("position", "absolute").css("top", $(".navbar").outerHeight()).css("height", elemSize).css("width", $(window).width());
     
     
-    var elHeight = $("#a-middle").outerHeight()-60;
-    var elWidth = $("#a-middle").outerWidth()-100;
+    var elHeight = $("#a-middle").outerHeight();
+    var elWidth = $("#a-middle").outerWidth()-60;
     
 
     scale = Math.min(
@@ -115,7 +118,7 @@ $.fn.parentResize = function() {
 
     $("#a-middle").css({
         transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
-    }).css("margin-top", "2%");
+    }).css("margin-top", "50px");
 
 }
 

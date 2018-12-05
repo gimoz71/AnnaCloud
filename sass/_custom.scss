@@ -352,9 +352,15 @@ h1,h2,h3,h4,h5,h6 {
 img {
     max-width: 100%;
     height   : auto;
+    &.responsive {
+        width: 100%;
+    }
 }
 table {
     width: 100%;
+}
+label {
+    //font-family: $font-family-sans-serif-title;
 }
 input {
     padding: 5px;
@@ -1054,7 +1060,8 @@ a.link {
         text-transform: uppercase;
     }
 }
-.esperienza-content, .visione-content, .collezione-content .contatti-content {
+
+.esperienza-content, .visione-content, .collezione-content, .contatti-content {
     .narrazione {
         //min-height: 500px;
         background-color: #F6F6F6;
@@ -1088,7 +1095,7 @@ a.link {
          .content {
             margin: 5em;
             font-weight: lighter;
-            .text {
+            .text{
                 margin: 0 10%;
                 font-size: 1.8em;
                  @media screen and (max-width: $screen-xs) {
@@ -1096,9 +1103,42 @@ a.link {
                     font-size: 1.5em;
                 }
             }
-            @media screen and (max-width: $screen-xs) {
+            input, textarea{
+                font-size: 1.3em;
+                max-width: 400px;
+                display: inline-block;
+                 @media screen and (max-width: $screen-xs) {
+                    font-size: 1em;
+                }
+            }
+            @media screen and (max-width: $screen-xs-max) {
                 margin: 3em 2em;
                 //text-align: justify;
+            }
+            &.contatti {
+                margin: 5em 2em;
+                .text {
+                    margin: 0
+                }
+                
+                @media screen and (max-width: $screen-xs-max) {
+                    margin: 3em 2em;
+                    
+                }
+            }
+            &.fist {
+                text-align: right;
+                @media screen and (max-width: $screen-xs-max) {
+                    text-align: center;
+                    margin: 3em 2em 0em 2em ;
+                }
+            }
+            &.last {
+                text-align: left;
+                @media screen and (max-width: $screen-xs-max) {
+                    text-align: center;
+                    margin: 0em 2em 3em 2em ;
+                }
             }
            
          }
@@ -1211,6 +1251,9 @@ a.link {
 .jumbotron {
     padding: 60px 0;
     position: relative;
+    @media screen and (max-width: $screen-sm) {
+        padding: 40px 0;
+    }
     
     //min-height: 350px;
     &.homepage {
@@ -1282,42 +1325,6 @@ a.link {
                 //top: -20px;
             }
         }
-        .discover {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-family: $font-family-sans-serif-title;
-            font-size: 1em;
-            span {
-                @include transition(all 200ms ease-out);
-                color: #000;
-                text-shadow: 0 0 2px #fff;
-                background: rgba(255,255,255,.0);
-                padding: 10px 20px 15px 20px;
-                border-radius: 15px 15px 0 0;
-                display: inline-block;
-                position: relative;
-                bottom: 10px;
-                cursor: pointer;
-                &:after {
-                    content: "";
-                    background: url(../images/small-arrow-down.png) center center no-repeat;
-                    position: absolute;
-                    width: 12px;
-                    height: 14px;
-                    left: 50%;
-                    margin-left: -6px;
-                    bottom: 4px;
-                }
-                &:hover, &:active {
-                    @include transition(all 200ms ease-out);
-                    text-decoration: none;
-                    bottom: 5px;
-                }
-            }
-        }
-        
     }
     &.contatti {
         background: url(../images/jumbotron-visione.jpg) no-repeat center center;
@@ -1337,49 +1344,15 @@ a.link {
                 font-size: 2em;
             }
         }
-        .discover {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-family: $font-family-sans-serif-title;
-            font-size: 1em;
-            span {
-                @include transition(all 200ms ease-out);
-                color: #fff;
-                text-shadow: 0 0 2px #fff;
-                background: rgba(255,255,255,.0);
-                padding: 10px 20px 15px 20px;
-                border-radius: 15px 15px 0 0;
-                display: inline-block;
-                position: relative;
-                bottom: 10px;
-                cursor: pointer;
-                &:after {
-                    content: "";
-                    background: url(../images/small-arrow-down.png) center center no-repeat;
-                    position: absolute;
-                    width: 12px;
-                    height: 14px;
-                    left: 50%;
-                    margin-left: -6px;
-                    bottom: 4px;
-                }
-                &:hover, &:active {
-                    color: #fff;
-                    @include transition(all 200ms ease-out);
-                    text-decoration: none;
-                    bottom: 5px;
-                }
-            }
-        }
     }
     &.quote-section {
         height: auto;
         background-image: none; 
         background-color: #F6F6F6;
         margin-bottom: 50px;
-        
+         @media screen and (max-width: $screen-xs) {
+            margin-bottom: 40px;
+        }
         .title {
             //font-size: 2.8em !important;
             margin: 0;
@@ -1498,6 +1471,30 @@ a.link {
         outline: 0;
         //border-top: solid 10px #fff;
     
+    }
+    @media screen and (min-width: $screen-lg) {
+        padding: 3.3em;
+        .title {
+            font-size: 2.2em !important;
+        }
+        .subtitle {
+            font-size: 1.6em !important;
+        }
+        .btn {
+            font-size: 1.5em !important;
+        }
+    }
+     @media screen and (min-width: $screen-xl) {
+        padding: 3.3em;
+        .title {
+            font-size: 2.6em !important;
+        }
+        .subtitle {
+            font-size: 1.9em !important;
+        }
+        .btn {
+            font-size: 1.6em !important;
+        }
     }
     img {
         position: absolute;
