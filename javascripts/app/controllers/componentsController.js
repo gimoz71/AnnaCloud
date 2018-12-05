@@ -89,6 +89,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.cognome = "";
 	$scope.indSpe = "";
 	$scope.indSpe2 = "";
+	$scope.nomeSpe = "";
 
 	$scope.nextPath = "";
 
@@ -144,6 +145,13 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	}
 	$scope.getIndSpe = function(){
 		return $scope.indSpe;
+	}
+
+	$scope.setNomeSpe = function(nomeSpe){
+		$scope.nomeSpe = nomeSpe;
+	}
+	$scope.getNomeSpe = function(){
+		return $scope.nomeSpe;
 	}
 
 	$scope.setIndSpe2 = function(indSpe2){
@@ -335,6 +343,9 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 								if (a["Name"] == "custom:indSpe" ){
 									$scope.indSpe = a["Value"];
 								}
+								if (a["Name"] == "custom:nomeSpe" ){
+									$scope.nomeSpe = a["Value"];
+								}
 								if (a["Name"] == "custom:indSpe2" ){
 									$scope.indSpe2 = a["Value"];
 								}
@@ -469,6 +480,9 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 							if (a["Name"] == "custom:indSpe" ){
 								$scope.indSpe = a["Value"];
 							}
+							if (a["Name"] == "custom:nomeSpe" ){
+								$scope.nomeSpe = a["Value"];
+							}
 							if (a["Name"] == "custom:indSpe2" ){
 								$scope.indSpe2 = a["Value"];
 							}
@@ -548,5 +562,12 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.changePath = function(path){
 		$location.url(path);
 		$scope.$apply();
+	}
+
+	$scope.traduciCategoriaAccessorio = function(nomeAccessorio){
+		if(nomeAccessorio == "ciondoli"){
+			return "charms"
+		}
+		return nomeAccessorio;
 	}
 }]);

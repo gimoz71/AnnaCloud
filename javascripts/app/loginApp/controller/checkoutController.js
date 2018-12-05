@@ -32,6 +32,14 @@ angular.module("loginModule").controller("checkoutController", ["$scope", "liste
 		}
 	}
 
+	$scope.getNomeECognome = function(){
+		return $scope.getNomeSpe();
+	}
+
+	$scope.getIndirizzoSpedizione = function(){
+		return $scope.getIndSpe();
+	}
+
 	$scope.eliminaDaOrdine = function(conf){
 		//1. tolgo la configurazione dall'ordine
 		for(var i = 0; i < $scope.ordine.configurazioni.length; i++){
