@@ -13017,9 +13017,48 @@ a.link {
     font-size: 1.5em;
   }
 }
+.esperienza-content .quote .content input, .esperienza-content .quote .content textarea, .visione-content .quote .content input, .visione-content .quote .content textarea, .collezione-content .quote .content input, .collezione-content .quote .content textarea, .contatti-content .quote .content input, .contatti-content .quote .content textarea {
+  font-size: 1.3em;
+  max-width: 400px;
+  display: inline-block;
+}
 @media screen and (max-width: 480px) {
+  .esperienza-content .quote .content input, .esperienza-content .quote .content textarea, .visione-content .quote .content input, .visione-content .quote .content textarea, .collezione-content .quote .content input, .collezione-content .quote .content textarea, .contatti-content .quote .content input, .contatti-content .quote .content textarea {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 767px) {
   .esperienza-content .quote .content, .visione-content .quote .content, .collezione-content .quote .content, .contatti-content .quote .content {
     margin: 3em 2em;
+  }
+}
+.esperienza-content .quote .content.contatti, .visione-content .quote .content.contatti, .collezione-content .quote .content.contatti, .contatti-content .quote .content.contatti {
+  margin: 5em 2em;
+}
+.esperienza-content .quote .content.contatti .text, .visione-content .quote .content.contatti .text, .collezione-content .quote .content.contatti .text, .contatti-content .quote .content.contatti .text {
+  margin: 0;
+}
+@media screen and (max-width: 767px) {
+  .esperienza-content .quote .content.contatti, .visione-content .quote .content.contatti, .collezione-content .quote .content.contatti, .contatti-content .quote .content.contatti {
+    margin: 3em 2em;
+  }
+}
+.esperienza-content .quote .content.fist, .visione-content .quote .content.fist, .collezione-content .quote .content.fist, .contatti-content .quote .content.fist {
+  text-align: right;
+}
+@media screen and (max-width: 767px) {
+  .esperienza-content .quote .content.fist, .visione-content .quote .content.fist, .collezione-content .quote .content.fist, .contatti-content .quote .content.fist {
+    text-align: center;
+    margin: 3em 2em 0em 2em;
+  }
+}
+.esperienza-content .quote .content.last, .visione-content .quote .content.last, .collezione-content .quote .content.last, .contatti-content .quote .content.last {
+  text-align: left;
+}
+@media screen and (max-width: 767px) {
+  .esperienza-content .quote .content.last, .visione-content .quote .content.last, .collezione-content .quote .content.last, .contatti-content .quote .content.last {
+    text-align: center;
+    margin: 0em 2em 3em 2em;
   }
 }
 
@@ -13135,6 +13174,11 @@ a.link {
   padding: 60px 0;
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    padding: 40px 0;
+  }
+}
 .jumbotron.homepage {
   background: url(../images/jumbotron.jpg) no-repeat right bottom;
   background-size: contain;
@@ -13196,45 +13240,6 @@ a.link {
     width: auto;
   }
 }
-.jumbotron.esperienza .discover, .jumbotron.visione .discover {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1em;
-}
-.jumbotron.esperienza .discover span, .jumbotron.visione .discover span {
-  -webkit-transition: all 200ms ease-out;
-  -o-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
-  color: #000;
-  text-shadow: 0 0 2px #fff;
-  background: rgba(255, 255, 255, 0);
-  padding: 10px 20px 15px 20px;
-  border-radius: 15px 15px 0 0;
-  display: inline-block;
-  position: relative;
-  bottom: 10px;
-  cursor: pointer;
-}
-.jumbotron.esperienza .discover span:after, .jumbotron.visione .discover span:after {
-  content: "";
-  background: url(../images/small-arrow-down.png) center center no-repeat;
-  position: absolute;
-  width: 12px;
-  height: 14px;
-  left: 50%;
-  margin-left: -6px;
-  bottom: 4px;
-}
-.jumbotron.esperienza .discover span:hover, .jumbotron.esperienza .discover span:active, .jumbotron.visione .discover span:hover, .jumbotron.visione .discover span:active {
-  -webkit-transition: all 200ms ease-out;
-  -o-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
-  text-decoration: none;
-  bottom: 5px;
-}
 .jumbotron.contatti {
   background: url(../images/jumbotron-visione.jpg) no-repeat center center;
   background-size: cover;
@@ -13252,51 +13257,16 @@ a.link {
     font-size: 2em;
   }
 }
-.jumbotron.contatti .discover {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1em;
-}
-.jumbotron.contatti .discover span {
-  -webkit-transition: all 200ms ease-out;
-  -o-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
-  color: #fff;
-  text-shadow: 0 0 2px #fff;
-  background: rgba(255, 255, 255, 0);
-  padding: 10px 20px 15px 20px;
-  border-radius: 15px 15px 0 0;
-  display: inline-block;
-  position: relative;
-  bottom: 10px;
-  cursor: pointer;
-}
-.jumbotron.contatti .discover span:after {
-  content: "";
-  background: url(../images/small-arrow-down.png) center center no-repeat;
-  position: absolute;
-  width: 12px;
-  height: 14px;
-  left: 50%;
-  margin-left: -6px;
-  bottom: 4px;
-}
-.jumbotron.contatti .discover span:hover, .jumbotron.contatti .discover span:active {
-  color: #fff;
-  -webkit-transition: all 200ms ease-out;
-  -o-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
-  text-decoration: none;
-  bottom: 5px;
-}
 .jumbotron.quote-section {
   height: auto;
   background-image: none;
   background-color: #F6F6F6;
   margin-bottom: 50px;
+}
+@media screen and (max-width: 480px) {
+  .jumbotron.quote-section {
+    margin-bottom: 40px;
+  }
 }
 .jumbotron.quote-section .title {
   margin: 0;
