@@ -108,4 +108,14 @@ angular.module("applicationModule").service("UtilFunctionMessagesCreator", funct
 
 		return message;
 	}
+
+	this.saveImageMessage = function(base64Image, filename){
+		var message = {};
+
+		message.functionName = "UnaDunaSaveImage";
+		message.base64Image = base64Image;
+		message.filename = filename;
+
+		return message;
+	}
 });

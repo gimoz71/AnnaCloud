@@ -1354,40 +1354,52 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			image.src = imgBase64;
 			image.onload = function(){//quando la thumbnail è pronta procedo all'invio al server - controllare le dimensioni della thumbnail
 				ctx.drawImage(image, frameNumber * resolution, 0, resolution, resolution, 0 ,0 , destinationResolution, destinationResolution);
-				$scope.configThumbnail = canvas.toDataURL("image/png");
+				var base64Image = canvas.toDataURL("image/png");
+				var filename = $scope.configurazione.nome;//verificare
+				//$scope.configThumbnail = canvas.toDataURL("image/png");
 
-				$scope.configurazione.thumbnail = $scope.configThumbnail;
-				$scope.setTempConfigurazione($scope.configurazione);
-
-				//controllo se si è loggati
-				var isLogged = loginService.isLoggedIn();
-				if(!isLogged){
-					//devo fare il login e poi salvare
-					$scope.setNextPath("/preferiti");
-					$scope.changePath('/accedi');
-				} else {
-					var arrayIniziali = configController.generateArrayEntitaIniziali();
-					var elencoEntita = $scope.configurazione.elencoEntita;
-
-					var elencoTotaleEntita = elencoEntita.concat(arrayIniziali);
-					$scope.configurazione.elencoEntita = elencoTotaleEntita;
-
-					listeService.putConfigurazione($scope.configurazione).then(
-						function (res){
-							console.log(res);
-							$scope.configurazione.codice = res.data.codiceConfigurazioneRisposta;
-							$scope.addToPreferiti($scope.configurazione);//aggiunge ai preferiti locali
-							if(isCarrello){
-								$scope.addToCarrello($scope.configurazione);//aggiunge ai preferiti locali
-								$scope.changePath('/carrello');
+				//salvo l'immagine su S3 e ottengo la url
+				listeService.saveImage(base64Image, filename).then(
+					function(res2){
+						if(res2.errorMessage != null && res2.errorMessage != ""){
+							console.log(res2.errorMessage);
+							alert("C'è stato un problema nel salvataggio dell immagine su S3");
+						} else {
+							$scope.configurazione.thumbnail = res2.data.imageUrl;
+							$scope.setTempConfigurazione($scope.configurazione);
+			
+							//controllo se si è loggati
+							var isLogged = loginService.isLoggedIn();
+							if(!isLogged){
+								//devo fare il login e poi salvare
+								$scope.setNextPath("/preferiti");
+								$scope.changePath('/accedi');
+							} else {
+								var arrayIniziali = configController.generateArrayEntitaIniziali();
+								var elencoEntita = $scope.configurazione.elencoEntita;
+			
+								var elencoTotaleEntita = elencoEntita.concat(arrayIniziali);
+								$scope.configurazione.elencoEntita = elencoTotaleEntita;
+			
+								listeService.putConfigurazione($scope.configurazione).then(
+									function (res){
+										console.log(res);
+										$scope.configurazione.codice = res.data.codiceConfigurazioneRisposta;
+										$scope.addToPreferiti($scope.configurazione);//aggiunge ai preferiti locali
+										if(isCarrello){
+											$scope.addToCarrello($scope.configurazione);//aggiunge ai preferiti locali
+											$scope.changePath('/carrello');
+										}
+									},
+									function (reason){
+										console.log(reason);
+										alert ("errore aggiunta preferiti");
+									}
+								);
 							}
-						},
-						function (reason){
-							console.log(reason);
-							alert ("errore aggiunta preferiti");
 						}
-					);
-				}
+					});
+				
 			}
 		});
 	}
