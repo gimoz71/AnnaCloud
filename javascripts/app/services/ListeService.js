@@ -177,4 +177,15 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var message = UtilFunctionMessagesCreator.sendEmailMessage(emailMessage);
 		return $http.post(this.urlOtherService, message, config);
 	}
+
+	this.saveImage = function(base64Image, filename){
+		var config = {
+			headers : {
+				'Content-Type': 'application/json'
+			}
+		};
+
+		var message = UtilFunctionMessagesCreator.saveImageMessage(base64Image, filename);
+		return $http.post(this.urlOtherService, message, config);
+	}
 }]);
