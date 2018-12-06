@@ -12505,7 +12505,6 @@ button:focus {
 .btn-action {
   color: #fff;
   background: #80505c;
-  font-size: 1.5em;
 }
 .btn-action:hover {
   background: #fff !important;
@@ -13531,6 +13530,9 @@ a.link {
 
 .bag-list {
   text-align: left;
+  /*.btn {
+      font-size: 1.2em;
+  }*/
   /*.base, .accessori {
       border-right: solid 1px $standard-border-color;
   }*/
@@ -13549,9 +13551,6 @@ a.link {
 }
 .bag-list .bag {
   font-size: 22px;
-}
-.bag-list .btn {
-  font-size: 1.2em;
 }
 .bag-list .base tr td:first-of-type, .bag-list .accessori tr td:first-of-type {
   width: 80px;
@@ -13588,17 +13587,17 @@ a.link {
 
 .order-state {
   display: block;
-  width: 100%;
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  padding: 20px;
-  border: solid 1px #f7f1f3;
-  margin-top: -1px;
+  padding: 15px;
+  border: solid 1px #ede2e5;
+  margin: 2px 5px;
   background-color: #fff;
-  color: #f7f1f3;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 12px;
+  color: #A87481;
+  font-size: 1em;
+}
+.order-state.zero {
+  z-index: 4;
 }
 .order-state.one {
   z-index: 3;
@@ -13610,44 +13609,34 @@ a.link {
   z-index: 1;
 }
 .order-state.done {
-  color: inherit;
+  color: #A87481;
   z-index: 5;
-  border-bottom-color: #f7f1f3;
 }
 .order-state.done.active:before {
   border-color: #f7f1f3 transparent transparent;
 }
 .order-state.just-done {
-  color: inherit;
+  color: #ECB7C8;
   z-index: 5;
-  border-bottom-color: #f7f1f3;
 }
 .order-state.just-done.active:before {
-  border-color: #f7f1f3 transparent transparent;
+  border-color: #ede2e5 transparent transparent;
 }
 .order-state.current {
-  border: solid 1px #f7f1f3;
+  border: solid 1px #cfb3ba;
   z-index: 4;
-  background-color: white;
-  color: black;
-  font-size: 18px;
-  width: 100%;
-}
-@media screen and (min-width: 767px) and (max-width: 991px) {
-  .order-state.current {
-    font-size: 18px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .order-state.current {
-    width: 100%;
-  }
-}
-.order-state.current.active:after {
-  border-color: white transparent transparent;
-}
-.order-state.current.active:before {
-  border-color: #f7f1f3 transparent transparent;
+  color: #80505c;
+  font-size: 1.3em;
+  margin: 2px 0;
+  padding: 10px 15px;
+  /*&.active {
+      &:after {
+          border-color: lighten($standard-border-color, 30) transparent transparent;
+      }
+      &:before {
+          border-color: darken($standard-border-color, 5) transparent transparent;
+      }
+  }*/
 }
 .order-state.pre-summary {
   font-size: 18px;

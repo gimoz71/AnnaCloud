@@ -590,7 +590,7 @@ button:focus {outline:0;}
 .btn-action { // stilizzazione pulsante di azione
     color: #fff;
     background: $brand-primary;
-    font-size: 1.5em;
+    //font-size: 1.5em;
     &:hover {
         background: #fff !important;
         color: $brand-primary;
@@ -1610,9 +1610,9 @@ a.link {
     .bag {
         font-size: 22px;
     }
-    .btn {
+    /*.btn {
         font-size: 1.2em;
-    }
+    }*/
     /*.base, .accessori {
         border-right: solid 1px $standard-border-color;
     }*/
@@ -1656,24 +1656,20 @@ a.link {
 
 .order-state {
     display: block;
-    width: 100%;
+    //width: 100%;
     font-family: $font-family-sans-serif-title;
-    @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
-        //width:210px;
-        //font-size: 15px;
-    }
-    @media screen and (max-width: $screen-xs-max) {
-        //width: 97%;
-    }
     text-align: center;
-    padding: 20px;
-    border: solid 1px $standard-border-color;
-    margin-top: -1px;
+    padding: 15px;
+    border: solid 1px darken($standard-border-color, 5);
+    margin: 2px 5px;
     background-color: #fff;
-    color: $standard-border-color;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 12px;
+    color: $brand-primary-medium;
+    //margin-left: auto;
+    //margin-right: auto;
+    font-size: 1em;
+    &.zero{
+        z-index: 4;
+    }
     &.one{
         z-index: 3;
     }
@@ -1684,43 +1680,34 @@ a.link {
         z-index: 1;
     }
     &.done {
-        color: inherit;
+        color: $brand-primary-medium;
         z-index: 5;
-        border-bottom-color: $standard-border-color;
         &.active:before {
             border-color: $standard-border-color transparent transparent;
         }
     }
     &.just-done {
-        color: inherit;
+        color: $brand-primary-light;
         z-index: 5;
-        border-bottom-color: $standard-border-color;
         &.active:before {
-            border-color: $standard-border-color transparent transparent;
+            border-color: darken($standard-border-color, 5) transparent transparent;
         }
     }
     &.current {
-        border: solid 1px $standard-border-color;
+        border: solid 1px darken($standard-border-color, 20);
         z-index: 4;
-        background-color: lighten($standard-border-color, 13);
-        color: darken($standard-border-color, 100);
-        font-size: 18px;
-        width: 100%;
-        @media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
-            //width:220px;
-            font-size: 18px;
-        }
-        @media screen and (max-width: $screen-xs-max) {
-            width: 100%;
-        }
-        &.active {
+        color: $brand-primary;
+        font-size: 1.3em;
+        margin: 2px 0;
+        padding: 10px 15px;
+        /*&.active {
             &:after {
                 border-color: lighten($standard-border-color, 30) transparent transparent;
             }
             &:before {
-                border-color: $standard-border-color transparent transparent;
+                border-color: darken($standard-border-color, 5) transparent transparent;
             }
-        }
+        }*/
     }
     &.pre-summary {
         font-size: 18px;
