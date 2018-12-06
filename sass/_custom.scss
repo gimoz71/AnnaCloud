@@ -2027,12 +2027,25 @@ a.link {
     .yamm-content {
         border: solid 1px $standard-border-color;
         border-top: none;
-        border-bottom: none;
+        //border-bottom: none;
     }
     .yamm .dropdown.yamm-fw .dropdown-menu {
         border-left: none;
         border-right: none;
         border-bottom: none;
+    }
+    .yamm .container {
+        position: static;
+    }
+
+    .yamm .container .dropdown-menu {
+        left: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .yamm .dropdown-menu > li {
+        display: inline-block;   
     }
     .main-configurator-navbar {
         // top: $navbar-height+3px;

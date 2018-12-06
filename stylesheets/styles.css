@@ -13959,12 +13959,22 @@ a.link {
 .configuratore .yamm-content {
   border: solid 1px #f7f1f3;
   border-top: none;
-  border-bottom: none;
 }
 .configuratore .yamm .dropdown.yamm-fw .dropdown-menu {
   border-left: none;
   border-right: none;
   border-bottom: none;
+}
+.configuratore .yamm .container {
+  position: static;
+}
+.configuratore .yamm .container .dropdown-menu {
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+.configuratore .yamm .dropdown-menu > li {
+  display: inline-block;
 }
 .configuratore .main-configurator-navbar {
   margin-top: 1px;
