@@ -12415,6 +12415,16 @@ button:focus {
   border-color: #80505c;
 }
 
+.btn-transp {
+  background: transparent;
+  font-size: 1em !important;
+}
+.btn-transp:hover {
+  background: #fff !important;
+  color: #80505c;
+  border-color: #80505c;
+}
+
 .active {
   position: relative;
 }
@@ -13115,7 +13125,8 @@ a.link {
 
 .subtitle {
   font-size: 1.3em !important;
-  font-weight: lighter;
+  line-height: 1.6em !important;
+  font-weight: lighter !important;
   color: #535353;
   font-family: "Montserrat", sans-serif;
 }
@@ -13261,12 +13272,7 @@ a.link {
   height: auto;
   background-image: none;
   background-color: #F6F6F6;
-  margin-bottom: 50px;
-}
-@media screen and (max-width: 480px) {
-  .jumbotron.quote-section {
-    margin-bottom: 40px;
-  }
+  margin-bottom: 0;
 }
 .jumbotron.quote-section .title {
   margin: 0;
@@ -14127,13 +14133,14 @@ a.link {
 }
 .configuratore .riepilogo .price {
   font-size: 22px;
-  font-weight: 400;
-  display: inline;
+  font-weight: 100;
+  display: inline-block;
+  padding-top: 7px;
 }
 .configuratore .riepilogo .model {
   margin: 0;
   padding: 0;
-  font-size: 10px;
+  font-size: 9px;
   color: #999;
 }
 .configuratore .riepilogo .info {

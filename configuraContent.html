@@ -13,7 +13,7 @@
 								<div class="col-xs-12 bags-line">
 									<!-- CON IL REPEATER VADO A ELENCARE TUTTI I MODELLI DI BORSA DISPONIBILI  -->
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center no-margin no-padding bags-line" ng-repeat="modello in modelli">
-										<a href="javascript:void(0);" class="modello-borsa" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)"><img ng-src="{{modello.urlThumbnail}}" class="hidden visible-xs" style="padding: 20px; padding-bottom: 0;" /><img ng-src="{{modello.urlThumbnailHD}}" class="hidden-xs" /><h5 class="nome">{{modello.nome}}</h5></a>
+										<a href="javascript:void(0);" class="modello-borsa" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)"><img ng-src="{{modello.urlThumbnail}}" class="hidden visible-xs" style="padding: 20px; padding-bottom: 0;" /><img ng-src="{{modello.urlThumbnailHD}}" class="hidden-xs" /><h5 class="nome">{{modello.nome}}<br><small>12x19cm</small></h5></a>
 									</div>
 								</div>
 							</div>
@@ -74,7 +74,7 @@
 		<a href="javascript:void(0);" style="padding-top: 5px; display: block;"  ng-click="contr.aggiungiAiPreferiti()"><small>salva</small></a>
 		
 	</div>
-	<div id="canvasWrapper" style="outline: solid 1px #f00">
+	<div id="canvasWrapper">
 		<div id="a-middle" class="spinnerContainer">
 			<div>
 				<img class="transition-image" id="transition-image" ng-src="{{dataUrl}}">
@@ -346,19 +346,20 @@
 	<div class="riepilogo" ng-if="modelloSelezionato != ''">
 		<div class="container price-container">
 			<div class="row">
-				<div class="col-xs-6 text-right" style="padding-right:5px;">
-					<h3 class="price nomargin">{{contr.priceManager.price}}&euro;</h3><br>
-					<p class="model">{{contr.getModelloSelezionato()}} - 12x19cm</p>
+				<div class="col-xs-4 text-center" style="padding-right:5px;">
+					<h3 class="price nomargin">{{contr.priceManager.price}}&euro;</h3>
 				</div>
-				<div class="col-xs-6 text-left" style="padding-left:5px;">
+				<div class="col-xs-4 text-center" style="padding:0px;">
 					<a href="javascript:void(0);" class="btn btn-default" ng-click="contr.aggiungiAlCarrello()">Acquista</a>
-					<a href="javascript:void(0);" class="" ng-click="contr.aggiungiAiPreferiti()"><small>salva</small></a>
+				</div>
+				<div class="col-xs-4 text-center" style="padding-left:5px;">
+					<a href="javascript:void(0);" class="btn" ng-click="contr.aggiungiAiPreferiti()">Salva</a>
 				</div>
 					
 			</div>
 			<div class="row info ">
 				<div class="col-sm-12 text-center clearfix">
-					<p>22% IVA inclusa, spese di sped. escluse - 21x19 cm</p>
+					<p>22% IVA inclusa, spese di sped. escluse</p>
 				</div>
 			</div>
 		</div>
