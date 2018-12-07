@@ -4,11 +4,16 @@
             <h3 class="title section">Ordini</h3>
         </div>
     </div>
-    <div class="row bag-list ">
-        <div ng-if="listaOrdini.lenght == 0">
-            test alternativo
+    <div ng-if="listaOrdini.length == 0">
+        <div class="row">
+            <div class="col-sm-12 clearfix bottom-buffer wow fadeIn" data-wow-delay=".4s">
+                <p class="subtitle">Non hai ancora fatto nessun ordine.</p>
+                <a href="#!/configura" class="btn btn-default btn-lg follow anim" style="margin-top: 1em;">Configura adesso</a>
+            </div>
         </div>
-        <div ng-if="listaOrdini.lenght != 0">
+    </div>
+    <div class="row bag-list ">
+        <div ng-if="listaOrdini.length != 0">
             <div ng-repeat="ord in listaOrdini" class="col-sm-12 bag-item clearfix">
                 <div ng-repeat="configurazione in ord.configurazioni">
                     <div class="col-sm-8 no-padding visible-xs">
@@ -75,11 +80,14 @@
                         </div>
                 </div>
                 <div class="col-sm-4 action">
-                    <div><div class="order-state active one " ng-class="{'current': ord.stato == 0 }">In attesa di pagamento</div><div ng-if="ord.stato == 0""><a href="javascript:void(0);" class="btn  btn-lg btn-block btn-save" ng-click="getCheckout(ord)" style="width:auto;">
-                            PAGA</a></div></div>
-                    <div class="order-state active one " ng-class="{'current': ord.stato == 1 }">Ordinato</div>
-                    <div class="order-state active two " ng-class="{'current': ord.stato == 2 }">In lavorazione</div>
-                    <div class="order-state active three " ng-class="{'current': ord.stato == 3 }">In spedizione</div>
+                    <div class="order-state  zero " ng-class="{'current': ord.stato == 0 }">In attesa di pagamento
+                        <div ng-if="ord.stato == 0">
+                            <a href="javascript:void(0);" class="btn top-buffer btn-default" ng-click="getCheckout(ord)" style="width:auto;">Concludi l'acquisto</a>
+                        </div>
+                    </div>
+                    <div class="order-state  one " ng-class="{'current': ord.stato == 1 }">Ordinato</div>
+                    <div class="order-state  two " ng-class="{'current': ord.stato == 2 }">In lavorazione</div>
+                    <div class="order-state  three " ng-class="{'current': ord.stato == 3 }">In spedizione</div>
                 </div>
             </div>
         </div>
