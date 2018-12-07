@@ -1,4 +1,4 @@
-angular.module("applicationModule").service("listeService", ["$http", "UtilFunctionMessagesCreator", function($http, UtilFunctionMessagesCreator) {
+angular.module("applicationModule").service("listeService", ["$http", "UtilFunctionMessagesCreator", "loginService", function($http, UtilFunctionMessagesCreator, loginService) {
 	
 	this.urlGetService = "https://5mjp7r5urj.execute-api.eu-central-1.amazonaws.com/UnadunaGet"
 	this.urlGetServiceNode = 'https://ig24v3ii6b.execute-api.eu-central-1.amazonaws.com/unaDunaGetAccessori';
@@ -67,7 +67,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.getConfigurazioniMessage();
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlGetService, requestMessage, config);
@@ -77,7 +78,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.getConfigurazioniUtenteMessage(codiceUtente);
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlGetService, requestMessage, config);
@@ -87,7 +89,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.getCarrelloUtenteMessage(codiceUtente);
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlGetService, requestMessage, config);
@@ -97,7 +100,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.getOrdineMessage(codiceOrdine);
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlGetService, requestMessage, config);
@@ -107,7 +111,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.getOrdiniMessage();
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlGetService, requestMessage, config);
@@ -117,7 +122,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.getOrdiniUtenteMessage(codiceUtente);
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlGetService, requestMessage, config);
@@ -127,7 +133,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.putConfigurazioneMessage(configurazione);
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlPostService, requestMessage, config);
@@ -137,7 +144,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 		var requestMessage = UtilFunctionMessagesCreator.putOrdineMessage(ordine);
 		var config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 		return $http.post(this.urlPostService, requestMessage, config);
@@ -146,7 +154,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	this.deleteConfigurazione = function(cod){
 		var config = {
 			      headers : {
-			          'Content-Type': 'application/json'
+			          'Content-Type': 'application/json',
+					  'Authorization': loginService.getPostAccessToken()
 			      }
 			  };
 		
@@ -158,7 +167,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	this.svuotaCarrello = function(configurazioni){
 		var config = {
 			headers : {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 
@@ -170,7 +180,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	this.sendEmail = function(emailMessage){
 		var config = {
 			headers : {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 
@@ -181,7 +192,8 @@ angular.module("applicationModule").service("listeService", ["$http", "UtilFunct
 	this.saveImage = function(base64Image, filename){
 		var config = {
 			headers : {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': loginService.getPostAccessToken()
 			}
 		};
 

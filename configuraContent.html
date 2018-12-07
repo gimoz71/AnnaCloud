@@ -13,7 +13,7 @@
 								<div class="col-xs-12 bags-line">
 									<!-- CON IL REPEATER VADO A ELENCARE TUTTI I MODELLI DI BORSA DISPONIBILI  -->
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center no-margin no-padding bags-line" ng-repeat="modello in modelli">
-										<a href="javascript:void(0);" class="modello-borsa" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)"><img ng-src="{{modello.urlThumbnail}}" class="hidden visible-xs" style="padding: 20px; padding-bottom: 0;" /><img ng-src="{{modello.urlThumbnailHD}}" class="hidden-xs" /><h5 class="nome">{{modello.nome}}<br><small>12x19cm</small></h5></a>
+										<a href="javascript:void(0);" class="modello-borsa" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)"><img ng-src="{{modello.urlThumbnail}}" class="hidden visible-xs" style="padding: 20px; padding-bottom: 0;" /><img ng-src="{{modello.urlThumbnailHD}}" class="hidden-xs" /><h5 class="nome">{{modello.nome}}<br><small>{{getModelSizes(modello.nome)}}cm</small></h5></a>
 									</div>
 								</div>
 							</div>
@@ -66,13 +66,12 @@
 		</div>
 	</div>
 	<div id="price-panel" ng-if="modelloSelezionato != ''">
-		<p class="size">{{contr.getModelloSelezionato()}}<br>21x19 cm</p>
+		<p class="size">{{contr.getModelloSelezionato()}}<br>{{getModelSizes(modelloSelezionato)}} cm</p>
 		<hr>
 		<h3 class="total-price ">{{contr.priceManager.price}}&euro;</h3>
 		<p class="price-detail">22% IVA inclusa,<br>spese di sped. escluse</p>
 		<a href="javascript:void(0);" class="btn btn-default btn-block" ng-click="contr.aggiungiAlCarrello()">Acquista</a>
 		<a href="javascript:void(0);" style="padding-top: 5px; display: block;"  ng-click="contr.aggiungiAiPreferiti()"><small>salva</small></a>
-		
 	</div>
 	<div id="canvasWrapper">
 		<div id="a-middle" class="spinnerContainer">

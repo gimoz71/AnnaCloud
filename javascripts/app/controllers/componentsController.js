@@ -570,4 +570,16 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		}
 		return nomeAccessorio;
 	}
+
+	$scope.getModelSizes = function(modelName){
+		if(modelName == "shoulderbag"){
+			return "30X28";
+		} else if(modelName == "tote"){
+			return "35X30";
+		} else if(modelName == "crossbody"){
+			return "24X15";
+		} else {
+			return "";
+		}
+	}
 }]);

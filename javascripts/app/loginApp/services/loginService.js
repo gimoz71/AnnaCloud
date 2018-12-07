@@ -21,23 +21,33 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
     	}
     	return this.cognitoUser;
     }
-    
+	
+	this.getPostAccessToken = function(){
+		var cognitoUser = this.getCognitoUser();
+		if (cognitoUser != null) {
+			return cognitoUser.signInUserSession.idToken.jwtToken;
+		}else{
+			deferred.reject("non sei loggato");
+			return "";
+		}
+	}
+
     this.getSession = function () {
     	 var deferred = $q.defer();
     	 var cognitoUser = this.getCognitoUser();
 		 if (cognitoUser != null) {
-	         cognitoUser.getSession(function (err, session) {
-	             if (err) {
-	                 deferred.reject(err);
-	            	 alert(err);
-	                 return;
-	             }
-	             deferred.resolve(session);
-	         });
-	    }else{
-	    	deferred.reject("non sei loggato");
-	    }
-		 return deferred.promise;
+			cognitoUser.getSession(function (err, session) {
+				if (err) {
+					deferred.reject(err);
+					alert(err);
+					return;
+				}
+				deferred.resolve(session);
+			});
+		}else{
+			deferred.reject("non sei loggato");
+		}
+		return deferred.promise;
     }
     
 	this.signUp = function(email, nome, cognome, password){
@@ -133,7 +143,6 @@ angular.module("loginModule").service("loginService", ["$http" , "$q", function(
 	    }
 		return deferred.promise;
 	}
-	
 	
 	this.logOut = function (){
 	    var cognitoUser = this.getCognitoUser();
