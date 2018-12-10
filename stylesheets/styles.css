@@ -14419,7 +14419,7 @@ a.link {
 /*  @group  footer  */
 /*-------------------------------*/
 footer {
-  text-transform: capitalize;
+  text-transform: initial;
   border: none;
   font-family: "Montserrat", sans-serif;
   line-height: 1.6em;

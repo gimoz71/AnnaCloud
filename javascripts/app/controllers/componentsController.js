@@ -53,9 +53,9 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	"</html>";
 
 	$scope.configurationPartMessage = "<tr>"+
-			"<td style='width: 10px'></td>"+//<img style='width: 150px; height: auto; border:solid 1px #eee; margin-right: 10px' src='CONF_IMAGE'>
+			"<td style='width: 10px'><img style='width: 150px; height: auto; border:solid 1px #eee; margin-right: 10px' src='CONF_IMAGE'></td>"+ 
 				"<td>"+
-					"<h3 style='padding-bottom: 10px;'>CONF_NAME</h3>"+
+					"<h3 style='padding-bottom: 10px; text-transform:initial'>CONF_NAME</h3>"+
 					"<table style='width: 100%;'>"+
 						"<tr>"+
 							"<td>"+
@@ -442,7 +442,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			confMessagePart = confMessagePart.replace('ELENCO_ENTITA',elencoEntitaPartMessage);
 
 			confMessagePart = confMessagePart.replace('CONF_NAME',configurazione.nome);
-			// confMessagePart = confMessagePart.replace('CONF_IMAGE',configurazione.thumbnail);
+			confMessagePart = confMessagePart.replace('CONF_IMAGE',configurazione.thumbnail);
 			confMessagePart = confMessagePart.replace('CONF_COLORE',$scope.getColoreConf(configurazione));
 			confMessagePart = confMessagePart.replace('CONF_INIZIALI',$scope.getInizialiConf(configurazione));
 
