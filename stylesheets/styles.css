@@ -14259,9 +14259,9 @@ a.link {
   font-weight: 600;
   opacity: 1;
 }
-@media screen and (min-height: 600px) {
+@media screen and (max-height: 600px) {
   .configuratore .accessori-categoria a {
-    font-size: inherit;
+    font-size: 13px;
   }
 }
 .configuratore .accessori-categoria .swiper-button-prev {
@@ -14288,6 +14288,19 @@ a.link {
 .configuratore .accessori-thumb img {
   height: 57px;
   cursor: pointer;
+}
+.configuratore .accessori-thumb .itemName {
+  font-size: 10px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  width: 100%;
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  line-height: 1.8em;
 }
 .configuratore .accessori-thumb a {
   position: relative;
@@ -14369,6 +14382,9 @@ a.link {
   }
   .configuratore .accessori-thumb img {
     height: 47px;
+  }
+  .configuratore .accessori-thumb .itemName {
+    font-size: 9px;
   }
   .configuratore .accessori-thumb .unaduna-char i {
     height: 47px;

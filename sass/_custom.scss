@@ -2386,8 +2386,8 @@ a.link {
             }
             font-size: 15px;
             padding: 5px;
-            @media screen and (min-height: 600px) {
-                font-size: inherit;
+            @media screen and (max-height: 600px) {
+                font-size: 13px;
                 // padding: 10px 0;
             }
         }
@@ -2418,37 +2418,24 @@ a.link {
             cursor: pointer;
 
         }
+        .itemName {
+            font-size: 10px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            width: 100%;
+            color: rgba(255,255,255,1);
+            text-shadow: 0 0 2px rgba(0,0,0,.75);
+            text-align: center;
+            line-height:1.8em;
+        }
        
         @media screen and (max-width: $screen-xs-max) {
 
         }
-        // &:after, &:before {
-        //     content: "";
-        //     position: absolute;
-        //     top: 1px;
-        //     width: 20px;
-        //     height: 95%;
-        //     z-index: 5;
-        //     @media screen and (max-width: $screen-xs-max) {
-        //         display: none;
-        //     }
-        // }
-        // &:before {
-        //     left: 0;
-        //     background: transparent; /* For browsers that do not support gradients */
-        //     background: -webkit-linear-gradient(left,rgba(255,255,255,1),rgba(255,255,255,0)); /*Safari 5.1-6*/
-        //     background: -o-linear-gradient(right,rgba(255,255,255,1),rgba(255,255,255,0)); /*Opera 11.1-12*/
-        //     background: -moz-linear-gradient(right,rgba(255,255,255,1),rgba(255,255,255,0)); /*Fx 3.6-15*/
-        //     background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0)); /*Standard*/
-        // }
-        // &:after {
-        //     right: 0;
-        //     background: transparent; /* For browsers that do not support gradients */
-        //     background: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)); /*Safari 5.1-6*/
-        //     background: -o-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,1)); /*Opera 11.1-12*/
-        //     background: -moz-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,1)); /*Fx 3.6-15*/
-        //     background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)); /*Standard*/
-        // }
+        
         a {
             position: relative;
             border: solid 1px transparent;
@@ -2531,6 +2518,9 @@ a.link {
             }
             img {
                 height: 47px;
+            }
+            .itemName {
+                font-size: 9px;
             }
             .unaduna-char{
                 i {
