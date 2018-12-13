@@ -126,10 +126,13 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.selezionaCategoriaTracolla = function(entita) {
 		//qui devo gestire la metalleria
-		$scope.variantiTracolle = $scope.modelliTracolleArgento.get(entita);
+		if($scope.metalloVincolante == "oro"){
+            $scope.variantiTracolle = $scope.modelliTracolleOro.get(entita);
+        } else {
+            $scope.variantiTracolle = $scope.modelliTracolleArgento.get(entita);
+        }
 		$scope.variantiTracolle = configController.ordinaEntita($scope.variantiTracolle);
 		$scope.tipoEntitaSelezionata = "varianti-tracolle";
-
 
 		for (var i = 0; i < $scope.modelli.length; i++) {
 			var modello = $scope.modelli[i];
@@ -147,10 +150,14 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	}
 
 	configController.selezionaCategoriaCiondolo = function (entita) {
-		$scope.variantiCiondoli = $scope.modelliCiondoliArgento.get(entita);
+		if($scope.metalloVincolante == "oro"){
+            $scope.variantiTracolle = $scope.modelliCiondoliOro.get(entita);
+        } else {
+            $scope.variantiTracolle = $scope.modelliCiondoliArgento.get(entita);
+        }
 		$scope.variantiCiondoli = configController.ordinaEntita($scope.variantiCiondoli);
 		$scope.tipoEntitaSelezionata = "varianti-ciondoli";
-
+		
 		for (var i = 0; i < $scope.modelli.length; i++) {
 			var modello = $scope.modelli[i];
 			if (modello.nome == $scope.modelloSelezionato) {
@@ -210,7 +217,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 							} else if (entitaSingola.vincoloMetallo == true) {
 								if (entitaSingola.categoria == "tracolle") {
 									$scope.mapMetalloTracolle.set(entitaSingola.metallo, entitaSingola);
-									// $scope.mapMetalloBorchie.set(entitaSingola.metallo, entitaSingola);
 								} else if (entitaSingola.categoria == "ciondoli") {
 									$scope.mapMetalloCiondoli.set(entitaSingola.metallo, entitaSingola);
 								} else if (entitaSingola.categoria == "borchie") {
@@ -622,36 +628,27 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		}
 		if ($scope.tipoEntitaSelezionata.startsWith("metalleria")){
 			if($scope.tracollaSelezionata){
-				//devo sostituire l'emboss se è selezionato
-				//1. estraggo la url dell'emboss
 
 				var tracollaUrl = $scope.mapMetalloTracolle.get(entita.metallo);
 				var urlT = tracollaUrl.urlStripe;
-				// urlT = urlT.replace("RES", configController.getResolutionPlaceHolder());
 
 				if(tracollaUrl){
 					configController.aggiungiElementoAStackNoConfig(urlT, tracollaUrl.ordine, false);
 				}
 			}
 			if($scope.ciondoloSelezionata){
-				//devo sostituire l'emboss se è selezionato
-				//1. estraggo la url dell'emboss
 
 				var ciondoloUrl = $scope.mapMetalloCiondoli.get(entita.metallo);
 				var urlT = ciondoloUrl.urlStripe;
-				// urlT = urlT.replace("RES", configController.getResolutionPlaceHolder());
 
 				if(ciondoloUrl){
 					configController.aggiungiElementoAStackNoConfig(urlT, ciondoloUrl.ordine, false);
 				}
 			}
 			if($scope.borchieSelezionate){
-				//devo sostituire l'emboss se è selezionato
-				//1. estraggo la url dell'emboss
 
 				var borchieUrl = $scope.mapMetalloBorchie.get($scope.nomeBorchiaSelezionata + "_" + entita.metallo);
 				var urlB = borchieUrl.urlStripe;
-				// urlB = urlB.replace("RES", configController.getResolutionPlaceHolder());
 
 				if(borchieUrl){
 					configController.aggiungiElementoAStackNoConfig(urlB, borchieUrl.ordine, false);
@@ -1431,16 +1428,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 			if(res.data.esito.codice == 100){
 				$scope.modelli = configController.ordinaModelli(res.data.modelli);
 
-				/* listeService.getAccessori().then(function(res2) {
-					$scope.entita = res2.data.accessori;
-					//inizializzo la mappa con gli elenchi dei tipi di accessori
-					for(var i = 0; i < $scope.modelli.length; i++){
-						var modello = $scope.modelli[i];
-						$scope.tipiAccessori.set(modello.nome, modello.accessori);
-					}
-					$(".dropdown-toggle").dropdown("toggle"); //NEW 03/07 - APRO IL TOGGLE DEI MODELLI QUANDO HO EFFETTIVAMENTE CARICATO TUTTI GLI ACCESSORI
-				});*/
-
 				var configurazione = $scope.getTempConfigurazione();
 				if(configurazione != null && configurazione != undefined){
 					$scope.configurazione = configurazione;
@@ -1448,7 +1435,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				} else {
 					$(".dropdown-toggle").dropdown("toggle"); 
 				} 
-				//NEW 03/07 - APRO IL TOGGLE DEI MODELLI QUANDO HO EFFETTIVAMENTE CARICATO TUTTI GLI ACCESSORI
 			}
 		});
 

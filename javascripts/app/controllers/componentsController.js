@@ -1,7 +1,10 @@
-angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "listeService", "$location", "jwtHelper",  function($scope, loginService, listeService, $location, jwtHelper) {
+angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "listeService", "$location", "$uibModal", "jwtHelper",  function($scope, loginService, listeService, $location, $uibModal, jwtHelper) {
 
 	$scope.user = null;
 	$scope.costoSpedizione = 19.50;
+
+	$scope.testoAvviso = "PROVA AVVISO NELLA MODALE";
+	$scope.modalInstance = null;
 
 	$scope.orderBaseMessage = "<html>"+
 	"<head>"+
@@ -582,4 +585,35 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			return "";
 		}
 	}
+
+	/* GESTIONE MODALI */
+	$scope.openMessageModal = function () {
+		$scope.modalInstance = $uibModal.open({
+			animation: true,
+			templateUrl: 'modaleAvviso.html',
+			controller: 'componentsController',
+			controllerAs: 'cc',
+			resolve: {
+				testoAvviso: function () {
+				  return $scope.testoAvviso;
+				}
+			  }
+		});
+
+		$scope.modalInstance.result.then(function () {
+			alert("now I'll close the modal");
+		  });
+	}
+
+	$scope.ok = function () {
+		//{...}
+		alert("You clicked the ok button."); 
+		$scope.modalInstance.close();
+	  };
+	
+	$scope.cancel = function () {
+		//{...}
+		alert("You clicked the cancel button."); 
+		$scope.modalInstance.dismiss('cancel');
+	};
 }]);
