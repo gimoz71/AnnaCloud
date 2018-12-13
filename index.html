@@ -245,59 +245,19 @@
 					Copyright &reg; 2018 ANNACLOUD
 					<a href="#modaleAvviso" role="button" class="btn btn-primary hidden" data-toggle="modal">alert</a>
 					<a href="#modaleConfiguratoreNome" role="button" class="btn btn-primary hidden" data-toggle="modal">nome configurazione</a>
+					<!-- <a href="javscript:void(0);" role="button" class="btn btn-primary" ng-click="openMessageModal()">test message modal</a> -->
 				</div>
 			</div>
 	    </footer>
     </div>
 
 
-	<!---  MODALI E BOX VARI   -->
-	
-	<!---  Modale configuratore   -->
-	
-	<div id="modaleConfiguratoreNome" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header ">
-					<button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Nome della tua borsa</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="nome" class="sr-only hidden"></label>
-						<input ng-model="nome" type="text" class="form-control" id="nome" placeholder="Nome">
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-					<button type="button" class="btn btn-primary">Salva</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!---  Modale alert  -->
-	<div id="modaleAvviso" class="modal fade">
-		<div class="modal-dialog text-center">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Confirmation</h4>
-				</div>
-				<div class="modal-body">
-					<p>Do you want to save changes you made to document before closing?</p>
-					<p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!---  LOADER   -->
 	<div id="loaderOverlay" class="hidden">
 		<span class="loaderMessage">Caricamento...</span>
 	</div>
+
+	
     <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
     <script src="javascripts/bootstrap.min.js"></script>
     <!-- paypal  -->
@@ -378,6 +338,7 @@
 	<script src="node_modules/angular-ui-swiper/dist/angular-ui-swiper.js"></script>
 
 	<script src="node_modules/angular-jwt/dist/angular-jwt.min.js"></script>
+	<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 	
     <style type="text/css">
         /* N.B. .clearfix per funzionare deve rimanere dichiarato nell'html */
