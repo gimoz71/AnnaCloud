@@ -840,7 +840,7 @@ a.link {
             display: block;
             position: absolute;
             top: 22px;
-            right: -2px;
+            right: -3px;
             font-size: .75em;
             line-height: .75em;
         }
@@ -1680,10 +1680,10 @@ a.link {
     font-family: $font-family-sans-serif-title;
     text-align: center;
     padding: 15px;
-    border: solid 1px darken($standard-border-color, 5);
+    border: solid 1px darken($brand-secondary, 10);
     margin: 2px 5px;
     background-color: #fff;
-    color: $brand-primary-medium;
+    color: darken($brand-secondary, 40);
     //margin-left: auto;
     //margin-right: auto;
     font-size: 1em;
@@ -1700,34 +1700,26 @@ a.link {
         z-index: 1;
     }
     &.done {
-        color: $brand-primary-medium;
+        color: $brand-secondary;
         z-index: 5;
         &.active:before {
-            border-color: $standard-border-color transparent transparent;
+            border-color: $brand-secondary transparent transparent;
         }
     }
     &.just-done {
         color: $brand-primary-light;
         z-index: 5;
         &.active:before {
-            border-color: darken($standard-border-color, 5) transparent transparent;
+            border-color: darken($brand-secondary, 5) transparent transparent;
         }
     }
     &.current {
-        border: solid 1px darken($standard-border-color, 20);
+        border: solid 1px darken($brand-secondary, 20);
         z-index: 4;
-        color: $brand-primary;
+        color:  darken($brand-secondary, 40);
         font-size: 1.3em;
         margin: 2px 0;
         padding: 10px 15px;
-        /*&.active {
-            &:after {
-                border-color: lighten($standard-border-color, 30) transparent transparent;
-            }
-            &:before {
-                border-color: darken($standard-border-color, 5) transparent transparent;
-            }
-        }*/
     }
     &.pre-summary {
         font-size: 18px;
@@ -2410,16 +2402,16 @@ a.link {
     .accessori-thumb {
         //padding: 10px 0;
         .swiper-wrapper {
-            padding: 10px 0;
+            padding: 5px 0;
         }
         //overflow: visible;
         img {
             height: 57px;
             cursor: pointer;
-
+            //padding-bottom: 15px;
         }
-        .itemName {
-            font-size: 10px;
+        .itemNameX {
+            font-size: 8px;
             display: block;
             position: absolute;
             top: 50%;
@@ -2431,15 +2423,26 @@ a.link {
             text-align: center;
             line-height:1.8em;
         }
-       
-        @media screen and (max-width: $screen-xs-max) {
-
+        .itemName {
+            font-size: 8px;
+            display: block;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            //transform: translate(0, -50%);
+            width: 100%;
+            color: rgba(0,0,0,1);
+            //text-shadow: 0 0 2px rgba(0,0,0,.75);
+            text-align: center;
+            line-height:1.8em;
+            background-color: rgba(255,255,255,.85);
         }
-        
+       
         a {
             position: relative;
             border: solid 1px transparent;
             padding: 2px;
+            margin-bottom: 7px;
             &:hover, &.added, &.activeAccessorio {
                 border: solid 1px $standard-border-color;
                 opacity: 1;
@@ -2520,7 +2523,7 @@ a.link {
                 height: 47px;
             }
             .itemName {
-                font-size: 9px;
+                font-size: 8px;
             }
             .unaduna-char{
                 i {

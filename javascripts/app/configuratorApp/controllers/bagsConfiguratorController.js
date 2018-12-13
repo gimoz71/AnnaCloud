@@ -236,11 +236,6 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		}
 		var mySwiper = $('#pippo');
 		mySwiper[0].swiper.slideTo(0,1);
-		//var translate = mySwiper.getTranslate();
-		//console.log(mySwiper);
-
-		// mySwiper.slides[1] non funziona, ma serve quì per resettare la posizione dello swiper ogni volta che si cambia accessorio
-		// $(".swiper-wrapper").css("transform", "translate3d(0px, 0px, 0px)"); manco questo!
 	}
 
 	configController.ordinaEntita = function (entitaNonOrdinate) {

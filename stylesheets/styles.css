@@ -12759,7 +12759,7 @@ a.link {
     display: block;
     position: absolute;
     top: 22px;
-    right: -2px;
+    right: -3px;
     font-size: .75em;
     line-height: .75em;
   }
@@ -13608,10 +13608,10 @@ a.link {
   font-family: "Montserrat", sans-serif;
   text-align: center;
   padding: 15px;
-  border: solid 1px #ede2e5;
+  border: solid 1px #dddddd;
   margin: 2px 5px;
   background-color: #fff;
-  color: #A87481;
+  color: #909090;
   font-size: 1em;
 }
 .order-state.zero {
@@ -13627,34 +13627,26 @@ a.link {
   z-index: 1;
 }
 .order-state.done {
-  color: #A87481;
+  color: #f6f6f6;
   z-index: 5;
 }
 .order-state.done.active:before {
-  border-color: #f7f1f3 transparent transparent;
+  border-color: #f6f6f6 transparent transparent;
 }
 .order-state.just-done {
   color: #ECB7C8;
   z-index: 5;
 }
 .order-state.just-done.active:before {
-  border-color: #ede2e5 transparent transparent;
+  border-color: #e9e9e9 transparent transparent;
 }
 .order-state.current {
-  border: solid 1px #cfb3ba;
+  border: solid 1px #c3c3c3;
   z-index: 4;
-  color: #80505c;
+  color: #909090;
   font-size: 1.3em;
   margin: 2px 0;
   padding: 10px 15px;
-  /*&.active {
-      &:after {
-          border-color: lighten($standard-border-color, 30) transparent transparent;
-      }
-      &:before {
-          border-color: darken($standard-border-color, 5) transparent transparent;
-      }
-  }*/
 }
 .order-state.pre-summary {
   font-size: 18px;
@@ -14283,14 +14275,14 @@ a.link {
   }
 }
 .configuratore .accessori-thumb .swiper-wrapper {
-  padding: 10px 0;
+  padding: 5px 0;
 }
 .configuratore .accessori-thumb img {
   height: 57px;
   cursor: pointer;
 }
-.configuratore .accessori-thumb .itemName {
-  font-size: 10px;
+.configuratore .accessori-thumb .itemNameX {
+  font-size: 8px;
   display: block;
   position: absolute;
   top: 50%;
@@ -14302,10 +14294,23 @@ a.link {
   text-align: center;
   line-height: 1.8em;
 }
+.configuratore .accessori-thumb .itemName {
+  font-size: 8px;
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+  line-height: 1.8em;
+  background-color: rgba(255, 255, 255, 0.85);
+}
 .configuratore .accessori-thumb a {
   position: relative;
   border: solid 1px transparent;
   padding: 2px;
+  margin-bottom: 7px;
 }
 .configuratore .accessori-thumb a:hover, .configuratore .accessori-thumb a.added, .configuratore .accessori-thumb a.activeAccessorio {
   border: solid 1px #f7f1f3;
@@ -14384,7 +14389,7 @@ a.link {
     height: 47px;
   }
   .configuratore .accessori-thumb .itemName {
-    font-size: 9px;
+    font-size: 8px;
   }
   .configuratore .accessori-thumb .unaduna-char i {
     height: 47px;
