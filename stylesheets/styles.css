@@ -13464,14 +13464,24 @@ a.link {
 .bag-box {
   display: block;
   width: 100%;
-  margin: 10px;
-  border: solid 1px transparent;
+  margin: 5px;
   font-family: "Montserrat", sans-serif;
 }
 .bag-box div, .bag-box img, .bag-box span {
   -webkit-transition: all 500ms ease-in-out;
   -o-transition: all 500ms ease-in-out;
   transition: all 500ms ease-in-out;
+}
+.bag-box .img-container {
+  padding: 10px;
+  background: url("../images/pattern.jpg") top left;
+}
+.bag-box img {
+  filter: none;
+  -webkit-filter: saturate(80%);
+  -moz-filter: saturate(80%);
+  -ms-filter: saturate(80%);
+  -o-filter: saturate(80%);
 }
 .bag-box div {
   margin-bottom: 15px;
@@ -13491,7 +13501,6 @@ a.link {
   -webkit-transition: all 200ms ease-out;
   -o-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
-  background-color: #000;
 }
 .bag-box:hover img {
   opacity: .5;
@@ -13500,9 +13509,10 @@ a.link {
   -webkit-transition: all 200ms ease-out;
   -o-transition: all 200ms ease-out;
   transition: all 200ms ease-out;
-  bottom: 200px;
-  color: #fff;
-  border: solid 1px #fff;
+  bottom: 120px;
+  color: #80505c;
+  border: solid 1px #80505c;
+  background: #fff;
   font-weight: normal;
 }
 @media screen and (max-width: 480px) {

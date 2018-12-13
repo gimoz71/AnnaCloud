@@ -1546,11 +1546,23 @@ a.link {
 .bag-box {
     display: block;
     width: 100%;
-    margin: 10px;
-    border: solid 1px transparent;
+    margin: 5px;
     font-family: $font-family-sans-serif-title;
     div, img, span {
         @include transition(all 500ms ease-in-out);
+    }
+    .img-container {
+        padding: 10px;
+        background: url("../images/pattern.jpg") top left;
+    }
+    img {
+        //border: solid 1px rgba(0,0,0,.1);
+        filter: none;
+        -webkit-filter: saturate(80%);
+        -moz-filter:    saturate(80%);
+        -ms-filter:     saturate(80%);
+        -o-filter:      saturate(80%);
+        
     }
     div {
         margin-bottom: 15px;
@@ -1564,16 +1576,17 @@ a.link {
         text-decoration: none;
         div {
             @include transition(all 200ms ease-out);
-            background-color: #000;
+            //background-color: #000;
         }
         img {
             opacity:.5;
         }
         span {
             @include transition(all 200ms ease-out);
-            bottom: 200px;
-            color: #fff;
-            border: solid 1px #fff;
+            bottom: 120px;
+            color: $brand-primary;
+            border: solid 1px $brand-primary;
+            background: #fff;
             font-weight: normal;
             @media screen and (max-width: $screen-xs) {
                 bottom: 130px;
