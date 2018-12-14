@@ -11809,6 +11809,48 @@ button.close {
 /* font Awesome http://fontawesome.io*/
 /* Animation.css */
 @font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler-UltraLight.woff2") format("woff2"), url("../fonts/Butler-UltraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler-Medium.woff2") format("woff2"), url("../fonts/Butler-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler-Light.woff2") format("woff2"), url("../fonts/Butler-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler-Black.woff2") format("woff2"), url("../fonts/Butler-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler-Bold.woff2") format("woff2"), url("../fonts/Butler-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler-ExtraBold.woff2") format("woff2"), url("../fonts/Butler-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Butler';
+  src: url("../fonts/Butler.woff2") format("woff2"), url("../fonts/Butler.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: 'unaduna';
   src: url("../fonts/unaduna.eot");
   src: url("../fonts/unaduna.eot?#iefix") format("embedded-opentype"), url("../fonts/unaduna.woff") format("woff"), url("../fonts/unaduna.ttf") format("truetype"), url("../fonts/unaduna.svg#unaduna") format("svg");
@@ -12995,6 +13037,46 @@ a.link {
   text-transform: uppercase;
 }
 
+.slogan-1, .slogan-2, .slogan-3 {
+  position: absolute;
+  font-weight: normal !important;
+  color: #fff;
+  font-weight: lighter;
+}
+.slogan-1 span, .slogan-2 span, .slogan-3 span {
+  background: rgba(168, 116, 129, 0.9);
+  padding: 10px 20px;
+  line-height: 5vw;
+  font-size: 2.75vw;
+}
+
+.slogan-1 {
+  top: 6vw;
+  left: 0;
+  text-align: left;
+}
+.slogan-1 span {
+  padding-left: 8vw;
+}
+
+.slogan-2 {
+  right: 0;
+  bottom: 6vw;
+  text-align: right;
+}
+.slogan-2 span {
+  padding-right: 8vw;
+}
+
+.slogan-3 {
+  left: 0;
+  bottom: 10vw;
+  text-align: left;
+}
+.slogan-3 span {
+  padding-left: 8vw;
+}
+
 .esperienza-content .narrazione, .visione-content .narrazione, .collezione-content .narrazione, .contatti-content .narrazione {
   background-color: #F6F6F6;
   position: relative;
@@ -13098,7 +13180,7 @@ a.link {
 
 .title {
   color: #80505c;
-  font-weight: lighter;
+  font-weight: 400;
   font-size: 1.8em !important;
 }
 .jumbotron .title {
