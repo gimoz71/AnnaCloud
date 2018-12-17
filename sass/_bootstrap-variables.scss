@@ -15,10 +15,12 @@
 // $gray:                   lighten($gray-base, 33.5%) // #555
 // $gray-light:             lighten($gray-base, 46.7%) // #777
 // $gray-lighter:           lighten($gray-base, 93.5%) // #eee
-
-$brand-primary:             darken(#a87481, 15%);//#6A3D48; /*darken(#428bca, 6.5%) // #337ab7*/
-$brand-primary-medium:     #A87481;//#A87481;
-$brand-primary-light:      #ECB7C8;
+$brand-color: #333;//#A87481;
+$brand-color-logo: #A87481;
+//$brand-primary-medium:     #A87481;//#A87481;
+$brand-primary:             darken($brand-color, 15%);//#6A3D48; /*darken(#428bca, 6.5%) // #337ab7*/
+$brand-primary-medium:     $brand-color;
+$brand-primary-light:      lighten($brand-primary-medium, 15%);
 // $brand-success:         #5cb85c
 // $brand-info:            #5bc0de
 // $brand-warning:         #f0ad4e
@@ -26,7 +28,7 @@ $brand-primary-light:      #ECB7C8;
 
 //## Custom color
 
-$standard-border-color: lighten($brand-primary, 55);
+$standard-border-color: lighten($brand-primary-medium, 55);
 $brand-secondary: #f6f6f6;
 
 //== Scaffolding
@@ -51,7 +53,7 @@ $body-bg:               #fff;
 //## Font, line-height, and color for body text, headings, and more.
 
 $font-family-sans-serif:  'Source Sans Pro', sans-serif/**"Source Sans Pro", Helvetica, Arial, sans-serif"*/;
-//$font-family-serif:       'Montserrat', sans-serif /*"Playfair Display", Georgia, Times, serif*/;
+//$font-family-serif:       'Playfair Display', Georgia, Times, serif*/;
 $font-family-sans-serif-title:       'Montserrat', sans-serif /*"Playfair Display", Georgia, Times, serif*/;
 //$font-family-sans-serif-title:       'Quicksand', sans-serif /*"Playfair Display", Georgia, Times, serif*/;
 //$font-family-sans-serif-title:       'Krub', sans-serif /*"Playfair Display", Georgia, Times, serif*/;

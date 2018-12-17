@@ -470,6 +470,7 @@ button:focus {outline:0;}
     @include transition(all 500ms ease-in-out);
     box-shadow: 0 0 0 rgba(0,0,0,0);
     margin: 2px;
+
     &:hover {
         @include transition(all 100ms ease-in-out);
         box-shadow: 0 2px 4px rgba(0,0,0,.15);
@@ -1139,27 +1140,68 @@ a.link {
 
 
 // .container {
-//     // min-height: 100%;
+    //     // min-height: 100%;
 // }
 
 .home-content {
     .btn {
         min-width: 250px;
-        text-transform: uppercase;
+        //border-radius: 50px !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+        //text-transform: uppercase;
     }
 }
 
-.slogan-1, .slogan-2, .slogan-3 {
+.slogan-1, .slogan-2, .slogan-3, .slogan-4, .slogan-5 {
     position: absolute;
     //font-family: 'Butler';
     font-weight: normal !important;
     color: #fff;
     font-weight: lighter;
     span {
-        background: rgba($brand-primary-medium, .9);
-        padding: 10px 20px;
-        line-height: 5vw;
+        background: rgba($brand-color-logo, .8);
+        padding: 1vw 2vw;
+        line-height: 6vw;
         font-size: 2.75vw;
+        &.cta {
+            line-height: 5vw;
+            padding-top: .3vw;
+            background: rgba($brand-color, .9);
+            
+        }
+        
+    }
+    a {
+        color: inherit;
+        font-size: 1.75vw;
+        padding: .75vw 1.4vw;
+        //border: solid 2px rgba(255,255,255,.8);
+        i {
+            font-size: 1.25vw;
+        }
+    }
+    @media screen and (max-width: $screen-xs) {
+        span {
+            padding: 1vw 2vw;
+            line-height: 5vw;
+            font-size: 4.5vw;
+            &.cta {
+                line-height: 4.5vw;
+                padding-top: .3vw;
+                background: rgba($brand-color, .9);
+                
+            }
+        }
+        a {
+            
+            font-size: 3.5vw;
+            padding-top: .75vw;
+            padding-bottom: .75vw;
+            i {
+                font-size: 2.75vw;
+            }
+        }
     }
 } 
 .slogan-1 {
@@ -1168,14 +1210,27 @@ a.link {
     text-align: left; 
     span {
         padding-left: 8vw;
+        &.cta {
+            padding-right: .35vw
+        }
+    }
+    @media screen and (max-width: $screen-xs) {
+        top: 15vw;
     }
 }
 .slogan-2 {
     right: 0;
-    bottom: 6vw;
+    bottom: 5vw;
     text-align: right; 
     span {
         padding-right: 8vw;
+        
+        &.cta {
+            padding-left: .35vw
+        }
+    }
+    @media screen and (max-width: $screen-xs) {
+        bottom: 8vw;
     }
 }
 .slogan-3 {
@@ -1184,6 +1239,37 @@ a.link {
     text-align: left; 
     span {
         padding-left: 8vw;
+        
+        &.cta {
+            padding-right: .35vw
+        }
+    }
+    @media screen and (max-width: $screen-xs) {
+        bottom: 12vw;
+    }
+}
+.slogan-4 {
+    left: 0;
+    bottom: 5vw;
+    text-align: left; 
+    span {
+        padding-left: 8vw;
+        
+        &.cta {
+            padding-right: .35vw
+        }
+    }
+}
+.slogan-5 {
+    right: 0;
+    top: 1vw;
+    text-align: right; 
+    span {
+        padding-right: 8vw;
+        
+        &.cta {
+            padding-left: .35vw
+        }
     }
 }
 .esperienza-content, .visione-content, .collezione-content, .contatti-content {
@@ -1279,6 +1365,13 @@ a.link {
     }
 }
 
+.divider {
+    height: 16px;
+    background: url('../images/divider.png') no-repeat center center;
+    max-width: 480px;
+    margin: 40px auto;
+}
+
 .title {
     //font-family: $font-family-sans-serif;
     color: $brand-primary;
@@ -1323,8 +1416,11 @@ a.link {
     font-size: 1.3em !important;
     line-height:1.6em !important;
     font-weight: lighter !important;
-    color: #535353;
+    color: $brand-primary-light;
     font-family: $font-family-sans-serif-title;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
     @media screen and (max-width: $screen-xs-max) {
         font-size: 1.1em !important;
     }
@@ -1738,12 +1834,6 @@ a.link {
     .bag {
         font-size: 22px;
     }
-    /*.btn {
-        font-size: 1.2em;
-    }*/
-    /*.base, .accessori {
-        border-right: solid 1px $standard-border-color;
-    }*/
     .base, .accessori {
         tr td:first-of-type { width: 80px;}
         @media screen and (max-width: $screen-sm) {
