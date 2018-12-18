@@ -652,7 +652,7 @@ button:focus {outline:0;}
     //font-size: 1.5em;
     &:hover {
         background: #fff !important;
-        color: $brand-primary;
+        color: $brand-primary-medium;
         border-color: $brand-primary;
     }
     &.active:after {
@@ -668,6 +668,21 @@ button:focus {outline:0;}
     }
     &.follow:before {
         border-color: transparent transparent transparent $brand-primary;
+    }
+}
+
+.btn-conf {
+    color: #fff;
+    background: rgba(255,255,255,.05);
+    border: solid 1px #fff;
+    &:hover {
+        color: #fff;
+        //color: $brand-color-logo;
+        background: rgba(255,255,255,.1);
+    }
+     &:active, &:focus {
+        color: $brand-color-logo;
+        background: rgba(255,255,255,1);
     }
 }
 
@@ -1168,7 +1183,6 @@ a.link {
             //line-height: 5vw;
             //padding-top: .3vw;
             background: rgba($brand-color, .9);
-            
         }
         
     }
@@ -1179,6 +1193,8 @@ a.link {
         //border: solid 2px rgba(255,255,255,.8);
         i {
             font-size: 2.25vw;
+            padding-left: 10px;
+            padding-right: 10px;
         }
     }
     @media screen and (max-width: $screen-xs) {
@@ -1186,10 +1202,10 @@ a.link {
             padding: 1vw 2vw;
             line-height: 5vw;
             font-size: 4.5vw;
+            
             &.cta {
                 line-height: 4.5vw;
                 padding-top: .3vw;
-                background: rgba($brand-color, .9);
                 
             }
         }
@@ -1205,7 +1221,7 @@ a.link {
     }
 } 
 .slogan-1 {
-    top: 6vw;
+    top: 2.5vw;
     left: 0;
     text-align: left; 
     span {
@@ -1384,6 +1400,19 @@ a.link {
         font-size:1.5em !important;
         text-align: center !important;
         margin-top: 0;
+    }
+    &.section.mot {
+        position: relative;
+        background: url(../images/pattern-2.png) repeat-x center 10px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+        span {
+            background: #fff;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
     }
 }
 .title-secondary {
@@ -1620,7 +1649,7 @@ a.link {
         &.page-header {
             margin: 0;
             padding: 40px 0;
-            background-color: $brand-primary-medium;
+            background-color: $brand-color-logo;
             @media screen and (max-width: $screen-xs) {
                 padding: 20px 0;
             }
