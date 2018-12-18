@@ -1165,8 +1165,8 @@ a.link {
         line-height: 6vw;
         font-size: 2.75vw;
         &.cta {
-            line-height: 5vw;
-            padding-top: .3vw;
+            //line-height: 5vw;
+            //padding-top: .3vw;
             background: rgba($brand-color, .9);
             
         }
@@ -1174,11 +1174,11 @@ a.link {
     }
     a {
         color: inherit;
-        font-size: 1.75vw;
-        padding: .75vw 1.4vw;
+        //font-size: 1.75vw;
+        //padding: .75vw 1.4vw;
         //border: solid 2px rgba(255,255,255,.8);
         i {
-            font-size: 1.25vw;
+            font-size: 2.25vw;
         }
     }
     @media screen and (max-width: $screen-xs) {
@@ -1211,7 +1211,7 @@ a.link {
     span {
         padding-left: 8vw;
         &.cta {
-            padding-right: .35vw
+            padding-right: 1.5vw;
         }
     }
     @media screen and (max-width: $screen-xs) {
@@ -1226,7 +1226,7 @@ a.link {
         padding-right: 8vw;
         
         &.cta {
-            padding-left: .35vw
+            padding-left: 1.5vw;
         }
     }
     @media screen and (max-width: $screen-xs) {
