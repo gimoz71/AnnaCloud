@@ -1,4 +1,4 @@
-angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "listeService", "$location", "$uibModal", "jwtHelper",  function($scope, loginService, listeService, $location, $uibModal, jwtHelper) {
+angular.module("applicationModule").controller("componentsController", ["$scope", "loginService", "listeService", "$location", "$uibModal", "$uibModalStack", "jwtHelper",  function($scope, loginService, listeService, $location, $uibModal, $uibModalStack, jwtHelper) {
 
 	$scope.user = null;
 	$scope.costoSpedizione = 19.50;
@@ -587,6 +587,27 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	}
 
 	/* GESTIONE MODALI */
+	$scope.openConfigNameModal = function () {
+		$scope.modalInstance = $uibModal.open({
+			animation: true,
+			templateUrl: 'modaleNomeConfigurazione.html',
+			controller: 'componentsController',
+			controllerAs: 'cc',
+			resolve: {
+				testoAvviso: function () {
+				  return $scope.testoAvviso;
+				},
+				config: function(){
+					return $scope.tempConfigurazione;
+				}
+			  }
+		});
+
+		// $scope.modalInstance.result.then(function () {
+		// 	alert("now I'll close the modal");
+		//   });
+	}
+
 	$scope.openMessageModal = function () {
 		$scope.modalInstance = $uibModal.open({
 			animation: true,
@@ -600,20 +621,42 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			  }
 		});
 
-		$scope.modalInstance.result.then(function () {
-			alert("now I'll close the modal");
-		  });
+		// $scope.modalInstance.result.then(function () {
+		// 	alert("now I'll close the modal");
+		//   });
 	}
 
-	$scope.ok = function () {
+	$scope.okConfig = function (configName, config) {
+
+		config.nome = configName;
+
+		listeService.putConfigurazione($scope.configurazione).then(
+			function (res){
+				console.log(res);
+				$scope.getTempConfigurazione().codice = res.data.codiceConfigurazioneRisposta;
+				$scope.addToPreferiti($scope.getTempConfigurazione());//aggiunge ai preferiti locali
+				if($$scope.getTempConfigurazione().carrello){
+					$scope.addToCarrello($$scope.getTempConfigurazione());//aggiunge ai preferiti locali
+					$scope.changePath('/carrello');
+				}
+			},
+			function (reason){
+				console.log(reason);
+				alert ("errore aggiunta preferiti");
+			}
+		);
 		//{...}
-		alert("You clicked the ok button."); 
-		$scope.modalInstance.close();
+		alert("You clicked the ok button.");
+		$uibModalStack.dismissAll();
+		//$scope.modalInstance.close();
+	};
+
+	$scope.cancelConfig = function () {
+		$uibModalStack.dismissAll();
+	};
+	  
+	$scope.ok = function () {
+		$uibModalStack.dismissAll();
 	  };
 	
-	$scope.cancel = function () {
-		//{...}
-		alert("You clicked the cancel button."); 
-		$scope.modalInstance.dismiss('cancel');
-	};
 }]);
