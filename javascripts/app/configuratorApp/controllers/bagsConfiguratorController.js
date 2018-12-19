@@ -33,6 +33,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	$scope.tipoEntitaSelezionata = "colore";//di default apro il pannello colori
 	$scope.nomeEntitaSelezionata = "black";//di default apro il pannello colori
 
+	$scope.mappaEntitaSelezionate = {};
+
 	$scope.embossSelezionato = false;
 	$scope.nomeStileSelezionato = "";
 	$scope.mapEmboss = new Map();
@@ -45,6 +47,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	$scope.mapMetalloTracolle = new Map();
 	$scope.mapMetalloCiondoli = new Map();
 	$scope.mapMetalloBorchie = new Map();
+	$scope.tipoTracollaSelezionata = "";
+	$scope.tipoCiondoloSelezionato = "";
 
 	$scope.borchieSelezionate = false;
 	$scope.nomeBorchiaSelezionata = "";
@@ -147,6 +151,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				}
 			}
 		}
+
+		$scope.tipoTracollaSelezionata = entita;
 	}
 
 	configController.selezionaCategoriaCiondolo = function (entita) {
@@ -171,6 +177,18 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 				}
 			}
 		}
+
+		$scope.tipoCiondoloSelezionato = entita;
+	}
+
+	configController.resetTracolle = function(){
+		$scope.tipoTracollaSelezionata = "";
+		configController.selezioneTipoAccessorio('tracolle');
+	}
+
+	configController.resetCiondoli = function(){
+		$scope.tipoCiondoloSelezionato = "";
+		configController.selezioneTipoAccessorio('ciondoli');
 	}
 
 	configController.selezioneTipoAccessorio = function(tipoAccessorio){
@@ -178,9 +196,19 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		//preparo la mappa che ha chiave = entita.nome - valore = entita
 		//fadeout del componente
 		if(tipoAccessorio == "tracolle"){
-			$scope.tipoEntitaSelezionata = "tipi-tracolle";
+			if($scope.tipoTracollaSelezionata == ""){
+				$scope.tipoEntitaSelezionata = "tipi-tracolle";
+			} else{
+				configController.selezionaCategoriaTracolla($scope.tipoTracollaSelezionata);
+			} 
+			
 		} else if(tipoAccessorio == "ciondoli"){
-			$scope.tipoEntitaSelezionata = "tipi-ciondoli";
+			if($scope.tipoCiondoloSelezionato == ""){
+				$scope.tipoEntitaSelezionata = "tipi-ciondoli";
+			} else {
+				configController.selezionaCategoriaCiondolo($scope.tipoCiondoloSelezionato);
+			}
+			
 		} else {
 
 			if (tipoAccessorio == "colore") {
@@ -589,12 +617,43 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		configController.priceManager.price = prezzoCalcolato;
 	}
 
-	configController.ricaricaEntita = function(entita){
-		if(entita.nome == $scope.nomeEntitaSelezionata && $scope.tipoEntitaSelezionata != "colore" && $scope.tipoEntitaSelezionata != "metalleria"){
-				$scope.nomeEntitaSelezionata = "";
-		} else {
-				$scope.nomeEntitaSelezionata = entita.nome;
+	configController.isSelected = function(entita){
+		if(entita != undefined){
+			if(entita.nome != undefined && entita.nome != ""){
+				return configController.normalizzaStringheMetallo(entita.nome) === $scope.mappaEntitaSelezionate[$scope.tipoEntitaSelezionata];
+			}
 		}
+		return false;
+	}
+
+	configController.normalizzaStringheMetallo = function(daNormalizzare){
+		var result = daNormalizzare;
+
+		if(result == undefined){
+			return daNormalizzare;
+		} 
+
+		if(result.indexOf("metalleria") == -1){
+			result = result.replace("oro","");
+			result = result.replace("argento","");
+		}
+
+		return result;
+	}
+
+	configController.ricaricaEntita = function(entita){
+
+		if(entita.nome == $scope.mappaEntitaSelezionate[$scope.tipoEntitaSelezionata] && $scope.tipoEntitaSelezionata != "colore" && $scope.tipoEntitaSelezionata != "metalleria"){
+			$scope.nomeEntitaSelezionata = "";
+		} else {
+			$scope.nomeEntitaSelezionata = entita.nome;
+		}
+
+		// if(entita.nome == $scope.nomeEntitaSelezionata && $scope.tipoEntitaSelezionata != "colore" && $scope.tipoEntitaSelezionata != "metalleria"){
+		// 		$scope.nomeEntitaSelezionata = "";
+		// } else {
+		// 		$scope.nomeEntitaSelezionata = entita.nome;
+		// }
 
 		var url = entita.urlStripe;
 		// url = url.replace("RES", configController.getResolutionPlaceHolder());
@@ -704,11 +763,21 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.selezionaEntita = function(entita){
 
-		if(entita.nome == $scope.nomeEntitaSelezionata && $scope.tipoEntitaSelezionata != "colore" && $scope.tipoEntitaSelezionata != "metalleria"){
-				$scope.nomeEntitaSelezionata = "";
+		if(configController.normalizzaStringheMetallo(entita.nome) == $scope.mappaEntitaSelezionate[$scope.tipoEntitaSelezionata] && $scope.tipoEntitaSelezionata != "colore" && $scope.tipoEntitaSelezionata != "metalleria"){
+			$scope.nomeEntitaSelezionata = "";
+			delete $scope.mappaEntitaSelezionate[$scope.tipoEntitaSelezionata];
+			//tolgo dalla mappa
 		} else {
-				$scope.nomeEntitaSelezionata = entita.nome;
+			$scope.nomeEntitaSelezionata = configController.normalizzaStringheMetallo(entita.nome);
+			$scope.mappaEntitaSelezionate[$scope.tipoEntitaSelezionata] = configController.normalizzaStringheMetallo(entita.nome);
+			//inserisco nella mappa
 		}
+
+		// if(entita.nome == $scope.nomeEntitaSelezionata && $scope.tipoEntitaSelezionata != "colore" && $scope.tipoEntitaSelezionata != "metalleria"){
+		// 		$scope.nomeEntitaSelezionata = "";
+		// } else {
+		// 		$scope.nomeEntitaSelezionata = entita.nome;
+		// }
 
 		html2canvas(document.querySelector("#spritespin"), { async:false }).then(canvas => {
 			$scope.dataUrl = canvas.toDataURL();
@@ -1410,6 +1479,8 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.initConfiguratore = function(){
 
+		$scope.mappaEntitaSelezionate["colore"] = "black";
+		$scope.mappaEntitaSelezionate["metalleria"] = "argento";
 
 		//1. devo fare il caricamento massivo iniziale delle configurazioni (solo la struttura json dal DB, non le immagini)
 		listeService.getModelli().then(function (res) {
