@@ -84,7 +84,7 @@
                     <div class="order-state one summary">
                         <h4 class="title-tertiary ">Informazioni di contatto e consegna</h4>
                         <hr>
-                    	<div class="shipment-info " >
+                    	<div class="shipment-info" >
                             <h5>{{getNomeECognome()}}</h5>
                             <h5>{{getIndirizzoSpedizione()}}</h5>
                             <!--button class="btn btn-default btn-save ">Modifica</button-->
@@ -92,8 +92,9 @@
                     </div>
                     <div class="order-state one summary">
                         <h4 class="title-tertiary ">Riepilogo del tuo ordine</h4>
-                        <hr>
+                        
                     	<div ng-repeat="conf in ordine.configurazioni" >
+                            <hr>
 	                        <div  class="row">
 	                            <div class="col-sm-12 text-left">
 	                                <h5 class="" style="text-transform: uppercase">{{conf.nome}}</h5>
@@ -104,7 +105,7 @@
 	                        </div>
                         </div>
                     </div>
-                    <div class="order-state one summary">
+                    <div class="order-state one summary current normal">
                         <div class="row">
                             <div class="col-sm-12 text-left">
                                 <span>Subtotale</span>
@@ -118,7 +119,7 @@
 	                        <hr>
                         <div class="row">
                             <div class="col-sm-12 text-left">
-                                <span>TOTALE</span>
+                                <span><b>TOTALE</b></span>
                                 <span class="single-price"><b>{{totale}}&euro;</b></span>
                             </div>
                         </div>

@@ -1907,10 +1907,10 @@ a.link {
     font-family: $font-family-sans-serif-title;
     text-align: center;
     padding: 15px;
-    border: solid 1px darken($brand-secondary, 10);
-    margin: 2px 5px;
+    border: solid 1px lighten($brand-primary-light, 35);
+    margin: 4px 0px;
     background-color: #fff;
-    color: darken($brand-secondary, 40);
+    color: lighten($brand-primary-light, 15);
     //margin-left: auto;
     //margin-right: auto;
     font-size: 1em;
@@ -1941,12 +1941,15 @@ a.link {
         }
     }
     &.current {
-        border: solid 1px darken($brand-secondary, 20);
+        border: solid 1px lighten($brand-primary-light, 15);
         z-index: 4;
-        color:  darken($brand-secondary, 40);
+        color:  $brand-primary;
         font-size: 1.3em;
-        margin: 2px 0;
+        margin: 4px -5px;
         padding: 10px 15px;
+        &.normal {
+            margin: 4px 0px;
+        }
     }
     &.pre-summary {
         font-size: 18px;
@@ -1971,7 +1974,7 @@ a.link {
 }
 
 .shipment-info {
-    padding: 20px;
+    //padding: 20px;
     //border: solid 1px $standard-border-color;
     position: relative;
     text-align: center;
@@ -2652,7 +2655,7 @@ a.link {
         }
         .itemName {
             font-size: 8px;
-            display: block;
+            display: none;
             position: absolute;
             bottom: -5px;
             left: 0;
@@ -2669,7 +2672,7 @@ a.link {
             position: relative;
             border: solid 1px transparent;
             padding: 2px;
-            margin-bottom: 7px;
+            //margin-bottom: 7px;
             &:hover, &.added, &.activeAccessorio {
                 border: solid 1px $standard-border-color;
                 opacity: 1;
