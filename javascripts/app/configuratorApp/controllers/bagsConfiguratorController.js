@@ -151,9 +151,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 
 	configController.selezionaCategoriaCiondolo = function (entita) {
 		if($scope.metalloVincolante == "oro"){
-            $scope.variantiTracolle = $scope.modelliCiondoliOro.get(entita);
+            $scope.variantiCiondoli = $scope.modelliCiondoliOro.get(entita);
         } else {
-            $scope.variantiTracolle = $scope.modelliCiondoliArgento.get(entita);
+            $scope.variantiCiondoli = $scope.modelliCiondoliArgento.get(entita);
         }
 		$scope.variantiCiondoli = configController.ordinaEntita($scope.variantiCiondoli);
 		$scope.tipoEntitaSelezionata = "varianti-ciondoli";
@@ -1370,7 +1370,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 							if(!isLogged){
 								//devo fare il login e poi salvare
 								$scope.setNextPath("/preferiti");
-								$scope.changePath('/accedi');
+								$scope.changePath('/accedi');//verificare ceh succede
 							} else {
 								var arrayIniziali = configController.generateArrayEntitaIniziali();
 								var elencoEntita = $scope.configurazione.elencoEntita;
@@ -1378,21 +1378,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 								var elencoTotaleEntita = elencoEntita.concat(arrayIniziali);
 								$scope.configurazione.elencoEntita = elencoTotaleEntita;
 			
-								listeService.putConfigurazione($scope.configurazione).then(
-									function (res){
-										console.log(res);
-										$scope.configurazione.codice = res.data.codiceConfigurazioneRisposta;
-										$scope.addToPreferiti($scope.configurazione);//aggiunge ai preferiti locali
-										if(isCarrello){
-											$scope.addToCarrello($scope.configurazione);//aggiunge ai preferiti locali
-											$scope.changePath('/carrello');
-										}
-									},
-									function (reason){
-										console.log(reason);
-										alert ("errore aggiunta preferiti");
-									}
-								);
+								$scope.setTempConfigurazione($scope.configurazione);
+								$scope.openConfigNameModal();
+								
 							}
 						}
 					});
