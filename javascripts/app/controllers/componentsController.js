@@ -4,6 +4,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.costoSpedizione = 19.50;
 
 	$scope.testoAvviso = "PROVA AVVISO NELLA MODALE";
+	$scope.avvisoInputNome = "Nome della borsa";
 	$scope.modalInstance = null;
 
 	$scope.orderBaseMessage = "<html>"+
@@ -594,10 +595,10 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			controller: 'componentsController',
 			controllerAs: 'cc',
 			resolve: {
-				testoAvviso: function () {
-				  return $scope.testoAvviso;
+				avviso: function () {
+				  return $scope.avvisoInputNome;
 				},
-				config: function(){
+				configurazione: function(){
 					return $scope.tempConfigurazione;
 				}
 			  }
