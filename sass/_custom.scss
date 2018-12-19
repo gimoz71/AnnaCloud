@@ -1386,6 +1386,9 @@ a.link {
     background: url('../images/divider.png') no-repeat center center;
     max-width: 480px;
     margin: 40px auto;
+    &.reverse {
+        background: url('../images/divider-reverse.png') no-repeat center center;
+    }
 }
 
 .title {
@@ -1401,16 +1404,21 @@ a.link {
         text-align: center !important;
         margin-top: 0;
     }
-    &.section.mot {
-        position: relative;
-        background: url(../images/pattern-2.png) repeat-x center 10px;
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
-        span {
-            background: #fff;
-            padding-left: 10px;
-            padding-right: 10px;
+    &.section {
+        &.mot {
+            position: relative;
+            background: url(../images/pattern-2.png) repeat-x center 10px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            span {
+                background: #fff;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+        &.fluid {
+            max-width: 100%;
         }
         
     }

@@ -13277,6 +13277,9 @@ a.link {
   max-width: 480px;
   margin: 40px auto;
 }
+.divider.reverse {
+  background: url("../images/divider-reverse.png") no-repeat center center;
+}
 
 .title {
   color: #0d0d0d;
@@ -13304,6 +13307,9 @@ a.link {
   background: #fff;
   padding-left: 10px;
   padding-right: 10px;
+}
+.title.section.fluid {
+  max-width: 100%;
 }
 
 .title-secondary {
