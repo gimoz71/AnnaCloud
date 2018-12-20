@@ -14185,6 +14185,7 @@ a.link {
 .configuratore .yamm-content {
   border: solid 1px #bfbfbf;
   border-top: none;
+  padding: 0;
 }
 .configuratore .yamm .dropdown.yamm-fw .dropdown-menu {
   border-left: none;
@@ -15051,6 +15052,14 @@ footer .copyright {
 
 #paypal-button {
   border-radius: 0 !important;
+}
+
+.featherlight {
+  background: rgba(255, 255, 255, 0) !important;
+}
+
+.featherlight:last-of-type {
+  background: rgba(255, 255, 255, 0.8) !important;
 }
 
 /*

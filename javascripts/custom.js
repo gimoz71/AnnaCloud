@@ -24,7 +24,7 @@ $.fn.sepLine = function(divider, container, parent){
 
 /* funzione regola l'altezza del megamenu in base alla dimensione della pagina */
 $.fn.yammHeight = function(mainNavbar, yammContent, offsetElementHeight){
-    var heightref = $(window).height() - ($('.'+mainNavbar).outerHeight()+$('.'+offsetElementHeight).outerHeight()+1);
+    var heightref = $(window).height() - ($('.' + mainNavbar).outerHeight() + 52);
     $('.'+yammContent).outerHeight(heightref);
 }
 
@@ -122,8 +122,3 @@ $.fn.parentResize = function() {
 
 }
 
-$('.dropdown.keep-open').on({
-    "shown.bs.dropdown": function () { this.closable = false; },
-    "click": function () { this.closable = true; },
-    "hide.bs.dropdown": function () { return this.closable; }
-});

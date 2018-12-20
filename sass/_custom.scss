@@ -2272,6 +2272,7 @@ a.link {
         border: solid 1px $standard-border-color;
         border-top: none;
         //border-bottom: none;
+        padding: 0;
     }
     .yamm .dropdown.yamm-fw .dropdown-menu {
         border-left: none;
@@ -3214,7 +3215,12 @@ footer {
 
 
 
-
+.featherlight {
+	background: rgba(255, 255, 255, 0) !important;
+}
+.featherlight:last-of-type {
+    background: rgba(255, 255, 255, .8) !important;
+}
 
 
 
