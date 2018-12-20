@@ -14169,10 +14169,10 @@ a.link {
   top: 0;
 }
 .configuratore a, .configuratore a:link {
-  color: #60534D !important;
+  color: #333 !important;
   font-family: "Montserrat", sans-serif;
 }
-.configuratore a:hover, .configuratore a:focus {
+.configuratore a.btn:hover, .configuratore a.btn:focus {
   color: #fff !important;
 }
 .configuratore a.disabled {
@@ -14208,26 +14208,8 @@ a.link {
 .configuratore .main-configurator-navbar a.link {
   padding: 15px;
 }
-.configuratore .main-configurator-navbar a.materiale {
-  padding-right: 60px;
-}
-@media screen and (max-width: 767px) {
-  .configuratore .main-configurator-navbar a.materiale {
-    padding-right: 35px;
-    height: 50px;
-  }
-}
-.configuratore .main-configurator-navbar a.materiale .tipologia {
-  display: block;
-  position: absolute;
-  height: 40px;
-  width: 40px;
-  top: 5px;
-  right: 5px;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.configuratore .main-configurator-navbar a.link:hover {
+  color: #000;
 }
 .configuratore .scelta-modelli {
   background-color: #fafafa !important;
@@ -14263,7 +14245,6 @@ a.link {
   transition: all 0.5s ease-out;
   font-size: 1.3em;
   text-transform: uppercase;
-  font-weight: lighter;
   /*&:after {
       @include transition(all .2s ease-out);
       content: "";
@@ -14278,6 +14259,10 @@ a.link {
   }*/
 }
 .configuratore .modello-borsa:hover {
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  text-decoration: none;
   /*.nome {
       //display: inline-block;
       @include transition(all .2s ease-out);
@@ -14288,17 +14273,17 @@ a.link {
           opacity: 1;
       }
   }*/
-  text-decoration: none;
 }
 .configuratore .modello-borsa:hover img {
+  transform: scale(1.03);
+}
+.configuratore .modello-borsa:active, .configuratore .modello-borsa:focus {
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+  text-decoration: none;
 }
 .configuratore .modello-borsa:active img, .configuratore .modello-borsa:focus img {
-  -webkit-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
   transform: scale(1.1);
 }
 .configuratore .accessori {

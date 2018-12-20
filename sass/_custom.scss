@@ -2255,10 +2255,10 @@ a.link {
     position: absolute;
     top: 0;left: 0;
     a, a:link {
-        color: #60534D !important;
+        color: $brand-color !important;
         font-family: $font-family-sans-serif-title;
     }
-    a:hover, a:focus {
+    a.btn:hover, a.btn:focus {
         color: #fff !important;
     }
     a.disabled {
@@ -2296,27 +2296,12 @@ a.link {
         margin-top: 1px;
         a.link {
             padding: 15px ;
+            &:hover {
+                color: #000;
+            }
 
         }
-        a.materiale {
-            padding-right: ($navbar-height)+10px;
-            @media screen and (max-width: $screen-xs-max) {
-                padding-right: ($navbar-height)-15px;
-                height: $navbar-height;
-            }
-            .tipologia {
-                display: block;
-                position: absolute;
-                height: ($navbar-height)-10px;
-                width: ($navbar-height)-10px;
-                top: 5px;
-                right: 5px;
-                box-shadow: inset 0 0 0 1px rgba(0,0,0,.15);
-                background-position: center center;
-                background-size:cover;
-                background-repeat: no-repeat;
-            }
-        }
+        
     }
     .scelta-modelli {
         background-color: #fafafa !important;
@@ -2345,7 +2330,7 @@ a.link {
             @include transition(all .5s ease-out);
             font-size: 1.3em;
             text-transform: uppercase;
-            font-weight: lighter;
+            //font-weight: lighter;
             /*&:after {
                 @include transition(all .2s ease-out);
                 content: "";
@@ -2360,8 +2345,12 @@ a.link {
             }*/
         }
         &:hover {
+            @include transition(all .2s ease-out);
+            text-decoration: none;
             img {
-                @include transition(all .2s ease-out);
+                transform: scale(1.03);
+                
+                
             }
             /*.nome {
                 //display: inline-block;
@@ -2373,11 +2362,11 @@ a.link {
                     opacity: 1;
                 }
             }*/
-            text-decoration: none;
         }
         &:active, &:focus {
+            @include transition(all .2s ease-out);
+            text-decoration: none;
             img {
-                @include transition(all .2s ease-out);
                 transform: scale(1.1);
             }
         }
