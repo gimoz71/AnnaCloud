@@ -137,6 +137,9 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
         }
 		$scope.variantiTracolle = configController.ordinaEntita($scope.variantiTracolle);
 		$scope.tipoEntitaSelezionata = "varianti-tracolle";
+		$scope.scegliColore = false;
+		$scope.scegliMetallo = false;
+		$scope.scegliEmboss = false;
 
 		for (var i = 0; i < $scope.modelli.length; i++) {
 			var modello = $scope.modelli[i];
@@ -164,6 +167,10 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		$scope.variantiCiondoli = configController.ordinaEntita($scope.variantiCiondoli);
 		$scope.tipoEntitaSelezionata = "varianti-ciondoli";
 		
+		$scope.scegliColore = false;
+		$scope.scegliMetallo = false;
+		$scope.scegliEmboss = false;
+
 		for (var i = 0; i < $scope.modelli.length; i++) {
 			var modello = $scope.modelli[i];
 			if (modello.nome == $scope.modelloSelezionato) {
