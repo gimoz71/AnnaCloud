@@ -633,6 +633,15 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 		return false;
 	}
 
+	configController.isColore = function (entita) {
+		if (entita != undefined) {
+			if (entita.categoria != undefined && entita.categoria != "") {
+				return entita.categoria == 'colore';
+			}
+		}
+		return false;
+	}
+
 	configController.normalizzaStringheMetallo = function(daNormalizzare){
 		var result = daNormalizzare;
 
