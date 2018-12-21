@@ -112,7 +112,7 @@
 								<slide ng-repeat="entita in entitaTipoAccessorioSelezionato" ng-click="contr.selezionaEntita(entita)">
 									<!-- <a href="javascript:void(0);" ng_class="{activeAccessorio: entita.nome === nomeEntitaSelezionata}" title=""> -->
 									<a href="javascript:void(0);" ng_class="{activeAccessorio: contr.isSelected(entita)}" title="">
-	                                    <img ng-src="{{entita.urlThumbnail}}" ng_class="{thumb-colori: contr.isColore(entita)}">
+	                                    <img ng-src="{{entita.urlThumbnail}}" ng_class="{'thumb-colori': contr.isColore(entita)}">
 	                                    <div ng-if="removable" class="closeItem"><i class="unaicon-remove"></i></div>
 									</a>
 									<span class="itemName">{{traduciNomiInterfaccia(entita)}}</span>
