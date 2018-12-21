@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="col-sm-12">
-                            <p ng-click="eliminaDaOrdine(conf)" class="remove">elimina <small><i class="unaicon-remove"></i></small></p>
-                            <h4 class="bag">Configurazione #{{conf.nome}}</h4>
+                            <p ng-click="$scope.eliminaConfigurazione(conf.codice)" class="remove">elimina <small><i class="unaicon-remove"></i></small></p>
+                            <h4 class="bag">{{conf.nome}}</h4>
                         </div>
                         <div class="col-sm-6 base">
                             <h5 class="section-small left">Base </h5>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="media-body">
                             <div class="col-sm-12">
-                                <p ng-click="eliminaDaOrdine(conf)" class="remove">elimina <small><i class="unaicon-remove"></i></small></p>
-                                <h4 class="media-heading bag">Configurazione #{{conf.nome}}</h4>
+                                <p ng-click="eliminaConfigurazione(conf.codice)" class="remove">elimina <small><i class="unaicon-remove"></i></small></p>
+                                <h4 class="media-heading bag">{{conf.nome}}</h4>
                             </div>
                             <div class="col-xs-6 base">
                                 <h5 class="section-small left">Base </h5>

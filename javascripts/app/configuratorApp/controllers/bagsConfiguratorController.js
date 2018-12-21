@@ -117,15 +117,28 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 	}
 
 	configController.getThumbnailNameTracolle = function(entita){
-		var toReplace = configController.modelNameTranslate($scope.modelloSelezionato);
-		var thumbnailName = $scope.baseUrlThumbCategorieTracolle.replace("MODELLO", toReplace) + "THUMBNAIL_" + entita.replace("-","_") + ".png";
-		return thumbnailName;
+		if(entita){
+			var toReplace = configController.modelNameTranslate($scope.modelloSelezionato);
+			if(toReplace != undefined){
+				var thumbnailName = $scope.baseUrlThumbCategorieTracolle.replace("MODELLO", toReplace) + "THUMBNAIL_" + entita.replace("-","_") + ".png";
+				return thumbnailName;
+			} else {
+				return "";
+			}
+		} else return "";
+		
 	}
 
 	configController.getThumbnailNameCiondoli = function (entita) {
-		var toReplace = configController.modelNameTranslate($scope.modelloSelezionato);
-		var thumbnailName = $scope.baseUrlThumbCategorieCiondoli.replace("MODELLO", toReplace) + "THUMBNAIL_" + entita.replace("-", "_") + ".png";
+		if(entita){
+			var toReplace = configController.modelNameTranslate($scope.modelloSelezionato);
+			if(toReplace != undefined){
+				var thumbnailName = $scope.baseUrlThumbCategorieCiondoli.replace("MODELLO", toReplace) + "THUMBNAIL_" + entita.replace("-", "_") + ".png";
 		return thumbnailName;
+			} else {
+				return "";
+			}
+		} else return "";
 	}
 
 	configController.selezionaCategoriaTracolla = function(entita) {
@@ -1454,9 +1467,7 @@ angular.module('configuratorModule').controller('unadunaConfiguratorController2'
 								var elencoTotaleEntita = elencoEntita.concat(arrayIniziali);
 								$scope.configurazione.elencoEntita = elencoTotaleEntita;
 			
-								$scope.setTempConfigurazione($scope.configurazione);
 								$scope.openConfigNameModal();
-								
 							}
 						}
 					});

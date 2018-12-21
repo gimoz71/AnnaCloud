@@ -7,6 +7,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.avvisoInputNome = "Nome della borsa";
 	$scope.modalInstance = null;
 
+	$scope.loaderMessage = "";
+
 	$scope.orderBaseMessage = "<html>"+
 	"<head>"+
 		"<title>Anna Cloud</title>"+
@@ -96,6 +98,14 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.nomeSpe = "";
 
 	$scope.nextPath = "";
+
+	$scope.setLoaderMessage = function(message){
+		$scope.loaderMessage = message;
+	}
+
+	$scope.getLoaderMessage = function(){
+		return $scope.loaderMessage;
+	}
 
 	$scope.isActive = function (viewLocation) {
 		return viewLocation === $location.path();
@@ -592,14 +602,10 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		$scope.modalInstance = $uibModal.open({
 			animation: true,
 			templateUrl: 'modaleNomeConfigurazione.html',
-			controller: 'componentsController',
-			controllerAs: 'cc',
+			scope: $scope,
 			resolve: {
 				avviso: function () {
 				  return $scope.avvisoInputNome;
-				},
-				configurazione: function(){
-					return $scope.tempConfigurazione;
 				}
 			  }
 		});
@@ -627,16 +633,16 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		//   });
 	}
 
-	$scope.okConfig = function (configName, config) {
+	$scope.okConfig = function (configName) {
 
-		config.nome = configName;
+		$scope.getTempConfigurazione().nome = configName;
 
-		listeService.putConfigurazione($scope.configurazione).then(
+		listeService.putConfigurazione($scope.getTempConfigurazione()).then(
 			function (res){
 				console.log(res);
 				$scope.getTempConfigurazione().codice = res.data.codiceConfigurazioneRisposta;
 				$scope.addToPreferiti($scope.getTempConfigurazione());//aggiunge ai preferiti locali
-				if($$scope.getTempConfigurazione().carrello){
+				if($scope.getTempConfigurazione().carrello){
 					$scope.addToCarrello($$scope.getTempConfigurazione());//aggiunge ai preferiti locali
 					$scope.changePath('/carrello');
 				}
@@ -646,8 +652,6 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 				alert ("errore aggiunta preferiti");
 			}
 		);
-		//{...}
-		alert("You clicked the ok button.");
 		$uibModalStack.dismissAll();
 		//$scope.modalInstance.close();
 	};
@@ -754,8 +758,8 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 						break;
 					case "stile":
 						var splitted = entita.nome.split("_");
-						if(splitted.length == 2){
-							result = splitted[1];
+						if(splitted.length == 3){
+							result = splitted[1] + " " + splitted[2];
 						} else {
 							result = entita.nome;
 						}
@@ -786,5 +790,13 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			} else return "";
 		} else return "";
 	}
+
+	/* FUNZIONI DI TEST */
+	$scope.showLoader = function(){
+
+	}
 	
+	$scope.hideLoader = function(){
+		
+	}
 }]);
