@@ -448,7 +448,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 				var entitaMessagePart = $scope.entitaPartMessage;
 
 				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_NOME', entita.categoria);
-				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_VALORE', $scope.traduciNomiOrdini(entita.nome));
+				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_VALORE', $scope.traduciNomiOrdini(entita));
 
 				elencoEntitaPartMessage += entitaMessagePart;
 			}
