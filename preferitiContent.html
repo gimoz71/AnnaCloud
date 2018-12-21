@@ -30,19 +30,19 @@
                         <div class="col-sm-6 base">
                             <h5 class="section-small left">Base </h5>
                             <table>
-                                <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
-
-                                    <td><span>{{base['nome']}}:</span></td>
-                                    <td>{{base['descrizione']}}</td>
+                                <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'modello'">
+                                    <td><span>modello:</span></td>
+                                    <td>{{base.descrizione}}</td>
                                 </tr>
+                                <tr>
                             </table>
                         </div>
                         <div class="col-sm-6 accessori">
                             <h5 class="section-small left">Accessori</h5>
                             <table>
                                 <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'accessori'">
-                                    <td><span>{{base['nome']}}:</span></td>
-                                    <td>{{base['descrizione']}}</td>
+                                    <td><span>{{base.categoria}}:</span></td>
+                                    <td>{{traduciNomiOrdini(base)}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -63,19 +63,18 @@
                             <div class="col-xs-6 base">
                                 <h5 class="section-small left">Base </h5>
                                 <table>
-                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'base'">
-
-                                        <td><span>{{base['nome']}}:</span></td>
-                                        <td>{{base['descrizione']}}</td>
+                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'modello'">
+                                        <td><span><b>modello:</b></span></td>
+                                        <td>{{base.descrizione}}</td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="col-xs-6 accessori">
                                 <h5 class="section-small left">Accessori</h5>
                                 <table>
-                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria == 'accessori'">
-                                        <td><span>{{base['nome']}}:</span></td>
-                                        <td>{{base['descrizione']}}</td>
+                                    <tr ng-repeat="base in conf.elencoEntita" ng-if="base.categoria != 'modello'">
+                                            <td><span><b>{{base.categoria}}:</b> </span></td>
+                                            <td>{{traduciNomiOrdini(base)}}</td>
                                     </tr>
                                 </table>
                             </div>

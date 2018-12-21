@@ -438,7 +438,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 				var entitaMessagePart = $scope.entitaPartMessage;
 
 				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_NOME', entita.categoria);
-				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_VALORE', entita.nome);
+				entitaMessagePart = entitaMessagePart.replace('CONF_ENTITA_VALORE', $scope.traduciNomiOrdini(entita.nome));
 
 				elencoEntitaPartMessage += entitaMessagePart;
 			}
@@ -658,6 +658,133 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	  
 	$scope.ok = function () {
 		$uibModalStack.dismissAll();
-	  };
+	};
+
+	/* FUNZIONI DI TRADUZIONE */
+	$scope.traduciNomiInterfaccia = function(entita){
+		if(entita){
+			if(entita.categoria != "" && entita.nome != ""){
+				var resutl = "";
+				switch(entita.categoria){
+					case "ciondoli":
+						var temp = entita.nome.toLowerCase();
+						var splitted = temp.split("_");
+						if(splitted.length == 5){
+							result = splitted[3];
+						}else if(splitted.length == 6){
+							result = splitted[3] + "-" + splitted[4];
+						} else if(splitted.length == 7){
+							result = splitted[3] + "-" + splitted[4] + "-" + splitted[5];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "tracolle":
+						var temp = entita.nome.toLowerCase();
+						var splitted = temp.split("_");
+						if(splitted.length == 5){
+							result = splitted[3];
+						} else if(splitted.length == 6){
+							result = splitted[3] + "-" + splitted[4];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "colore":
+						var splitted = entita.nome.split("_");
+						if(splitted.length == 2){
+							result = splitted[1];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					default: 
+						result = "";
+						break;
+				}
+				return result;
+			} else return "";
+		} else return "";
+	}
+
+	$scope.traduciNomiOrdini = function(entita){
+		if(entita){
+			if(entita.categoria != "" && entita.nome != ""){
+				var resutl = "";
+				switch(entita.categoria){
+					case "ciondoli":
+						var temp = entita.nome.toLowerCase();
+						var splitted = temp.split("_");
+						if(splitted.length == 5){
+							result = splitted[1] + " " + splitted[3];
+						}else if(splitted.length == 6){
+							result = splitted[1] + " " + splitted[3] + " " + splitted[4];
+						} else if(splitted.length == 7){
+							result = splitted[1] + " " + splitted[3] + " " + splitted[4] + " " + splitted[5];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "tracolle":
+						var temp = entita.nome.toLowerCase();
+						var splitted = temp.split("_");
+						if(splitted.length == 5){
+							result = splitted[1] + " " + splitted[3];
+						} else if(splitted.length == 6){
+							result = splitted[1] + " " + splitted[3] + " " + splitted[4];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "colore":
+						var splitted = entita.nome.split("_");
+						if(splitted.length == 2){
+							result = splitted[1];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "metalleria":
+						var splitted = entita.nome.split("_");
+						if(splitted.length == 2){
+							result = splitted[1];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "stile":
+						var splitted = entita.nome.split("_");
+						if(splitted.length == 2){
+							result = splitted[1];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "borchie":
+						var splitted = entita.nome.split("_");
+						if(splitted.length == 3){
+							result = splitted[1] + " " + splitted[2];
+						} else if(splitted.length == 4){
+							result = splitted[1] + " " + splitted[2] + " " + splitted[3];
+						} else {
+							result = entita.nome;
+						}
+						break;
+					case "iniziali":
+						var splitted = entita.nome.split("_");
+						if(splitted.length == 2){
+							result = splitted[1];
+						} else {
+							result = entita.nome;
+						}
+						break;	
+					default: 
+						result = "";
+						break;
+				}
+				return result;
+			} else return "";
+		} else return "";
+	}
 	
 }]);
