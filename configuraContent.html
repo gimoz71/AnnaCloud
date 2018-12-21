@@ -15,8 +15,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center no-margin no-padding bags-line" ng-repeat="modello in modelli">
 										<a href="javascript:void(0);" class="modello-borsa" id="start3dbutton" type="button" ng-click="contr.scegliModello(modello)">
 										<img ng-src="{{modello.urlThumbnail}}" class="hidden visible-xs" style="padding: 20px; padding-bottom: 0;" />
-										<img ng-src="{{modello.urlThumbnailHD}}" class="hidden-xs" /><h5 class="nome no-margin">{{modello.nome}}<br><small>{{getModelSizes(modello.nome)}}cm</small></h5></a>
-										<a href="javascript:void(0);" data-featherlight="images/size-demo.jpg" class="hidden" style="display: inline-block;padding: 5px 15px !important; border: solid 1px #999; margin-bottom: 15px;">{{getModelSizes(modello.nome)}}cm <i style="color: #999; padding-left: 10px;" class="fa fa-search-plus"></i></a>
+										<img ng-src="{{modello.urlThumbnailHD}}" class="hidden-xs" /><h5 class="nome no-margin">{{modello.nome}}<!--<br><small>{{getModelSizes(modello.nome)}}cm</small>--></h5></a>
+										<a href="javascript:void(0);" data-featherlight="images/size-demo.jpg" class="" style="display: inline-block;padding: 2px 15px !important; border: solid 1px #999; margin-bottom: 15px;">{{getModelSizes(modello.nome)}}cm <i style="color: #999; padding-left: 10px;" class="fa fa-search-plus"></i></a>
 									</div>
 								</div>
 							</div>
@@ -112,7 +112,7 @@
 								<slide ng-repeat="entita in entitaTipoAccessorioSelezionato" ng-click="contr.selezionaEntita(entita)">
 									<!-- <a href="javascript:void(0);" ng_class="{activeAccessorio: entita.nome === nomeEntitaSelezionata}" title=""> -->
 									<a href="javascript:void(0);" ng_class="{activeAccessorio: contr.isSelected(entita)}" title="">
-	                                    <img ng-src="{{entita.urlThumbnail}}" class="swiper-lazy"/>
+	                                    <img ng-src="{{entita.urlThumbnail}}" ng_class="{'thumb-colori': contr.isColore(entita)}">
 	                                    <div ng-if="removable" class="closeItem"><i class="unaicon-remove"></i></div>
 									</a>
 									<span class="itemName">{{traduciNomiInterfaccia(entita)}}</span>
@@ -145,7 +145,7 @@
 								<slide ng-repeat="entita in variantiTracolle" ng-click="contr.selezionaEntita(entita)">
 									<!-- <a href="javascript:void(0);" ng_class="{activeAccessorio: entita.nome === nomeEntitaSelezionata}" title=""> -->
 									<a href="javascript:void(0);" ng_class="{activeAccessorio: contr.isSelected(entita)}" title="">
-										<img ng-src="{{entita.urlThumbnail}}" class="swiper-lazy"/>
+										<img ng-src="{{entita.urlThumbnail}}" class="swiper-lazy thumb-colori"/>
 										<div ng-if="removable" class="closeItem"><i class="unaicon-remove"></i></div>
 									</a>
 									<span class="itemName" style="">{{traduciNomiInterfaccia(entita)}}</span>
@@ -180,7 +180,7 @@
 								<slide ng-repeat="entita in variantiCiondoli" ng-click="contr.selezionaEntita(entita)">
 									<!-- <a href="javascript:void(0);" ng_class="{activeAccessorio: entita.nome === nomeEntitaSelezionata}" title=""> -->
 									<a href="javascript:void(0);" ng_class="{activeAccessorio: contr.isSelected(entita)}" title="">
-										<img ng-src="{{entita.urlThumbnail}}" class="swiper-lazy"/>
+										<img ng-src="{{entita.urlThumbnail}}" class="swiper-lazy thumb-colori"/>
 										<div ng-if="removable" class="closeItem"><i class="unaicon-remove"></i></div>
 									</a>
 									<span class="itemName">{{traduciNomiInterfaccia(entita)}}</span>

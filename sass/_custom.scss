@@ -2649,7 +2649,9 @@ a.link {
         img {
             height: 57px;
             cursor: pointer;
-            //padding-bottom: 15px;
+            &.thumb-colori {
+                padding-bottom: 8px;
+            }
         }
         .itemNameX {
             font-size: 8px;
@@ -2666,7 +2668,7 @@ a.link {
         }
         .itemName {
             font-size: 8px;
-            display: none;
+            display: inline-block;
             position: absolute;
             bottom: -5px;
             left: 0;

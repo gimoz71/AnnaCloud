@@ -14504,6 +14504,9 @@ a.link {
   height: 57px;
   cursor: pointer;
 }
+.configuratore .accessori-thumb img.thumb-colori {
+  padding-bottom: 8px;
+}
 .configuratore .accessori-thumb .itemNameX {
   font-size: 8px;
   display: block;
@@ -14519,7 +14522,7 @@ a.link {
 }
 .configuratore .accessori-thumb .itemName {
   font-size: 8px;
-  display: none;
+  display: inline-block;
   position: absolute;
   bottom: -5px;
   left: 0;
