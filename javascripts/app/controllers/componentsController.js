@@ -3,7 +3,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.user = null;
 	$scope.costoSpedizione = 19.50;
 
-	$scope.testoAvviso = "PROVA AVVISO NELLA MODALE";
+	$scope.testoAvviso = "";
 	$scope.avvisoInputNome = "Nome della borsa";
 	$scope.modalInstance = null;
 
@@ -98,6 +98,14 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 	$scope.nomeSpe = "";
 
 	$scope.nextPath = "";
+
+	$scope.setTestoAvviso = function(testo) {
+		$scope.testoAvviso = testo;
+	}
+
+	$scope.getTestoAvviso = function(){
+		return $scope.testoAvviso;
+	}
 
 	$scope.setLoaderMessage = function(message){
 		$scope.loaderMessage = message;
@@ -286,10 +294,14 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		return totale;
 	}
 
-	$scope.ricaricaListe = function(email, page){
+	$scope.ricaricaListe = function(email, page, showLoader = false){
+		if(showLoader){
+			$scope.setLoaderMessage("ricarico la lista...");
+			$scope.showLoader();
+		}
 		listeService.getConfigurazioniUtente(email).then(function(data){
 			$scope.preferiti = data.data.configurazioni;
-			
+			$scope.hideLoader();
 			var tempCarrello = [];
 			for(var i = 0; i < $scope.preferiti.length; i++){
 				if($scope.preferiti[i].carrello){
@@ -395,7 +407,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 				if(res.errorMessage != null && res.errorMessage != ""){
 					//ho un errore
 					console.log(res.errorMessage);
-					alert("C'è stato un problema nel salvataggio dell'ordine");
+					$scope.openMessageModal("C'è stato un problema nel salvataggio dell'ordine");
 				} else {
 					alert("ordine correttamente aggiornato");
 					//preparo l'invio delle mail
@@ -405,7 +417,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 						function(res2){
 							if(res2.errorMessage != null && res2.errorMessage != ""){
 								console.log(res2.errorMessage);
-								alert("C'è stato un problema nell'invio della mail di riepilogo, contattare l'ammistratore");
+								$scope.openMessageModal("C'è stato un problema nell'invio della mail di riepilogo, contattare l'ammistratore");
 							} else {
 								$scope.ordineInCorso = null;
 								$scope.changePath('/preferiti');
@@ -416,7 +428,7 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 			},
 			function (reason){
 				console.log(reason);
-				alert ("errore salvataggio ordine");
+				$scope.openMessageModal("errore salvataggio ordine");
 			}
 		);
 	}
@@ -609,46 +621,43 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 				}
 			  }
 		});
-
-		// $scope.modalInstance.result.then(function () {
-		// 	alert("now I'll close the modal");
-		//   });
 	}
 
-	$scope.openMessageModal = function () {
+	$scope.openMessageModal = function (message) {
+		$scope.setTestoAvviso(message);
 		$scope.modalInstance = $uibModal.open({
 			animation: true,
 			templateUrl: 'modaleAvviso.html',
-			controller: 'componentsController',
-			controllerAs: 'cc',
+			scope: $scope,
 			resolve: {
 				testoAvviso: function () {
 				  return $scope.testoAvviso;
 				}
 			  }
 		});
-
-		// $scope.modalInstance.result.then(function () {
-		// 	alert("now I'll close the modal");
-		//   });
 	}
 
 	$scope.okConfig = function (configName) {
 
 		$scope.getTempConfigurazione().nome = configName;
 
+		$scope.setLoaderMessage("salvo la configurzione '"+configName+"' creata...");
+		$scope.showLoader();
+		
 		listeService.putConfigurazione($scope.getTempConfigurazione()).then(
 			function (res){
 				console.log(res);
 				$scope.getTempConfigurazione().codice = res.data.codiceConfigurazioneRisposta;
 				$scope.addToPreferiti($scope.getTempConfigurazione());//aggiunge ai preferiti locali
+				$scope.hideLoader();
 				if($scope.getTempConfigurazione().carrello){
-					$scope.addToCarrello($$scope.getTempConfigurazione());//aggiunge ai preferiti locali
+					$scope.addToCarrello($scope.getTempConfigurazione());//aggiunge ai preferiti locali
 					$scope.changePath('/carrello');
 				}
 			},
 			function (reason){
 				console.log(reason);
+				$scope.hideLoader();
 				alert ("errore aggiunta preferiti");
 			}
 		);
@@ -791,12 +800,12 @@ angular.module("applicationModule").controller("componentsController", ["$scope"
 		} else return "";
 	}
 
-	/* FUNZIONI DI TEST */
+	/* FUNZIONI GESTIONE LOADER */
 	$scope.showLoader = function(){
-
+		$('#loaderOverlay')[0].style.visibility = 'visible';
 	}
 	
 	$scope.hideLoader = function(){
-		
+		$('#loaderOverlay')[0].style.visibility = 'hidden';
 	}
 }]);

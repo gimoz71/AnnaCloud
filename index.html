@@ -246,7 +246,7 @@
 					Copyright &reg; 2018 ANNACLOUD
 					<a href="#modaleAvviso" role="button" class="btn btn-primary hidden" data-toggle="modal">alert</a>
 					<a href="#modaleConfiguratoreNome" role="button" class="btn btn-primary hidden" data-toggle="modal">nome configurazione</a>
-					<a href="javscript:void(0);" role="button" class="btn btn-primary hidden" ng-click="openMessageModal()">test message modal</a>
+					<a href="javscript:void(0);" role="button" class="btn btn-primary hidden" ng-click="showLoader()">test loader</a>
 				</div>
 			</div>
 	    </footer>
@@ -254,7 +254,7 @@
 
 
 	<!---  LOADER   -->
-	<div id="loaderOverlay" class="hidden">
+	<div id="loaderOverlay" style="visibility: hidden">
 		<span class="loaderMessage">{{getLoaderMessage()}}</span>
 	</div>
 
